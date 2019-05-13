@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Failed suite [CPQ End to End Order]">
+  <listeners>
+    <listener class-name="Listeners.TestListener"/>
+  </listeners>
+  <test name="CPQ End to End Order(failed)">
+    <classes>
+      <class name="Testscript.StandardOrder">
+        <methods>
+          <include name="BeforeMethod"/>
+          <include name="EndtoEndOrder" invocation-numbers="0 1"/>
+          <include name="BeforeSuite"/>
+          <include name="Teardown"/>
+        </methods>
+      </class> <!-- Testscript.StandardOrder -->
+    </classes>
+  </test> <!-- CPQ End to End Order(failed) -->
+</suite> <!-- Failed suite [CPQ End to End Order] -->
