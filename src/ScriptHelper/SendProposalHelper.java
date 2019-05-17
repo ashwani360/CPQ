@@ -24,22 +24,78 @@ public class SendProposalHelper extends DriverHelper{
 	}
 
 
-	public void CustomerSign(Object[] Inputdata) throws Exception {
+	public void CustomerSign(Object[][] Inputdata) throws Exception {
+		if(Inputdata[0][24].toString().equals("Email")) {
 		WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/customersignatureTab")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/GenrateProposal"));
 		Clickon(getwebelement(xml.getlocator("//locators/GenrateProposal")));
-		Thread.sleep(2000);
-		AcceptJavaScriptMethod();
+		try {
+			Thread.sleep(5000);
+			AcceptJavaScriptMethod();
+			}
+			catch(Exception e)
+			{
+				System.out.println("No Alert Present");
+			}
 		WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
 		Clickon(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
-		Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[18].toString());
+		Thread.sleep(5000);
+		CloseProposalwindow();
+		Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[0][24].toString());
 		WaitforElementtobeclickable(xml.getlocator("//locators/to"));
-		SendKeys(getwebelement(xml.getlocator("//locators/to")),Inputdata[19].toString());
+		SendKeys(getwebelement(xml.getlocator("//locators/to")),Inputdata[0][25].toString());
 		Clickon(getwebelement(xml.getlocator("//locators/SendtoCustomer")));
-		Thread.sleep(2000);
-		AcceptJavaScriptMethod();
+		try {
+			Thread.sleep(5000);
+			AcceptJavaScriptMethod();
+			}
+			catch(Exception e)
+			{
+				System.out.println("No Alert Present");
+			}
+		}
+		else 
+		{
+			Thread.sleep(5000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
+			Clickon(getwebelement(xml.getlocator("//locators/customersignatureTab")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/GenrateProposal"));
+			Clickon(getwebelement(xml.getlocator("//locators/GenrateProposal")));
+			try {
+			Thread.sleep(5000);
+			AcceptJavaScriptMethod();
+			}
+			catch(Exception e)
+			{
+				System.out.println("No Alert Present");
+			}
+			//CloseProposalwindow();
+			WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
+			Thread.sleep(5000);
+			CloseProposalwindow();
+			WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
+			Thread.sleep(5000);
+			Clickon(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
+			Thread.sleep(5000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/Mod"));
+			Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[0][24].toString());
+			WaitforElementtobeclickable(xml.getlocator("//locators/to"));
+			SendKeys(getwebelement(xml.getlocator("//locators/to")),Inputdata[0][25].toString());
+			Clickon(getwebelement(xml.getlocator("//locators/SentoSign")));
+			try {
+				Thread.sleep(5000);
+				AcceptJavaScriptMethod();
+				}
+				catch(Exception e)
+				{
+					System.out.println("No Alert Present");
+				}
+			Thread.sleep(5000);
+			
+		}
 	}
 	
 

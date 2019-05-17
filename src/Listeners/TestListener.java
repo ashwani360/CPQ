@@ -27,6 +27,7 @@ public class TestListener extends DriverTestcase implements ITestListener {
         Log.info("I am on Start method " + iTestContext.getName());
         
         iTestContext.setAttribute("WebDriver", this.getwebdriver());
+        System.out.println("Driver instance in Listemer"+this.getwebdriver());
     }
  
     //After ending all tests, below method runs.
@@ -42,14 +43,14 @@ public class TestListener extends DriverTestcase implements ITestListener {
         Log.info("I am on TestStart method " +  getTestMethodName(iTestResult) + " start");
         //Start operation for extentreports.
         //ExtentTestManager.
-        //Log.info("I am in onStart method " + iTestResult.getTestContext().getAttribute("testname"));
+        Log.info("I am in onStart method " + iTestResult.getTestContext().getAttribute("testname"));
         ExtentTestManager.startTest(iTestResult.getTestContext().getSuite().getXmlSuite().getName().toString()+"-"+iTestResult.getTestContext().getCurrentXmlTest().getName().toString()+"-"+iTestResult.getTestContext().getAttribute("testName").toString(),"");
     }
  
     public void onTestSuccess(ITestResult iTestResult) {
         Log.info("I am on TestSuccess method " +  getTestMethodName(iTestResult) + " succeed");
         //Extentreports log operation for passed tests.
-        	ExtentTestManager.getTest().log(LogStatus.PASS, getTestMethodName(iTestResult)+" : Test Method has been passed");
+      ExtentTestManager.getTest().log(LogStatus.PASS, getTestMethodName(iTestResult)+" : Test Method has been passed");
     }
  
     public void onTestFailure(ITestResult iTestResult) {

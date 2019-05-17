@@ -5,6 +5,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import org.openqa.selenium.JavascriptExecutor;
@@ -29,7 +30,13 @@ public class DriverHelper {
 	Wait<WebDriver> wait;
 	WebElement el;
 	List<WebElement> ellist;
+	public static ThreadLocal<String> QuoteID=new ThreadLocal<>();
+	public static ThreadLocal<String> DealClass=new ThreadLocal<>();
+	public static ThreadLocal<String> TechnicalComplexity=new ThreadLocal<>();
+	public static ThreadLocal<String> LeagalComplexity=new ThreadLocal<>();
+	public static ThreadLocal<Float> TotalTCVdisscount=new ThreadLocal<>();
 	public static ThreadLocal<String> Ordernumber= new ThreadLocal<>();
+	public static ThreadLocal<String> ApprovalCase= new ThreadLocal<>();
 	public static ThreadLocal<String> OrderscreenURL= new ThreadLocal<>();
 	public static ThreadLocal<String> SchedulerURL= new ThreadLocal<>();
 	public static ThreadLocal<Integer> workitemcounter= new ThreadLocal<>();
@@ -78,6 +85,8 @@ public class DriverHelper {
 				.ignoring(NoSuchElementException.class)
 				.ignoring(StaleElementReferenceException.class);
 		//workitemcounter.set(1);
+		//QuoteID.set("QT-20190516-031225-01");
+		TotalTCVdisscount.set((float) 0);
 	}
 	 
 	public void javascriptexecutor(WebElement el) throws InterruptedException
@@ -90,11 +99,28 @@ public class DriverHelper {
 	
 	public void WaitforElementtobeclickable(final String locator) throws InterruptedException
 	{
+		if(locator.startsWith("//") || locator.startsWith("(")) {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator))); 
 		//getwebelement(xml.getlocator("//locators/StandrdQuote"));
 		System.out.println("Code for Loading");
 		Thread.sleep(2000);
-		
+		}
+		else if(locator.startsWith("name"))
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(By.name(locator))); 
+			//getwebelement(xml.getlocator("//locators/StandrdQuote"));
+			System.out.println("Code for Loading");
+			Thread.sleep(2000);
+			
+		}
+		else if(locator.startsWith("id"))
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(By.id(locator))); 
+			//getwebelement(xml.getlocator("//locators/StandrdQuote"));
+			System.out.println("Code for Loading");
+			Thread.sleep(2000);
+			
+		}
 	}
 	public void Getloadingcomplete(final String locator) throws InterruptedException
 	{
@@ -104,12 +130,83 @@ public class DriverHelper {
 		Thread.sleep(2000);
 		
 	}
+	
+	public void CloseProposalwindow() throws InterruptedException
+	{   String parentWinHandle = driver.getWindowHandle();
+		Set<String> totalopenwindow=driver.getWindowHandles();
+		if(totalopenwindow.size()>1) {
+		for(String handle: totalopenwindow)
+		{
+            if(!handle.equals(parentWinHandle))
+            {
+            driver.switchTo().window(handle);
+            
+            }
+		}
+		driver.close();
+		driver.switchTo().window(parentWinHandle);
+		}
+		else {
+			System.out.println("Something went wrong. Proposal has not be generated");
+		}
+	}
+	public void Switchtotabandsignthequote() throws Exception
+	{   String parentWinHandle = driver.getWindowHandle();
+		Set<String> totalopenwindow=driver.getWindowHandles();
+		for(String handle: totalopenwindow)
+		{
+            if(!handle.equals(parentWinHandle))
+            {
+            driver.switchTo().window(handle);
+            Thread.sleep(12000);
+            try {
+            safeJavaScriptClick(getwebelement("//*[@id='disclosureAccepted']"));
+            }
+            catch(Exception e) {
+            Clickon(getwebelement("//*[text()='Required']"));
+            }
+            Clickon(getwebelement("//button[text()='Continue']"));
+    		Clickon(getwebelement("//button[@data-qa='SignHere']"));
+    		Clickon(getwebelement("//div[@class='page-tabs']"));
+    		//create object 'action' of Actions class
+    		//Dragedrop(getwebelement("//button[@data-qa='SignHere']"),getwebelement("//div[@class='page-tabs']"));
+    		Thread.sleep(10000);
+    		Clickon(getwebelement("//button[text()='Adopt and Sign']"));
+//    		Thread.sleep(10000);
+//    		Clickon(getwebelement("//button[text()='Ok']"));
+    		Thread.sleep(10000);
+    		WaitforElementtobeclickable("//button[text()='Finish']");
+    		Clickon(getwebelement("//button[text()='Finish']"));
+    		WaitforElementtobeclickable("(//button[text()='Continue'])[2]");
+    		Clickon(getwebelement("(//button[text()='Continue'])[2]"));
+    		Thread.sleep(10000);
+            }
+		}
+		driver.close();
+		driver.switchTo().window(parentWinHandle);
+	}
+	public void Switchtotab() throws Exception
+	{   String parentWinHandle = driver.getWindowHandle();
+		Set<String> totalopenwindow=driver.getWindowHandles();
+		for(String handle: totalopenwindow)
+		{
+            if(!handle.equals(parentWinHandle))
+            {
+            driver.switchTo().window(handle);
+            Thread.sleep(4000);
+           
+            }
+		}
+		//driver.close();
+		//driver.switchTo().window(parentWinHandle);
+	}
 	public void Getmaploaded(final String framlocator, final String messagelocator) throws InterruptedException
 	{
 		
 		System.out.println("Code for Map Loading");
-		Thread.sleep(1000);
+		Thread.sleep(9000);
 		String[] finalval=framlocator.split("=");
+		Thread.sleep(9000);
 		driver.switchTo().frame(driver.findElement(By.id(finalval[1])));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(messagelocator))); 
 		driver.switchTo().defaultContent();
@@ -213,7 +310,7 @@ public class DriverHelper {
 		}
 	}
 	public void switchtofram(WebElement el){
-		driver.switchTo().frame(0);
+		driver.switchTo().frame(el);
 		
 	}
 	public void switchtodefault(){
@@ -437,7 +534,12 @@ public void Moveon(WebElement el) {
 			s1.selectByVisibleText(value);
 			//Thread.sleep(3000);
 		}
-	
+	public void Select2(WebElement el, String value) throws IOException, InterruptedException
+	{ //Thread.sleep(3000);
+		Select s1=new Select(el);
+		s1.selectByValue(value);
+		//Thread.sleep(3000);
+	}
 	public void Clear(WebElement el) throws IOException, InterruptedException
 		{ //Thread.sleep(3000);
 			el.clear();
@@ -449,6 +551,12 @@ public void Moveon(WebElement el) {
 			alert.accept();
 			driver.switchTo().defaultContent();
 		}
+	
+	public void Dragedrop(WebElement source,WebElement Destination){
+		Actions action = new Actions(driver);
+		//use dragAndDrop() method. It accepts two parametes source and target.
+		action.dragAndDrop(source, Destination).build().perform();
+	}
 	
 	public void savePage(){
 			Actions keyAction = new Actions(driver);     

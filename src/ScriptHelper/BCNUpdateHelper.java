@@ -24,7 +24,7 @@ public class BCNUpdateHelper extends DriverHelper{
 	}
 
 
-	public void BCNUpdate(Object[] Inputdata) throws Exception {
+	public void BCNUpdate(Object[][] Inputdata) throws Exception {
 		Thread.sleep(1000);
 		Clickon(getwebelement(xml.getlocator("//locators/Alllineitem")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select All Product check box to update the BCN");
@@ -33,13 +33,16 @@ public class BCNUpdateHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/BillingInfobutton")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the BCN update button");
 		Thread.sleep(1000);
-		SendKeys(getwebelement(xml.getlocator("//locators/customerreferece")),Inputdata[15].toString());
+		SendKeys(getwebelement(xml.getlocator("//locators/customerreferece")),Inputdata[0][18].toString());
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Customer Reference number");
 		Thread.sleep(1000);
-		SendKeys(getwebelement(xml.getlocator("//locators/po")),Inputdata[16].toString());
+		SendKeys(getwebelement(xml.getlocator("//locators/po")),Inputdata[0][19].toString());
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Customer PO number");
 		Thread.sleep(1000);
+		//Inputdata[0][20].toString()
 		Clickon(getwebelement(xml.getlocator("//locators/bcn")));
+		
+	
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the BCN");
 		WaitforElementtobeclickable(xml.getlocator("//locators/applybutton"));
 		Clickon(getwebelement(xml.getlocator("//locators/applybutton")));

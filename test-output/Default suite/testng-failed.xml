@@ -3,14 +3,15 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Testscript.Login">
+      <class name="Testscript.StandardOrder">
         <methods>
           <include name="BeforeMethod"/>
+          <include name="EndtoEndOrder" invocation-numbers="0"/>
+          <include name="Teardown2"/>
           <include name="BeforeSuite"/>
           <include name="Teardown"/>
-          <include name="LoginonC4C"/>
         </methods>
-      </class> <!-- Testscript.Login -->
+      </class> <!-- Testscript.StandardOrder -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

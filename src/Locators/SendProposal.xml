@@ -62,6 +62,7 @@
 <Mod>//select[@name='workflow_t']</Mod>
 <to>//*[@id='toRecepient_t']</to>
 <SendtoCustomer>//a[text()='Send Proposal']</SendtoCustomer>
+<SentoSign>(//a[text()='Request Signature'])[2]</SentoSign>
 <OrderTab>//span[text()='ORDER']</OrderTab>
 <QuoteAction>name=quoteActionAcceptOrReject_t</QuoteAction>
 <Reasone>name=reasonForStatusWon_t</Reasone>

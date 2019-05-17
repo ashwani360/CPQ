@@ -17,11 +17,15 @@
 </CPQ>
 <CustomerSection>//h1[text()='Customers']</CustomerSection>
 <Accountlink>//a[text()='Accounts']</Accountlink>
-<OCN>//span[text()='100119208']/parent::*/parent::*/following-sibling::*/div/a</OCN>
+<OCN>//span[text()='Accountnumber']/parent::*/parent::*/following-sibling::*/div/a</OCN>
 <OpportunuityTab>//div[text()='Opportunities']</OpportunuityTab>
-<Opportunuitynumber>//span[text()='265293']/parent::*/parent::*/following-sibling::*/div/a</Opportunuitynumber>
+<Opportunuitynumber>//span[text()='Opportunuitynumber']/parent::*/parent::*/following-sibling::*/div/a</Opportunuitynumber>
 <QuoteTab>//div[text()='Quotes']</QuoteTab>
 <AddQuote>//bdi[text()='Add']</AddQuote>
+<Quotenumber>//a[text()='Quotenumber']</Quotenumber>
+<QuoteActions>//bdi[text()='Actions']</QuoteActions>
+<QuoteEdit>//bdi[text()='Edit']</QuoteEdit>
+<Refresh>//a[text()='Refresh']</Refresh>
 <StandrdQuote>id=readonly_1_quoteType_t</StandrdQuote>
 <LoadingDailog>//*[@id='loading-mask']</LoadingDailog>
 <AddProduct>//a[text()='Add Product']</AddProduct>
@@ -57,6 +61,7 @@
 <ApprovalTab>(//span[text()='Approval'])[1]</ApprovalTab>
 <SubmitetoApproval>//a[text()='Submit to Approval']</SubmitetoApproval>
 <customersignatureTab>//span[text()='CUSTOMER SIGNATURE']</customersignatureTab>
+<Status>//td[text()='Signed']</Status>
 <GenrateProposal>//a[text()='Generate Proposal']</GenrateProposal>
 <ForCustomerSignature>//*[@name='finalizeProposalCheck_t']</ForCustomerSignature>
 <Mod>//select[@name='workflow_t']</Mod>

@@ -1,5 +1,8 @@
 package ScriptHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.dom4j.DocumentException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -24,11 +27,13 @@ public class OrderingHelper extends DriverHelper{
 	}
 
 
-	public void CreateOrder(Object[] Inputdata) throws Exception {
+	public void AcceptsQuote(Object[][] Inputdata) throws Exception {
+		if(Inputdata[0][24].toString().equals("Email")) {
 		WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
 		Thread.sleep(2000);
+		
 		Select(getwebelement(xml.getlocator("//locators/QuoteAction")), "Accept");
 		Thread.sleep(2000);
 		Select(getwebelement(xml.getlocator("//locators/Reasone")), "Price");
@@ -37,19 +42,82 @@ public class OrderingHelper extends DriverHelper{
 		//Clickon(getwebelement(xml.getlocator("//locators/FileBrowse")));
 		uploadafile(xml.getlocator("//locators/FileBrowse"),"QT-20180312-014836-01.pdf");
 		getwebelement(xml.getlocator("//locators/Fileuploaded"));
-		SendKeys(getwebelement(xml.getlocator("//locators/CustomerSignedDate")),"13/05/2019");
+		String pattern = "dd/MM/yyyy";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+		String date = simpleDateFormat.format(new Date());
+		System.out.println(date);
+		SendKeys(getwebelement(xml.getlocator("//locators/CustomerSignedDate")),date);
 		Clickon(getwebelement(xml.getlocator("//locators/ConfirQuoteAction")));
+		/////
+		}
+		else
+		{
+			WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
+			javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
+			Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
+			Thread.sleep(2000);
+			
+			Select(getwebelement(xml.getlocator("//locators/QuoteAction")), "Accept");
+			Thread.sleep(2000);
+			Select(getwebelement(xml.getlocator("//locators/Reasone")), "Price");
+			Thread.sleep(5000);
+//			//safeJavaScriptClick();
+//			//Clickon(getwebelement(xml.getlocator("//locators/FileBrowse")));
+//			uploadafile(xml.getlocator("//locators/FileBrowse"),"QT-20180312-014836-01.pdf");
+//			getwebelement(xml.getlocator("//locators/Fileuploaded"));
+			String pattern = "dd/MM/yyyy";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+			String date = simpleDateFormat.format(new Date());
+			System.out.println(date);
+			SendKeys(getwebelement(xml.getlocator("//locators/CustomerSignedDate")),date);
+			Clickon(getwebelement(xml.getlocator("//locators/ConfirQuoteAction")));
+		}
+		
+			
+			
+	
+		
+	}
+	public void CreateOrder(Object[][] Inputdata) throws Exception {
 		WaitforElementtobeclickable(xml.getlocator("//locators/AdditionalinfomrationTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
-		WaitforElementtobeclickable(xml.getlocator("//locators/Accordian"));
+		
+		for(int i=0;i<Inputdata.length;i++) {
+		WaitforElementtobeclickable(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1) ));
 		Clickon(getwebelement(xml.getlocator("//locators/Accordian")));
-		SendKeys(getwebelement(xml.getlocator("//locators/Asitecomponey")),Inputdata[20].toString());
-		SendKeys(getwebelement(xml.getlocator("//locators/BSitecom")),Inputdata[21].toString());
+		SendKeys(getwebelement(xml.getlocator("//locators/Asitecomponey")),Inputdata[i][26].toString());
+		SendKeys(getwebelement(xml.getlocator("//locators/BSitecom")),Inputdata[i][27].toString());
 		Clickon(getwebelement(xml.getlocator("//locators/SaveInfo")));
+		}
+		
 		WaitforElementtobeclickable(xml.getlocator("//locators/CreateOrder"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/CreateOrder")));
 		Clickon(getwebelement(xml.getlocator("//locators/CreateOrder")));
+	}
+	
+	public void AcceptsQuotebyEsignature(Object[][] Inputdata) throws Exception {
+
+	Thread.sleep(50000);
+	Geturl("http://yopmail.com");
+	
+	SendKeys(getwebelement("//input[@id='login']"),Inputdata[0][25].toString().split("@")[0]);
+	Clickon(getwebelement("//input[@value='Check Inbox']"));
+	Thread.sleep(4000);
+	switchtofram(getwebelement("name=ifinbox"));
+	System.out.println("Witched to iframe");
+	Clickon(getwebelement("//span[contains(text(),'"+QuoteID.get().toString()+"')]/parent::*"));
+	switchtodefault();
+	System.out.println("Witched to default content");
+	Thread.sleep(4000);
+	switchtofram(getwebelement("id=ifmail"));
+	System.out.println("switched to iframe");
+	Clickon(getwebelement("//span[contains(text(),'REVIEW DOCUMENT')]"));
+	switchtodefault();
+	Switchtotabandsignthequote();
+	System.out.println("Witched to default content");
 	}
 
 }

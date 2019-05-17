@@ -9,7 +9,8 @@
       <class name="Testscript.StandardOrder">
         <methods>
           <include name="BeforeMethod"/>
-          <include name="EndtoEndOrder" invocation-numbers="0 1"/>
+          <include name="EndtoEndOrder" invocation-numbers="0"/>
+          <include name="Teardown2"/>
           <include name="BeforeSuite"/>
           <include name="Teardown"/>
         </methods>

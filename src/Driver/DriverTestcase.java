@@ -16,6 +16,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -47,7 +48,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public static final ThreadLocal<GenralInfoHelper> GenralInfohelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<OrderingHelper> Orderinghelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<SendProposalHelper> SendProposalhelper= new InheritableThreadLocal<>();
-	
+	public static ThreadLocal<String> QuoteID=new InheritableThreadLocal<>();
 	public static TestListener Testlistener;
 	//public static CarNorOrderHelper CarNorOrderhelper;
 	public ThreadLocal<String> TestName=new ThreadLocal(); 
@@ -56,22 +57,43 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public static int  itr;
 	@BeforeMethod
 	   public void BeforeMethod(Method method,ITestContext ctx ,Object[] data) throws IOException, InterruptedException{
-	 
+		System.out.println("Size of Data in Before method"+data.length);
 		setup();
-		Object[] st = null;
-		
+		//System.out.println("Driver at the time of initiation"+getwebdriver());
+		Object[][] st1 = null;
 		try 
 		
 		{
-	 	st=(Object[]) data[0];
+	 	st1=(Object[][]) data[0];
+	 	System.out.println("Lenghth of Complete Data provided by DP"+st1.length);
+		}
+		catch(Exception e)
+		{
+			st1=new Object[][] {{""}};
+		}
+		Object[] st = null;
+		try 
+		
+		{
+	 	st=(Object[]) st1[0];
+	 	System.out.println("Length of First Data provided by DP"+st.length);
 		}
 		catch(Exception e)
 		{
 			st=new Object[][] {{""}};
+			System.out.println(e.getMessage());
 		}
 	
 	//Log.info("Index is:"+itr+"Length od data is:"+data.length);
 	      if(method.getName().equals("EndtoEndOrder"))
+	      {
+	   		//DataReader dt=new DataReader();
+	   		//Object[][] data=dt.datareader();
+		    //Object[] st= (Object[]) data[itr][0];
+		    Log.info(st[st.length-2].toString());
+		    ctx.setAttribute("testName", st[st.length-2].toString());
+	      }
+	      if(method.getName().equals("EndtoEndOrdertest"))
 	      {
 	   		//DataReader dt=new DataReader();
 	   		//Object[][] data=dt.datareader();
@@ -160,6 +182,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		GenralInfohelper.set(GEN);
 		Orderinghelper.set(ORD);
 		SendProposalhelper.set(PRO);
+		
 	}
 
 	@org.testng.annotations.BeforeSuite
@@ -167,12 +190,17 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	itr=0;
 	DOMConfigurator.configure("log4j.xml");
 	}
-	
+	@AfterMethod
+	public void Teardown2()
+	{
+		System.out.println("Cuurent Thread of diriver need to close-"+getwebdriver());
+		//getwebdriver().close();
+	}
 	@AfterTest
 	public void Teardown()
 	{
-		
-		getwebdriver().close();
+		//System.out.println("Cuurent Thread of diriver need to close-"+getwebdriver());
+		//getwebdriver().close();
 	}
 	public WebDriver getwebdriver() {
 		WebDriver dr = WEB_DRIVER_THREAD_LOCAL.get();

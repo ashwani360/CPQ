@@ -70,7 +70,7 @@
 <CustomerSignedDate>id=customerSignedDate_t</CustomerSignedDate>
 <ConfirQuoteAction>//a[text()='Confirm Quote Action']</ConfirQuoteAction>
 <AdditionalinfomrationTab>//*[text()='Additional Quote Information']</AdditionalinfomrationTab>
-<Accordian>//button[@class='accordion']</Accordian>
+<Accordian>(//button[@class='accordion'])[index]</Accordian>
 <Asitecomponey>name=aEndCompanyName</Asitecomponey>
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
