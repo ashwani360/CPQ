@@ -80,5 +80,6 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
+<C4Cloader>//*[@title='Please wait']</C4Cloader>
 </locators>
 

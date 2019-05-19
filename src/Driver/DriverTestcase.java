@@ -135,12 +135,15 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
 			dr= new ChromeDriver(capabilities);
 			//driver.manage().window().maximize();
+			
+			
+			
 			dr.get("chrome://settings/content/popups");
-			Thread.sleep(4000);
+			//dr.findElement(By.xpath(h1[text()='Pop-ups and redirects']);
 			//dr.switchTo().frame("settings");
 			//Thread.sleep(2000);
 			//dr.findElement(By.xpath("//*[@id='popups']")).click();
-			//Thread.sleep(4000);
+			Thread.sleep(6000);
 			Actions builder = new Actions(dr);
 			builder.sendKeys(Keys.TAB).build().perform();
 			builder.sendKeys(Keys.TAB).build().perform();

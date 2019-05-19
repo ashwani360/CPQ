@@ -57,33 +57,33 @@
 <ApprovalTab>(//span[text()='Approval'])[1]</ApprovalTab>
 <CPQQuoteTab>(//span[text()='Quote'])[1]</CPQQuoteTab>
 <Percentage>
-<DiscountType>name=nRCDiscountType_t</DiscountType>
-<NRCDiscount>id=discountNRCPerc_t</NRCDiscount>
-<MRCDiscount>id=discountMRCPerc_t</MRCDiscount>
+<DiscountType>//*[@name='nRCDiscountType_t']</DiscountType>
+<NRCDiscount>//*[@id='discountNRCPerc_t']</NRCDiscount>
+<MRCDiscount>//*[@id='discountMRCPerc_t']</MRCDiscount>
 <CalculateDisscount>//a[text()='Calculate Discount'][1]</CalculateDisscount>
 </Percentage>
 <Ammountoff>
-<DiscountType>name=nRCDiscountType_t</DiscountType>
-<NRCDiscount>id=nRCDiscount_t-display</NRCDiscount>
-<MRCDiscount>id=mRCDiscount_t-display</MRCDiscount>
+<DiscountType>//*[@name='nRCDiscountType_t']</DiscountType>
+<NRCDiscount>//*[@id='nRCDiscount_t-display']</NRCDiscount>
+<MRCDiscount>//*[@id='mRCDiscount_t-display']</MRCDiscount>
 <CalculateDisscount>//a[text()='Calculate Discount'][1]</CalculateDisscount>
 </Ammountoff>
 <TargetPrice>
-<DiscountType>name=nRCDiscountType_t</DiscountType>
-<NRCDiscount>id=nRCDiscountTP_t-display</NRCDiscount>
-<MRCDiscount>id=mRCDiscountTP_t-display</MRCDiscount>
+<DiscountType>//*[@name='nRCDiscountType_t']</DiscountType>
+<NRCDiscount>//*[@id='nRCDiscountTP_t-display']</NRCDiscount>
+<MRCDiscount>//*[@id='mRCDiscountTP_t-display']</MRCDiscount>
 <CalculateDisscount>//a[text()='Calculate Discount'][1]</CalculateDisscount>
 </TargetPrice>
-<Showdisscountcoulumn>id=showColumnsMenu_t0</Showdisscountcoulumn>
+<Showdisscountcoulumn>//*[@id='showColumnsMenu_t0']</Showdisscountcoulumn>
 <TcvDisscount>//span[contains(@id,'readonly_2_tCVDiscount')]</TcvDisscount>
 <Admin>//img[@title='Admin']/parent::*</Admin>
-<QuotetoOrderLink>//a[text()='Oracle Quote to Order - Manager']</QuotetoOrderLink>
+<QuotetoOrderLink>(//a[@class='commerce-sidebar-item'])[1]</QuotetoOrderLink>
 <InternalUser>//a[text()='Internal Users']</InternalUser>
 <UsernameProxy>//a[text()='Ashwani.Singh31@colt.net']/parent::*/parent::*/td[5]/a</UsernameProxy>
 <CPQQuotelink>//span[text()='QuoteId']/parent::*/parent::*/parent::*/td[2]/div/a</CPQQuotelink>
 <ApproverComment>//input[contains(@id,'performer_comment')]</ApproverComment>
 <ApproveasApprover>//a[@title='Approve']</ApproveasApprover>
-<Proxylogout>//img[@title='Proxy Logout']/parent::*</Proxylogout>
+<Proxylogout>//img[contains(@title,'Logout')]/parent::*</Proxylogout>
 <SubmitetoApproval>//a[text()='Submit to Approval']</SubmitetoApproval>
 <customersignatureTab>//span[text()='CUSTOMER SIGNATURE']</customersignatureTab>
 <GenrateProposal>//a[text()='Generate Proposal']</GenrateProposal>
@@ -104,5 +104,7 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
+<ApproverCommentFinal>//*[@id='performer_comment']</ApproverCommentFinal>
+<FinalSubmit>//a[text()='Submit']</FinalSubmit>
 </locators>
 

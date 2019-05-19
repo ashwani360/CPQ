@@ -72,12 +72,16 @@ public class ConfigurationHelper extends DriverHelper{
 					Clickon(getwebelement(xml.getlocator("//locators/EthernetProductP2P")));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 					SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][5].toString());
+					Thread.sleep(1000);
+					//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ENTER);
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter B Siter Address");
 					SendKeys(getwebelement(xml.getlocator("//locators/Bsite")),Inputdata[i][6].toString());
+					Thread.sleep(1000);
+					//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Bsite")),Keys.ENTER);
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -144,6 +148,8 @@ public class ConfigurationHelper extends DriverHelper{
 			   Clickon(getwebelement(xml.getlocator("//locators/EthernetHub")));
 			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 				SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][5].toString());
+				Thread.sleep(1000);
+				//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 				SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ENTER);
 				//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -216,11 +222,13 @@ public class ConfigurationHelper extends DriverHelper{
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Spoke Site Address");
 					SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][6].toString());
+					Thread.sleep(1000);
+					//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ENTER);
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					//Thread.sleep(3000);
+					Thread.sleep(3000);
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Map to be loaded completly");
 					Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
@@ -279,12 +287,15 @@ public class ConfigurationHelper extends DriverHelper{
 					
 				   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 					SendKeys(getwebelement(xml.getlocator("//locators/HubSite")),Inputdata[i][5].toString());
+					
 					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/HubSite")),Keys.ENTER);
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Spoke Siter Address");
 					SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][6].toString());
+					Thread.sleep(1000);
+					//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ENTER);
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -344,12 +355,16 @@ public class ConfigurationHelper extends DriverHelper{
 			   Clickon(getwebelement(xml.getlocator("//locators/OpticalWave")));
 			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 				SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][5].toString());
+				Thread.sleep(1000);
+				//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 				SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ENTER);
 				//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter B Siter Address");
 				SendKeys(getwebelement(xml.getlocator("//locators/Bsite")),Inputdata[i][6].toString());
+				Thread.sleep(1000);
+				//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 				SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Bsite")),Keys.ENTER);
 				//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -501,7 +516,9 @@ public class ConfigurationHelper extends DriverHelper{
 		for(int i=0;i<Inputdata.length;i++) {
 		Clickon(getwebelement(xml.getlocator("//locators/AddProduct")));
 		AddFamilyProduct(Inputdata,i);
-		
+		DealClass.set(Gettext(getwebelement(xml.getlocator("//locators/Dealclass"))));
+		TechnicalComplexity.set(Gettext(getwebelement(xml.getlocator("//locators/Technicalcomplexity"))));
+		LeagalComplexity.set(Gettext(getwebelement(xml.getlocator("//locators/LegalComplexity"))));
 		}
 		
 		

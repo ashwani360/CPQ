@@ -16,6 +16,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -85,7 +86,7 @@ public class DriverHelper {
 				.ignoring(NoSuchElementException.class)
 				.ignoring(StaleElementReferenceException.class);
 		//workitemcounter.set(1);
-		//QuoteID.set("QT-20190516-031225-01");
+		QuoteID.set("QT-20190518-031339-01");
 		TotalTCVdisscount.set((float) 0);
 	}
 	 
@@ -99,7 +100,9 @@ public class DriverHelper {
 	
 	public void WaitforElementtobeclickable(final String locator) throws InterruptedException
 	{
+		waitForpageload();
 		if(locator.startsWith("//") || locator.startsWith("(")) {
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator))); 
 		//getwebelement(xml.getlocator("//locators/StandrdQuote"));
 		System.out.println("Code for Loading");
@@ -288,9 +291,19 @@ public class DriverHelper {
 	}
 	public void Clickon(WebElement el) throws InterruptedException {
 		//Thread.sleep(3000);
-		
+		try {
 		el.click();
+		}
+		catch(WebDriverException e)
 		//Thread.sleep(3000);
+		{
+			//Thread.sleep(3000);
+			if(e.getMessage().contains("Element is not clickable at point"))
+			{
+				Thread.sleep(3000);
+				el.click();
+			}
+		}
 	}
 	public void safeJavaScriptClick(WebElement element) throws Exception {
 		try {
@@ -545,13 +558,37 @@ public void Moveon(WebElement el) {
 			el.clear();
 			//Thread.sleep(3000);
 		}
-	
+	public void WaitforC4Cloader(String el, int timeout ) throws IOException, InterruptedException
+	{ Thread.sleep(3000);
+//		for(int i=0;i<=timeout*60/20;i++){
+//			try {
+//	            if (isElementPresent(el)){
+//	            	//Log.info("Refreshing the Pages");
+//		        	//driver.navigate().refresh();
+//		        	Log.info("Waiting For 20 Sec");
+//		        	Thread.sleep(20000);
+//	            }
+//	            else{
+//	            	//Log.info("Refreshing the Pages");
+//		        	//driver.navigate().refresh();
+//		        	break;
+//	            }
+//	            }
+//	        catch (Exception e) {
+//	        	Log.info(e.getMessage());
+//	        }
+//		}
+		//Thread.sleep(3000);
+	}
 	public void AcceptJavaScriptMethod(){
 			Alert alert = driver.switchTo().alert();
 			alert.accept();
 			driver.switchTo().defaultContent();
 		}
-	
+	public void waitForpageload()
+	{
+		wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));	
+	}
 	public void Dragedrop(WebElement source,WebElement Destination){
 		Actions action = new Actions(driver);
 		//use dragAndDrop() method. It accepts two parametes source and target.

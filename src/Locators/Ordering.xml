@@ -71,8 +71,8 @@
 <ConfirQuoteAction>//a[text()='Confirm Quote Action']</ConfirQuoteAction>
 <AdditionalinfomrationTab>//*[text()='Additional Quote Information']</AdditionalinfomrationTab>
 <Accordian>(//button[@class='accordion'])[index]</Accordian>
-<Asitecomponey>name=aEndCompanyName</Asitecomponey>
-<BSitecom>name=bEndCompanyName</BSitecom>
+<Asitecomponey>(//*[@name='aEndCompanyName'])[index]</Asitecomponey>
+<BSitecom>(//*[@name='bEndCompanyName'])[index]</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
 </locators>

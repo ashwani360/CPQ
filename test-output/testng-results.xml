@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="CPQ End to End Order" duration-ms="283907" started-at="2019-05-17T10:00:48Z" finished-at="2019-05-17T10:05:32Z">
+  <suite name="CPQ End to End Order" duration-ms="325588" started-at="2019-05-19T11:29:48Z" finished-at="2019-05-19T11:35:13Z">
     <groups>
     </groups>
-    <test name="CPQ End to End Order" duration-ms="283907" started-at="2019-05-17T10:00:48Z" finished-at="2019-05-17T10:05:32Z">
+    <test name="CPQ End to End Order" duration-ms="325588" started-at="2019-05-19T11:29:48Z" finished-at="2019-05-19T11:35:13Z">
       <class name="Testscript.StandardOrder">
-        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrder@51efea79]" name="BeforeSuite" is-config="true" duration-ms="359" started-at="2019-05-17T15:30:47Z" finished-at="2019-05-17T15:30:48Z">
+        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrder@51efea79]" name="BeforeSuite" is-config="true" duration-ms="221" started-at="2019-05-19T16:59:48Z" finished-at="2019-05-19T16:59:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeSuite -->
-        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrder@51efea79]" name="BeforeMethod" is-config="true" duration-ms="12728" started-at="2019-05-17T15:30:51Z" finished-at="2019-05-17T15:31:03Z">
+        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrder@51efea79]" name="BeforeMethod" is-config="true" duration-ms="15565" started-at="2019-05-19T16:59:49Z" finished-at="2019-05-19T17:00:05Z">
           <params>
             <param index="0">
               <value>
@@ -20,34 +20,34 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@78141c58]]>
+                <![CDATA[org.testng.TestRunner@4def42c3]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[[Ljava.lang.Object;@9863ed5]]>
+                <![CDATA[[Ljava.lang.Object;@72110818]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeMethod -->
-        <test-method status="PASS" signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrder@51efea79]" name="EndtoEndOrder" duration-ms="268347" started-at="2019-05-17T15:31:03Z" data-provider="NewStandrdOrder" finished-at="2019-05-17T15:35:32Z">
+        <test-method status="PASS" signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrder@51efea79]" name="EndtoEndOrder" duration-ms="308390" started-at="2019-05-19T17:00:05Z" data-provider="NewStandrdOrder" finished-at="2019-05-19T17:05:13Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[[Ljava.lang.Object;@67e628b]]>
+                <![CDATA[[[Ljava.lang.Object;@64c8fcfb]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- EndtoEndOrder -->
-        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrder@51efea79]" name="Teardown2" is-config="true" duration-ms="1" started-at="2019-05-17T15:35:32Z" finished-at="2019-05-17T15:35:32Z">
+        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrder@51efea79]" name="Teardown2" is-config="true" duration-ms="1" started-at="2019-05-19T17:05:13Z" finished-at="2019-05-19T17:05:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown2 -->
-        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrder@51efea79]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-05-17T15:35:32Z" finished-at="2019-05-17T15:35:32Z">
+        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrder@51efea79]" name="Teardown" is-config="true" duration-ms="1" started-at="2019-05-19T17:05:13Z" finished-at="2019-05-19T17:05:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown -->

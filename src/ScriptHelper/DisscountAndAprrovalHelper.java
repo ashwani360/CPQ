@@ -43,12 +43,21 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuoteTab"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuoteTab")));
+			Thread.sleep(5000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/DiscountType"));
 		Select(getwebelement(xml.getlocator("//locators/Percentage/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/NRCDiscount"));
+		Clear(getwebelement(xml.getlocator("//locators/Percentage/NRCDiscount")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/NRCDiscount"));
 		SendKeys(getwebelement(xml.getlocator("//locators/Percentage/NRCDiscount")), Inputdata[0][22].toString());
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/MRCDiscount"));
+		Clear(getwebelement(xml.getlocator("//locators/Percentage/MRCDiscount")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/MRCDiscount"));
 		SendKeys(getwebelement(xml.getlocator("//locators/Percentage/MRCDiscount")), Inputdata[0][23].toString());
+		Thread.sleep(2000);
+//		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/CalculateDisscount"));
+//		Clickon(getwebelement(xml.getlocator("//locators/Percentage/CalculateDisscount")));
+		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Percentage/MRCDiscount")),Keys.TAB);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/CalculateDisscount"));
 		Clickon(getwebelement(xml.getlocator("//locators/Percentage/CalculateDisscount")));
 		System.out.println("NRC Disscount"+Inputdata[0][22].toString());
@@ -61,9 +70,16 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/DiscountType"));
 			Select(getwebelement(xml.getlocator("//locators/Ammountoff/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/NRCDiscount"));
+			Clear(getwebelement(xml.getlocator("//locators/Ammountoff/NRCDiscount")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/NRCDiscount"));
 			SendKeys(getwebelement(xml.getlocator("//locators/Ammountoff/NRCDiscount")), Inputdata[0][22].toString());
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/MRCDiscount"));
+			Clear(getwebelement(xml.getlocator("//locators/Ammountoff/MRCDiscount")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/MRCDiscount"));
 			SendKeys(getwebelement(xml.getlocator("//locators/Ammountoff/MRCDiscount")), Inputdata[0][23].toString());
+			Thread.sleep(2000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/CalculateDisscount"));
+			Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/CalculateDisscount")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/CalculateDisscount"));
 			Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/CalculateDisscount")));
 			System.out.println("NRC Disscount"+Inputdata[0][22].toString());
@@ -77,9 +93,16 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/DiscountType"));
 			Select(getwebelement(xml.getlocator("//locators/TargetPrice/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/NRCDiscount"));
+			Clear(getwebelement(xml.getlocator("//locators/TargetPrice/NRCDiscount")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/NRCDiscount"));
 			SendKeys(getwebelement(xml.getlocator("//locators/TargetPrice/NRCDiscount")), Inputdata[0][22].toString());
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/MRCDiscount"));
+			Clear(getwebelement(xml.getlocator("//locators/TargetPrice/MRCDiscount")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/MRCDiscount"));
 			SendKeys(getwebelement(xml.getlocator("//locators/TargetPrice/MRCDiscount")), Inputdata[0][23].toString());
+			Thread.sleep(2000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/CalculateDisscount"));
+			Clickon(getwebelement(xml.getlocator("//locators/TargetPrice/CalculateDisscount")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/CalculateDisscount"));
 			Clickon(getwebelement(xml.getlocator("//locators/TargetPrice/CalculateDisscount")));
 			System.out.println("NRC Disscount"+Inputdata[0][22].toString());
@@ -104,30 +127,71 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 }
 public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	
-	WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
-	javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
-	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
-	Clickon(getwebelement(xml.getlocator("//locators/ApprovalTab")));
-	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For Loading to be Completed");
-	WaitforElementtobeclickable(xml.getlocator("//locators/SubmitetoApproval"));
-	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
-	Clickon(getwebelement(xml.getlocator("//locators/SubmitetoApproval")));
-	if(!Inputdata[0][21].toString().equals("")) {
-	WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
-	Clickon(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+	
+		WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
+		Clickon(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
+		//DecimalFormat df = new DecimalFormat("0.00");
+		//df.setMaximumFractionDigits(2);
+		//System.out.println(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))));
+		//TotalTCVdisscount.set(Float.parseFloat(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount")))));
+		
 	WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
-	DecimalFormat df = new DecimalFormat("0.00");
-	df.setMaximumFractionDigits(2);
-	TotalTCVdisscount.set(Float.parseFloat(df.format(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))))));
-	ApproveQuote(DefineApprover());
+	System.out.println(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))));
+	TotalTCVdisscount.set(Float.parseFloat(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount")))));
+	DefineApprover(Inputdata);
+	SubmitforApproval(ApprovalCase.get(),Inputdata);
+	
+	ApproveQuote(ApprovalCase.get());
 	NavigatetoC4C();
+	if(!ApprovalCase.get().equals("Self Approve")) {
 	Movetoaccount(Inputdata);
 	MovetoOpportunuity(Inputdata);
 	EditQuote();
-	}
 }
+	}
 
+
+public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws Exception
+{
+	if(ApprovalCase.get().equals("Deal Pricing"))
+	{
+		System.out.println("Deal Pricing Jouney Need to follow");
+	}
+	else if(ApprovalCase.get().equals("VP1 Sales") ||Approvalcase.equals("VP2 Sales"))
+	{
+		WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
+		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
+		Clickon(getwebelement(xml.getlocator("//locators/ApprovalTab")));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For Loading to be Completed");
+		WaitforElementtobeclickable(xml.getlocator("//locators/SubmitetoApproval"));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
+		Clickon(getwebelement(xml.getlocator("//locators/SubmitetoApproval")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/ApproverCommentFinal"));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
+		SendKeys(getwebelement(xml.getlocator("//locators/ApproverCommentFinal")),"Automation Comemnt");
+		WaitforElementtobeclickable(xml.getlocator("//locators/FinalSubmit"));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
+		Clickon(getwebelement(xml.getlocator("//locators/FinalSubmit")));
+		
+	}
+	else {
+		WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
+		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
+		Clickon(getwebelement(xml.getlocator("//locators/ApprovalTab")));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For Loading to be Completed");
+		WaitforElementtobeclickable(xml.getlocator("//locators/SubmitetoApproval"));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
+		Clickon(getwebelement(xml.getlocator("//locators/SubmitetoApproval")));
+		
+		
+	}
+
+}
 public void NavigatetoC4C() throws Exception
 {
 	Geturl(Getkeyvalue("C4C_URL"));
@@ -161,31 +225,49 @@ public void EditQuote() throws Exception {
 	Clickon(getwebelement(xml2.getlocator("//locators/Quotenumber").replace("Quotenumber", QuoteID.get().toString())));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
 	Thread.sleep(10000);
-	Clickon(getwebelement(xml.getlocator("//locators/QuoteActions")));
+	Clickon(getwebelement(xml2.getlocator("//locators/QuoteActions")));
 	Thread.sleep(10000);
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
-	Clickon(getwebelement(xml.getlocator("//locators/QuoteEdit")));
+	Clickon(getwebelement(xml2.getlocator("//locators/QuoteEdit")));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
 	Thread.sleep(10000);
-	WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+	WaitforElementtobeclickable(xml2.getlocator("//locators/customersignatureTab"));
 		
 }
-public String DefineApprover()
-{  String ApprovalCase = null;
-	if(DealClass.equals("Bronze")) 
+public ThreadLocal<String> DefineApprover(Object[][] Inputdata)
+{  //String ApprovalCase = null;
+System.out.println("Deal Class is"+DealClass.get());
+System.out.println("Toatal TCV Disscount is"+TotalTCVdisscount.get());
+	if(DealClass.get().equals("Bronze")&& !Inputdata[0][28].toString().equals("Yes")) 
 	{
-		if(TotalTCVdisscount.get()<5) {
-			ApprovalCase="Self Approve";
+		if(TotalTCVdisscount.get()<5.00) {
+			System.out.println("Self Approve");
+			//ApprovalCase="Self Approve";
+			ApprovalCase.set("Self Approve");
 		}
-		else if(TotalTCVdisscount.get()<10 && TotalTCVdisscount.get()>=5) {
-			ApprovalCase="VP2 Sales";
+		else if(TotalTCVdisscount.get()<10.00 && TotalTCVdisscount.get()>=5.00) {
+			System.out.println("VP1 Sales");
+			//ApprovalCase="VP1 Sales";
+			ApprovalCase.set("VP1 Sales");
 		}
-		else if(TotalTCVdisscount.get()<15 && TotalTCVdisscount.get()>=10) {
-			ApprovalCase="VP1 Sales";
+		else if(TotalTCVdisscount.get()<15.00 && TotalTCVdisscount.get()>=10.00) {
+			System.out.println("VP2 Sales");
+			//ApprovalCase="VP2 Sales";
+			ApprovalCase.set("VP2 Sales");
 		}
-		else if(TotalTCVdisscount.get()>15) {
-			ApprovalCase="Deal Pricing";
+		else if(TotalTCVdisscount.get()>15.00) {
+			System.out.println("Deal Pricing");
+			//ApprovalCase="Deal Pricing";
+			ApprovalCase.set("Deal Pricing");
 		}
+		
+	}
+	else
+	{
+		System.out.println("Deal Pricing");
+		//ApprovalCase="Deal Pricing";
+		ApprovalCase.set("Deal Pricing");
+
 		
 	}
 	
@@ -204,18 +286,20 @@ public void ApproveQuote(String Approver) throws Exception
 		{
 			// Click on Admin link
 			WaitforElementtobeclickable(xml.getlocator("//locators/Admin"));
+			javascriptexecutor(getwebelement(xml.getlocator("//locators/Admin")));
+			
 			Clickon(getwebelement(xml.getlocator("//locators/Admin")));
 			Switchtotab();
-			WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
-			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_VP1_Sales")));
 			Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_VP1_Sales"))));
 			WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
 			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
+			
+		
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
-			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink").replace("QuoteId", QuoteID.get().trim())));
+			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
 			
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
@@ -240,16 +324,17 @@ public void ApproveQuote(String Approver) throws Exception
 			WaitforElementtobeclickable(xml.getlocator("//locators/Admin"));
 			Clickon(getwebelement(xml.getlocator("//locators/Admin")));
 			Switchtotab();
-			WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
-			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+
+
 			WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_VP1_Sales")));
 			Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_VP1_Sales"))));
 			WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
 			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
+			
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
-			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink").replace("QuoteId", QuoteID.get().trim())));
+			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
 			
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
