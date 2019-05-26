@@ -1,6 +1,9 @@
 package Driver;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,13 +11,24 @@ import javax.swing.Action;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.Command;
+import org.openqa.selenium.remote.CommandExecutor;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.HttpCommandExecutor;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.Response;
+import org.openqa.selenium.remote.SessionId;
+import org.openqa.selenium.remote.http.W3CHttpCommandCodec;
+import org.openqa.selenium.remote.http.W3CHttpResponseCodec;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -26,18 +40,19 @@ import ScriptHelper.BCNUpdateHelper;
 import ScriptHelper.C4CHelper;
 import ScriptHelper.ConfigurationHelper;
 import ScriptHelper.DisscountAndAprrovalHelper;
+import ScriptHelper.ExploreHelper;
 import ScriptHelper.GenralInfoHelper;
 import ScriptHelper.LoginHelper;
 import ScriptHelper.OrderingHelper;
 import ScriptHelper.SendProposalHelper;
 
 
-public class DriverTestcase {
+public class DriverTestcase{
 	
 	
 	
 public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new InheritableThreadLocal<>();
-
+//public static final ThreadLocal<RemoteWebDriver> WEB_DRIVER_THREAD_LOCAL = new InheritableThreadLocal<>();
 	
 	public static final ThreadLocal<LoginHelper> Login= new InheritableThreadLocal<>();
 	public static final ThreadLocal<BCNUpdateHelper> BCNupdatehelper= new InheritableThreadLocal<>();
@@ -48,12 +63,13 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public static final ThreadLocal<GenralInfoHelper> GenralInfohelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<OrderingHelper> Orderinghelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<SendProposalHelper> SendProposalhelper= new InheritableThreadLocal<>();
+	public static final ThreadLocal<ExploreHelper> Explorehelper= new InheritableThreadLocal<>();
 	public static ThreadLocal<String> QuoteID=new InheritableThreadLocal<>();
 	public static TestListener Testlistener;
 	//public static CarNorOrderHelper CarNorOrderhelper;
 	public ThreadLocal<String> TestName=new ThreadLocal(); 
-	
-
+	public static SessionId session_id;
+	public static ChromeDriver driver;
 	public static int  itr;
 	@BeforeMethod
 	   public void BeforeMethod(Method method,ITestContext ctx ,Object[] data) throws IOException, InterruptedException{
@@ -93,7 +109,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		    Log.info(st[st.length-2].toString());
 		    ctx.setAttribute("testName", st[st.length-2].toString());
 	      }
-	      if(method.getName().equals("EndtoEndOrdertest"))
+	      if(method.getName().equals("EndtoEndOrderOffnet"))
 	      {
 	   		//DataReader dt=new DataReader();
 	   		//Object[][] data=dt.datareader();
@@ -114,6 +130,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		String targatedbrowser=pr.readproperty("browser");
 		String url=pr.readproperty("URL");
 		Log.info("URL");
+		if(!pr.readproperty("Mod").equals("Grid")) {
 		if(targatedbrowser.equals("chrome"))
 		{ 
 			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -135,7 +152,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
 			dr= new ChromeDriver(capabilities);
 			//driver.manage().window().maximize();
-			
+		
 			
 			
 			dr.get("chrome://settings/content/popups");
@@ -165,10 +182,56 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		dr.manage().window().maximize();
 		WEB_DRIVER_THREAD_LOCAL.set(dr);
 		Thread.sleep(2000);
+		
+		}
+		else
+		{
+			PropertyReader pr2=new PropertyReader();
+			System.out.println("First Try");
+			System.out.println(pr.readsessionproperty("SessionID").toString());
+			System.out.println(pr.readsessionproperty("ExecutorUrl").toString());
+			Thread.sleep(2000);
+			session_id=new SessionId(pr.readsessionproperty("SessionID").toString());
+			URL url2 = new URL(pr.readsessionproperty("ExecutorUrl").toString());
+		    dr = createDriverFromSession(session_id, url2);
+		   
+		    if(dr.getTitle().toString().contains("chrome not reachable"))
+		    		{
+		    	System.out.println("Chrome needs to initialized");
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("profile.default_content_setting_values.notifications", 2);
+			ChromeOptions options = new ChromeOptions();
+			options.setExperimentalOption("prefs", prefs);
+			options.addArguments("--start-maximized");
+			options.addArguments("disable-infobars");
+			options.addArguments("--disable-popup-blocking");	
+			capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
+			dr= new ChromeDriver(capabilities);
+			System.out.println("browser launched");
+		    HttpCommandExecutor executor = (HttpCommandExecutor) ((RemoteWebDriver) dr).getCommandExecutor();
+		    url2 = executor.getAddressOfRemoteServer();
+		    SessionId session_id = ((RemoteWebDriver) dr).getSessionId();
+			pr2.updateproprty("SessionID",session_id.toString());
+			pr2.updateproprty("ExecutorUrl",url2.toString());
+			
+		 System.out.println("Session ID is "+session_id);
+		 System.out.println("URL is "+url2);
+		    		}
+		    else {
+		    	System.out.println("Nothing to Do here");
+		    }
+			
+//------------------------------------------------------------------
+		    //dr.get("http://Google.com");
+		    dr.manage().window().maximize();
+			WEB_DRIVER_THREAD_LOCAL.set(dr);
+			Thread.sleep(2000);
+		}
+		
 		LoginHelper LN= new LoginHelper(getwebdriver());
-		
-		
-		
 		BCNUpdateHelper BCN= new BCNUpdateHelper(getwebdriver());
 		C4CHelper C4C= new C4CHelper(getwebdriver());
 		ConfigurationHelper CON= new ConfigurationHelper(getwebdriver());
@@ -176,7 +239,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		GenralInfoHelper GEN= new GenralInfoHelper(getwebdriver());
 		OrderingHelper ORD= new OrderingHelper(getwebdriver());
 		SendProposalHelper PRO= new SendProposalHelper(getwebdriver());
-		
+		ExploreHelper EXP=new ExploreHelper(getwebdriver());
 		Login.set(LN);
 		BCNupdatehelper.set(BCN);
 		C4Chelper.set(C4C);
@@ -185,6 +248,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		GenralInfohelper.set(GEN);
 		Orderinghelper.set(ORD);
 		SendProposalhelper.set(PRO);
+		Explorehelper.set(EXP);
 		
 	}
 
@@ -193,6 +257,62 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	itr=0;
 	DOMConfigurator.configure("log4j.xml");
 	}
+	
+	
+	public static WebDriver createDriverFromSession(final SessionId sessionId, URL command_executor){
+	    CommandExecutor executor = new HttpCommandExecutor(command_executor) {
+
+	    @Override
+	    public Response execute(Command command) throws IOException {
+	        Response response = null;
+	        if (command.getName() == "newSession") {
+	            response = new Response();
+	            response.setSessionId(sessionId.toString());
+	            response.setStatus(0);
+	            response.setValue(Collections.<String, String>emptyMap());
+
+	            try {
+	                Field commandCodec = null;
+	                commandCodec = this.getClass().getSuperclass().getDeclaredField("commandCodec");
+	                commandCodec.setAccessible(true);
+	                commandCodec.set(this, new W3CHttpCommandCodec());
+
+	                Field responseCodec = null;
+	                responseCodec = this.getClass().getSuperclass().getDeclaredField("responseCodec");
+	                responseCodec.setAccessible(true);
+	                responseCodec.set(this, new W3CHttpResponseCodec());
+	            } catch (NoSuchFieldException e) {
+	                e.printStackTrace();
+	            } catch (IllegalAccessException e) {
+	                e.printStackTrace();
+	            }
+
+	        } else {
+	            response = super.execute(command);
+	        }
+	        return response;
+	    }
+	    };
+	    WebDriver drsession = null;
+	    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		Map<String, Object> prefs = new HashMap<String, Object>();
+		prefs.put("profile.default_content_setting_values.notifications", 2);
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", prefs);
+		options.addArguments("--start-maximized");
+		options.addArguments("disable-infobars");
+		options.addArguments("--disable-popup-blocking");	
+		capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
+	    drsession=new RemoteWebDriver(executor, capabilities);
+	    
+	    
+	    return drsession; 
+	}
+
+	
+	
 	@AfterMethod
 	public void Teardown2()
 	{

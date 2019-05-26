@@ -3,18 +3,19 @@
 <suite thread-count="1" name="Failed suite [CPQ End to End Order]">
   <listeners>
     <listener class-name="Listeners.TestListener"/>
+    <listener class-name="Listeners.AnnotationTransformer"/>
   </listeners>
   <test name="CPQ End to End Order(failed)">
     <classes>
-      <class name="Testscript.StandardOrder">
+      <class name="Testscript.StandardOrder2">
         <methods>
           <include name="BeforeMethod"/>
-          <include name="EndtoEndOrder" invocation-numbers="0"/>
+          <include name="EndtoEndOrderOffnet" invocation-numbers="0"/>
           <include name="Teardown2"/>
           <include name="BeforeSuite"/>
           <include name="Teardown"/>
         </methods>
-      </class> <!-- Testscript.StandardOrder -->
+      </class> <!-- Testscript.StandardOrder2 -->
     </classes>
   </test> <!-- CPQ End to End Order(failed) -->
 </suite> <!-- Failed suite [CPQ End to End Order] -->

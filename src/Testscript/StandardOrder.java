@@ -37,14 +37,14 @@ public class StandardOrder extends DriverTestcase {
 		Orderinghelper.get().AcceptsQuote(Data);
 		Orderinghelper.get().CreateOrder(Data);
 		}
-		else {
+	else {
 			Orderinghelper.get().AcceptsQuotebyEsignature(Data);
-			//C4Chelper.get().NavigatetoC4C();
+			C4Chelper.get().NavigatetoC4C();
 			C4Chelper.get().Movetoaccount(Data);
 			C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			C4Chelper.get().CheckdocumentSigned();
-			Orderinghelper.get().AcceptsQuote(Data);
+		Orderinghelper.get().AcceptsQuote(Data);
 			Orderinghelper.get().CreateOrder(Data);
 			
 //			

@@ -52,8 +52,28 @@
 <ServiceResilence>id=resiliencyServiceLevel</ServiceResilence>
 <SelectOnnetAsite>(//div[text()='On-Net'])[1]</SelectOnnetAsite>
 <SelectOnnetBsite>(//div[text()='On-Net'])[2]</SelectOnnetBsite>
-<AsiteOnnet>(//*[@id="onNetA"]/table/tbody/tr[2]/td[1]/input)[1]</AsiteOnnet>
-<BsiteOnnet>(//*[@id="onNetA"]/table/tbody/tr[2]/td[1]/input)[2]</BsiteOnnet>
+<AsiteOnnet>(//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1]</AsiteOnnet>
+<BsiteOnnet>(//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[2]</BsiteOnnet>
+<OffNetCheckASite>//div[@id='offNetDSLCCRequestAEnd']//label[text()='OFF-NET CHECK']</OffNetCheckASite>
+<OffNetCheckBSite>//div[@id='offNetDSLCCRequestBEnd']//label[text()='OFF-NET CHECK']</OffNetCheckBSite>
+<SelectAutomatedOffNet>(//input[@name='connRadioVarNameAEnd' and @value='1'])</SelectAutomatedOffNet>
+<SelectAutomatedOffNetBEnd>(//input[@name='connRadioVarNameBEnd' and @value='1'])</SelectAutomatedOffNetBEnd>
+<ManualEngagement>//div[@id='offNetDSLCCRequestAEnd']//label[text()='MANUAL ENGAGEMENT']</ManualEngagement>
+<ManualEngagementBEnd>//div[@id='offNetDSLCCRequestBEnd']//label[text()='MANUAL ENGAGEMENT']</ManualEngagementBEnd>
+<SelectManualRequest>//select[@name='exploreCheckboxActionsEndA']</SelectManualRequest>
+<SelectManualRequestBEnd>//select[@name='exploreCheckboxActionsEndB']</SelectManualRequestBEnd>
+<CPQExploreWindowfields>(//span[contains(text(),'Fieldname')]/parent::*/input[1])[index]</CPQExploreWindowfields>
+<GetQuoteButton>//span[text()='Get Quote']</GetQuoteButton>
+<ClickOloButton>//div[@data-service-summary-view='olo']</ClickOloButton>
+<RequestId>//span[contains(text(),'ONQT New')]/following::span[1]/span</RequestId>
+<Closebutton>//td[text()='CLOSE']</Closebutton>
+<SelectManualOffNet>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input)[1]</SelectManualOffNet>
+<SelectManualOffNetBEnd>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input</SelectManualOffNetBEnd>
+<NearNetAsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[1]</NearNetAsite>
+<NearNetBsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[2]</NearNetBsite>
+<saveQuote>//a[@id='save']</saveQuote>
+<updateQuote>//a[@id='save']</updateQuote>
+<Reconfigure>(//*[@title='Reconfigure'])[index]</Reconfigure>
 <FeaturesTab>//span[text()='Features']</FeaturesTab>
 <FastTrackAddon>id=fasttrackAddon_true</FastTrackAddon>
 <AddtoTransaction>id=add_to_transaction</AddtoTransaction>

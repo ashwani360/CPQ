@@ -40,23 +40,28 @@ public class C4CHelper extends DriverHelper{
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Clickon(getwebelement(xml.getlocator("//locators/Accountlink")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Account link in navidation");
+		WaitforElementtobeclickable(xml.getlocator("//locators/AccountSearchField"));
+		Search(Inputdata[0][0].toString(),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/OCN").replace("Accountnumber", Inputdata[0][0].toString()));
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Clickon(getwebelement(xml.getlocator("//locators/OCN").replace("Accountnumber", Inputdata[0][0].toString())));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Account Name");
 	}
 
+	
 	public void  MovetoOpportunuity(Object[][] Inputdata) throws Exception{
 		WaitforElementtobeclickable(xml.getlocator("//locators/OpportunuityTab"));
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Clickon(getwebelement(xml.getlocator("//locators/OpportunuityTab")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Opportunuity Tab");
+		WaitforElementtobeclickable(xml.getlocator("//locators/AccountSearchField"));
+		Search(Inputdata[0][1].toString(),2);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunuitynumber").replace("Opportunuitynumber", Inputdata[0][1].toString()));
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunuitynumber").replace("Opportunuitynumber", Inputdata[0][1].toString())));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Opportunuity Name ");
 		Thread.sleep(10000);
-		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
 		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
@@ -71,6 +76,8 @@ public class C4CHelper extends DriverHelper{
 	public void EditQuote() throws Exception {
 		Thread.sleep(5000);
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		//WaitforElementtobeclickable(xml.getlocator("//locators/AccountSearchField"));
+		//Search(QuoteID.get().toString());
 		WaitforElementtobeclickable(xml.getlocator("//locators/Quotenumber").replace("Quotenumber", QuoteID.get().toString()));
 		Clickon(getwebelement(xml.getlocator("//locators/Quotenumber").replace("Quotenumber", QuoteID.get().toString())));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
@@ -86,6 +93,20 @@ public class C4CHelper extends DriverHelper{
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
 		WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
 		
+	}
+	
+	public void Search(String Searchvalue,int i) throws Exception
+	{
+	
+			WaitforC4Cloader(xml.getlocator("//locators/AccountSearchField"),1);   
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Look for Search field");
+			Clickon(getwebelement(xml.getlocator("//locators/AccountSearchField")));
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter search value & hit Enter");
+			System.out.println("("+xml.getlocator("//locators/SearchValue")+")["+i+"]");
+			SendKeys(getwebelement("("+xml.getlocator("//locators/SearchValue")+")["+i+"]"), Searchvalue);
+			SendkeaboardKeys(getwebelement("("+xml.getlocator("//locators/SearchValue")+")["+i+"]"),Keys.ENTER);
+			Thread.sleep(3000);
+			
 	}
 	public void CheckdocumentSigned() throws Exception
 	{

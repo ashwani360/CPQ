@@ -14,7 +14,7 @@ import org.testng.ITestResult;
 
 import Reporter.ExtentManager;
 import Reporter.ExtentTestManager;
- 
+import Listeners.Retry;
  
 public class TestListener extends DriverTestcase implements ITestListener {
  
@@ -55,13 +55,13 @@ public class TestListener extends DriverTestcase implements ITestListener {
  
     public void onTestFailure(ITestResult iTestResult) {
         Log.info("I am on TestFailure method " +  getTestMethodName(iTestResult) + " failed");
-        //iTestResult.setStatus();
+        //iTestResult.setStatus(0);
         //Get driver from BaseTest and assign to local webdriver variable.
-    //	ExtentTestManager.getTest().log(LogStatus.FAIL, getTestMethodName(iTestResult)+" : Test Method has been Failed");
+    ExtentTestManager.getTest().log(LogStatus.FAIL, getTestMethodName(iTestResult)+" : Test Method has been Failed");
         Object testClass = iTestResult.getInstance();
         //iTestResult.setStatus(arg0);
         WebDriver webDriver = ((DriverTestcase) testClass).getwebdriver();
- 
+       
         //Take base64Screenshot screenshot.
         String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)getwebdriver()).
                 getScreenshotAs(OutputType.BASE64);

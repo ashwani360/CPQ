@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -19,6 +20,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -73,21 +75,48 @@ public class DriverHelper {
 	public static ThreadLocal<String> SpokeCircuitRefnumber= new ThreadLocal<>();
 	public static ThreadLocal<String> ModifiedSiebelOrdernumber= new ThreadLocal<>();
 	public static ThreadLocal<String> AendBuildingId= new ThreadLocal<>();
-	
+	public static ThreadLocal<List> RequestID= new ThreadLocal<>();
 	
 	public static ThreadLocal<String>  ModifiedCircuitRefnumber=new ThreadLocal<>();
 	
 	public DriverHelper(WebDriver dr)
 	{
 		driver=dr;
-		wait = new FluentWait<WebDriver>(dr)       
+		wait = new FluentWait<WebDriver>(driver)       
 				.withTimeout(180, TimeUnit.SECONDS)    
 				.pollingEvery(5, TimeUnit.SECONDS)    
 				.ignoring(NoSuchElementException.class)
 				.ignoring(StaleElementReferenceException.class);
 		//workitemcounter.set(1);
-		QuoteID.set("QT-20190518-031339-01");
-		TotalTCVdisscount.set((float) 0);
+//		QuoteID.set("QT-20190526-031467-01");
+//		//TotalTCVdisscount.set((float) 0);
+//		List Completeset=new ArrayList();
+//		for(int i=0;i<2;i++) {
+//			Object[] ExploreID=new Object[2];
+//		
+//			if(i==0) {
+//				ExploreID[0]="";
+//				ExploreID[1]="";
+//			}
+//			else {
+//				ExploreID[0]="20190526021849";
+//				ExploreID[1]="20190526030013";
+//			}
+//			Completeset.add(ExploreID);
+//			System.out.println(Completeset.get(i).toString());
+//		}
+//		
+//		
+//		RequestID.set(Completeset);
+//		List data=RequestID.get();
+//		//data=RequestID.get();
+//		for(int i=0;i<data.size();i++)
+//		{
+//			Object[] newdata=(Object[]) data.get(i);
+//			System.out.println("Size For Each line item"+newdata.length);
+//			System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
+//			System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
+//		}
 	}
 	 
 	public void javascriptexecutor(WebElement el) throws InterruptedException
@@ -110,7 +139,7 @@ public class DriverHelper {
 		}
 		else if(locator.startsWith("name"))
 		{
-			wait.until(ExpectedConditions.elementToBeClickable(By.name(locator))); 
+			wait.until(ExpectedConditions.elementToBeClickable(By.name(locator.split("=")[1]))); 
 			//getwebelement(xml.getlocator("//locators/StandrdQuote"));
 			System.out.println("Code for Loading");
 			Thread.sleep(2000);
@@ -118,7 +147,7 @@ public class DriverHelper {
 		}
 		else if(locator.startsWith("id"))
 		{
-			wait.until(ExpectedConditions.elementToBeClickable(By.id(locator))); 
+			wait.until(ExpectedConditions.elementToBeClickable(By.id(locator.split("=")[1]))); 
 			//getwebelement(xml.getlocator("//locators/StandrdQuote"));
 			System.out.println("Code for Loading");
 			Thread.sleep(2000);
@@ -581,6 +610,7 @@ public void Moveon(WebElement el) {
 		//Thread.sleep(3000);
 	}
 	public void AcceptJavaScriptMethod(){
+		
 			Alert alert = driver.switchTo().alert();
 			alert.accept();
 			driver.switchTo().defaultContent();

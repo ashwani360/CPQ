@@ -7,6 +7,13 @@
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
 </C4C>
+<Explore>
+<Username>id=userId</Username>
+<Password>id=password</Password>
+<Loginbutton>id=Submit</Loginbutton>
+<Userinfo>//*[@id="gen_menu_6"]</Userinfo>
+<skipwarning>//a[text()='Continue']</skipwarning>
+</Explore>
 <CPQ>
 <Username>//*[@id="s_swepi_1"]</Username>
 <Password>id=s_swepi_2</Password>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locators>
+<ONQTWorkQuoteLink>//span[text()='ONQT Work Queue']</ONQTWorkQuoteLink>
+<SearchQuoteId>//a[text()='value']</SearchQuoteId>
+<ButtonAction>(//span[text()='Actions'])[3]</ButtonAction>
+<ActionButton>//span[@popupactive="true"]//span[text()='Actions']</ActionButton>
+<AssignRequestToMe>(//tr[@aria-label="Assign Request to Me "])[2]</AssignRequestToMe>
+<CreateCost>//tr[@aria-label="Create Cost "]</CreateCost>
+<CarrierDropdown>//label[text()='Carrier']/following::tr[1]/td[1]//input[@value="▼ "]</CarrierDropdown>
+<Selectvalue>//div[text()='value']</Selectvalue>
+<NodeDropdown>//label[text()='Node']/following::tr[1]/td[3]//input[@value="▼ "]</NodeDropdown>
+<NRCInput>(//span[text()='NRC']/parent::div/input)[1]</NRCInput>
+<MRCInput>(//span[text()='MRC']/parent::div/input)[1]</MRCInput>
+<TermDropdown>//label[text()='Term (Years)']/following::tr[1]/td[3]//input[@value="▼ "]</TermDropdown>
+<CurrencyDropdown>//label[text()='Currency']/following::tr[1]/td[4]//input[@value="▼ "]</CurrencyDropdown>
+<PriceTypeDropdown>//label[text()='Price Type']/following::tr[1]/td[5]//input[@value="▼ "]</PriceTypeDropdown>
+<ConnectorDropdown>//label[text()='Connector/Interface']/following::tr[1]/td[2]//input[@value="▼ "]</ConnectorDropdown>
+<AccessTechnologyDropdown>//label[text()='Access Technology']/following::tr[1]/td[3]//input[@value="▼ "]</AccessTechnologyDropdown>
+<CreateCostSubmit>//span[text()='Create Cost']</CreateCostSubmit>
+<TypeDropdown>//label[text()='Type']/following::input[@value="▼ "]</TypeDropdown>
+<NameInput>(//span[text()='Name']/parent::div/input)[1]</NameInput>
+<InputNRCAdditional>(//span[text()='NRC']/parent::div/input)[3]</InputNRCAdditional>
+<InputMRCAdditional>(//span[text()='MRC']/parent::div/input)[3]</InputMRCAdditional>
+<ApproveQuoteButton>//span[text()='Approve Quote']</ApproveQuoteButton>
+<ChangeStatus>//td[text()='Change Status']</ChangeStatus>
+<CloseRequest>(//td[text()='Close Request'])[2]</CloseRequest>
+<BacktoQuote>//a[text()='Back to quotes list']</BacktoQuote>
+<MenuItem>(//span[@role="button"])[7]</MenuItem>
+<Logout>//td[text()='Log Out']</Logout>
+</locators>
