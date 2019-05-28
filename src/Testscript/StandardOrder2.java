@@ -24,10 +24,24 @@ public class StandardOrder2 extends DriverTestcase {
 		Explorehelper.get().NavigatetoExplore();
 		Explorehelper.get().ExploreWorkflow();
 		C4Chelper.get().NavigatetoC4C();
-	C4Chelper.get().Movetoaccount(Data);
-	C4Chelper.get().MovetoOpportunuity(Data);
-	C4Chelper.get().EditQuote();
-	Configurationhelper.get().Reconfigure();
+		C4Chelper.get().Movetoaccount(Data);
+		C4Chelper.get().MovetoOpportunuity(Data);
+		C4Chelper.get().EditQuote();
+		
+		Configurationhelper.get().Reconfigure(Data);
+		System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
+		if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
+		{
+			Configurationhelper.get().ReconfigureAgain(Data);
+			Explorehelper.get().ExploreWorkflow();
+			C4Chelper.get().NavigatetoC4C();
+			C4Chelper.get().Movetoaccount(Data);
+			C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			
+			Configurationhelper.get().Reconfigure(Data);
+			
+		}
 	// revalidation : reconfigure, select manual result, raise manula request
 	// Explore Workflow
 	//edit qoute reconfiguration and save quote.
