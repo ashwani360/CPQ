@@ -74,6 +74,10 @@
 <saveQuote>//a[@id='save']</saveQuote>
 <updateQuote>//a[@id='save']</updateQuote>
 <Reconfigure>(//*[@title='Reconfigure'])[index]</Reconfigure>
+<Requesttype>//input[@value='Typevalue']</Requesttype>
+<Revalidate>//span[text()='Revalidate']</Revalidate>
+<Renagociate>//span[text()='Renegotiate']</Renagociate>
+<Budgetrytofirm>//span[text()='Budgetary to firm']</Budgetrytofirm>
 <FeaturesTab>//span[text()='Features']</FeaturesTab>
 <FastTrackAddon>id=fasttrackAddon_true</FastTrackAddon>
 <AddtoTransaction>id=add_to_transaction</AddtoTransaction>
