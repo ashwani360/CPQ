@@ -76,8 +76,8 @@ public class DriverHelper {
 	public static ThreadLocal<String> ModifiedSiebelOrdernumber= new ThreadLocal<>();
 	public static ThreadLocal<String> AendBuildingId= new ThreadLocal<>();
 	public static ThreadLocal<List> RequestID= new ThreadLocal<>();
-	
-	public static ThreadLocal<String>  ModifiedCircuitRefnumber=new ThreadLocal<>();
+	//public static ThreadLocal<List> RequestID= new ThreadLocal<>();
+	public static ThreadLocal<String>  Rerunrequired=new ThreadLocal<>();
 	
 	public DriverHelper(WebDriver dr)
 	{
