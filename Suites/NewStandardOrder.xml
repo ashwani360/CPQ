@@ -6,7 +6,7 @@
     </listeners>
 	<test name="CPQ End to End Order" junit="false" preserve-order="true">
 		<classes>
-			<class name="Testscript.StandardOrder">	
+			<class name="Testscript.StandardOrderOnnet">	
 				<methods>
 					<include name="EndtoEndOrder"/>
 				</methods>	

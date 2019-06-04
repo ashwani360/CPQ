@@ -99,12 +99,12 @@ public class DriverHelper {
 	{
 		driver=dr;
 		wait = new FluentWait<WebDriver>(driver) 
-				.withTimeout(15, TimeUnit.SECONDS)    
+				.withTimeout(180, TimeUnit.SECONDS)    
 				.pollingEvery(15, TimeUnit.SECONDS)    
 				.ignoring(NoSuchElementException.class)
 				.ignoring(StaleElementReferenceException.class);
 		//workitemcounter.set(1);
-		QuoteID.set("QT-20190603-077332-01");
+		//QuoteID.set("QT-20190603-077332-01");
 		//DealClass.set("Bronze");
 //		//TotalTCVdisscount.set((float) 0);
 //		List Completeset=new ArrayList();
@@ -280,7 +280,7 @@ public class DriverHelper {
 					el= driver.findElement(By.name(finalval[1]));
 					//RemoteWebDriver dr;
 					
-					wait.until(ExpectedConditions.elementToBeClickable(el));
+					wait.until(ExpectedConditions.elementToBeClickable(el)).isEnabled();
 					return el;     
 				 }  
 				}); 
@@ -294,7 +294,7 @@ public class DriverHelper {
 			wait.until(new Function<WebDriver, WebElement>() {       
 				public WebElement apply(WebDriver driver) { 
 					el=driver.findElement(By.id(finalval[1]));
-					wait.until(ExpectedConditions.elementToBeClickable(el));
+					wait.until(ExpectedConditions.elementToBeClickable(el)).isEnabled();
 					//wait.until(el.isEnabled());
 					return el;   
 				 }  
@@ -306,7 +306,7 @@ public class DriverHelper {
 			wait.until(new Function<WebDriver, WebElement>() {       
 				public WebElement apply(WebDriver driver) { 
 					el=driver.findElement(By.xpath(locator)); 
-					wait.until(ExpectedConditions.elementToBeClickable(el));
+					wait.until(ExpectedConditions.elementToBeClickable(el)).isEnabled();
 					return el;   
 				 }  
 				});
@@ -421,7 +421,7 @@ public void Expandthesection(WebElement Section, WebElement ClickableElement) th
 		safeJavaScriptClick(ClickableElement);
 		((JavascriptExecutor)
 
-				driver).executeScript("arguments[0].scrollIntoView();", ClickableElement);
+				driver).executeScript("arguments[0].scrollIntoView(window.innerHeight/2);", ClickableElement);
 	}
 	else {
 		System.out.println("Already expanded");
@@ -430,7 +430,7 @@ public void Expandthesection(WebElement Section, WebElement ClickableElement) th
 public void Clickonoutofviewport(WebElement locator) throws Exception {
 	((JavascriptExecutor)
 
-			driver).executeScript("arguments[0].scrollIntoView();", locator);
+			driver).executeScript("arguments[0].scrollIntoView(window.innerHeight/2);", locator);
 	safeJavaScriptClick(locator);
 }
 public void Clickonoutofviewportwithstring(String locator) throws Exception {
@@ -545,7 +545,8 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		            	Log.info("Refreshing the Pages");
 			        	//driver.navigate().refresh();
 			        	Log.info("Waiting For 20 Sec");
-			        	Thread.sleep(20000);
+			        	System.out.println("Waiting......");
+			        	Thread.sleep(3000);
 		            }
 		            else{
 		            	break;
@@ -567,7 +568,7 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		            	//Log.info("Refreshing the Pages");
 			        	//driver.navigate().refresh();
 			        	Log.info("Waiting For 20 Sec");
-			        	Thread.sleep(20000);
+			        	Thread.sleep(3000);
 		            }
 		            }
 		        catch (Exception e) {
@@ -705,9 +706,11 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 			alert.accept();
 			driver.switchTo().defaultContent();
 		}
-	public void waitForpageload()
+	public void waitForpageload() throws InterruptedException
 	{
+		waitandForElementtobenotDisplay("//*[@id='overLayHtml_t-wrapper']",1);
 		wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));	
+		//Thread.sleep(1000);
 	}
 	public void Dragedrop(WebElement source,WebElement Destination){
 		Actions action = new Actions(driver);

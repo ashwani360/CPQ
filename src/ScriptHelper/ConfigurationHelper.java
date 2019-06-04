@@ -934,7 +934,7 @@ public class ConfigurationHelper extends DriverHelper{
 		getwebelement(xml.getlocator("//locators/StandrdQuote"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add Product Button");
 		QuoteID.set(Gettext(getwebelement(xml.getlocator("//locators/QuoteID"))));
-		System.out.println(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info"));
+		//System.out.println(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info"));
 //		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Opportunity Info")));
 //		DealClass.set(Gettext(getwebelement(xml.getlocator("//locators/Dealclass"))));
 //		TechnicalComplexity.set(Gettext(getwebelement(xml.getlocator("//locators/Technicalcomplexity"))));

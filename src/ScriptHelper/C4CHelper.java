@@ -69,16 +69,16 @@ public class C4CHelper extends DriverHelper{
 	}
 	public void AddQuote() throws Exception {
 		
-		while (gettitle().toString().contains("SAP Cloud for Customer")) {
-			System.out.println(gettitle().toString());
-			System.out.println(gettitle().toString().contains("SAP Cloud for Customer"));
-			WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
-		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
+		//while (gettitle().toString().contains("SAP Cloud for Customer")) {
+//			System.out.println(gettitle().toString());
+//			System.out.println(gettitle().toString().contains("SAP Cloud for Customer"));
+//			WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
+//		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/AddQuote"));
 		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
 		System.out.print(gettitle().toString());
-		}
+		//}
 		System.out.println("Out of While loop");
 //		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
 //		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
