@@ -43,7 +43,9 @@ public class SendProposalHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
 		Thread.sleep(5000);
 		CloseProposalwindow();
-		Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[0][24].toString());
+		//Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[0][24].toString());
+		Clickon(getwebelement(xml.getlocator("//locators/Mod")));
+		Clickon(getwebelement(xml.getlocator("//locators/ModValue").replace("Workflow", Inputdata[0][24].toString())));
 		WaitforElementtobeclickable(xml.getlocator("//locators/to"));
 		SendKeys(getwebelement(xml.getlocator("//locators/to")),Inputdata[0][25].toString());
 		Clickon(getwebelement(xml.getlocator("//locators/SendtoCustomer")));
@@ -73,15 +75,18 @@ public class SendProposalHelper extends DriverHelper{
 				System.out.println("No Alert Present");
 			}
 			//CloseProposalwindow();
-			WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
+			//WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
 			Thread.sleep(5000);
-			CloseProposalwindow();
-			WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
+			//CloseProposalwindow();
+			//WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
 			Thread.sleep(5000);
-			Clickon(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
+			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
+			
 			Thread.sleep(5000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/Mod"));
-			Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[0][24].toString());
+			//Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[0][24].toString());
+			Clickon(getwebelement(xml.getlocator("//locators/Mod")));
+			Clickon(getwebelement(xml.getlocator("//locators/ModValue").replace("Workflow", Inputdata[0][24].toString())));
 			WaitforElementtobeclickable(xml.getlocator("//locators/to"));
 			SendKeys(getwebelement(xml.getlocator("//locators/to")),Inputdata[0][25].toString());
 			Clickon(getwebelement(xml.getlocator("//locators/SentoSign")));

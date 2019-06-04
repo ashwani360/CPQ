@@ -33,10 +33,14 @@ public class OrderingHelper extends DriverHelper{
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
 		Thread.sleep(2000);
-		
-		Select(getwebelement(xml.getlocator("//locators/QuoteAction")), "Accept");
+		Clickon(getwebelement(xml.getlocator("//locators/AcceptsDroplist")));
+		Clickon(getwebelement(xml.getlocator("//locators/AcceptsorReject")));
+		//Select(getwebelement(xml.getlocator("//locators/QuoteAction")), "Accept");
 		Thread.sleep(2000);
-		Select(getwebelement(xml.getlocator("//locators/Reasone")), "Price");
+		Clickon(getwebelement(xml.getlocator("//locators/Reasonedroplist")));
+		Thread.sleep(1000);
+		Clickon(getwebelement(xml.getlocator("//locators/Reasone")));
+		//Select(getwebelement(xml.getlocator("//locators/Reasone")), "Price");
 		Thread.sleep(5000);
 		//safeJavaScriptClick();
 		//Clickon(getwebelement(xml.getlocator("//locators/FileBrowse")));
@@ -84,18 +88,25 @@ public class OrderingHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/AdditionalinfomrationTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
-		WaitforElementtobeclickable(xml.getlocator("//locators/Accordian").replace("index","1" ));
-		Thread.sleep(2000);
+		
+		WaitforElementtobeclickable(xml.getlocator("//locators/EditCustomerDetails"));
+		Clickon(getwebelement(xml.getlocator("//locators/EditCustomerDetails")));
+		Thread.sleep(5000);
 		for(int i=0;i<Inputdata.length;i++) {
-			WaitforElementtobeclickable(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1) ));
+			//WaitforElementtobeclickable(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1) ));
 			
-			Clickon(getwebelement(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1))));
+			//Clickon(getwebelement(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1))));
 			
 			if(Inputdata[i][2].toString().split(">")[1].trim().equals("Ethernet Line") || Inputdata[i][2].toString().split(">")[1].trim().equals("Wave") ) {
 				//javascriptexecutor(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
-				
-				SendKeys(getwebelement(xml.getlocator("//locators/Asitecomponey").replace("index",String.valueOf(i+1))),Inputdata[i][26].toString());
-		SendKeys(getwebelement(xml.getlocator("//locators/BSitecom").replace("index",String.valueOf(i+1))),Inputdata[i][27].toString());
+				Clickon(getwebelement(xml.getlocator("//locators/Asitecomponey").replace("index",String.valueOf(i+1))));
+				Thread.sleep(2000);
+				EnterText(Inputdata[i][26].toString());
+				Thread.sleep(1000);
+				Clickon(getwebelement(xml.getlocator("//locators/BSitecom").replace("index",String.valueOf(i+1))));
+				Thread.sleep(2000);
+				EnterText(Inputdata[i][27].toString());
+		//SendKeys(getwebelement(xml.getlocator("//locators/BSitecom").replace("index",String.valueOf(i+1))),Inputdata[i][27].toString());
 		//Clickon(getwebelement(xml.getlocator("//locators/SaveInfo")));
 		//Clickon(getwebelement(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1))));
 		
@@ -105,20 +116,23 @@ public class OrderingHelper extends DriverHelper{
 				
 				//WaitforElementtobeclickable(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1) ));
 				//Clickon(getwebelement(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1))));
-				SendKeys(getwebelement(xml.getlocator("//locators/Asitecomponey").replace("index",String.valueOf(i+1))),Inputdata[i][26].toString());
+				//SendKeys(getwebelement(xml.getlocator("//locators/Asitecomponey").replace("index",String.valueOf(i+1))),Inputdata[i][26].toString());
 				//SendKeys(getwebelement(xml.getlocator("//locators/BSitecom")),Inputdata[i][27].toString());
 				//Clickon(getwebelement(xml.getlocator("//locators/SaveInfo")));
 				//Clickon(getwebelement(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1))));
-				
+				Clickon(getwebelement(xml.getlocator("//locators/Asitecomponey").replace("index",String.valueOf(i+1))));
+				Thread.sleep(2000);
+				EnterText(Inputdata[i][26].toString());
+				Thread.sleep(1000);
 			}
 			//WaitforElementtobeclickable(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1) ));
 			
 			//Clickon(getwebelement(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1))));
 			
 		}
-		Clickon(getwebelement(xml.getlocator("//locators/SaveInfo")));
-		WaitforElementtobeclickable(xml.getlocator("//locators/CreateOrder"));
-		javascriptexecutor(getwebelement(xml.getlocator("//locators/CreateOrder")));
+		//Clickon(getwebelement(xml.getlocator("//locators/SaveInfo")));
+		//WaitforElementtobeclickable(xml.getlocator("//locators/CreateOrder"));
+		//javascriptexecutor(getwebelement(xml.getlocator("//locators/CreateOrder")));
 		Clickon(getwebelement(xml.getlocator("//locators/CreateOrder")));
 	}
 	

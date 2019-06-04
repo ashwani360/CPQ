@@ -6,10 +6,11 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.swing.Action;
-
 import org.apache.log4j.xml.DOMConfigurator;
+import org.apache.poi.hdgf.chunks.ChunkFactory.CommandDefinition;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Keys;
@@ -19,8 +20,11 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.Command;
+import org.openqa.selenium.remote.CommandCodec;
 import org.openqa.selenium.remote.CommandExecutor;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.HttpCommandExecutor;
@@ -147,7 +151,10 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			options.addArguments("--disable-popup-blocking");
 			//options.setExperimentalOption("excludeSwitches", "disable-popup-blocking");
 			capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
-			//capabilities.setCapability(CapabilityType.);
+			//capabilities.setCapability(CapabilityType.l, "none");
+			LoggingPreferences logs = new LoggingPreferences(); 
+		    logs.enable(LogType.DRIVER, Level.ALL); 
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 			System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
 			dr= new ChromeDriver(capabilities);
@@ -179,7 +186,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			Log.info("For FF inprogress");
 		}
 		
-		dr.manage().window().maximize();
+		//dr.manage().window().maximize();
 		WEB_DRIVER_THREAD_LOCAL.set(dr);
 		Thread.sleep(2000);
 		
@@ -194,7 +201,8 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			session_id=new SessionId(pr.readsessionproperty("SessionID").toString());
 			URL url2 = new URL(pr.readsessionproperty("ExecutorUrl").toString());
 		    dr = createDriverFromSession(session_id, url2);
-		   
+		   // dr.manage()dr.
+		  try {
 		    if(dr.getTitle().toString().contains("chrome not reachable"))
 		    		{
 		    	System.out.println("Chrome needs to initialized");
@@ -206,9 +214,14 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			options.addArguments("--start-maximized");
 			options.addArguments("disable-infobars");
 			options.addArguments("--disable-popup-blocking");	
+			
 			capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			capabilities.setCapability(CapabilityType.SUPPORTS_FINDING_BY_CSS, true);
+			
 			System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
+			System.setProperty("driver.name","RemoteWebdriver");
+			//capabilities.setCapability(CapabilityType.c, true);
 			dr= new ChromeDriver(capabilities);
 			System.out.println("browser launched");
 		    HttpCommandExecutor executor = (HttpCommandExecutor) ((RemoteWebDriver) dr).getCommandExecutor();
@@ -219,14 +232,69 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			
 		 System.out.println("Session ID is "+session_id);
 		 System.out.println("URL is "+url2);
+		 dr.get("chrome://settings/content/popups");
+			//dr.findElement(By.xpath(h1[text()='Pop-ups and redirects']);
+			//dr.switchTo().frame("settings");
+			//Thread.sleep(2000);
+			//dr.findElement(By.xpath("//*[@id='popups']")).click();
+			Thread.sleep(6000);
+			Actions builder = new Actions(dr);
+			builder.sendKeys(Keys.TAB).build().perform();
+			builder.sendKeys(Keys.TAB).build().perform();
+			builder.sendKeys(Keys.TAB).build().perform();
+			builder.sendKeys(Keys.ENTER).build().perform();
+			//dr.findElement(By.id("control")).click();
+			//Thread.sleep(4000);
 		    		}
 		    else {
 		    	System.out.println("Nothing to Do here");
 		    }
-			
+		  }
+		  catch(Exception e)
+		  {
+			  System.out.println("Chrome needs to initialized");
+				DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+				Map<String, Object> prefs = new HashMap<String, Object>();
+				prefs.put("profile.default_content_setting_values.notifications", 2);
+				ChromeOptions options = new ChromeOptions();
+				options.setExperimentalOption("prefs", prefs);
+				options.addArguments("--start-maximized");
+				options.addArguments("disable-infobars");
+				options.addArguments("--disable-popup-blocking");	
+				
+				capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
+				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+				capabilities.setCapability(CapabilityType.SUPPORTS_FINDING_BY_CSS, true);
+				System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
+				System.setProperty("driver.name","RemoteWebdriver");
+				dr= new ChromeDriver(capabilities);
+				System.out.println("browser launched");
+			    HttpCommandExecutor executor = (HttpCommandExecutor) ((RemoteWebDriver) dr).getCommandExecutor();
+			    url2 = executor.getAddressOfRemoteServer();
+			    SessionId session_id = ((RemoteWebDriver) dr).getSessionId();
+				pr2.updateproprty("SessionID",session_id.toString());
+				pr2.updateproprty("ExecutorUrl",url2.toString());
+				
+			 System.out.println("Session ID is "+session_id);
+			 System.out.println("URL is "+url2);
+			 dr.get("chrome://settings/content/popups");
+				//dr.findElement(By.xpath(h1[text()='Pop-ups and redirects']);
+				//dr.switchTo().frame("settings");
+				//Thread.sleep(2000);
+				//dr.findElement(By.xpath("//*[@id='popups']")).click();
+				Thread.sleep(6000);
+				Actions builder = new Actions(dr);
+				builder.sendKeys(Keys.TAB).build().perform();
+				builder.sendKeys(Keys.TAB).build().perform();
+				builder.sendKeys(Keys.TAB).build().perform();
+				builder.sendKeys(Keys.ENTER).build().perform();
+				//dr.findElement(By.id("control")).click();
+				//Thread.sleep(4000);
+		  }
 //------------------------------------------------------------------
 		    //dr.get("http://Google.com");
-		    dr.manage().window().maximize();
+		   // dr.manage().window().maximize();
+		 
 			WEB_DRIVER_THREAD_LOCAL.set(dr);
 			Thread.sleep(2000);
 		}
@@ -260,40 +328,74 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	
 	
 	public static WebDriver createDriverFromSession(final SessionId sessionId, URL command_executor){
-	    CommandExecutor executor = new HttpCommandExecutor(command_executor) {
+		WebDriver drsession = null;
+		CommandExecutor executor = null;
+		executor = new HttpCommandExecutor(command_executor) {
+			   
+		    @Override
+		    public Response execute(Command command) throws IOException {
+		        Response response = null;
+		        System.out.println("In execute method"+command);
+		       
+		        if (command.getName() == "newSession") {
+		            response = new Response();
+		            response.setSessionId(sessionId.toString());
+		            response.setStatus(0);
+		            response.setValue(Collections.<String, String>emptyMap());
+		            System.out.println("In new session condition");
+		            try {
+		            	 System.out.println("In the Try cases");
+		                Field commandCodec = null;
+		                commandCodec = this.getClass().getSuperclass().getDeclaredField("commandCodec");
+		                commandCodec.setAccessible(true);
+		                commandCodec.set(this, new W3CHttpCommandCodec());
+		                
+		                Field responseCodec = null;
+		                responseCodec = this.getClass().getSuperclass().getDeclaredField("responseCodec");
+		                responseCodec.setAccessible(true);
+		               responseCodec.set(this, new W3CHttpResponseCodec());
+		            } catch (NoSuchFieldException e) {
+		                e.printStackTrace();
+		                System.out.println(e.getMessage().toString());
+		            } 
+		            catch (IllegalAccessException e) {
+		                e.printStackTrace();
+		                System.out.println(e.getMessage().toString());
+		            }
 
-	    @Override
-	    public Response execute(Command command) throws IOException {
-	        Response response = null;
-	        if (command.getName() == "newSession") {
-	            response = new Response();
-	            response.setSessionId(sessionId.toString());
-	            response.setStatus(0);
-	            response.setValue(Collections.<String, String>emptyMap());
+		        } else {
+		        	
+		           
+		            try {
+		            	Thread.sleep(3000);
+		            	 System.out.println("In the Try cases for else");
+		                Field commandCodec = null;
+		                commandCodec = this.getClass().getSuperclass().getDeclaredField("commandCodec");
+		                commandCodec.setAccessible(true);
+		                commandCodec.set(this, new W3CHttpCommandCodec());
+		                System.out.println("Curent comand Codec"+commandCodec.getName().toString());
 
-	            try {
-	                Field commandCodec = null;
-	                commandCodec = this.getClass().getSuperclass().getDeclaredField("commandCodec");
-	                commandCodec.setAccessible(true);
-	                commandCodec.set(this, new W3CHttpCommandCodec());
-
-	                Field responseCodec = null;
-	                responseCodec = this.getClass().getSuperclass().getDeclaredField("responseCodec");
-	                responseCodec.setAccessible(true);
-	                responseCodec.set(this, new W3CHttpResponseCodec());
-	            } catch (NoSuchFieldException e) {
-	                e.printStackTrace();
-	            } catch (IllegalAccessException e) {
-	                e.printStackTrace();
-	            }
-
-	        } else {
-	            response = super.execute(command);
-	        }
-	        return response;
-	    }
-	    };
-	    WebDriver drsession = null;
+		                Field responseCodec = null;
+		                responseCodec = this.getClass().getSuperclass().getDeclaredField("responseCodec");
+		                responseCodec.setAccessible(true);
+		               responseCodec.set(this, new W3CHttpResponseCodec());
+		            } catch (NoSuchFieldException | InterruptedException e) {
+		                e.printStackTrace();
+		                System.out.println(e.getMessage().toString());
+		            } 
+		            catch (IllegalAccessException e) {
+		                e.printStackTrace();
+		                System.out.println(e.getMessage().toString());
+		            }
+		            
+		            
+		            response = super.execute(command);
+		            System.out.println("In Else and executing commad"+command.getName().toLowerCase());
+		        }
+		        System.out.println("Respoence is"+response.toString());
+		        return response;
+		    }
+		    };
 	    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("profile.default_content_setting_values.notifications", 2);
@@ -303,12 +405,18 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		options.addArguments("disable-infobars");
 		options.addArguments("--disable-popup-blocking");	
 		capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
+		capabilities.setCapability(CapabilityType.SUPPORTS_FINDING_BY_CSS, "true");
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		//capabilities.setCapability(CommandCodec<T>, true);
 		System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
-	    drsession=new RemoteWebDriver(executor, capabilities);
+	    drsession=(new RemoteWebDriver(executor, capabilities));
+	    System.out.println(drsession.toString());
+	    
+	    
 	    
 	    
 	    return drsession; 
+	    
 	}
 
 	

@@ -48,11 +48,11 @@
 <Technicalcontactemail>id=emailTechnicalContacts_t</Technicalcontactemail>
 <Technicalcontactphone>id=phoneNumberTechnicalContacts_t</Technicalcontactphone>
 <Alllineitem>name=_line_item_list_all</Alllineitem>
-<BillingInfobutton>//a[text()='Billing Information']</BillingInfobutton>
-<customerreferece>id=bCNCustomerRefNumberQuote_t</customerreferece>
-<po>id=bCNPOReferenceQuote_t</po>
-<bcn>name=radioBCNTable</bcn>
-<applybutton>//a[text()='Apply']</applybutton>
+<BillingInfobutton>//span[text()='Billing Information']/parent::*/parent::*</BillingInfobutton>
+<customerreferece>//span[text()='BCN']/parent::*/parent::*/td[contains(@class,'billCustRefOrder')]</customerreferece>
+<po>//span[text()='BCN']/parent::*/parent::*/td[contains(@class,'billPONoOrder')]</po>
+<bcn>//span[text()='BCN']/parent::*/parent::*/td[2]/input</bcn>
+<applybutton>//span[text()='Apply']/parent::*/parent::*</applybutton>
 <LoadingDailog2>//*[@id='loading-dialog']</LoadingDailog2>
 <ApprovalTab>(//span[text()='Approval'])[1]</ApprovalTab>
 <SubmitetoApproval>//a[text()='Submit to Approval']</SubmitetoApproval>
@@ -75,5 +75,10 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
+<AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
+<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
+<AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
+<ModelSelector>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[3])[index]</ModelSelector>
+<Lineitemcounter>//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*</Lineitemcounter>
 </locators>
 

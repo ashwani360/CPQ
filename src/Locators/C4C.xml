@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locators>
 <C4C>
-<Username>id=userId</Username>
+<Username>id=username</Username>
 <Password>id=password</Password>
-<Loginbutton>id=Submit</Loginbutton>
+<Loginbutton>//*[@type='submit']</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
 </C4C>
@@ -21,9 +21,9 @@
 <OpportunuityTab>//div[text()='Opportunities']</OpportunuityTab>
 <Opportunuitynumber>//span[text()='Opportunuitynumber']/parent::*/parent::*/following-sibling::*/div/a</Opportunuitynumber>
 <QuoteTab>//div[text()='Quotes']</QuoteTab>
-<AddQuote>//bdi[text()='Add']</AddQuote>
+<AddQuote>//bdi[text()='Add']/parent::*/parent::*/parent::*</AddQuote>
 <Quotenumber>//a[text()='Quotenumber']</Quotenumber>
-<QuoteActions>//bdi[text()='Actions']</QuoteActions>
+<QuoteActions>//bdi[text()='Action']</QuoteActions>
 <QuoteEdit>//bdi[text()='Edit']</QuoteEdit>
 <Refresh>//a[text()='Refresh']</Refresh>
 <StandrdQuote>id=readonly_1_quoteType_t</StandrdQuote>
@@ -83,6 +83,8 @@
 <C4Cloader>//*[@title='Please wait']</C4Cloader>
 <AccountSearchField>//button[@title="Search"]</AccountSearchField>>
 <SearchValue>//input[@placeholder='Search']</SearchValue>
-
+<AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
+<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
+<AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 </locators>
 

@@ -62,18 +62,25 @@
 <Mod>//select[@name='workflow_t']</Mod>
 <to>//*[@id='toRecepient_t']</to>
 <SendtoCustomer>//a[text()='Send Proposal']</SendtoCustomer>
-<OrderTab>//span[text()='ORDER']</OrderTab>
+<OrderTab>//span[text()='Order']</OrderTab>
 <QuoteAction>name=quoteActionAcceptOrReject_t</QuoteAction>
-<Reasone>name=reasonForStatusWon_t</Reasone>
-<FileBrowse>id=_file_acceptanceDocument_t</FileBrowse>
-<Fileuploaded>//*[@id='_name_acceptanceDocument_t' and contains(text(),'.pdf')]</Fileuploaded>
+<FileBrowse>id=acceptanceDocument_t</FileBrowse>
+<Fileuploaded>//*[@id='acceptanceDocument_t-link' and contains(text(),'.pdf')]</Fileuploaded>
 <CustomerSignedDate>id=customerSignedDate_t</CustomerSignedDate>
-<ConfirQuoteAction>//a[text()='Confirm Quote Action']</ConfirQuoteAction>
-<AdditionalinfomrationTab>//*[text()='Additional Quote Information']</AdditionalinfomrationTab>
+<ConfirQuoteAction>//span[text()='Confirm Quote Action']/parent::*/parent::*</ConfirQuoteAction>
+<AdditionalinfomrationTab>//*[text()='Contact Information']</AdditionalinfomrationTab>
 <Accordian>(//button[@class='accordion'])[index]</Accordian>
-<Asitecomponey>(//*[@name='aEndCompanyName'])[index]</Asitecomponey>
-<BSitecom>(//*[@name='bEndCompanyName'])[index]</BSitecom>
+<Asitecomponey>(//td[contains(@headers,'additionalQuoteInformation_t')][5])[index]</Asitecomponey>
+<BSitecom>(//td[contains(@headers,'additionalQuoteInformation_t')][6])[index]</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
+<AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
+<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
+<AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
+<EditCustomerDetails>//label[text()='Add/Edit details (Please click on Save after editing the information in table)']</EditCustomerDetails>
+<AcceptsDroplist>//*[@id='oj-select-choice-quoteActionAcceptOrReject_t']//a</AcceptsDroplist>
+<AcceptsorReject>//*[text()='Accept']</AcceptsorReject>
+<Reasonedroplist>//*[@id='oj-select-choice-reasonForStatusWon_t']//a</Reasonedroplist>
+<Reasone>//li/*[text()='Price']</Reasone>
 </locators>
 

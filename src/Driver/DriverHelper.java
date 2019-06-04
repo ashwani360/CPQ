@@ -1,31 +1,47 @@
 package Driver;
 
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
+
+import javax.imageio.ImageIO;
+
 import org.openqa.selenium.JavascriptExecutor;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import Reporter.ExtentTestManager;
 
 public class DriverHelper {
 	
@@ -82,13 +98,14 @@ public class DriverHelper {
 	public DriverHelper(WebDriver dr)
 	{
 		driver=dr;
-		wait = new FluentWait<WebDriver>(driver)       
-				.withTimeout(180, TimeUnit.SECONDS)    
-				.pollingEvery(5, TimeUnit.SECONDS)    
+		wait = new FluentWait<WebDriver>(driver) 
+				.withTimeout(15, TimeUnit.SECONDS)    
+				.pollingEvery(15, TimeUnit.SECONDS)    
 				.ignoring(NoSuchElementException.class)
 				.ignoring(StaleElementReferenceException.class);
 		//workitemcounter.set(1);
-//		QuoteID.set("QT-20190526-031467-01");
+		QuoteID.set("QT-20190603-077332-01");
+		//DealClass.set("Bronze");
 //		//TotalTCVdisscount.set((float) 0);
 //		List Completeset=new ArrayList();
 //		for(int i=0;i<2;i++) {
@@ -236,13 +253,15 @@ public class DriverHelper {
 	{
 		
 		System.out.println("Code for Map Loading");
-		Thread.sleep(9000);
+		Thread.sleep(3000);
 		String[] finalval=framlocator.split("=");
-		Thread.sleep(9000);
+		//Thread.sleep(3000);
 		driver.switchTo().frame(driver.findElement(By.id(finalval[1])));
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(messagelocator))); 
+		System.out.println(driver.findElement(By.xpath(messagelocator)).getText().toString());
 		driver.switchTo().defaultContent();
 		Thread.sleep(2000);
+		System.out.println("Code for Map Loading");
 		
 	}
 	public WebElement getwebelement(final String locator) throws InterruptedException
@@ -258,8 +277,10 @@ public class DriverHelper {
 			
 			wait.until(new Function<WebDriver, WebElement>() {       
 				public WebElement apply(WebDriver driver) { 
-					el=driver.findElement(By.name(finalval[1]));
-					wait.until(ExpectedConditions.elementToBeClickable(el)).isEnabled();
+					el= driver.findElement(By.name(finalval[1]));
+					//RemoteWebDriver dr;
+					
+					wait.until(ExpectedConditions.elementToBeClickable(el));
 					return el;     
 				 }  
 				}); 
@@ -273,7 +294,8 @@ public class DriverHelper {
 			wait.until(new Function<WebDriver, WebElement>() {       
 				public WebElement apply(WebDriver driver) { 
 					el=driver.findElement(By.id(finalval[1]));
-					wait.until(ExpectedConditions.elementToBeClickable(el)).isEnabled();
+					wait.until(ExpectedConditions.elementToBeClickable(el));
+					//wait.until(el.isEnabled());
 					return el;   
 				 }  
 				});
@@ -284,21 +306,26 @@ public class DriverHelper {
 			wait.until(new Function<WebDriver, WebElement>() {       
 				public WebElement apply(WebDriver driver) { 
 					el=driver.findElement(By.xpath(locator)); 
-					wait.until(ExpectedConditions.elementToBeClickable(el)).isEnabled();
+					wait.until(ExpectedConditions.elementToBeClickable(el));
 					return el;   
 				 }  
 				});
 			
 		}
 		//Thread.sleep(1000);
+		
 		return el;
 	}
+	public String gettitle() {
+		return driver.getTitle();
+	}
+	
 	
 	public WebElement getwebelement2(final String locator) throws InterruptedException
 	{   
 		if (locator.startsWith("//")|| locator.startsWith("(//"))
 		{	
-					el=driver.findElement(By.xpath(locator)); 
+					el=(WebElement) driver.findElement(By.xpath(locator)); 
 					return driver.findElement(By.xpath(locator));     	
 		}
 		Thread.sleep(1000);
@@ -320,8 +347,12 @@ public class DriverHelper {
 	}
 	public void Clickon(WebElement el) throws InterruptedException {
 		//Thread.sleep(3000);
+		
 		try {
+			
+			
 		el.click();
+		
 		}
 		catch(WebDriverException e)
 		//Thread.sleep(3000);
@@ -379,7 +410,36 @@ public void Moveon(WebElement el) {
 	        return false;
 	    }
 	}
-	
+public void Expandthesection(WebElement Section, WebElement ClickableElement) throws Exception {
+		
+	Thread.sleep(5000);	
+	String classvalue=Getattribute(Section,"class");
+		System.out.println(classvalue);
+	if(!classvalue.contains("green")){
+		System.out.println("In IF class");
+		//Clickon(ClickableElement);
+		safeJavaScriptClick(ClickableElement);
+		((JavascriptExecutor)
+
+				driver).executeScript("arguments[0].scrollIntoView();", ClickableElement);
+	}
+	else {
+		System.out.println("Already expanded");
+	}
+	}
+public void Clickonoutofviewport(WebElement locator) throws Exception {
+	((JavascriptExecutor)
+
+			driver).executeScript("arguments[0].scrollIntoView();", locator);
+	safeJavaScriptClick(locator);
+}
+public void Clickonoutofviewportwithstring(String locator) throws Exception {
+
+	((JavascriptExecutor)
+
+			driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[text()='Show Groups']")));
+	safeJavaScriptClick(driver.findElement(By.xpath(locator)));
+}
 	public void waitandclickForworkitemsPresent(String locator, int timeout) throws InterruptedException
 	{
 			for(int i=0;i<=timeout*60/20;i++){
@@ -467,9 +527,28 @@ public void Moveon(WebElement el) {
 		            }
 		            else{
 		            	Log.info("Refreshing the Pages");
-			        	driver.navigate().refresh();
+			        	//driver.navigate().refresh();
 			        	Log.info("Waiting For 20 Sec");
 			        	Thread.sleep(20000);
+		            }
+		            }
+		        catch (Exception e) {
+		        	Log.info(e.getMessage());
+		        }
+			}
+	}
+	public void waitandForElementtobenotDisplay(String locator, int timeout) throws InterruptedException
+	{
+			for(int i=0;i<=timeout*60/20;i++){
+				try {
+		            if (isElementPresent(locator)){
+		            	Log.info("Refreshing the Pages");
+			        	//driver.navigate().refresh();
+			        	Log.info("Waiting For 20 Sec");
+			        	Thread.sleep(20000);
+		            }
+		            else{
+		            	break;
 		            }
 		            }
 		        catch (Exception e) {
@@ -499,6 +578,7 @@ public void Moveon(WebElement el) {
 	public void Pagerefresh() throws InterruptedException
 	{
 			driver.navigate().refresh();
+			
 			        	
 	}
 	
@@ -508,11 +588,16 @@ public void Moveon(WebElement el) {
 		return ellist.size();
 	}
 	
-	public void SendKeys(WebElement el,String value) throws InterruptedException {
+	public void SendKeys(WebElement el,String value) throws InterruptedException, IOException {
 		//Thread.sleep(3000);
+		//el.
+		//System.out.println(el.getRect().getHeight()+"-"+el.getRect().getWidth()+"-"+el.getRect().x+"-"+el.getRect().x);
+		//ExtentTestManager.getTest().log(LogStatus.PASS,ExtentTestManager.getTest().addBase64ScreenShot(capturescreenshotforelement(el)));
 		el.sendKeys(value);
+		
 		//Thread.sleep(3000);
 	}
+	
 
 	public void SendkeaboardKeys(WebElement el,Keys k) throws InterruptedException {
 		//Thread.sleep(3000);
@@ -555,6 +640,11 @@ public void Moveon(WebElement el) {
 			String text=el.getText().toString();
 			return text;
 		}
+	public String GetValueofInput(WebElement el) throws IOException
+	{ 
+		String text=el.getAttribute("value");
+		return text;
+	}
 	
 	public String[] GetText2(WebElement el) throws IOException
 		{ 
@@ -625,11 +715,22 @@ public void Moveon(WebElement el) {
 		action.dragAndDrop(source, Destination).build().perform();
 	}
 	
+	public void EnterText(String s){
+		Actions keyAction = new Actions(driver);     
+		keyAction.sendKeys(s).perform();
+	}
 	public void savePage(){
 			Actions keyAction = new Actions(driver);     
 			keyAction.keyDown(Keys.CONTROL).sendKeys("s").keyUp(Keys.CONTROL).perform();
 		}
-	
+	public void KeydownKey(Keys key){
+		Actions keyAction = new Actions(driver);     
+		keyAction.keyDown(key).perform();
+	}
+	public void KeyupKey(Keys key){
+		Actions keyAction = new Actions(driver);     
+		keyAction.keyUp(key).perform();
+	}
 	public void uploadafile(String  locator,String FileName)
 	{
 		String str = System.getProperty("user.dir")+"\\src\\Data\\"+FileName;
@@ -645,5 +746,28 @@ public void Moveon(WebElement el) {
 //		keyAction.keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).perform();
 //		keyAction.sendKeys(Keys.ENTER);
 		
+	}
+	public String capturescreenshotforelement(WebElement ele) throws IOException
+	{
+		String screenshot2;
+	File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	BufferedImage  fullImg = ImageIO.read(screenshot);
+
+	// Get the location of element on the page
+	org.openqa.selenium.Point point = ele.getLocation();
+
+	// Get width and height of the element
+	int eleWidth = ele.getSize().getWidth();
+	int eleHeight = ele.getSize().getHeight();
+
+	// Crop the entire page screenshot to get only element screenshot
+	BufferedImage eleScreenshot= fullImg.getSubimage(point.getX()-20, point.getY()-20,
+	    eleWidth+20, eleHeight+20);
+	ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	ImageIO.write(eleScreenshot, "png", bos);
+	byte[] imageBytes = bos.toByteArray();
+    screenshot2 = "data:image/png;base64,"+Base64.getMimeEncoder().encodeToString(imageBytes);
+    bos.close();
+    return screenshot2;
 	}
 	}

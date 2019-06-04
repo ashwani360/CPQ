@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locators>
 <C4C>
-<Username>id=userId</Username>
+<Username>id=username</Username>
 <Password>id=password</Password>
-<Loginbutton>id=Submit</Loginbutton>
+<Loginbutton>//*[@type='submit']</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
 </C4C>

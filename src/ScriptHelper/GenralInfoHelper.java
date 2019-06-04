@@ -25,20 +25,31 @@ public class GenralInfoHelper extends DriverHelper{
 
 
 	public void GenralInfomration(Object[][] Inputdata) throws Exception {
-		SendKeys(getwebelement(xml.getlocator("//locators/Technicalcontactname")),Inputdata[0][14].toString());
-		//WaitforElementtobeclickable(xml.getlocator("//locators/Technicalcontactlname"));
-		Clickon(getwebelement(xml.getlocator("//locators/Technicalcontactlname")));
-		Thread.sleep(1000);
-		SendKeys(getwebelement(xml.getlocator("//locators/Technicalcontactlname")),Inputdata[0][15].toString());
-		Clickon(getwebelement(xml.getlocator("//locators/Technicalcontactemail")));
-		Thread.sleep(1000);
-		SendKeys(getwebelement(xml.getlocator("//locators/Technicalcontactemail")),Inputdata[0][16].toString());
-		Clickon(getwebelement(xml.getlocator("//locators/Technicalcontactphone")));
-		Thread.sleep(1000);
-		SendKeys(getwebelement(xml.getlocator("//locators/Technicalcontactphone")),"+"+Inputdata[0][17].toString());
-		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Technicalcontactphone")),Keys.ENTER);
-		//WaitforElementtobeclickable(xml.getlocator("//locators/Alllineitem"));
+		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Legal Contact Details")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Legal Contact Details")));
+		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
+		
+		//Clickonoutofviewport(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
+		//Clickon(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
+		//waitandForElementDisplay(xml.getlocator("//locators/Selectprimarycontact"),1);
+		Thread.sleep(3000);
+		Clickon(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
+		Clickon(getwebelement(xml.getlocator("//locators/SubmitContact")));
+		
+		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Technical/Ordering Contacts")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Technical/Ordering Contacts")));
+		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/TechnicalcontactGetdetail")));
+		//Clickon(getwebelement(xml.getlocator("//locators/TechnicalcontactGetdetail")));
+		//waitandForElementDisplay(xml.getlocator("//locators/Selectprimarycontact"),1);
+		Thread.sleep(3000);
+		Clickon(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
+		Clickon(getwebelement(xml.getlocator("//locators/SubmitContact")));
+		waitForpageload();
+//		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
+//		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader"),1);
+//		waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
+//		waitForpageload();
+		
 	}
+	
 	
 
 }

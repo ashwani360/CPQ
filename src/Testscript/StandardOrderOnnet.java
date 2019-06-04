@@ -6,7 +6,7 @@ import Driver.DataReader;
 import Driver.DriverTestcase;
 import Reporter.ExtentTestManager;
 
-public class StandardOrder extends DriverTestcase {	
+public class StandardOrderOnnet extends DriverTestcase {	
 	
 @Test(dataProviderClass=DataReader.class,dataProvider="NewStandrdOrder")
 	public void EndtoEndOrder(Object[][] Data) throws Exception
@@ -17,7 +17,8 @@ public class StandardOrder extends DriverTestcase {
 		
 		C4Chelper.get().Movetoaccount(Data);
 		C4Chelper.get().MovetoOpportunuity(Data);
-		//Thread.sleep(3000);
+		//C4Chelper.get().EditQuote();
+		Thread.sleep(3000);
 		C4Chelper.get().AddQuote();
 		Configurationhelper.get().AddProduct(Data);
 		GenralInfohelper.get().GenralInfomration(Data);
@@ -34,17 +35,17 @@ public class StandardOrder extends DriverTestcase {
 		DisscountAndAprrovalhelper.get().ApproveQuote(Data);
 		SendProposalhelper.get().CustomerSign(Data);
 		if(Data[0][24].toString().equals("Email")) {
-		Orderinghelper.get().AcceptsQuote(Data);
-		Orderinghelper.get().CreateOrder(Data);
+			Orderinghelper.get().AcceptsQuote(Data);
+			Orderinghelper.get().CreateOrder(Data);
 		}
-	else {
+		else {
 			Orderinghelper.get().AcceptsQuotebyEsignature(Data);
 			C4Chelper.get().NavigatetoC4C();
 			C4Chelper.get().Movetoaccount(Data);
 			C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			C4Chelper.get().CheckdocumentSigned();
-		Orderinghelper.get().AcceptsQuote(Data);
+			Orderinghelper.get().AcceptsQuote(Data);
 			Orderinghelper.get().CreateOrder(Data);
 			
 //			

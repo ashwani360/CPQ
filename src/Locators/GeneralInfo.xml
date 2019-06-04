@@ -75,5 +75,14 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
+<TechnicalcontactGetdetail>//div[contains(@class,'technical-contact')]//button</TechnicalcontactGetdetail>
+<LegalcontactGetdetail>//div[contains(@class,'legal-contact')]//button</LegalcontactGetdetail>
+<Selectprimarycontact>(//td[11]/span[text()='true']/parent::*/parent::*/td/input)[2]</Selectprimarycontact>
+<SubmitContact>//*[text()='Submit']/parent::*/parent::*</SubmitContact>
+<SectionName>//label[text()='Sectionname']/parent::*/parent::*/parent::*/parent::*/parent::*</SectionName>
+<Clickableelemt>//label[text()='Sectionname']</Clickableelemt>
+<AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
+<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
+<AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 </locators>
 

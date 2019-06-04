@@ -45,7 +45,9 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuoteTab")));
 			Thread.sleep(5000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/DiscountType"));
-		Select(getwebelement(xml.getlocator("//locators/Percentage/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
+		//Select(getwebelement(xml.getlocator("//locators/Percentage/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
+		Clickon(getwebelement(xml.getlocator("//locators/Percentage/DiscountType")));
+		Clickon(getwebelement(xml.getlocator("//locators/Percentage/OptionstoSelect")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/NRCDiscount"));
 		Clear(getwebelement(xml.getlocator("//locators/Percentage/NRCDiscount")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/NRCDiscount"));
@@ -68,7 +70,9 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuoteTab")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/DiscountType"));
-			Select(getwebelement(xml.getlocator("//locators/Ammountoff/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
+			//Select(getwebelement(xml.getlocator("//locators/Ammountoff/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
+			Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/DiscountType")));
+			Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/OptionstoSelect")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/NRCDiscount"));
 			Clear(getwebelement(xml.getlocator("//locators/Ammountoff/NRCDiscount")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/NRCDiscount"));
@@ -80,8 +84,8 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/CalculateDisscount"));
 			Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/CalculateDisscount")));
-			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/CalculateDisscount"));
-			Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/CalculateDisscount")));
+			//WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/CalculateDisscount"));
+			//Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/CalculateDisscount")));
 			System.out.println("NRC Disscount"+Inputdata[0][22].toString());
 			System.out.println("NRC Disscount"+Inputdata[0][23].toString());
 		}
@@ -91,7 +95,9 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuoteTab")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/DiscountType"));
-			Select(getwebelement(xml.getlocator("//locators/TargetPrice/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
+			//Select(getwebelement(xml.getlocator("//locators/TargetPrice/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
+			Clickon(getwebelement(xml.getlocator("//locators/TargetPrice/DiscountType")));
+			Clickon(getwebelement(xml.getlocator("//locators/TargetPrice/OptionstoSelect")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/NRCDiscount"));
 			Clear(getwebelement(xml.getlocator("//locators/TargetPrice/NRCDiscount")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/NRCDiscount"));
@@ -127,23 +133,26 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 }
 public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	
-	
-		WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
-		Clickon(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+	waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
+	waitForpageload();
+	//Thread.sleep(10000);
+		//WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
+	safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+	//Clickonoutofviewportwithstring(xml.getlocator("//locators/Showdisscountcoulumn"));
 		WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
 		//DecimalFormat df = new DecimalFormat("0.00");
 		//df.setMaximumFractionDigits(2);
 		//System.out.println(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))));
 		//TotalTCVdisscount.set(Float.parseFloat(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount")))));
 		
-	WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
+	//WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
 	System.out.println(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))));
 	TotalTCVdisscount.set(Float.parseFloat(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount")))));
 	DefineApprover(Inputdata);
 	SubmitforApproval(ApprovalCase.get(),Inputdata);
 	
 	ApproveQuote(ApprovalCase.get());
-	NavigatetoC4C();
+	//NavigatetoC4C();
 	if(!ApprovalCase.get().equals("Self Approve")) {
 	Movetoaccount(Inputdata);
 	MovetoOpportunuity(Inputdata);

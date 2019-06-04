@@ -27,4 +27,7 @@
 <BacktoQuote>//a[text()='Back to quotes list']</BacktoQuote>
 <MenuItem>(//span[@role="button"])[7]</MenuItem>
 <Logout>//td[text()='Log Out']</Logout>
+<AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
+<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
+<AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 </locators>

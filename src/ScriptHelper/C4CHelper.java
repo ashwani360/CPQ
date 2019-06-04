@@ -68,9 +68,34 @@ public class C4CHelper extends DriverHelper{
 		Thread.sleep(5000);
 	}
 	public void AddQuote() throws Exception {
+		
+		while (gettitle().toString().contains("SAP Cloud for Customer")) {
+			System.out.println(gettitle().toString());
+			System.out.println(gettitle().toString().contains("SAP Cloud for Customer"));
+			WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
+		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/AddQuote"));
 		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
-		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
+		Thread.sleep(10000);
+		System.out.print(gettitle().toString());
+		}
+		System.out.println("Out of While loop");
+//		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
+//		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
+//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
+//		Thread.sleep(5000);
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
+//		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
+//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
+//		Thread.sleep(5000);
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/AddQuote"));
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/AddQuote"));
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 	}
 	public void EditQuote() throws Exception {
@@ -91,7 +116,8 @@ public class C4CHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteEdit"));
 		Clickon(getwebelement(xml.getlocator("//locators/QuoteEdit")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
-		WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+		//WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+		waitForpageload();
 		
 	}
 	

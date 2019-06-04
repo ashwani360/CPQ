@@ -54,37 +54,40 @@
 <bcn>name=radioBCNTable</bcn>
 <applybutton>//a[text()='Apply']</applybutton>
 <LoadingDailog2>//*[@id='loading-dialog']</LoadingDailog2>
-<ApprovalTab>(//span[text()='Approval'])[1]</ApprovalTab>
+<ApprovalTab>(//span[contains(text(),'Approval')])[1]</ApprovalTab>
 <CPQQuoteTab>(//span[text()='Quote'])[1]</CPQQuoteTab>
 <Percentage>
-<DiscountType>//*[@name='nRCDiscountType_t']</DiscountType>
+<DiscountType>//*[contains(@id,'nRCDiscountType_t')]/a</DiscountType>
+<OptionstoSelect>//*[text()='Percentage Off']</OptionstoSelect>
 <NRCDiscount>//*[@id='discountNRCPerc_t']</NRCDiscount>
 <MRCDiscount>//*[@id='discountMRCPerc_t']</MRCDiscount>
-<CalculateDisscount>//a[text()='Calculate Discount'][1]</CalculateDisscount>
+<CalculateDisscount>//*[text()='Calculate Discount'][1]/parent::*/parent::*</CalculateDisscount>
 </Percentage>
 <Ammountoff>
-<DiscountType>//*[@name='nRCDiscountType_t']</DiscountType>
-<NRCDiscount>//*[@id='nRCDiscount_t-display']</NRCDiscount>
-<MRCDiscount>//*[@id='mRCDiscount_t-display']</MRCDiscount>
-<CalculateDisscount>//a[text()='Calculate Discount'][1]</CalculateDisscount>
+<DiscountType>//*[contains(@id,'nRCDiscountType_t')]/a</DiscountType>
+<OptionstoSelect>//*[text()='Amount Off']</OptionstoSelect>
+<NRCDiscount>//*[@id='nRCDiscount_t']</NRCDiscount>
+<MRCDiscount>//*[@id='mRCDiscount_t']</MRCDiscount>
+<CalculateDisscount>//*[text()='Calculate Discount'][1]/parent::*/parent::*</CalculateDisscount>
 </Ammountoff>
 <TargetPrice>
-<DiscountType>//*[@name='nRCDiscountType_t']</DiscountType>
-<NRCDiscount>//*[@id='nRCDiscountTP_t-display']</NRCDiscount>
-<MRCDiscount>//*[@id='mRCDiscountTP_t-display']</MRCDiscount>
-<CalculateDisscount>//a[text()='Calculate Discount'][1]</CalculateDisscount>
+<DiscountType>//*[contains(@id,'nRCDiscountType_t')]/a</DiscountType>
+<OptionstoSelect>//*[text()='Target Price']</OptionstoSelect>
+<NRCDiscount>//*[@id='nRCDiscountTP_t']</NRCDiscount>
+<MRCDiscount>//*[@id='mRCDiscountTP_t']</MRCDiscount>
+<CalculateDisscount>//*[text()='Calculate Discount'][1]/parent::*/parent::*</CalculateDisscount>
 </TargetPrice>
-<Showdisscountcoulumn>//*[@id='showColumnsMenu_t0']</Showdisscountcoulumn>
-<TcvDisscount>//span[contains(@id,'readonly_2_tCVDiscount')]</TcvDisscount>
+<Showdisscountcoulumn>//span[text()='Discount']/parent::*</Showdisscountcoulumn>
+<TcvDisscount>//td[contains(@class,'tCVDiscount_l')][1]/span</TcvDisscount>
 <Admin>//img[@title='Admin']/parent::*</Admin>
 <QuotetoOrderLink>(//a[@class='commerce-sidebar-item'])[1]</QuotetoOrderLink>
 <InternalUser>//a[text()='Internal Users']</InternalUser>
 <UsernameProxy>//a[text()='Ashwani.Singh31@colt.net']/parent::*/parent::*/td[5]/a</UsernameProxy>
 <CPQQuotelink>//span[text()='QuoteId']/parent::*/parent::*/parent::*/td[2]/div/a</CPQQuotelink>
-<ApproverComment>//input[contains(@id,'performer_comment')]</ApproverComment>
-<ApproveasApprover>//a[@title='Approve']</ApproveasApprover>
+<ApproverComment>//input[contains(@id,'comment')]</ApproverComment>
+<ApproveasApprover>//span[text()='Approve']</ApproveasApprover>
 <Proxylogout>//img[contains(@title,'Logout')]/parent::*</Proxylogout>
-<SubmitetoApproval>//a[text()='Submit to Approval']</SubmitetoApproval>
+<SubmitetoApproval>//span[text()='Submit to Approval']/parent::*/parent::*</SubmitetoApproval>
 <customersignatureTab>//span[text()='CUSTOMER SIGNATURE']</customersignatureTab>
 <GenrateProposal>//a[text()='Generate Proposal']</GenrateProposal>
 <ForCustomerSignature>//*[@name='finalizeProposalCheck_t']</ForCustomerSignature>
@@ -104,7 +107,10 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
-<ApproverCommentFinal>//*[@id='performer_comment']</ApproverCommentFinal>
-<FinalSubmit>//a[text()='Submit']</FinalSubmit>
+<ApproverCommentFinal>//span[text()='Approval is needed for the following reasons:']/parent::div/div/textarea</ApproverCommentFinal>
+<FinalSubmit>//span[text()='Submit']/parent::*/parent::*</FinalSubmit>
+<AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
+<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
+<AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 </locators>
 

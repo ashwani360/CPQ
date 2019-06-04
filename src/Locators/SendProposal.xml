@@ -56,13 +56,14 @@
 <LoadingDailog2>//*[@id='loading-dialog']</LoadingDailog2>
 <ApprovalTab>(//span[text()='Approval'])[1]</ApprovalTab>
 <SubmitetoApproval>//a[text()='Submit to Approval']</SubmitetoApproval>
-<customersignatureTab>//span[text()='CUSTOMER SIGNATURE']</customersignatureTab>
-<GenrateProposal>//a[text()='Generate Proposal']</GenrateProposal>
-<ForCustomerSignature>//*[@name='finalizeProposalCheck_t']</ForCustomerSignature>
-<Mod>//select[@name='workflow_t']</Mod>
+<customersignatureTab>//span[text()='Customer Signature']</customersignatureTab>
+<GenrateProposal>//span[text()='Generate Proposal']/parent::*/parent::*</GenrateProposal>
+<ForCustomerSignature>//*[@aria-labelledby='finalizeProposalCheck_t-label']</ForCustomerSignature>
+<Mod>//div[contains(@id,'workflow_t')]/a</Mod>
+<ModValue>//div[text()='Workflow']</ModValue>
 <to>//*[@id='toRecepient_t']</to>
-<SendtoCustomer>//a[text()='Send Proposal']</SendtoCustomer>
-<SentoSign>(//a[text()='Request Signature'])[2]</SentoSign>
+<SendtoCustomer>//span[text()='Send Proposal']/parent::*/parent::*</SendtoCustomer>
+<SentoSign>(//span[text()='Request Signature']/parent::*/parent::*)[2]</SentoSign>
 <OrderTab>//span[text()='ORDER']</OrderTab>
 <QuoteAction>name=quoteActionAcceptOrReject_t</QuoteAction>
 <Reasone>name=reasonForStatusWon_t</Reasone>
@@ -76,5 +77,8 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
+<AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
+<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
+<AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 </locators>
 

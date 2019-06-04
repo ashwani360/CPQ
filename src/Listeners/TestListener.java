@@ -27,6 +27,7 @@ public class TestListener extends DriverTestcase implements ITestListener {
         Log.info("I am on Start method " + iTestContext.getName());
         
         iTestContext.setAttribute("WebDriver", this.getwebdriver());
+        
         System.out.println("Driver instance in Listemer"+this.getwebdriver());
     }
  
@@ -54,7 +55,7 @@ public class TestListener extends DriverTestcase implements ITestListener {
     }
  
     public void onTestFailure(ITestResult iTestResult) {
-        Log.info("I am on TestFailure method " +  getTestMethodName(iTestResult) + " failed");
+       // Log.info("I am on TestFailure method " +  getTestMethodName(iTestResult) + " failed");
         //iTestResult.setStatus(0);
         //Get driver from BaseTest and assign to local webdriver variable.
     ExtentTestManager.getTest().log(LogStatus.FAIL, getTestMethodName(iTestResult)+" : Test Method has been Failed");
@@ -65,9 +66,9 @@ public class TestListener extends DriverTestcase implements ITestListener {
         //Take base64Screenshot screenshot.
         String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)getwebdriver()).
                 getScreenshotAs(OutputType.BASE64);
- 
+        System.out.println("Result Messages"+iTestResult.getThrowable().getCause().toString());
         //Extentreports log and screenshot operations for failed tests.
-        ExtentTestManager.getTest().log(LogStatus.FAIL,"Test Failed",
+        ExtentTestManager.getTest().log(LogStatus.FAIL,iTestResult.getThrowable().getCause().toString()+
                 ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
        
     }

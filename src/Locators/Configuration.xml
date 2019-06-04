@@ -22,13 +22,13 @@
 <Opportunuitynumber>//span[text()='265292']/parent::*/parent::*/following-sibling::*/div/a</Opportunuitynumber>
 <QuoteTab>//div[text()='Quotes']</QuoteTab>
 <AddQuote>//bdi[text()='Add']</AddQuote>
-<StandrdQuote>id=readonly_1_quoteType_t</StandrdQuote>
-<QuoteID>id=readonly_1_quoteID_t</QuoteID>
-<Dealclass>id=readonly_1_dealClass_t</Dealclass>
-<Technicalcomplexity>id=readonly_1_technicalComplexity_t</Technicalcomplexity>
-<LegalComplexity>id=readonly_1_legalComplexity_t</LegalComplexity>
+<StandrdQuote>id=quoteType_t-ro</StandrdQuote>
+<QuoteID>id=quoteID_t</QuoteID>
+<Dealclass>id=dealClass_t</Dealclass>
+<Technicalcomplexity>id=technicalComplexity_t</Technicalcomplexity>
+<LegalComplexity>id=legalComplexity_t</LegalComplexity>
 <LoadingDailog>//*[@id='loading-mask']</LoadingDailog>
-<AddProduct>//a[text()='Add Product']</AddProduct>
+<AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 <Ethernetfamily>//a[text()='Ethernet']</Ethernetfamily>
 <EthernetProductP2P>//a[text()='Ethernet Line']</EthernetProductP2P>
 <EthernetHub>//a[text()='Ethernet Hub']</EthernetHub>
@@ -69,12 +69,14 @@
 <Closebutton>//td[text()='CLOSE']</Closebutton>
 <SelectManualOffNet>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input)[1]</SelectManualOffNet>
 <SelectManualOffNetBEnd>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input</SelectManualOffNetBEnd>
+<SelectManualOffNetRe>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[7]/input)[1]</SelectManualOffNetRe>
+<SelectManualOffNetBEndRe>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[7]/input</SelectManualOffNetBEndRe>
 <NearNetAsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[1]</NearNetAsite>
 <NearNetBsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[2]</NearNetBsite>
-<saveQuote>//a[@id='save']</saveQuote>
-<updateQuote>//a[@id='save']</updateQuote>
+<saveQuote>(//*[text()='Save']/parent::*/parent::*)[2]</saveQuote>
+<updateQuote>//a[@id='update']</updateQuote>
 <Reconfigure>(//*[@title='Reconfigure'])[index]</Reconfigure>
-<Requesttype>//input[@value='Typevalue']</Requesttype>
+<Requesttype>//*[text()='Typevalue']/following-sibling::div[1]/input</Requesttype>
 <Revalidate>//span[text()='Revalidate']</Revalidate>
 <Renagociate>//span[text()='Renegotiate']</Renagociate>
 <Budgetrytofirm>//span[text()='Budgetary to firm']</Budgetrytofirm>
@@ -113,5 +115,9 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
+<SectionName>//label[text()='Sectionname']/parent::*/parent::*/parent::*/parent::*/parent::*</SectionName>
+<Clickableelemt>//label[text()='Sectionname']</Clickableelemt>
+<AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
+<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
 </locators>
 
