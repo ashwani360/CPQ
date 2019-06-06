@@ -22,7 +22,7 @@ public class StandardOrderOffnet extends DriverTestcase {
 		Configurationhelper.get().AddProduct(Data);
 		
 		Explorehelper.get().NavigatetoExplore();
-		Explorehelper.get().ExploreWorkflow();
+		Explorehelper.get().ExploreWorkflow("Approve");
 		C4Chelper.get().NavigatetoC4C();
 		C4Chelper.get().Movetoaccount(Data);
 		C4Chelper.get().MovetoOpportunuity(Data);
@@ -33,7 +33,7 @@ public class StandardOrderOffnet extends DriverTestcase {
 		if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
 		{
 		Configurationhelper.get().ReconfigureAgain(Data);
-			Explorehelper.get().ExploreWorkflow();
+			Explorehelper.get().ExploreWorkflow("Approve");
 			C4Chelper.get().NavigatetoC4C();
 			C4Chelper.get().Movetoaccount(Data);
 			C4Chelper.get().MovetoOpportunuity(Data);
@@ -79,7 +79,7 @@ public class StandardOrderOffnet extends DriverTestcase {
 			
 	//Configurationhelper.get().AddProducttest(Data);
 	
-	Configurationhelper.get().Intercation();
+	//Configurationhelper.get().Intercation();
 	}
 @Test(dataProviderClass=DataReader.class,dataProvider="NewStandrdOrder")
 public void EndtoEndOrdertest(Object[][] Data) throws Exception

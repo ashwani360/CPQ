@@ -101,7 +101,7 @@
                     <div class="method-list-content failed suite-CPQ_End_to_End_Order">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-CPQ_End_to_End_Order" title="Testscript.StandardOrder" hash-for-method="EndtoEndOrder([[K0120424, 266724, Ethernet &gt; Ethernet Hub, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090,...)">EndtoEndOrder([[K0120424, 266724, Ethernet > Ethernet Hub, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090,...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-CPQ_End_to_End_Order" title="Testscript.StandardOrderOffnet" hash-for-method="EndtoEndOrderOffnet([[K0120424, 264973, Ethernet &gt; Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090...)">EndtoEndOrderOffnet([[K0120424, 264973, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-CPQ_End_to_End_Order -->
@@ -119,32 +119,34 @@
           <div class="suite-CPQ_End_to_End_Order-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">Testscript.StandardOrder</span>
+              <span class="class-name">Testscript.StandardOrderOffnet</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="EndtoEndOrder([[K0120424, 266724, Ethernet &gt; Ethernet Hub, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090,...)">
-                  </a> <!-- EndtoEndOrder([[K0120424, 266724, Ethernet > Ethernet Hub, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090,...) -->
-                  <span class="method-name">EndtoEndOrder</span>
-                  <span class="parameters">([[K0120424, 266724, Ethernet > Ethernet Hub, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, , 1 Year, , 10 Gbps, Protected, Onnet, , Fast Track, Ashwani, Singh, Ashwani.singh31@colt.net, 44 8882216537, 123566534, 2147483647, New BCN, Quote Level > Percentage Off, 3, 3, Email, ashwanis@yopmail.com, Atest, BTest, No, null, Hub Product With 5 to 10 Disscount - End to End with Docu-Sign Intergration, Yes], [, , Ethernet > Ethernet Hub, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, , 1 Year, , 10 Gbps, Protected, Onnet, , Fast Track, , , , , , , , , , , , , Atest, BTest, No, null, , ]])</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for Driver.DriverHelper$2@5bb3d42d (tried for 15 second(s) with 15 SECONDS interval)
+                  <a name="EndtoEndOrderOffnet([[K0120424, 264973, Ethernet &gt; Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090...)">
+                  </a> <!-- EndtoEndOrderOffnet([[K0120424, 264973, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090...) -->
+                  <span class="method-name">EndtoEndOrderOffnet</span>
+                  <span class="parameters">([[K0120424, 264973, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 1 Year, , 1 Gbps, Unprotected, Manual Offnet, Manual Offnet-Renegotiate, Fast Track, Ashwani, Singh, Ashwani.singh31@colt.net, 44 8882216537, 123566534, 2147483647, New BCN, , , , Email, ashwanis@yopmail.com, Atest, BTest, No, null, Hub Product With 5 to 10 Disscount - End to End with Docu-Sign Intergration, Yes], [, , Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 1 Year, , 1 Gbps, Unprotected, Manual Offnet-Revalidate, Onnet, Fast Track, , , , , , , , , , , , , Atest, BTest, No, null, , ]])</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for Driver.DriverHelper$2@4b360972 (tried for 180 second(s) with 15 SECONDS interval)
 	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.getwebelement(DriverHelper.java:279)
-	at ScriptHelper.LoginHelper.Login(LoginHelper.java:114)
-	at Testscript.StandardOrder.EndtoEndOrder(StandardOrder.java:16)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;username&quot;}
-  (Session info: chrome=74.0.3729.169)
+	at Driver.DriverHelper.getwebelement(DriverHelper.java:294)
+	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:641)
+	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:46)
+	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1221)
+	at Testscript.StandardOrderOffnet.EndtoEndOrderOffnet(StandardOrderOffnet.java:22)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;siteAddressBEnd&quot;}
+  (Session info: chrome=75.0.3770.80)
   (Driver info: chromedriver=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 64 milliseconds
+Command duration or timeout: 11 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
 System info: host: &apos;360NDCLP119&apos;, ip: &apos;172.26.44.65&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_162&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab), userDataDir=C:\Users\ashwanis\AppData\Local\Temp\scoped_dir9220_12730}, takesHeapSnapshot=true, pageLoadStrategy=none, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=74.0.3729.169, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
-Session ID: 6787830771dfdd1145f80f7651941f85
-*** Element info: {Using=id, value=username}
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab), userDataDir=C:\Users\ashwanis\AppData\Local\Temp\scoped_dir2104_16797}, takesHeapSnapshot=true, pageLoadStrategy=none, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=75.0.3770.80, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: 8d152bdd4651dbe62fae1f90cdcb0f73
+*** Element info: {Using=id, value=siteAddressBEnd}
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
@@ -152,11 +154,11 @@ Session ID: 6787830771dfdd1145f80f7651941f85
 	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:453)
 	at org.openqa.selenium.By$ById.findElement(By.java:218)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at Driver.DriverHelper$2.apply(DriverHelper.java:281)
+	at Driver.DriverHelper$2.apply(DriverHelper.java:296)
 	at Driver.DriverHelper$2.apply(DriverHelper.java:1)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 27 more
-... Removed 28 stack frames
+	... 29 more
+... Removed 27 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -178,11 +180,11 @@ Session ID: 6787830771dfdd1145f80f7651941f85
   &lt;/listeners&gt;
   &lt;test name=&quot;CPQ End to End Order&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;Testscript.StandardOrder&quot;&gt;
+      &lt;class name=&quot;Testscript.StandardOrderOffnet&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;EndtoEndOrder&quot;/&gt;
+          &lt;include name=&quot;EndtoEndOrderOffnet&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- Testscript.StandardOrder --&gt;
+      &lt;/class&gt; &lt;!-- Testscript.StandardOrderOffnet --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- CPQ End to End Order --&gt;
 &lt;/suite&gt; &lt;!-- CPQ End to End Order --&gt;
@@ -224,14 +226,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'EndtoEndOrder')
-data.setCell(0, 2, 'Testscript.StandardOrder')
-data.setCell(0, 3, 15739);
+data.setCell(0, 1, 'EndtoEndOrderOffnet')
+data.setCell(0, 2, 'Testscript.StandardOrderOffnet')
+data.setCell(0, 3, 448640);
 window.suiteTableData['CPQ_End_to_End_Order']= { tableData: data, tableDiv: 'times-div-CPQ_End_to_End_Order'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 15 seconds</span>
+              <span class="suite-total-time">Total running time: 7 minutes</span>
               <div id="times-div-CPQ_End_to_End_Order">
               </div> <!-- times-div-CPQ_End_to_End_Order -->
             </div> <!-- times-div -->
@@ -250,7 +252,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">Testscript.StandardOrder</span>
+              <span class="ignored-class-name">Testscript.StandardOrderOffnet</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">EndtoEndOrdertest</span>
                 <br/>
@@ -264,28 +266,28 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">Testscript.StandardOrder</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">Testscript.StandardOrderOffnet</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">BeforeSuite</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-method before">
-                <span class="method-name">BeforeMethod(public void Testscript.StandardOrder.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception,...)</span>
-                <span class="method-start">1838 ms</span>
+                <span class="method-name">BeforeMethod(public void Testscript.StandardOrderOffnet.EndtoEndOrderOffnet(java.lang.Object[][]) throws java.lan...)</span>
+                <span class="method-start">1922 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">EndtoEndOrder([[K0120424, 266724, Ethernet > Ethernet Hub, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090,...)</span>
-                <span class="method-start">14499 ms</span>
+                <span class="method-name">EndtoEndOrderOffnet([[K0120424, 264973, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090...)</span>
+                <span class="method-start">27051 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">Teardown2</span>
-                <span class="method-start">30673 ms</span>
+                <span class="method-start">476401 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-test after">
                 <span class="method-name">Teardown</span>
-                <span class="method-start">30678 ms</span>
+                <span class="method-start">476404 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

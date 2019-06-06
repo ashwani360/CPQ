@@ -79,7 +79,19 @@ public class OrderingHelper extends DriverHelper{
 			Clickon(getwebelement(xml.getlocator("//locators/ConfirQuoteAction")));
 		}
 		
-			
+		WaitforElementtobeclickable(xml.getlocator("//locators/OrderNote"));
+		for(int i=0;i<=5;i++)
+		{
+			try {
+				Clickon(getwebelement("(//*[text()='OK']/parent::*/parent::*)[1]"));
+				System.out.println(" No Popup displayed");
+			}
+			catch(Exception e)
+			{
+				System.out.println(" No Popup displayed");
+			}
+		}
+		WaitforElementtobeclickable(xml.getlocator("//locators/AcceptatedProposal"));	
 			
 	
 		
@@ -130,10 +142,15 @@ public class OrderingHelper extends DriverHelper{
 			//Clickon(getwebelement(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1))));
 			
 		}
-		//Clickon(getwebelement(xml.getlocator("//locators/SaveInfo")));
+		Clickon(getwebelement(xml.getlocator("//locators/SaveInfo")));
+		Thread.sleep(2000);
+		
 		//WaitforElementtobeclickable(xml.getlocator("//locators/CreateOrder"));
 		//javascriptexecutor(getwebelement(xml.getlocator("//locators/CreateOrder")));
 		Clickon(getwebelement(xml.getlocator("//locators/CreateOrder")));
+		Thread.sleep(2000);
+		Pagerefresh();
+		WaitforElementtobeclickable(xml.getlocator("//locators/OrderConfirmation"));
 	}
 	
 	public void AcceptsQuotebyEsignature(Object[][] Inputdata) throws Exception {

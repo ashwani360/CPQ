@@ -69,13 +69,13 @@
 <Closebutton>//td[text()='CLOSE']</Closebutton>
 <SelectManualOffNet>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input)[1]</SelectManualOffNet>
 <SelectManualOffNetBEnd>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input</SelectManualOffNetBEnd>
-<SelectManualOffNetRe>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[7]/input)[1]</SelectManualOffNetRe>
-<SelectManualOffNetBEndRe>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[7]/input</SelectManualOffNetBEndRe>
+<SelectManualOffNetRevalidate>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[7]/input)[1]</SelectManualOffNetRevalidate>
+<SelectManualOffNetRevaidateBEnd>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[7]/input</SelectManualOffNetRevaidateBEnd>
 <NearNetAsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[1]</NearNetAsite>
 <NearNetBsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[2]</NearNetBsite>
 <saveQuote>(//*[text()='Save']/parent::*/parent::*)[2]</saveQuote>
 <updateQuote>//a[@id='update']</updateQuote>
-<Reconfigure>(//*[@title='Reconfigure'])[index]</Reconfigure>
+<Reconfigure>//span[text()='Reconfigure']/parent::*/parent::*</Reconfigure>
 <Requesttype>//*[text()='Typevalue']/following-sibling::div[1]/input</Requesttype>
 <Revalidate>//span[text()='Revalidate']</Revalidate>
 <Renagociate>//span[text()='Renegotiate']</Renagociate>

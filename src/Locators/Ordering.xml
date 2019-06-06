@@ -72,15 +72,19 @@
 <Accordian>(//button[@class='accordion'])[index]</Accordian>
 <Asitecomponey>(//td[contains(@headers,'additionalQuoteInformation_t')][5])[index]</Asitecomponey>
 <BSitecom>(//td[contains(@headers,'additionalQuoteInformation_t')][6])[index]</BSitecom>
-<SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
-<CreateOrder>//*[text()='Create Order']</CreateOrder>
+<SaveInfo>(//*[text()='Save']/parent::*/parent::*)[2]</SaveInfo>
+<CreateOrder>//*[text()='Create Order']/parent::*/parent::*</CreateOrder>
 <AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
 <AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
 <AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
-<EditCustomerDetails>//label[text()='Add/Edit details (Please click on Save after editing the information in table)']</EditCustomerDetails>
+<EditCustomerDetails>//*[text()='Add/Edit details (Please click on Save after editing the information in table)']/parent::*</EditCustomerDetails>
 <AcceptsDroplist>//*[@id='oj-select-choice-quoteActionAcceptOrReject_t']//a</AcceptsDroplist>
 <AcceptsorReject>//*[text()='Accept']</AcceptsorReject>
 <Reasonedroplist>//*[@id='oj-select-choice-reasonForStatusWon_t']//a</Reasonedroplist>
 <Reasone>//li/*[text()='Price']</Reasone>
+<OrderNote>id=requesterComments_t</OrderNote>
+<AcceptatedProposal>(//a[contains(text(),".pdf")])[2]</AcceptatedProposal>
+<OrderConfirmation>//*[text()='#Your Order request is on-going. You will be updated shortly.']</OrderConfirmation>
+<Ordernubmer></Ordernubmer>
 </locators>
 

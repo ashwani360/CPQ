@@ -23,8 +23,12 @@ public class ExploreHelper extends DriverHelper {
 		Geturl(Getkeyvalue("Explore_URL"));
 	
 	}
-	public void ExploreWorkflow() throws InterruptedException, Exception 
+	public void ExploreWorkflow(String inputdata) throws InterruptedException, Exception 
 	{
+		switch(inputdata)
+		{
+		case "Approve":
+		{	
 		//List data=RequestID.get();
 		//data=RequestID.get();
 		List data=RequestID.get();
@@ -42,11 +46,16 @@ public class ExploreHelper extends DriverHelper {
 			for(int j=0;j<newdata.length;j++) {
 				if(!newdata[j].toString().equals(""))
 				{
+					
 					System.out.println("A Site for lineitem"+i+" is "+newdata[j].toString());
 					WaitforElementtobeclickable(xml.getlocator("//locators/ONQTWorkQuoteLink"));
 					Clickon(getwebelement(xml.getlocator("//locators/ONQTWorkQuoteLink")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString()));
 					Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString())));
+//		            WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190527115421"));
+					
+//					Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190527115421")));
+//					System.out.println("workflow");
 					Thread.sleep(5000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
 					Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
@@ -58,6 +67,13 @@ public class ExploreHelper extends DriverHelper {
 					WaitforElementtobeclickable(xml.getlocator("//locators/CreateCost"));
 					Clickon(getwebelement(xml.getlocator("//locators/CreateCost")));
 					Thread.sleep(5000);
+					String a =Getattribute(getwebelement("//label[text()='Conversion Type']/following::td[1]/div//input"),"value");
+					System.out.println(a);
+				if(a.equals("Revalidation")) {
+					WaitforElementtobeclickable(xml.getlocator("//locators/QuoteValidity"));
+					SendKeys(getwebelement(xml.getlocator("//locators/QuoteValidity")),"45");	
+				}
+				else {
 					WaitforElementtobeclickable(xml.getlocator("//locators/CarrierDropdown"));
 					Clickon(getwebelement(xml.getlocator("//locators/CarrierDropdown")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Colt"));
@@ -94,6 +110,7 @@ public class ExploreHelper extends DriverHelper {
 					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "ETH"));
 					
 					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "ETH")));
+				}
 					WaitforElementtobeclickable(xml.getlocator("//locators/CreateCostSubmit"));
 					Clickon(getwebelement(xml.getlocator("//locators/CreateCostSubmit")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/TypeDropdown"));
@@ -120,18 +137,154 @@ public class ExploreHelper extends DriverHelper {
 					WaitforElementtobeclickable(xml.getlocator("//locators/Logout"));
 					Clickon(getwebelement(xml.getlocator("//locators/Logout")));*/
 				}
+				
 				else
 				{
 					System.out.println("No related Explore Request Raised");
 				}
 			
 			}
+		  }
+			break;
 		}
-		
-		
-		
+		case "Reject":
+		{
+			List data=RequestID.get();
+			//data=RequestID.get();
+			for(int i=0;i<data.size();i++)
+			{
+				Object[] newdata=(Object[]) data.get(i);
+				System.out.println("Size Foe Each line item"+newdata.length);
+				System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
+				System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
+			}
+			for(int i=0;i<data.size();i++)
+			{
+				Object[] newdata=(Object[]) data.get(i);
+				for(int j=0;j<newdata.length;j++) {
+					if(!newdata[j].toString().equals(""))
+					{
+						
+						System.out.println("A Site for lineitem"+i+" is "+newdata[j].toString());
+						WaitforElementtobeclickable(xml.getlocator("//locators/ONQTWorkQuoteLink"));
+						Clickon(getwebelement(xml.getlocator("//locators/ONQTWorkQuoteLink")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString()));
+						Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString())));
+//			            WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190526084256"));
+						
+//						Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190526084256")));
+//						System.out.println("workflow");
+						Thread.sleep(5000);
+						WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
+						Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMe"));
+						Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMe")));
+						Thread.sleep(5000);
+						WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
+						Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/Reject"));
+						Clickon(getwebelement(xml.getlocator("//locators/Reject")));
+						SendKeys(getwebelement(xml.getlocator("//locators/AddMessageTextArea")),"This ONQT Work is Rejected by Automation");
+						Clickon(getwebelement(xml.getlocator("//locators/AddMessageSubmit")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/BacktoQuote"));
+						Clickon(getwebelement(xml.getlocator("//locators/BacktoQuote")));
+						Thread.sleep(5000);
+						
+					
+						
+						/*WaitforElementtobeclickable(xml.getlocator("//locators/MenuItem"));
+						Clickon(getwebelement(xml.getlocator("//locators/MenuItem")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/Logout"));
+						Clickon(getwebelement(xml.getlocator("//locators/Logout")));*/
+					}
+					
+					else
+					{
+						System.out.println("No related Explore Request Raised");
+					}
+				
+				}
+			  }
+			
+			
+			break;
+		}
+		case "Supplier No Bid":
+		{
+			List data=RequestID.get();
+			//data=RequestID.get();
+			for(int i=0;i<data.size();i++)
+			{
+				Object[] newdata=(Object[]) data.get(i);
+				System.out.println("Size Foe Each line item"+newdata.length);
+				System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
+				System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
+			}
+			for(int i=0;i<data.size();i++)
+			{
+				Object[] newdata=(Object[]) data.get(i);
+				for(int j=0;j<newdata.length;j++) {
+					if(!newdata[j].toString().equals(""))
+					{
+						
+						System.out.println("A Site for lineitem"+i+" is "+newdata[j].toString());
+						WaitforElementtobeclickable(xml.getlocator("//locators/ONQTWorkQuoteLink"));
+						Clickon(getwebelement(xml.getlocator("//locators/ONQTWorkQuoteLink")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString()));
+						Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString())));
+//			            WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190527115421"));
+						
+//						Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190527115421")));
+//						System.out.println("workflow");
+						Thread.sleep(5000);
+						WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
+						Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMe"));
+						Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMe")));
+						Thread.sleep(5000);
+						WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
+						Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/CreateCost"));
+						Clickon(getwebelement(xml.getlocator("//locators/CreateCost")));
+						Thread.sleep(5000);
+						
+					
+						WaitforElementtobeclickable(xml.getlocator("//locators/CarrierDropdown"));
+						Clickon(getwebelement(xml.getlocator("//locators/CarrierDropdown")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Colt"));
+						Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Colt")));
+						
+						
+						WaitforElementtobeclickable(xml.getlocator("//locators/CreateSupplierNoBidButton"));
+						Clickon(getwebelement(xml.getlocator("//locators/CreateSupplierNoBidButton")));
+						Thread.sleep(5000);
+						WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
+						Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/ChangeStatus"));
+						Clickon(getwebelement(xml.getlocator("//locators/ChangeStatus")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/CloseRequest"));
+						Clickon(getwebelement(xml.getlocator("//locators/CloseRequest")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/BacktoQuote"));
+						Clickon(getwebelement(xml.getlocator("//locators/BacktoQuote")));
+						/*WaitforElementtobeclickable(xml.getlocator("//locators/MenuItem"));
+						Clickon(getwebelement(xml.getlocator("//locators/MenuItem")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/Logout"));
+						Clickon(getwebelement(xml.getlocator("//locators/Logout")));*/
+					}
+					
+					else
+					{
+						System.out.println("No related Explore Request Raised");
+					}
+				
+				}
+			  }
+			
+			break;
+		}
 
 		
+	}
 	}
 	
 

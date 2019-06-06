@@ -2,55 +2,57 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="CPQ End to End Order" duration-ms="30449" started-at="2019-06-04T00:21:49Z" finished-at="2019-06-04T00:22:19Z">
+  <suite name="CPQ End to End Order" duration-ms="476159" started-at="2019-06-05T17:12:29Z" finished-at="2019-06-05T17:20:25Z">
     <groups>
     </groups>
-    <test name="CPQ End to End Order" duration-ms="30449" started-at="2019-06-04T00:21:49Z" finished-at="2019-06-04T00:22:19Z">
-      <class name="Testscript.StandardOrder">
-        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrder@62ee68d8]" name="BeforeSuite" is-config="true" duration-ms="229" started-at="2019-06-04T05:51:48Z" finished-at="2019-06-04T05:51:49Z">
+    <test name="CPQ End to End Order" duration-ms="476159" started-at="2019-06-05T17:12:29Z" finished-at="2019-06-05T17:20:25Z">
+      <class name="Testscript.StandardOrderOffnet">
+        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrderOffnet@62ee68d8]" name="BeforeSuite" is-config="true" duration-ms="245" started-at="2019-06-05T22:42:29Z" finished-at="2019-06-05T22:42:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeSuite -->
-        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrder@62ee68d8]" name="BeforeMethod" is-config="true" duration-ms="12661" started-at="2019-06-04T05:51:50Z" finished-at="2019-06-04T05:52:03Z">
+        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOffnet@62ee68d8]" name="BeforeMethod" is-config="true" duration-ms="25129" started-at="2019-06-05T22:42:31Z" finished-at="2019-06-05T22:42:56Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Testscript.StandardOrder.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception]]>
+                <![CDATA[public void Testscript.StandardOrderOffnet.EndtoEndOrderOffnet(java.lang.Object[][]) throws java.lang.Exception]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@69ce2f62]]>
+                <![CDATA[org.testng.TestRunner@407f2029]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[[Ljava.lang.Object;@c9d82f9]]>
+                <![CDATA[[Ljava.lang.Object;@77020328]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeMethod -->
-        <test-method status="FAIL" signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrder@62ee68d8]" name="EndtoEndOrder" duration-ms="15739" started-at="2019-06-04T05:52:03Z" data-provider="NewStandrdOrder" finished-at="2019-06-04T05:52:19Z">
+        <test-method status="FAIL" signature="EndtoEndOrderOffnet([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOffnet@62ee68d8]" name="EndtoEndOrderOffnet" duration-ms="448640" started-at="2019-06-05T22:42:56Z" data-provider="NewStandrdOrder" finished-at="2019-06-05T22:50:25Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[[Ljava.lang.Object;@3b809711]]>
+                <![CDATA[[[Ljava.lang.Object;@5fb44964]]>
               </value>
             </param>
           </params>
           <exception class="org.openqa.selenium.TimeoutException">
             <message>
-              <![CDATA[Expected condition failed: waiting for Driver.DriverHelper$2@5bb3d42d (tried for 15 second(s) with 15 SECONDS interval)]]>
+              <![CDATA[Expected condition failed: waiting for Driver.DriverHelper$2@4b360972 (tried for 180 second(s) with 15 SECONDS interval)]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for Driver.DriverHelper$2@5bb3d42d (tried for 15 second(s) with 15 SECONDS interval)
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for Driver.DriverHelper$2@4b360972 (tried for 180 second(s) with 15 SECONDS interval)
 	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.getwebelement(DriverHelper.java:279)
-	at ScriptHelper.LoginHelper.Login(LoginHelper.java:114)
-	at Testscript.StandardOrder.EndtoEndOrder(StandardOrder.java:16)
+	at Driver.DriverHelper.getwebelement(DriverHelper.java:294)
+	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:641)
+	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:46)
+	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1221)
+	at Testscript.StandardOrderOffnet.EndtoEndOrderOffnet(StandardOrderOffnet.java:22)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -75,19 +77,18 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"username"}
-  (Session info: chrome=74.0.3729.169)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"siteAddressBEnd"}
+  (Session info: chrome=75.0.3770.80)
   (Driver info: chromedriver=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 64 milliseconds
+Command duration or timeout: 11 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
 System info: host: '360NDCLP119', ip: '172.26.44.65', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_162'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab), userDataDir=C:\Users\ashwanis\AppData\Local\Temp\scoped_dir9220_12730}, takesHeapSnapshot=true, pageLoadStrategy=none, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=74.0.3729.169, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
-Session ID: 6787830771dfdd1145f80f7651941f85
-*** Element info: {Using=id, value=username}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab), userDataDir=C:\Users\ashwanis\AppData\Local\Temp\scoped_dir2104_16797}, takesHeapSnapshot=true, pageLoadStrategy=none, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=75.0.3770.80, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: 8d152bdd4651dbe62fae1f90cdcb0f73
+*** Element info: {Using=id, value=siteAddressBEnd}
+	at sun.reflect.GeneratedConstructorAccessor29.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
@@ -97,25 +98,25 @@ Session ID: 6787830771dfdd1145f80f7651941f85
 	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:453)
 	at org.openqa.selenium.By$ById.findElement(By.java:218)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at Driver.DriverHelper$2.apply(DriverHelper.java:281)
+	at Driver.DriverHelper$2.apply(DriverHelper.java:296)
 	at Driver.DriverHelper$2.apply(DriverHelper.java:1)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 27 more
+	... 29 more
 ]]>
             </full-stacktrace>
           </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- EndtoEndOrder -->
-        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrder@62ee68d8]" name="Teardown2" is-config="true" duration-ms="3" started-at="2019-06-04T05:52:19Z" finished-at="2019-06-04T05:52:19Z">
+        </test-method> <!-- EndtoEndOrderOffnet -->
+        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOffnet@62ee68d8]" name="Teardown2" is-config="true" duration-ms="1" started-at="2019-06-05T22:50:25Z" finished-at="2019-06-05T22:50:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown2 -->
-        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrder@62ee68d8]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-06-04T05:52:19Z" finished-at="2019-06-04T05:52:19Z">
+        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOffnet@62ee68d8]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-06-05T22:50:25Z" finished-at="2019-06-05T22:50:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown -->
-      </class> <!-- Testscript.StandardOrder -->
+      </class> <!-- Testscript.StandardOrderOffnet -->
     </test> <!-- CPQ End to End Order -->
   </suite> <!-- CPQ End to End Order -->
 </testng-results>
