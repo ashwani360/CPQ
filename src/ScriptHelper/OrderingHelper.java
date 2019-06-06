@@ -80,17 +80,16 @@ public class OrderingHelper extends DriverHelper{
 		}
 		
 		WaitforElementtobeclickable(xml.getlocator("//locators/OrderNote"));
-		for(int i=0;i<=5;i++)
-		{
+		
 			try {
 				Clickon(getwebelement("(//*[text()='OK']/parent::*/parent::*)[1]"));
-				System.out.println(" No Popup displayed");
+				System.out.println(" Popup displayed");
 			}
 			catch(Exception e)
 			{
 				System.out.println(" No Popup displayed");
 			}
-		}
+	
 		WaitforElementtobeclickable(xml.getlocator("//locators/AcceptatedProposal"));	
 			
 	
