@@ -1284,7 +1284,11 @@ public class ConfigurationHelper extends DriverHelper{
 				System.out.println("Date for B site"+newdata[1].toString());
 				System.out.println("Reconfigure the the lineiten number"+i);
 				WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
-				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure").replace("index", String.valueOf(i+1))));
+System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+				Thread.sleep(3000);
+				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				WaitforElementtobeclickable(xml.getlocator("//locators/updateQuote"));
 				
