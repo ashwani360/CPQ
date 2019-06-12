@@ -3,6 +3,8 @@ package Driver;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -15,7 +17,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 
 public class DataReader {
-	
+	public static boolean isNumeric(String str) {
+		  NumberFormat formatter = NumberFormat.getInstance();
+		  ParsePosition pos = new ParsePosition(0);
+		  formatter.parse(str, pos);
+		  return str.length() == pos.getIndex();
+		}
 	@DataProvider(name="NewStandrdOrder", parallel=false)
 	public static Object[][] datareader() throws IOException
 	{
@@ -45,21 +52,27 @@ public class DataReader {
 		 int firstrow=0;
 		 int Lasttrow=0;
 		 int rownumber=0;
-		 int size=1;
+		 int size=0;
+		 int size1=0;
 		 String Needtoinclude="No";
 		 for(int i=2;i<=sheet.getLastRowNum();i++)
 		 { 
+			 System.out.println(" Row number in "+i);
 			 r=sheet.getRow(i);
 			 for(int resion=0;resion<=sheet.getNumMergedRegions()-1;resion++)
 			 {
-				// System.out.println(sheet.getMergedRegion(resion).toString());
-				 if(sheet.getMergedRegion(resion).toString().contains("[A") && !sheet.getMergedRegion(resion).toString().contains("[A1:") && i>=sheet.getMergedRegion(resion).getFirstRow() && i<=sheet.getMergedRegion(resion).getLastRow()&&i>Lasttrow )
+				System.out.println(sheet.getMergedRegion(resion).toString());
+				 String numberofrow=sheet.getMergedRegion(resion).toString().substring(sheet.getMergedRegion(resion).toString().indexOf("[")+2, sheet.getMergedRegion(resion).toString().indexOf(":"));
+				 System.out.println(isNumeric(numberofrow));
+				 System.out.println("Extracted strin"+numberofrow);
+				 if(sheet.getMergedRegion(resion).toString().contains("[A") && isNumeric(numberofrow)&& !sheet.getMergedRegion(resion).toString().contains("[A1:") && i>=sheet.getMergedRegion(resion).getFirstRow() && i<=sheet.getMergedRegion(resion).getLastRow()&&i>Lasttrow )
 				 {//System.out.println(sheet.getMergedRegion(resion).toString());
 					 System.out.println("Matching Resion"+sheet.getMergedRegion(resion));
 					 firstrow=sheet.getMergedRegion(resion).getFirstRow();
 					 Lasttrow=sheet.getMergedRegion(resion).getLastRow();
 					 size=Lasttrow-firstrow+1;
 					 //firstrow=i;
+					 size1=size;
 					 data=new Object[size][r1.getLastCellNum()];
 					System.out.println("First and last row"+firstrow+"-"+Lasttrow+" with iteration"+i);
 					 System.out.println("First and last row"+size);
@@ -67,12 +80,22 @@ public class DataReader {
 					 System.out.println("Rownumber Counter"+i);
 					 Needtoinclude=sheet.getRow(firstrow).getCell(1).toString();
 					 System.out.println("Need to include-"+sheet.getRow(firstrow).getCell(1).toString());
-					 
+					 if(Needtoinclude.equals("No"))
+					 {
+						 firstrow=0; 
+						 //Lasttrow=0;
+						 size=0;
+						 
+					 }
+					 else
+					 {
+						 size1=size1+1; 
+					 }
 				 }
 				 
 				
 			 } 
-			 if(firstrow==0)
+			 if(firstrow==0 && size==0 && Lasttrow==0 )
 			 {
 				 firstrow=i;
 				 Lasttrow=i;
@@ -129,20 +152,28 @@ public class DataReader {
 		   //Log.info("The Value of this cell is: "+data[rownumber][r1.getLastCellNum()-2]);
 		   //Log.info("The Value of this cell is: "+data[rownumber][r1.getLastCellNum()-1]);
 		   rownumber=rownumber+1;
-		  
+		   
+		   if(rownumber<size) {
+				 System.out.println("Data needs to Add still");
+			 }
+			else if(rownumber==size) {
+				 System.out.println("It's time to save this first chunk"+rownumber);
+				
+				 listOfLists[rowindex][0]=data;
+				 rowindex=rowindex+1;
+				 firstrow=0;
+				 Lasttrow=0;
+				 rownumber=0;
+				 size=0;
+				 
+			 }
+		   
 		 }
 		   ////Log.info(data.toString());
-		 if(rownumber==size) {
-			 System.out.println("It's time to save this first chunk"+rownumber);
-			 rownumber=0;
-			 firstrow=0;
-			 Lasttrow=0;
-			 size=0;
-			 Needtoinclude="No";
-			 listOfLists[rowindex][0]=data;
-			 rowindex=rowindex+1;
-			 
-		 }
+		
+		 if(size1+1==Lasttrow)
+		 Lasttrow=0;
+		 System.out.println(" out Row number in "+i);
 			 }
 			 //listOfLists[rowindex][0]=data;
 			 //rowindex=rowindex+1;
@@ -157,17 +188,22 @@ public class DataReader {
 	public static void main(String []args) throws Exception {
 //	DOMConfigurator.configure("log4j.xml");
 //	//Log.info(Integer.toString(datareader().length));
-	System.out.println(datareader().toString());
+       	System.out.println(datareader().toString());
  Object[][] finaldata=datareader();
  System.out.println("Number of Quote"+finaldata.length);
- Object[] data2= (Object[]) finaldata[0][0];
- System.out.println("number of product in Quote"+data2.length);
-Object[] data3=(Object[]) data2[0];
-Object[] data4=(Object[]) data2[1];
+ for(int i=0;i<=finaldata.length-1;i++)
+ {
+	 Object[] data2= (Object[]) finaldata[i][0];
+	 System.out.println("number of product in Quote:" +i+"***"+data2.length);
+	 for(int j=0;j<=data2.length-1;j++) {
+//Object[] data3=(Object[]) data2[0];
+		 Object[] data4=(Object[]) data2[j];
 // System.out.println("Length of data"+data3.length);
- System.out.println("Number of congiguration Attribute for Fist Product"+data3.length);
- System.out.println("Number of congiguration Attribute for Second Product"+data4.length);
- System.out.println("Product name for First Product"+data3[2].toString());
- System.out.println("Product name for Second Product"+data4[2].toString());	
+// System.out.println("Number of congiguration Attribute for Fist Product"+data3.length);
+// System.out.println("Number of congiguration Attribute for Second Product"+data4.length);
+// System.out.println("Product name for First Product"+data3[2].toString());
+		 System.out.println("Product name for Second Product"+data4[2].toString());	
 }
+ }
+	}
 }

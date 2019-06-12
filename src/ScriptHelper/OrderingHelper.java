@@ -29,6 +29,7 @@ public class OrderingHelper extends DriverHelper{
 
 	public void AcceptsQuote(Object[][] Inputdata) throws Exception {
 		if(Inputdata[0][24].toString().equals("Email")) {
+			//WaitforCPQloader();
 		WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
@@ -57,6 +58,7 @@ public class OrderingHelper extends DriverHelper{
 		}
 		else
 		{
+			WaitforCPQloader();
 			WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
 			Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
@@ -78,24 +80,36 @@ public class OrderingHelper extends DriverHelper{
 			SendKeys(getwebelement(xml.getlocator("//locators/CustomerSignedDate")),date);
 			Clickon(getwebelement(xml.getlocator("//locators/ConfirQuoteAction")));
 		}
-		
-		WaitforElementtobeclickable(xml.getlocator("//locators/OrderNote"));
-		
-			try {
-				Clickon(getwebelement("(//*[text()='OK']/parent::*/parent::*)[1]"));
-				System.out.println(" Popup displayed");
-			}
-			catch(Exception e)
-			{
-				System.out.println(" No Popup displayed");
-			}
-	
-		WaitforElementtobeclickable(xml.getlocator("//locators/AcceptatedProposal"));	
+		try {
+		WaitforElementtobeclickable("(//span[text()='Close'])[1]/parent::*/parent::*");
+		}
+		catch(Exception e)
+		{
+			System.out.println(" No Popup displayed");
+		}
+		//Thread.sleep(60000);
+		Pagerefresh();
+//			try {
+//				Clickon(getwebelement("(//*[text()='OK']/parent::*/parent::*)[1]"));
+//				System.out.println(" Popup displayed");
+//			}
+//			catch(Exception e)
+//			{
+//				System.out.println(" No Popup displayed");
+//				
+//			}
+		WaitforCPQloader();
+		WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
+		javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
+		Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/OrderNote"));
+		//WaitforElementtobeclickable(xml.getlocator("//locators/AcceptatedProposal"));	
 			
 	
 		
 	}
 	public void CreateOrder(Object[][] Inputdata) throws Exception {
+		//WaitforCPQloader();
 		WaitforElementtobeclickable(xml.getlocator("//locators/AdditionalinfomrationTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
@@ -147,7 +161,9 @@ public class OrderingHelper extends DriverHelper{
 		//WaitforElementtobeclickable(xml.getlocator("//locators/CreateOrder"));
 		//javascriptexecutor(getwebelement(xml.getlocator("//locators/CreateOrder")));
 		Clickon(getwebelement(xml.getlocator("//locators/CreateOrder")));
-		Thread.sleep(2000);
+		//WaitforElementtobeclickable("(//span[text()='Close'])[1]/parent::*/parent::*");
+		
+		Thread.sleep(60000);
 		Pagerefresh();
 		WaitforElementtobeclickable(xml.getlocator("//locators/OrderConfirmation"));
 	}

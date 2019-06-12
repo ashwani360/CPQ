@@ -32,4 +32,5 @@
 <BacktoQuote>//a[text()='Back to quotes list']</BacktoQuote>
 <MenuItem>(//span[@role="button"])[7]</MenuItem>
 <Logout>//td[text()='Log Out']</Logout>
+<Filedsname>//span[text()='Fieldname']/parent::*/input</Filedsname>
 </locators>

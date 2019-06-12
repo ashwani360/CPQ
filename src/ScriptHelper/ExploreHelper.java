@@ -56,74 +56,108 @@ public class ExploreHelper extends DriverHelper {
 					
 //					Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190527115421")));
 //					System.out.println("workflow");
-					Thread.sleep(5000);
+					Thread.sleep(2000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
 					Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMe"));
 					Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMe")));
-					Thread.sleep(5000);
+					Thread.sleep(2000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
 					Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/CreateCost"));
 					Clickon(getwebelement(xml.getlocator("//locators/CreateCost")));
-					Thread.sleep(5000);
+					Thread.sleep(2000);
 					String a =Getattribute(getwebelement("//label[text()='Conversion Type']/following::td[1]/div//input"),"value");
 					System.out.println(a);
 				if(a.equals("Revalidation")) {
 					WaitforElementtobeclickable(xml.getlocator("//locators/QuoteValidity"));
 					SendKeys(getwebelement(xml.getlocator("//locators/QuoteValidity")),"45");	
 				}
+				else if(a.equals("ReNegotiation"))
+				{
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC")),"600");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC")),"600");	
+				}
+				else if(a.equals("OLO+DSL"))
+				{
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC")),"600");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC")),"600");	
+				}
 				else {
-					WaitforElementtobeclickable(xml.getlocator("//locators/CarrierDropdown"));
-					Clickon(getwebelement(xml.getlocator("//locators/CarrierDropdown")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Colt"));
-					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Colt")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/NodeDropdown"));
-					Clickon(getwebelement(xml.getlocator("//locators/NodeDropdown")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Graz"));
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),"Graz");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC")),"500");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC")),"500");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Term (Years)"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Term (Years)")),"1");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Currency"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Currency")),"EUR");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Price Type"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Price Type")),"ACTUAL");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Connector/Interface"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Connector/Interface")),"100BaseT");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Access Technology"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Access Technology")),"ETH");	
 					
-					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Graz")));
-					SendKeys(getwebelement(xml.getlocator("//locators/NRCInput")),"500");
-					SendKeys(getwebelement(xml.getlocator("//locators/MRCInput")),"500");
-					WaitforElementtobeclickable(xml.getlocator("//locators/TermDropdown"));
-					Clickon(getwebelement(xml.getlocator("//locators/TermDropdown")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "1"));
-					
-					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "1")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/CurrencyDropdown"));
-					Clickon(getwebelement(xml.getlocator("//locators/CurrencyDropdown")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "EUR"));
-					
-					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "EUR")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/PriceTypeDropdown"));
-					Clickon(getwebelement(xml.getlocator("//locators/PriceTypeDropdown")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "ACTUAL"));
-					
-					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "ACTUAL")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/ConnectorDropdown"));
-					Clickon(getwebelement(xml.getlocator("//locators/ConnectorDropdown")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "100BaseT"));
-					
-					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "100BaseT")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/AccessTechnologyDropdown"));
-					Clickon(getwebelement(xml.getlocator("//locators/AccessTechnologyDropdown")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "ETH"));
-					
-					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "ETH")));
+//					//WaitforElementtobeclickable(xml.getlocator("//locators/CarrierDropdown"));
+//					//Clickon(getwebelement(xml.getlocator("//locators/CarrierDropdown")));
+//					//WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Colt"));
+//					//Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Colt")));
+//					//WaitforElementtobeclickable(xml.getlocator("//locators/NodeDropdown"));
+//					//Clickon(getwebelement(xml.getlocator("//locators/NodeDropdown")));
+//					//WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Graz"));
+//					
+//					//Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Graz")));
+//					SendKeys(getwebelement(xml.getlocator("//locators/NRCInput")),"500");
+//					SendKeys(getwebelement(xml.getlocator("//locators/MRCInput")),"500");
+//					WaitforElementtobeclickable(xml.getlocator("//locators/TermDropdown"));
+//					Clickon(getwebelement(xml.getlocator("//locators/TermDropdown")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "1"));
+//					
+//					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "1")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/CurrencyDropdown"));
+//					Clickon(getwebelement(xml.getlocator("//locators/CurrencyDropdown")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "EUR"));
+//					
+//					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "EUR")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/PriceTypeDropdown"));
+//					Clickon(getwebelement(xml.getlocator("//locators/PriceTypeDropdown")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "ACTUAL"));
+//					
+//					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "ACTUAL")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/ConnectorDropdown"));
+//					Clickon(getwebelement(xml.getlocator("//locators/ConnectorDropdown")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "100BaseT"));
+//					
+//					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "100BaseT")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/AccessTechnologyDropdown"));
+//					Clickon(getwebelement(xml.getlocator("//locators/AccessTechnologyDropdown")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "ETH"));
+//					
+//					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "ETH")));
 				}
 					WaitforElementtobeclickable(xml.getlocator("//locators/CreateCostSubmit"));
 					Clickon(getwebelement(xml.getlocator("//locators/CreateCostSubmit")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/TypeDropdown"));
-					Clickon(getwebelement(xml.getlocator("//locators/TypeDropdown")));
-					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Port"));
-					
-					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Port")));
-					SendKeys(getwebelement(xml.getlocator("//locators/NameInput")),"ABC");
-					SendKeys(getwebelement(xml.getlocator("//locators/InputNRCAdditional")),"500");
-					SendKeys(getwebelement(xml.getlocator("//locators/InputMRCAdditional")),"500");
+//					WaitforElementtobeclickable(xml.getlocator("//locators/TypeDropdown"));
+//					Clickon(getwebelement(xml.getlocator("//locators/TypeDropdown")));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Port"));
+//					
+//					Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Port")));
+//					SendKeys(getwebelement(xml.getlocator("//locators/NameInput")),"ABC");
+//					SendKeys(getwebelement(xml.getlocator("//locators/InputNRCAdditional")),"500");
+//					SendKeys(getwebelement(xml.getlocator("//locators/InputMRCAdditional")),"500");
+					Thread.sleep(2000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/ApproveQuoteButton"));
 					Clickon(getwebelement(xml.getlocator("//locators/ApproveQuoteButton")));
-					Thread.sleep(5000);
+					Thread.sleep(2000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
 					Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/ChangeStatus"));
@@ -174,12 +208,12 @@ public class ExploreHelper extends DriverHelper {
 						
 //						Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190526084256")));
 //						System.out.println("workflow");
-						Thread.sleep(5000);
+						//Thread.sleep(5000);
 						WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
 						Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
 						WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMe"));
 						Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMe")));
-						Thread.sleep(5000);
+						//Thread.sleep(5000);
 						WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
 						Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
 						WaitforElementtobeclickable(xml.getlocator("//locators/Reject"));
@@ -188,7 +222,7 @@ public class ExploreHelper extends DriverHelper {
 						Clickon(getwebelement(xml.getlocator("//locators/AddMessageSubmit")));
 						WaitforElementtobeclickable(xml.getlocator("//locators/BacktoQuote"));
 						Clickon(getwebelement(xml.getlocator("//locators/BacktoQuote")));
-						Thread.sleep(5000);
+						//Thread.sleep(5000);
 						
 					
 						
@@ -236,28 +270,29 @@ public class ExploreHelper extends DriverHelper {
 						
 //						Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190527115421")));
 //						System.out.println("workflow");
-						Thread.sleep(5000);
+						//Thread.sleep(5000);
 						WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
 						Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
 						WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMe"));
 						Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMe")));
-						Thread.sleep(5000);
+						//Thread.sleep(5000);
 						WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
 						Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
 						WaitforElementtobeclickable(xml.getlocator("//locators/CreateCost"));
 						Clickon(getwebelement(xml.getlocator("//locators/CreateCost")));
-						Thread.sleep(5000);
+						//Thread.sleep(5000);
 						
-					
-						WaitforElementtobeclickable(xml.getlocator("//locators/CarrierDropdown"));
-						Clickon(getwebelement(xml.getlocator("//locators/CarrierDropdown")));
-						WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Colt"));
-						Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Colt")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));
+						SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");
+//						WaitforElementtobeclickable(xml.getlocator("//locators/CarrierDropdown"));
+//						Clickon(getwebelement(xml.getlocator("//locators/CarrierDropdown")));
+//						WaitforElementtobeclickable(xml.getlocator("//locators/Selectvalue").replace("value", "Colt"));
+//						Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Colt")));
 						
 						
 						WaitforElementtobeclickable(xml.getlocator("//locators/CreateSupplierNoBidButton"));
 						Clickon(getwebelement(xml.getlocator("//locators/CreateSupplierNoBidButton")));
-						Thread.sleep(5000);
+						//Thread.sleep(5000);
 						WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
 						Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
 						WaitforElementtobeclickable(xml.getlocator("//locators/ChangeStatus"));
@@ -285,6 +320,10 @@ public class ExploreHelper extends DriverHelper {
 
 		
 	}
+		System.out.println("Completed the Process start sleeping for couple of second to data trasmited");
+		Thread.sleep(50000);
+		System.out.println("Ended the waite time");
+		
 	}
 	
 

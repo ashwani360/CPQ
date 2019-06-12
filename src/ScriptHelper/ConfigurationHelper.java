@@ -53,17 +53,20 @@ public class ConfigurationHelper extends DriverHelper{
 		   // values must be of same type of expression
 		   case "Ethernet" :
 			   { ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct Family");
+			   	WaitforElementtobeclickable((xml.getlocator("//locators/Ethernetfamily")));
 				Clickon(getwebelement(xml.getlocator("//locators/Ethernetfamily")));
 		      break; // break is optional
 			   }
 		   case "Optical" :
 		   {ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct Family");
+		   WaitforElementtobeclickable((xml.getlocator("//locators/Opticalfamily")));
 			Clickon(getwebelement(xml.getlocator("//locators/Opticalfamily")));
 		      break; // break is optional
 		   }
 		   
 		   default :  
 		   		{ ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct Family");
+		   		WaitforElementtobeclickable((xml.getlocator("//locators/Ethernetfamily")));
 			 Clickon(getwebelement(xml.getlocator("//locators/Ethernetfamily")));
 			 break;
 			   }
@@ -103,6 +106,7 @@ public class ConfigurationHelper extends DriverHelper{
 				Clickon(getwebelement(xml.getlocator("//locators/OffNetCheckASite")));
 	//			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				// Select any Offnet option
+				
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectAutomatedOffNet"));
@@ -136,6 +140,7 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
 				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				System.out.println("Switched to Iframe");
 				//Clickon(getwebelement(xml.getlocator("//locators/CPQExploreWindowfields")));
 				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -192,12 +197,55 @@ public class ConfigurationHelper extends DriverHelper{
 			}
 			case "Automated DSL":
 			{
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/OffNetCheckASite"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/DSLCheckASite")));
+	//			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				// Select any Offnet option
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/AutomatedDSLCheckASite"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/AutomatedDSLCheckASite")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				referece[0]="";
 				break;
 			}
 			case "Manual DSL":
-			{
-			
+			{ 
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/DSLCheckASite"));
+		    
+				Clickon(getwebelement(xml.getlocator("//locators/DSLCheckASite")));
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			// Select any Offnet option
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ManualEngagement"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/ManualEngagement")));
+				// Select the Options for the OLO Cost,Revsalidation,Re negosiation, OLO+DSL
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequest"));
+			    
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST DSL");
+				// Updated the data in Empac screen and create the request.
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
+				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				System.out.println("Switched to Iframe");
+				// Field in explore window for Manual DSL
+				// Select the Manula DSL option
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ManualDSLOptionAEnd"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/ManualDSLOptionAEnd")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				break;
 			}
 			case "Automated Nearnet":
@@ -343,6 +391,14 @@ public class ConfigurationHelper extends DriverHelper{
 				break;
 			}
 			
+			case "Nearnet Revalidate":
+			{
+				break;
+			}
+			case "OLO+DSL":
+			{
+				break;
+			}
 			default:
 			{
 				break;
@@ -363,6 +419,10 @@ public class ConfigurationHelper extends DriverHelper{
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectOnnetBsite"));
 			    
 				Clickon(getwebelement(xml.getlocator("//locators/SelectOnnetBsite")));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Clickon(getwebelement(xml.getlocator("//locators/BsiteOnnet")));
+				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				referece[1]="";
@@ -607,6 +667,14 @@ public class ConfigurationHelper extends DriverHelper{
 				break;
 			}
 			
+			case "Nearnet Revalidate":
+			{
+				break;
+			}
+			case "OLO+DSL":
+			{
+				break;
+			}
 			default:
 			{
 				break;
@@ -627,19 +695,26 @@ public class ConfigurationHelper extends DriverHelper{
 		   // values must be of same type of expression
 		   case "Ethernet Line" :
 			   { 
-				    ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct");
+				   
+				   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct");
+				    Thread.sleep(3000);
+				    WaitforElementtobeclickable((xml.getlocator("//locators/EthernetProductP2P")));
 					Clickon(getwebelement(xml.getlocator("//locators/EthernetProductP2P")));
+					Getmapiframeloaded(xml.getlocator("//locators/GoogleMapifram")); 
+					//Thread.sleep(5000);
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 					SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][5].toString());
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 					//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ENTER);
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+					Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter B Siter Address");
+					 //Thread.sleep(2000);
 					SendKeys(getwebelement(xml.getlocator("//locators/Bsite")),Inputdata[i][6].toString());
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 					//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Bsite")),Keys.ENTER);
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
@@ -865,6 +940,7 @@ public class ConfigurationHelper extends DriverHelper{
 		   {
 
 			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct");
+			   WaitforElementtobeclickable((xml.getlocator("//locators/EthernetHub")));
 			   Clickon(getwebelement(xml.getlocator("//locators/EthernetHub")));
 			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 				SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][5].toString());
@@ -924,6 +1000,7 @@ public class ConfigurationHelper extends DriverHelper{
 		   case "Ethernet Spoke" :
 		   {
 			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct");
+			   WaitforElementtobeclickable((xml.getlocator("//locators/EtherNetSpoke")));
 			   Clickon(getwebelement(xml.getlocator("//locators/EtherNetSpoke")));
 			   if(Inputdata[i][3].toString().equals("New")) {
 				  // Select New
@@ -1064,6 +1141,7 @@ public class ConfigurationHelper extends DriverHelper{
 		   case "Wave" :
 		   {
 			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct");
+			   WaitforElementtobeclickable((xml.getlocator("//locators/OpticalWave")));
 			   Clickon(getwebelement(xml.getlocator("//locators/OpticalWave")));
 			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 				SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][5].toString());
@@ -1135,6 +1213,7 @@ public class ConfigurationHelper extends DriverHelper{
 		   default :  
 		   		{ 
 		   			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct Family");
+		   			WaitforElementtobeclickable((xml.getlocator("//locators/Ethernetfamily")));
 		   			Clickon(getwebelement(xml.getlocator("//locators/Ethernetfamily")));
 		   			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 					SendKeys(getwebelement(xml.getlocator("//locators/Asite")),Inputdata[i][5].toString());
@@ -1199,12 +1278,16 @@ public class ConfigurationHelper extends DriverHelper{
 	public void AddProduct(Object[][] Inputdata) throws Exception {
 		
 		waitForpageload();
+		WaitforCPQloader();
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader"),1);
 //		waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
 //		waitForpageload();
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For Page to Be updated as Stanrad Quote");
+		WaitforElementtobeclickable(xml.getlocator("//locators/StandrdQuote"));
+		
 		getwebelement(xml.getlocator("//locators/StandrdQuote"));
+		
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add Product Button");
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
 		System.out.println(QuoteID.get());
@@ -1219,6 +1302,7 @@ public class ConfigurationHelper extends DriverHelper{
 //			waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
 			waitForpageload();
 		Clickon(getwebelement(xml.getlocator("//locators/AddProduct")));
+		
 		AddFamilyProduct(Inputdata,i);
 //		waitForpageload();
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
@@ -1230,7 +1314,7 @@ public class ConfigurationHelper extends DriverHelper{
 		
 		Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
 		waitForpageload();
-		
+		WaitforCPQloader();
 		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Opportunity Info")));
 		Thread.sleep(5000);
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
@@ -1247,7 +1331,7 @@ public class ConfigurationHelper extends DriverHelper{
 //		waitForpageload();
 		
 		
-		Thread.sleep(10000);
+		Thread.sleep(3000);
 		//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 		
 		RequestID.set(Completeset);
@@ -1265,6 +1349,12 @@ public class ConfigurationHelper extends DriverHelper{
 	
 	public void Reconfigure(Object[][] Inputdata) throws Exception {
 		List data=RequestID.get();
+		waitForpageload();
+		WaitforCPQloader();
+		//WaitforCPQloader2();
+		//WaitforElementtobeclickable(xml.getlocator("//locators/StandrdQuote"));
+		
+		//getwebelement(xml.getlocator("//locators/StandrdQuote"));
 		
 		for(int i=0;i<data.size();i++)
 		{
@@ -1277,39 +1367,54 @@ public class ConfigurationHelper extends DriverHelper{
 		for(int i=0;i<data.size();i++)
 		{
 			Object[] newdata=(Object[]) data.get(i);
-			if(!(newdata[0].toString().equals("") || newdata[1].toString().equals(""))) 
+			if(!(newdata[0].toString().equals("") && newdata[1].toString().equals(""))) 
 			{
 				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				//Thread.sleep(5000);
 				System.out.println("Date for A site"+newdata[0].toString());
 				System.out.println("Date for B site"+newdata[1].toString());
 				System.out.println("Reconfigure the the lineiten number"+i);
 				WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
-System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				WaitforElementtobeclickable(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
 				
 				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
-				Thread.sleep(3000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/Reconfigure"));
+				
 				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+				
 				WaitforElementtobeclickable(xml.getlocator("//locators/updateQuote"));
 				
 				Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
-				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				WaitforElementtobeclickable(xml.getlocator("//locators/saveQuote"));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
 				
-				Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
-//				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/ReconfigsaveQuote"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/ReconfigsaveQuote")));
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				// Need to check if New request need to be raised..
 				// raised a request whenever required
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 				
 			}
 		}
+		
 		RequestID.get().clear();;
 		Completeset.clear();
 	}
 	public void ReconfigureAgain(Object[][] Inputdata) throws Exception {
-		
+		waitForpageload();
+		WaitforCPQloader();
 		//data=RequestID.get();
 		//Object[] ExploreID=new Object[2];
+		WaitforElementtobeclickable(xml.getlocator("//locators/StandrdQuote"));
+		
+		getwebelement(xml.getlocator("//locators/StandrdQuote"));
+		
 		for(int i=0;i<Inputdata.length;i++) {
 			Object[] ExploreID2=new Object[2];
 			
@@ -1344,6 +1449,8 @@ System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", S
 				Thread.sleep(3000);
 				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/SiteDetailTab"));
+				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
 				Selectconnectivity("Renegotiate","BSite",ExploreID2);
 				
 			}
@@ -1351,52 +1458,56 @@ System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", S
 			{
 				ExploreID2[1]="";
 			}
-			
-			if(Inputdata[i][11].toString().contains("Revalidate")) {
-				System.out.println("Updating Lineitem-"+i+" for A site");
-				WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
-				waitForpageload();
-				System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
-				
-				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
-				Thread.sleep(3000);
-				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
-				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				
-				WaitforElementtobeclickable(xml.getlocator("//locators/SiteDetailTab"));
-				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
-				
-				Selectconnectivity("Revalidate","ASite",ExploreID2);
-				
-			}
-			else
-			{
-				ExploreID2[0]="";
-			}
-			if(Inputdata[i][12].toString().contains("Revalidate")) {
-				System.out.println("Updating Lineitem-"+i+" for B site");
-				WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
-				waitForpageload();
-				System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
-				
-				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
-				Thread.sleep(3000);
-				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
-				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				Selectconnectivity("Revalidate","BSite",ExploreID2);
-				
-			}
-			else
-			{
-				ExploreID2[1]="";
-			}
+//			
+//			if(Inputdata[i][11].toString().contains("Revalidate")) {
+//				System.out.println("Updating Lineitem-"+i+" for A site");
+//				WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+//				waitForpageload();
+//				System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+//				
+//				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+//				Thread.sleep(3000);
+//				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
+//				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+//				
+//				WaitforElementtobeclickable(xml.getlocator("//locators/SiteDetailTab"));
+//				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
+//				
+//				Selectconnectivity("Revalidate","ASite",ExploreID2);
+//				
+//			}
+//			else
+//			{
+//				ExploreID2[0]="";
+//			}
+//			if(Inputdata[i][12].toString().contains("Revalidate")) {
+//				System.out.println("Updating Lineitem-"+i+" for B site");
+//				WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+//				waitForpageload();
+//				System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+//				
+//				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+//				Thread.sleep(3000);
+//				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
+//				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+//				WaitforElementtobeclickable(xml.getlocator("//locators/SiteDetailTab"));
+//				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
+//				Selectconnectivity("Revalidate","BSite",ExploreID2);
+//				
+//			}
+//			else
+//			{
+//				ExploreID2[1]="";
+//			}
+			Completeset.add(ExploreID);
 			WaitforElementtobeclickable(xml.getlocator("//locators/updateQuote"));
 			
 			Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
 			//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-			WaitforElementtobeclickable(xml.getlocator("//locators/saveQuote"));
+			WaitforElementtobeclickable(xml.getlocator("//locators/ReconfigsaveQuote"));
 			
-			Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
+			Clickon(getwebelement(xml.getlocator("//locators/ReconfigsaveQuote")));
+			
 		}
 		
 		RequestID.set(Completeset);

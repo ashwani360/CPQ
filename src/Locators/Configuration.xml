@@ -42,7 +42,8 @@
 <HubReference>id=hubReferenceID</HubReference>
 <HubSite>id=siteAddressHubExisting</HubSite>
 <GoogleMapifram>id=siteAddressLink</GoogleMapifram>
-<Messages>//span[text()='Connected via Colt']</Messages>
+<Messages>//*[text()='Connected via Colt' or text()='Automated Nearnet' or text()='Could not find Onnet and Automated Nearnet Connectivity' or contains(text(),'Please confirm the')]</Messages>
+<AddressDoctorRejectAll>//button[text()='Reject All']</AddressDoctorRejectAll>
 <ConnectivitiCheck>//td[text()='Next']</ConnectivitiCheck>
 <SiteDetailTab>//span[text()='Site Details']</SiteDetailTab>
 <Contractterm>id=contractTermInYears</Contractterm>
@@ -50,33 +51,72 @@
 <ServiceBandwidth>id=serviceBandwidth</ServiceBandwidth>
 <WebServiceBandwidth>id=serviceBandwidthPage2</WebServiceBandwidth>
 <ServiceResilence>id=resiliencyServiceLevel</ServiceResilence>
+<!-- On net A Site -->
 <SelectOnnetAsite>(//div[text()='On-Net'])[1]</SelectOnnetAsite>
-<SelectOnnetBsite>(//div[text()='On-Net'])[2]</SelectOnnetBsite>
 <AsiteOnnet>(//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1]</AsiteOnnet>
-<BsiteOnnet>(//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[2]</BsiteOnnet>
+<!-- On net B Site -->
+<SelectOnnetBsite>(//div[text()='On-Net'])[2]</SelectOnnetBsite>
+<BsiteOnnet>(//*[@id='onNetB']/table/tbody/tr[2]/td[1]/input)[1]</BsiteOnnet>
+<!-- Near net A Site -->
+<NearNetAsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[1]</NearNetAsite>
+<NearNetOption>(//*[@id='nearNetA']/table/tbody/tr[2]/td[1]/input)[1]</NearNetOption>
+<!-- Near net B Site -->
+<NearNetBsite>(//span[text()='B END SITE DETAILS']/following::div[text()='Near-Net'])[1]</NearNetBsite>
+<NearNetOption>(//*[@id='nearNetB']/table/tbody/tr[2]/td[1]/input)[1]</NearNetOption>
+<!-- Offnet A Site -->
 <OffNetCheckASite>//div[@id='offNetDSLCCRequestAEnd']//label[text()='OFF-NET CHECK']</OffNetCheckASite>
-<OffNetCheckBSite>//div[@id='offNetDSLCCRequestBEnd']//label[text()='OFF-NET CHECK']</OffNetCheckBSite>
 <SelectAutomatedOffNet>(//input[@name='connRadioVarNameAEnd' and @value='1'])</SelectAutomatedOffNet>
+<!-- Offnet B Site -->
+<OffNetCheckBSite>//div[@id='offNetDSLCCRequestBEnd']//label[text()='OFF-NET CHECK']</OffNetCheckBSite>
 <SelectAutomatedOffNetBEnd>(//input[@name='connRadioVarNameBEnd' and @value='1'])</SelectAutomatedOffNetBEnd>
+<!-- DSL A Site -->
+<DSLCheckASite>//div[@id='offNetDSLCCRequestAEnd']//label[text()='DSL CHECK']</DSLCheckASite>
+<AutomatedDSLCheckASite>(//*[@id='dslNetA']/table/tbody/tr[2]/td[1]/input)[1]</AutomatedDSLCheckASite>
+<!-- DSL B Site -->
+<DSLCheckBSite>//div[@id='offNetDSLCCRequestBEnd']//label[text()='DSL CHECK']</DSLCheckBSite>
+<AutomatedDSLCheckBSite>(//*[@id='dslNetB']/table/tbody/tr[2]/td[1]/input)[1]</AutomatedDSLCheckBSite>
+<!-- Manual Engagement button A Site -->
 <ManualEngagement>//div[@id='offNetDSLCCRequestAEnd']//label[text()='MANUAL ENGAGEMENT']</ManualEngagement>
+<!-- Manual Engagement button B Site -->
 <ManualEngagementBEnd>//div[@id='offNetDSLCCRequestBEnd']//label[text()='MANUAL ENGAGEMENT']</ManualEngagementBEnd>
+<!-- Manual Engagement DropDown A Site -->
 <SelectManualRequest>//select[@name='exploreCheckboxActionsEndA']</SelectManualRequest>
+<!-- Manual Engagement DropDown B Site -->
 <SelectManualRequestBEnd>//select[@name='exploreCheckboxActionsEndB']</SelectManualRequestBEnd>
+<!-- Explore Window -->
+<Explorepopup>//iframe[@name='exploreEngagementComponent']</Explorepopup>
+<!-- Manual Offnet fields in Empac Ecreen -->
 <CPQExploreWindowfields>(//span[contains(text(),'Fieldname')]/parent::*/input[1])[index]</CPQExploreWindowfields>
 <GetQuoteButton>//span[text()='Get Quote']</GetQuoteButton>
 <ClickOloButton>//div[@data-service-summary-view='olo']</ClickOloButton>
 <RequestId>//span[contains(text(),'ONQT New')]/following::span[1]/span</RequestId>
 <Closebutton>//td[text()='CLOSE']</Closebutton>
+<!-- Manual Offnet Option A End -->
 <SelectManualOffNet>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input)[1]</SelectManualOffNet>
+<!-- Manual Offnet Option B End -->
 <SelectManualOffNetBEnd>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input</SelectManualOffNetBEnd>
+<!-- Manual Offnet Revalidation and Renogotiation Option A End -->
 <SelectManualOffNetRevalidate>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[7]/input)[1]</SelectManualOffNetRevalidate>
+<!-- Manual Offnet Revalidation and Renogotiation Option B End -->
 <SelectManualOffNetRevaidateBEnd>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[7]/input</SelectManualOffNetRevaidateBEnd>
-<NearNetAsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[1]</NearNetAsite>
-<NearNetBsite>(//span[text()='A END SITE DETAILS']/following::div[text()='Near-Net'])[2]</NearNetBsite>
+<!-- Manual Offnet Revalidation and Renogotiation Option On Empac Screen -->
+<Requesttype>//label[text()='Typevalue']</Requesttype>
+<!-- Manual Near Net Option A End -->
+<!-- Manual Near Net Option B End -->
+<!-- Manual DSL Option A End -->
+<ManualDSLOptionAEnd></ManualDSLOptionAEnd>
+<!-- Manual DSL Option B End -->
+<ManualDSLOptionBEnd></ManualDSLOptionBEnd>
+<!-- Revalidation/Renegotialtion Offnet Option A End -->
+<!-- Revalidation/Renegotialtion Offnet Option A End Option B End -->
+<!-- Manual OLO+DSL Option A End -->
+<!-- Manual OLO+DSL Option B End -->
+<!-- Other Fields -->
 <saveQuote>(//*[text()='Save']/parent::*/parent::*)[2]</saveQuote>
+<ReconfigsaveQuote>//*[text()='Save']/parent::*/parent::*</ReconfigsaveQuote>
 <updateQuote>//a[@id='update']</updateQuote>
 <Reconfigure>//span[text()='Reconfigure']/parent::*/parent::*</Reconfigure>
-<Requesttype>//*[text()='Typevalue']/following-sibling::div[1]/input</Requesttype>
+
 <Revalidate>//span[text()='Revalidate']</Revalidate>
 <Renagociate>//span[text()='Renegotiate']</Renagociate>
 <Budgetrytofirm>//span[text()='Budgetary to firm']</Budgetrytofirm>
@@ -96,13 +136,13 @@
 <LoadingDailog2>//*[@id='loading-dialog']</LoadingDailog2>
 <ApprovalTab>(//span[text()='Approval'])[1]</ApprovalTab>
 <SubmitetoApproval>//a[text()='Submit to Approval']</SubmitetoApproval>
-<customersignatureTab>//span[text()='CUSTOMER SIGNATURE']</customersignatureTab>
+<customersignatureTab>//span[text()='Customer Signature']</customersignatureTab>
 <GenrateProposal>//a[text()='Generate Proposal']</GenrateProposal>
 <ForCustomerSignature>//*[@name='finalizeProposalCheck_t']</ForCustomerSignature>
 <Mod>//select[@name='workflow_t']</Mod>
 <to>//*[@id='toRecepient_t']</to>
 <SendtoCustomer>//a[text()='Send Proposal']</SendtoCustomer>
-<OrderTab>//span[text()='ORDER']</OrderTab>
+<OrderTab>//span[text()='Order']</OrderTab>
 <QuoteAction>name=quoteActionAcceptOrReject_t</QuoteAction>
 <Reasone>name=reasonForStatusWon_t</Reasone>
 <FileBrowse>id=_file_acceptanceDocument_t</FileBrowse>
@@ -118,6 +158,8 @@
 <SectionName>//label[text()='Sectionname']/parent::*/parent::*/parent::*/parent::*/parent::*</SectionName>
 <Clickableelemt>//label[text()='Sectionname']</Clickableelemt>
 <AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
-<AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
+<AjaxLoader1>//*[contains(@class,'In Progress')]</AjaxLoader1>
+<ModelSelector>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[3])[index]</ModelSelector>
+<Lineitemcounter>//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*</Lineitemcounter>
 </locators>
 

@@ -66,9 +66,11 @@ public class TestListener extends DriverTestcase implements ITestListener {
         //Take base64Screenshot screenshot.
         String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)getwebdriver()).
                 getScreenshotAs(OutputType.BASE64);
-        System.out.println("Result Messages"+iTestResult.getThrowable().getCause().toString());
+        String Message=iTestResult.getThrowable().getMessage() != null ? iTestResult.getThrowable().getMessage().toString() :
+        	iTestResult.getThrowable().getCause().toString();
+        System.out.println("Result Messages"+Message);
         //Extentreports log and screenshot operations for failed tests.
-        ExtentTestManager.getTest().log(LogStatus.FAIL,iTestResult.getThrowable().getCause().toString()+
+        ExtentTestManager.getTest().log(LogStatus.FAIL,Message+
                 ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
        
     }

@@ -33,12 +33,14 @@ import org.openqa.selenium.remote.Response;
 import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.remote.http.W3CHttpCommandCodec;
 import org.openqa.selenium.remote.http.W3CHttpResponseCodec;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
+import Listeners.ActionListner;
 import Listeners.TestListener;
 import ScriptHelper.BCNUpdateHelper;
 import ScriptHelper.C4CHelper;
@@ -80,6 +82,10 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		System.out.println("Size of Data in Before method"+data.length);
 		setup();
 		//System.out.println("Driver at the time of initiation"+getwebdriver());
+		EventFiringWebDriver eventDriver = new EventFiringWebDriver(getwebdriver());
+		ActionListner handler = new ActionListner();
+		 eventDriver.register(handler);
+		 eventDriver.get("https://google.com");
 		Object[][] st1 = null;
 		try 
 		
@@ -159,7 +165,6 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
 			dr= new ChromeDriver(capabilities);
 			//driver.manage().window().maximize();
-		
 			
 			
 			dr.get("chrome://settings/content/popups");

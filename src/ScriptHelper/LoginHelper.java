@@ -110,12 +110,13 @@ public class LoginHelper extends DriverHelper{
 	{
 		openurl(Application);
 		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Navigated to "+Application+" Login Page");
-		
+		WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username"));  
 		SendKeys(getwebelement(xml.getlocator("//locators/"+Application+"/Username")),Getkeyvalue(Application+"_Username"));
 		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter User Name");
-		
+		WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Password"));
 		SendKeys(getwebelement(xml.getlocator("//locators/"+Application+"/Password")),Getkeyvalue(Application+"_Password"));
 		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Password");
+		WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Loginbutton"));
 		
 		Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Loginbutton")));
 		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Login Button");

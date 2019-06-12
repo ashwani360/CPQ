@@ -26,6 +26,7 @@ public class SendProposalHelper extends DriverHelper{
 
 	public void CustomerSign(Object[][] Inputdata) throws Exception {
 		if(Inputdata[0][24].toString().equals("Email")) {
+			//WaitforCPQloader();
 		WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/customersignatureTab")));
@@ -60,7 +61,7 @@ public class SendProposalHelper extends DriverHelper{
 		}
 		else 
 		{
-			Thread.sleep(5000);
+			//WaitforCPQloader();
 			WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			Clickon(getwebelement(xml.getlocator("//locators/customersignatureTab")));

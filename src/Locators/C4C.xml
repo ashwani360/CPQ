@@ -20,6 +20,9 @@
 <OCN>//span[text()='Accountnumber']/parent::*/parent::*/following-sibling::*/div/a</OCN>
 <OpportunuityTab>//div[text()='Opportunities']</OpportunuityTab>
 <Opportunuitynumber>//span[text()='Opportunuitynumber']/parent::*/parent::*/following-sibling::*/div/a</Opportunuitynumber>
+<oppo>//span[text()='Opportunity']/parent::*/parent::*/parent::*/button</oppo>
+<customer>//span[text()='Customer']/parent::*/parent::*/parent::*/button</customer>
+<OpenQuote>(//span[text()='Quotes']/parent::*/parent::*/parent::*/button)[2]</OpenQuote>
 <QuoteTab>//div[text()='Quotes']</QuoteTab>
 <AddQuote>//bdi[text()='Add']/parent::*/parent::*/parent::*</AddQuote>
 <Quotenumber>//a[text()='Quotenumber']</Quotenumber>
@@ -80,7 +83,7 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
-<C4Cloader>//*[@title='Please wait']</C4Cloader>
+<C4Cloader>//*[contains(@title,'Please wait')]</C4Cloader>
 <AccountSearchField>//button[@title="Search"]</AccountSearchField>>
 <SearchValue>//input[@placeholder='Search']</SearchValue>
 <AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>

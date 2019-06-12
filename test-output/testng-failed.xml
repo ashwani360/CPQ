@@ -7,15 +7,15 @@
   </listeners>
   <test name="CPQ End to End Order(failed)">
     <classes>
-      <class name="Testscript.StandardOrderOnnet">
+      <class name="Testscript.StandardOrderOffnet">
         <methods>
           <include name="BeforeMethod"/>
-          <include name="EndtoEndOrder" invocation-numbers="0"/>
           <include name="Teardown2"/>
           <include name="BeforeSuite"/>
           <include name="Teardown"/>
+          <include name="EndtoEndOrderOffnet" invocation-numbers="0"/>
         </methods>
-      </class> <!-- Testscript.StandardOrderOnnet -->
+      </class> <!-- Testscript.StandardOrderOffnet -->
     </classes>
   </test> <!-- CPQ End to End Order(failed) -->
 </suite> <!-- Failed suite [CPQ End to End Order] -->

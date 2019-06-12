@@ -25,13 +25,22 @@ public class GenralInfoHelper extends DriverHelper{
 
 
 	public void GenralInfomration(Object[][] Inputdata) throws Exception {
+		WaitforCPQloader();
 		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Legal Contact Details")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Legal Contact Details")));
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
+		WaitforElementtobeclickable("//div[contains(@aria-labelledby,'-label')]/div[contains(text(),'Contact')]");
 		
 		//Clickonoutofviewport(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
 		//Clickon(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
 		//waitandForElementDisplay(xml.getlocator("//locators/Selectprimarycontact"),1);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+//		try {
+//		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
+//		}
+//		catch(org.openqa.selenium.StaleElementReferenceException ex)
+//		{
+//			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
+//		}
 		Clickon(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitContact")));
 		
@@ -39,7 +48,15 @@ public class GenralInfoHelper extends DriverHelper{
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/TechnicalcontactGetdetail")));
 		//Clickon(getwebelement(xml.getlocator("//locators/TechnicalcontactGetdetail")));
 		//waitandForElementDisplay(xml.getlocator("//locators/Selectprimarycontact"),1);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		WaitforElementtobeclickable("//div[contains(@aria-labelledby,'-label')]/div[contains(text(),'Contact')]");
+//		try {
+//			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
+//			}
+//			catch(org.openqa.selenium.StaleElementReferenceException ex)
+//			{
+//				safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
+//			}
 		Clickon(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitContact")));
 		waitForpageload();

@@ -133,8 +133,9 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 }
 public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	
-	waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
+	//waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 	waitForpageload();
+	//WaitforCPQloader();
 	//Thread.sleep(10000);
 		//WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
 	safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
@@ -169,6 +170,7 @@ public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws E
 	}
 	else if(ApprovalCase.get().equals("VP1 Sales") ||Approvalcase.equals("VP2 Sales"))
 	{
+		//WaitforCPQloader();
 		WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
@@ -187,6 +189,7 @@ public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws E
 		
 	}
 	else {
+		//WaitforCPQloader();
 		WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
@@ -294,6 +297,7 @@ public void ApproveQuote(String Approver) throws Exception
 		case "VP2 Sales" :
 		{
 			// Click on Admin link
+			//WaitforCPQloader();
 			WaitforElementtobeclickable(xml.getlocator("//locators/Admin"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/Admin")));
 			
@@ -309,7 +313,7 @@ public void ApproveQuote(String Approver) throws Exception
 		
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
-			
+			//WaitforCPQloader();
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
@@ -344,7 +348,7 @@ public void ApproveQuote(String Approver) throws Exception
 			
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
-			
+			WaitforCPQloader();
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));

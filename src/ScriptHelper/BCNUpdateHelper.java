@@ -28,7 +28,7 @@ public class BCNUpdateHelper extends DriverHelper{
 		//Thread.sleep(5000);
 		//waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 		waitForpageload();
-		
+		//WaitforCPQloader();
 		//KeydownKey(Keys.CONTROL);
 		System.out.println("Total line item"+getwebelementscount(xml.getlocator("//locators/Lineitemcounter")));
 		for(int i=0;i<getwebelementscount(xml.getlocator("//locators/Lineitemcounter"));i++){
