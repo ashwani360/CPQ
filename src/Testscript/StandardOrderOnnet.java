@@ -21,6 +21,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 		Thread.sleep(3000);
 		C4Chelper.get().AddQuote();
 		Configurationhelper.get().AddProduct(Data);
+		// If Stage is waiting for third Party Need to call All the Explore functions
 		GenralInfohelper.get().GenralInfomration(Data);
 		BCNupdatehelper.get().BCNUpdate(Data);
 		//DisscountAndAprrovalhelper.get().DisscountandApprove(Data);
