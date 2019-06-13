@@ -93,9 +93,9 @@ public class DriverHelper {
 	public static ThreadLocal<String> ModifiedSiebelOrdernumber= new ThreadLocal<>();
 	public static ThreadLocal<String> AendBuildingId= new ThreadLocal<>();
 	public static ThreadLocal<List> RequestID= new ThreadLocal<>();
-	//public static ThreadLocal<List> RequestID= new ThreadLocal<>();
+	public static ThreadLocal<List> RequestIDNearnet= new ThreadLocal<>();
 	public static ThreadLocal<String>  Rerunrequired=new ThreadLocal<>();
-	public static ThreadLocal<String> OpportunutyID=new ThreadLocal<>();
+	public static ThreadLocal<String> OpportunityID=new ThreadLocal<>();
 	public DriverHelper(WebDriver dr)
 	{
 		driver=dr;
@@ -147,6 +147,15 @@ public class DriverHelper {
 		//window.scrollTo(0, 0);
 	}
 	
+	public void SendKeyswithAction(WebElement el, String key) throws InterruptedException {
+		
+		Clickon(el);
+		Actions action = new Actions(driver);
+		 
+	    action.sendKeys(key).build().perform();
+	    action.sendKeys(Keys.TAB).build().perform();
+	    
+	}
 	public void WaitforElementtobeclickable(String locator) throws InterruptedException
 	{
 		waitForpageload();

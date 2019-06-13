@@ -53,9 +53,99 @@ public class C4CHelper extends DriverHelper{
 		//Thread.sleep(2000);
 	}
 
+	//Code for Opportunity Add
+	public void Opportunity_Add() throws Exception
+	{
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/OpportunuityTab"));
+		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		Clickon(getwebelement(xml.getlocator("//locators/OpportunuityTab")));
+		//Click on New to add Opportunity
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Newlink"));
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Newlink")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Name"));
+		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Name")),"Auto_opty3");
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Offer"));
+		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Offer")),"New Business");
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Offer"));
+		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/Offer")),Keys.ENTER);
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/PrimaryProgramme"));
+		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryProgramme")),"Business Development");
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/PrimaryProgramme"));
+		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryProgramme")),Keys.ENTER);
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/PrimaryAttribute"));
+		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryAttribute")),"Cisco");
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/PrimaryAttribute"));
+		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryAttribute")),Keys.ENTER);
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/OpportunityCurrency"));
+		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency"))," ");
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/OpportunityCurrency"));
+		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency")),"US Dollar");
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/OpportunityCurrency"));
+		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency")),Keys.ENTER);
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/More"));
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/More")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/SaveOpenOpty"));
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/SaveOpenOpty")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Clickmore"));
+		
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Clickmore")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Editopty"));
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Editopty")));
+		
+		//Enter Sales Unit detail
+		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		/*WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/SalesUnit"));
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")));
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")));
+		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")),"Colt Company");
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/SalesUnit"));
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")),"Colt Company"); */
+		//Enter Legal Complexity detail
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Lcomplexity"));
+		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")),"Standard");
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")),Keys.ENTER);
+		//Enter Technical Complexity detail
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Tcomplexity"));
+		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Tcomplexity")),"1");
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Tcomplexity")),Keys.ENTER);
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/ClickSaveOpty"));
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/ClickSaveOpty")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/OptyId"));
+		OpportunityID.set(Gettext(getwebelement(xml.getlocator("//locators/Opportunity/OptyId"))));
+		
+		}
 	
 	public void  MovetoOpportunuity(Object[][] Inputdata) throws Exception{
-		WaitforElementtobeclickable(xml.getlocator("//locators/OpportunuityTab"));
+		if(Inputdata[0][1].toString().equals("New")||Inputdata[0][1].toString().equals(""))
+		{
+		Opportunity_Add();
+		
+		}
+		else
+		{
+			OpportunityID.set(Inputdata[0][1].toString());
+			WaitforElementtobeclickable(xml.getlocator("//locators/OpportunuityTab"));
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Clickon(getwebelement(xml.getlocator("//locators/OpportunuityTab")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Opportunuity Tab");
@@ -67,6 +157,7 @@ public class C4CHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunuitynumber").replace("Opportunuitynumber", Inputdata[0][1].toString())));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Opportunuity Name ");
 		//Thread.sleep(3000);
+		}
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/oppo"));
 		Thread.sleep(2000);

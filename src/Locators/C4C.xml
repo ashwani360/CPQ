@@ -89,5 +89,23 @@
 <AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
 <AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
 <AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
+<Opportunity>
+<Newlink>//bdi[text()='New']</Newlink>
+<Name>//*[text()='Name']/parent::*/parent::*/div/div/div/input</Name>
+<Offer>//*[text()='Offer Type']/parent::*/parent::*/div/div/div/input</Offer>
+<PrimaryProgramme>//*[text()='Primary Programme']/parent::*/parent::*/div/div/div/input</PrimaryProgramme>
+<PrimaryAttribute>//*[text()='Primary Attribute']/parent::*/parent::*/div/div/div/input</PrimaryAttribute>
+<OpportunityCurrency>//*[text()='Opportunity Currency']/parent::*/parent::*/div/div/div/input</OpportunityCurrency>
+<More>//button[@title='More']</More>>
+<SaveOpenOpty>//bdi[text()='Save and Open']</SaveOpenOpty>
+<Searchopty>//button[@title='Search']</Searchopty>
+<Editopty>//button[@title="Edit"]</Editopty>
+<Clickmore>(//bdi[text()="More"])</Clickmore>
+<SalesUnit>//*[text()='Sales Unit']/parent::*/parent::*/div/div/div</SalesUnit>
+<Tcomplexity>//*[text()='Technical complexity']/parent::*/parent::*/div/div/div</Tcomplexity>
+<Lcomplexity>//*[text()='Legal complexity']/parent::*/parent::*/div/div/div</Lcomplexity>
+<ClickSaveOpty>//bdi[text()='Save']</ClickSaveOpty>
+<OptyId>//bdi[text()='Opportunity ID']/parent::*/parent::*/div/span</OptyId>
+</Opportunity>
 </locators>
 

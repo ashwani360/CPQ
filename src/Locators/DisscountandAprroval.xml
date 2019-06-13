@@ -83,7 +83,7 @@
 <QuotetoOrderLink>(//a[@class='commerce-sidebar-item'])[1]</QuotetoOrderLink>
 <InternalUser>//a[text()='Internal Users']</InternalUser>
 <UsernameProxy>//a[text()='Ashwani.Singh31@colt.net']/parent::*/parent::*/td[5]/a</UsernameProxy>
-<CPQQuotelink>//span[text()='QuoteId']/parent::*/parent::*/parent::*/td[2]/div/a</CPQQuotelink>
+<CPQQuotelink>//*[text()='QuoteId']/parent::*/parent::*/parent::*//td//a</CPQQuotelink>
 <ApproverComment>//input[contains(@id,'comment')]</ApproverComment>
 <ApproveasApprover>//span[text()='Approve']</ApproveasApprover>
 <Proxylogout>//img[contains(@title,'Logout')]/parent::*</Proxylogout>

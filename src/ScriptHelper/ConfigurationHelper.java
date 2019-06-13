@@ -23,7 +23,7 @@ public class ConfigurationHelper extends DriverHelper{
 	xmlreader xml=new xmlreader("src\\Locators\\Configuration.xml");
 	Object[] ExploreID=new Object[2];
 	List Completeset=new ArrayList();
-	
+	List Completesetnearnet=new ArrayList();
 	public ConfigurationHelper(WebDriver parentdriver)
 	{
 		super(parentdriver);
@@ -73,7 +73,7 @@ public class ConfigurationHelper extends DriverHelper{
 		}
 	}
 	
-	public void Selectconnectivity(String type,String site,Object[] referece) throws Exception
+	public void Selectconnectivity(String type,String site,Object[] referece,Object[] nearnetreferece) throws Exception
 	{
 		if(site.equals("ASite"))
 		{
@@ -262,8 +262,47 @@ public class ConfigurationHelper extends DriverHelper{
 			}
 			case "Manual Nearnet":
 			{
-			
+				// Click on Manual request for NearNet
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ManualEngagement"));
+				Clickon(getwebelement(xml.getlocator("//locators/ManualEngagement")));
+				
+				// Updated the data in Empac screen and create the request.
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequest"));
+			    
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST NEARNET");
+				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
+				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Connection Type"));
+				SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Connection Type")),"Existing Building Second Entry");
+				Clickon(getwebelement(xml.getlocator("//locators/ClickSubmitEmacNearNet")));
+				Thread.sleep(2000);
+				AcceptJavaScriptMethod();
+				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				nearnetreferece[0]=(Gettext(getwebelement(xml.getlocator("//locators/ExpRequestIDNearNet"))));
+				switchtodefault();
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/Closebutton"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/Closebutton")));
+				// Select the Newly Created record with waiting for third party into the Grid system.
+				
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ManualNearNetAsite"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/ManualNearNetAsite")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				referece[0]="";
 				break;
+				
 			}
 			case "Revalidate":
 			{
@@ -622,9 +661,9 @@ public class ConfigurationHelper extends DriverHelper{
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
-				WaitforElementtobeclickable(xml.getlocator("//locators/ManualEngagement"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequestBEnd"));
 			    
-				Clickon(getwebelement(xml.getlocator("//locators/ManualEngagement")));
+				Clickon(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")));
 				// Select the Options for the OLO Cost,Revsalidation,Re negosiation, OLO+DSL
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -660,7 +699,45 @@ public class ConfigurationHelper extends DriverHelper{
 				break;
 			}
 			case "Manual Nearnet":
-			{
+			{// Click on Manual request for NearNet
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ManualEngagementBEnd"));
+				Clickon(getwebelement(xml.getlocator("//locators/ManualEngagementBEnd")));
+				
+				// Updated the data in Empac screen and create the request.
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequestBEnd"));
+			    
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")),"REQUEST NEARNET");
+				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
+				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Connection Type"));
+				SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Connection Type")),"Existing Building Second Entry");
+				Clickon(getwebelement(xml.getlocator("//locators/ClickSubmitEmacNearNet")));
+				Thread.sleep(2000);
+				AcceptJavaScriptMethod();
+				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				nearnetreferece[0]=(Gettext(getwebelement(xml.getlocator("//locators/ExpRequestIDNearNet"))));
+				switchtodefault();
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/Closebutton"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/Closebutton")));
+				// Select the Newly Created record with waiting for third party into the Grid system.
+				
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ManualNearNetAsite"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/ManualNearNetAsite")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				referece[0]="";
 			
 				break;
 			}
@@ -883,6 +960,9 @@ public class ConfigurationHelper extends DriverHelper{
 	{		Object[] ExploreID=new Object[2];
 			ExploreID[0]="";
 			ExploreID[1]="";
+			Object[] ExploreIDNearnet=new Object[2];
+			ExploreIDNearnet[0]="";
+			ExploreIDNearnet[1]="";
 		switch(Prodcutname)
 		{
 		   // case statements
@@ -943,20 +1023,20 @@ public class ConfigurationHelper extends DriverHelper{
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					//----------------------------------
 					if(Inputdata[i][11].toString().contains("Re")) {
-						Selectconnectivity("Manual Offnet","ASite",ExploreID);
+						Selectconnectivity("Manual Offnet","ASite",ExploreID,ExploreIDNearnet);
 						Rerunrequired.set("Yes");
 					}
 					else {
-					Selectconnectivity(Inputdata[i][11].toString(),"ASite",ExploreID);
+					Selectconnectivity(Inputdata[i][11].toString(),"ASite",ExploreID,ExploreIDNearnet);
 					
 					}
 					if(Inputdata[i][12].toString().contains("Re"))
 					{
-						Selectconnectivity("Manual Offnet","BSite",ExploreID);
+						Selectconnectivity("Manual Offnet","BSite",ExploreID,ExploreIDNearnet);
 						Rerunrequired.set("Yes");
 					}
 					else {
-						Selectconnectivity(Inputdata[i][12].toString(),"BSite",ExploreID);
+						Selectconnectivity(Inputdata[i][12].toString(),"BSite",ExploreID,ExploreIDNearnet);
 					}
 					///----------------------------------------------------------------------------------------------
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
@@ -1172,7 +1252,7 @@ public class ConfigurationHelper extends DriverHelper{
 				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				Selectconnectivity(Inputdata[i][11].toString(),"ASite",ExploreID);
+				Selectconnectivity(Inputdata[i][11].toString(),"ASite",ExploreID,ExploreIDNearnet);
 				ExploreID[1]="";
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
@@ -1245,7 +1325,7 @@ public class ConfigurationHelper extends DriverHelper{
 					
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID);
+					Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID,ExploreIDNearnet);
 					ExploreID[1]="";
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 					javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
@@ -1315,7 +1395,7 @@ public class ConfigurationHelper extends DriverHelper{
 					
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID);
+					Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID,ExploreIDNearnet);
 					ExploreID[1]="";
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 					javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
@@ -1392,8 +1472,8 @@ public class ConfigurationHelper extends DriverHelper{
 				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID);
-				Selectconnectivity(Inputdata[i][12].toString(),"Bsite",ExploreID);
+				Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID,ExploreIDNearnet);
+				Selectconnectivity(Inputdata[i][12].toString(),"Bsite",ExploreID,ExploreIDNearnet);
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 				javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Feature Tab");
@@ -1454,8 +1534,8 @@ public class ConfigurationHelper extends DriverHelper{
 					
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID);
-					Selectconnectivity(Inputdata[i][12].toString(),"Bsite",ExploreID);
+					Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID,ExploreIDNearnet);
+					Selectconnectivity(Inputdata[i][12].toString(),"Bsite",ExploreID,ExploreIDNearnet);
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 					javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Feature Tab");
@@ -1474,6 +1554,7 @@ public class ConfigurationHelper extends DriverHelper{
 			   }
 		}
 		Completeset.add(ExploreID);
+		Completesetnearnet.add(ExploreIDNearnet);
 	}
 	public void AddProduct(Object[][] Inputdata) throws Exception {
 		
@@ -1535,6 +1616,7 @@ public class ConfigurationHelper extends DriverHelper{
 		//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 		
 		RequestID.set(Completeset);
+		RequestIDNearnet.set(Completesetnearnet);
 		System.out.println(RequestID.get().size());
 		List data=RequestID.get();
 		//data=RequestID.get();
@@ -1545,7 +1627,18 @@ public class ConfigurationHelper extends DriverHelper{
 			System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
 			System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
 		}
+		System.out.println(RequestIDNearnet.get().size());
+		List data2=RequestIDNearnet.get();
+		//data=RequestID.get();
+		for(int i=0;i<data2.size();i++)
+		{
+			Object[] newdata=(Object[]) data2.get(i);
+			System.out.println("Size Foe Each line item- Nearnet"+newdata.length);
+			System.out.println("A Site for lineitem Nearnet"+i+" is "+newdata[0].toString());
+			System.out.println("B Site for lineitem Nearnet"+i+" is "+newdata[1].toString());
+		}
 	}
+	
 	
 	public void Reconfigure(Object[][] Inputdata) throws Exception {
 		List data=RequestID.get();
@@ -1603,8 +1696,10 @@ public class ConfigurationHelper extends DriverHelper{
 			}
 		}
 		
-		RequestID.get().clear();;
+		RequestID.get().clear();
+		RequestIDNearnet.get().clear();
 		Completeset.clear();
+		Completesetnearnet.clear();
 	}
 	public void ReconfigureAgain(Object[][] Inputdata) throws Exception {
 		waitForpageload();
@@ -1617,7 +1712,11 @@ public class ConfigurationHelper extends DriverHelper{
 		
 		for(int i=0;i<Inputdata.length;i++) {
 			Object[] ExploreID2=new Object[2];
-			
+			ExploreID2[0]="";
+			ExploreID2[1]="";
+			Object[] ExploreID2Nearnet=new Object[2];
+			ExploreID2Nearnet[0]="";
+			ExploreID2Nearnet[1]="";
 			if(Inputdata[i][11].toString().contains("Renegotiate")) {
 				System.out.println("Updating Lineitem-"+i+" for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
@@ -1632,7 +1731,7 @@ public class ConfigurationHelper extends DriverHelper{
 				WaitforElementtobeclickable(xml.getlocator("//locators/SiteDetailTab"));
 				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
 				
-				Selectconnectivity("Renegotiate","ASite",ExploreID2);
+				Selectconnectivity("Renegotiate","ASite",ExploreID2,ExploreID2Nearnet);
 				
 			}
 			else if(Inputdata[i][11].toString().contains("Revalidate"))
@@ -1650,7 +1749,7 @@ public class ConfigurationHelper extends DriverHelper{
 				WaitforElementtobeclickable(xml.getlocator("//locators/SiteDetailTab"));
 				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
 				
-				Selectconnectivity("Revalidate","ASite",ExploreID2);
+				Selectconnectivity("Revalidate","ASite",ExploreID2,ExploreID2Nearnet);
 				
 			}
 			else
@@ -1669,7 +1768,7 @@ public class ConfigurationHelper extends DriverHelper{
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				WaitforElementtobeclickable(xml.getlocator("//locators/SiteDetailTab"));
 				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
-				Selectconnectivity("Renegotiate","BSite",ExploreID2);
+				Selectconnectivity("Renegotiate","BSite",ExploreID2,ExploreID2Nearnet);
 				
 			}
 			else if(Inputdata[i][12].toString().contains("Revalidate")) {
@@ -1684,7 +1783,7 @@ public class ConfigurationHelper extends DriverHelper{
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				WaitforElementtobeclickable(xml.getlocator("//locators/SiteDetailTab"));
 				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
-				Selectconnectivity("Revalidate","BSite",ExploreID2);
+				Selectconnectivity("Revalidate","BSite",ExploreID2,ExploreID2Nearnet);
 			}
 			else
 			{
@@ -1692,6 +1791,7 @@ public class ConfigurationHelper extends DriverHelper{
 			}
 
 			Completeset.add(ExploreID2);
+			Completesetnearnet.add(ExploreID2Nearnet);
 			WaitforElementtobeclickable(xml.getlocator("//locators/updateQuote"));
 			
 			Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
@@ -1703,6 +1803,7 @@ public class ConfigurationHelper extends DriverHelper{
 		}
 		
 		RequestID.set(Completeset);
+		RequestIDNearnet.set(Completesetnearnet);
 		
 	}
 }

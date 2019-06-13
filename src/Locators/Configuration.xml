@@ -161,5 +161,9 @@
 <AjaxLoader1>//*[contains(@class,'In Progress')]</AjaxLoader1>
 <ModelSelector>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[3])[index]</ModelSelector>
 <Lineitemcounter>//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*</Lineitemcounter>
+<ClickSubmitEmacNearNet>//span[text()='Submit']</ClickSubmitEmacNearNet>
+<ExpRequestIDNearNet>(//*[contains(@class,'field-id')])[4]</ExpRequestIDNearNet>
+<ManualNearNetAsite>//*[@id='nearNetA']//*[text()='Manual']/parent::*/td/input</ManualNearNetAsite>
+
 </locators>
 
