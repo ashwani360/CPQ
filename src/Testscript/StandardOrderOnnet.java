@@ -31,6 +31,17 @@ public class StandardOrderOnnet extends DriverTestcase {
 			C4Chelper.get().EditQuote();
 			
 			Configurationhelper.get().Reconfigure(Data);
+			Login.get().Logout("CPQ");
+			Login.get().Login("ExploreNearNet");
+			Explorehelper.get().ExploreWorkflownearnet("Approve");
+			Login.get().Logout("ExploreNearNet");
+			Login.get().Login("C4C");
+			
+			C4Chelper.get().Movetoaccount(Data);
+			C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			
+			Configurationhelper.get().Reconfigure(Data);
 //			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
 			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
 			{
@@ -42,14 +53,24 @@ public class StandardOrderOnnet extends DriverTestcase {
 				C4Chelper.get().EditQuote();
 				
 				Configurationhelper.get().Reconfigure(Data);
+				Login.get().Logout("CPQ");
+				Login.get().Login("ExploreNearNet");
+				Explorehelper.get().ExploreWorkflownearnet("Approve");
+				Login.get().Logout("ExploreNearNet");
+				Login.get().Login("C4C");
 				
+				C4Chelper.get().Movetoaccount(Data);
+				C4Chelper.get().MovetoOpportunuity(Data);
+				C4Chelper.get().EditQuote();
+				
+				Configurationhelper.get().Reconfigure(Data);
 			}
 		}
 		else if(Configurationhelper.get().Quotestatus.get().equals("POA"))
 		{
 			//Need to write the code
 		}
-		else if(Configurationhelper.get().Quotestatus.get().equals("PPT"))
+		else if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
 		{
 			//Need to write the code
 		}

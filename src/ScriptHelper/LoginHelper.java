@@ -122,6 +122,48 @@ public class LoginHelper extends DriverHelper{
 		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Login Button");
 		
 	}
+	public void Logout(String Application) throws Exception
+	{
+		switch(Application)
+		{
+		case "C4C":
+		{
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
+			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+			break;
+		}
+		case "CPQ":
+		{
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+			break;
+		}
+		case "Explore":
+		{
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
+			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+			break;
+		}
+		case "ExploreNearNet":
+		{
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
+			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+			break;
+		}
+		
+		default:
+		{
+			
+		}
+		}
+		
+	}
 	
 	public void VerifySuccessLogin(String application) throws Exception
 	{	

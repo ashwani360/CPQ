@@ -165,5 +165,32 @@
 <ExpRequestIDNearNet>(//*[contains(@class,'field-id')])[4]</ExpRequestIDNearNet>
 <ManualNearNetAsite>//*[@id='nearNetA']//*[text()='Manual']/parent::*/td/input</ManualNearNetAsite>
 <Quotestatus>id=status_t-ro</Quotestatus>
+<PPT>
+<BasePrice>//td[text()='Price Not Found']</BasePrice>
+<PartialSave>//input[@name='partialSave_Features']</PartialSave>
+<Save>id=save</Save>
+<AddtoTransaction>id=add_to_transaction</AddtoTransaction>
+<EngagePortfolio>//span[text()='Engage Portfolio Pricing']</EngagePortfolio>
+<PLtab>//*[@id="ui-id-41"]/span</PLtab>
+<Portfolio>//div[@id='oj-select-choice-portfolioTeamAssignment']</Portfolio>
+<Assignquote>//span[text()='Assign Quote']</Assignquote>
+<Bpnotfound>//span[text()='Base price not found']</Bpnotfound>
+<Fastnotfound>//span[text()='FastTrack price not found']</Fastnotfound>
+<Pricingcitynotfound>//span[text()='A-END Pricing City ( Linz) Not Found']</Pricingcitynotfound>
+<Basepricenrr>//span[@title='Base price not found']/parent::*/parent::*/td[12]</Basepricenrr>
+<Basepricemrr>//span[@title='Base price not found']/parent::*/parent::*/td[12]</Basepricemrr>
+<Fastracknrr>//span[@title='FastTrack price not found']/parent::*/parent::*/td[12]</Fastracknrr>
+
+<Pricincity>//span[@title='A-END Pricing City ( Linz) Not Found']</Pricincity>
+<Selectrow>//span[@title='A-END Pricing City ( Linz) Not Found']//parent::*/parent::*[1]</Selectrow>
+<Reconfigure>//span[text()='Reconfigure']</Reconfigure>
+<Sitedetails>//span[text()='Site Details']</Sitedetails>
+<PricingCitydropdown>//button[@title='Show All Items']</PricingCitydropdown>
+<Clickupdate>//a[@name='update']</Clickupdate>
+<Clicksave>//a[@name='save']</Clicksave>
+<Sendtosales>//span[text()='Send To Sales']</Sendtosales>>
+
+<Pptuser>Do not know</Pptuser>
+</PPT>
 </locators>
 

@@ -6,6 +6,8 @@
 <Loginbutton>//*[@type='submit']</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
+<UserProfile>id=shell-header-user-image</UserProfile>
+<Logout>//bdi[text()='Sign Out']</Logout>
 </C4C>
 <Explore>
 <Username>id=userId</Username>
@@ -13,14 +15,25 @@
 <Loginbutton>id=Submit</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
+<UserProfile>//span[contains(@class,'IconMenu')]</UserProfile>
+<Logout>//td[text()='Log Out']</Logout>
 </Explore>
+<ExploreNearNet>
+<Username>id=userId</Username>
+<Password>id=password</Password>
+<Loginbutton>id=Submit</Loginbutton>
+<Userinfo>//*[@id="gen_menu_6"]</Userinfo>
+<skipwarning>//a[text()='Continue']</skipwarning>
+<UserProfile>//span[contains(@class,'IconMenu')]</UserProfile>
+<Logout>//td[text()='Log Out']</Logout>
+</ExploreNearNet>
 <CPQ>
 <Username>//*[@id="s_swepi_1"]</Username>
 <Password>id=s_swepi_2</Password>
 <Loginbutton>//*[@id="s_swepi_22"]</Loginbutton>
 <!--<SiebelUserinfo>//*[@id="gen_menu_6"]</SiebelUserinfo>-->
 <AccountSettingButton>//li[@title="Settings"]</AccountSettingButton>
-<Logout>//button[text()="Logout"]</Logout>
+<Logout>//span[text()='Log out']/parent::*</Logout>
 </CPQ>
 <Sieble>
 <Username>//*[@id="s_swepi_1"]</Username>

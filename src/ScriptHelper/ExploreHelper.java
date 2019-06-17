@@ -23,6 +23,86 @@ public class ExploreHelper extends DriverHelper {
 		Geturl(Getkeyvalue("Explore_URL"));
 	
 	}
+	public void ExploreWorkflownearnet(String inputdata) throws InterruptedException, Exception 
+	{
+		switch(inputdata)
+		{
+		case "Approve":
+			List data=RequestIDNearnet.get();
+			for(int i=0;i<data.size();i++)
+			{
+				Object[] newdata=(Object[]) data.get(i);
+				System.out.println("Size Foe Each line item"+newdata.length);
+				System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
+				System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
+			}
+				for(int i=0;i<data.size();i++)
+				{
+					Object[] newdata=(Object[]) data.get(i);
+					for(int j=0;j<newdata.length;j++) {
+						if(!newdata[j].toString().equals(""))
+						{
+						System.out.println("A Site for lineitem"+i+" is "+newdata[j].toString());
+						WaitforElementtobeclickable(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue"));
+						Clickon(getwebelement(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString()));
+						Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString())));
+//			            Thread.sleep(5000);
+						WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
+						Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMe"));
+						Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMe")));
+						Thread.sleep(5000);
+						String a =Getattribute(getwebelement("//label[text()='Request Type']/following::span"),"value");
+						System.out.println(a);
+						if(a.equals("BCP Revalidation")) {
+							WaitforElementtobeclickable(xml.getlocator("//locators/QuoteValiduptomonths"));
+							SendKeys(getwebelement(xml.getlocator("//locators/QuoteValiduptomonths")),"5");	
+						}			
+						else {
+							WaitforElementtobeclickable(xml.getlocator("//locators/ExploreNearNetDistance"));
+							Clickon(getwebelement(xml.getlocator("//locators/ExploreNearNetDistance")));
+							SendKeys(getwebelement(xml.getlocator("//locators/ExploreNearNetDistance")),"18");
+							WaitforElementtobeclickable(xml.getlocator("//locators/QuoteValiduptomonths"));
+							Clickon(getwebelement(xml.getlocator("//locators/QuoteValiduptomonths")));
+							SendKeys(getwebelement(xml.getlocator("//locators/QuoteValiduptomonths")),"3");
+							WaitforElementtobeclickable(xml.getlocator("//locators/ExploreNearNetCurrency"));
+							Clickon(getwebelement(xml.getlocator("//locators/ExploreNearNetCurrency")));
+							SendKeys(getwebelement(xml.getlocator("//locators/ExploreNearNetCurrency")),"EUR");
+							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetAddCost"));
+							Clickon(getwebelement(xml.getlocator("//locators/NearNetAddCost")));
+							SendKeys(getwebelement(xml.getlocator("//locators/NearNetAddCost")),"EUR");
+							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetAddCost"));
+							Clickon(getwebelement(xml.getlocator("//locators/NearNetAddCost")));
+							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetCostCatogory"));
+							Clickon(getwebelement(xml.getlocator("//locators/NearNetCostCatogory")));
+							SendKeys(getwebelement(xml.getlocator("//locators/NearNetCostCatogory")),"Construction");
+							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetSubCostCatogory"));
+							Clickon(getwebelement(xml.getlocator("//locators/NearNetSubCostCatogory")));
+							SendKeys(getwebelement(xml.getlocator("//locators/NearNetSubCostCatogory")),"WayLeave");
+							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetUnitCost"));
+							Clickon(getwebelement(xml.getlocator("//locators/NearNetUnitCost")));
+							SendKeys(getwebelement(xml.getlocator("//locators/NearNetUnitCost")),"100");
+							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetCostQuantity"));
+							Clickon(getwebelement(xml.getlocator("//locators/NearNetCostQuantity")));
+							SendKeys(getwebelement(xml.getlocator("//locators/NearNetCostQuantity")),"1");
+							WaitforElementtobeclickable(xml.getlocator("//locators/SendtoSalesNearNet"));
+							Clickon(getwebelement(xml.getlocator("//locators/SendtoSalesNearNet")));
+						
+						}
+						}
+			
+						else 
+						{
+							System.out.println("None of Data update required");
+						}
+					
+					}}
+					break;
+				}
+				
+					}
+
 	public void ExploreWorkflow(String inputdata) throws InterruptedException, Exception 
 	{
 		switch(inputdata)

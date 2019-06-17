@@ -33,4 +33,18 @@
 <MenuItem>(//span[@role="button"])[7]</MenuItem>
 <Logout>//td[text()='Log Out']</Logout>
 <Filedsname>//span[text()='Fieldname']/parent::*/input</Filedsname>
+<Logout>//td[text()='Log Out']</Logout>
+<NearNetFibrePlanningWorkQueue>//span[text()='Fibre Planning Work Queue']</NearNetFibrePlanningWorkQueue>
+<AssignNearNetRequestToMe>(//tr[@aria-label="Assign To Me"])[2]</AssignNearNetRequestToMe>
+<QuoteValiduptomonths>(//label[text()='Quote Valid Up to (months)']/following::div/input)[2]</QuoteValiduptomonths>>
+<ExploreNearNetCurrency>(//label[text()='Currency']/following::div/input)[3]</ExploreNearNetCurrency>
+<ExploreNearNetDistance>(//label[text()='Distance from Colt Network (m)']/following::div/input)[2]</ExploreNearNetDistance>
+<NearNetAddCost>//span[text()='Add Cost']</NearNetAddCost>>
+<NearNetCostCatogory>//th[text()='Cost Category']/ancestor::div[2]//div//table//td[2]</NearNetCostCatogory>
+<NearNetSubCostCatogory>//th[text()='Cost Category']/ancestor::div[2]//div//table//td[3]</NearNetSubCostCatogory>
+<NearNetCostType>//th[text()='Cost Category']/ancestor::div[2]//div//table//td[4]</NearNetCostType>
+<NearNetUnitCost>//th[text()='Cost Category']/ancestor::div[2]//div//table//td[5]</NearNetUnitCost>
+<NearNetCostQuantity>//th[text()='Cost Category']/ancestor::div[2]//div//table//td[6]</NearNetCostQuantity>
+<SendtoSalesNearNet>(//span[text()='Send to Sales'])[1]</SendtoSalesNearNet>
+
 </locators>
