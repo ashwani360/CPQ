@@ -1714,7 +1714,7 @@ public class ConfigurationHelper extends DriverHelper{
 		List data=RequestID.get();
 		waitForpageload();
 		WaitforCPQloader();
-		Thread.sleep(5000);
+		Thread.sleep(30000);
 		//WaitforCPQloader2();
 		//WaitforElementtobeclickable(xml.getlocator("//locators/StandrdQuote"));
 		
