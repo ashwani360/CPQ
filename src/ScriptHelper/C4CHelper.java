@@ -208,6 +208,7 @@ public class C4CHelper extends DriverHelper{
 		//WaitforElementtobeclickable(xml.getlocator("//locators/AccountSearchField"));
 		//Search(QuoteID.get().toString());
 		Search(QuoteID.get().toString(),3);
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Quotenumber").replace("Quotenumber", QuoteID.get().toString()));
 		Clickon(getwebelement(xml.getlocator("//locators/Quotenumber").replace("Quotenumber", QuoteID.get().toString())));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");

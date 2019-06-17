@@ -96,6 +96,7 @@ public class DriverHelper {
 	public static ThreadLocal<List> RequestIDNearnet= new ThreadLocal<>();
 	public static ThreadLocal<String>  Rerunrequired=new ThreadLocal<>();
 	public static ThreadLocal<String> OpportunityID=new ThreadLocal<>();
+	public static ThreadLocal<String> Quotestatus=new ThreadLocal<>();
 	public DriverHelper(WebDriver dr)
 	{
 		driver=dr;
@@ -105,9 +106,9 @@ public class DriverHelper {
 				.ignoring(NoSuchElementException.class)
 				.ignoring(StaleElementReferenceException.class)
 			;
-		Rerunrequired.set("Yes");
+		Rerunrequired.set("No");
 		//workitemcounter.set(1);
-		QuoteID.set("QT-20190612-033096-01");
+		//QuoteID.set("QT-20190612-033096-01");
 		//DealClass.set("Bronze");
 //		//TotalTCVdisscount.set((float) 0);
 //		List Completeset=new ArrayList();

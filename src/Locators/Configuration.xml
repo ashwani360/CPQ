@@ -164,6 +164,6 @@
 <ClickSubmitEmacNearNet>//span[text()='Submit']</ClickSubmitEmacNearNet>
 <ExpRequestIDNearNet>(//*[contains(@class,'field-id')])[4]</ExpRequestIDNearNet>
 <ManualNearNetAsite>//*[@id='nearNetA']//*[text()='Manual']/parent::*/td/input</ManualNearNetAsite>
-
+<Quotestatus>id=status_t-ro</Quotestatus>
 </locators>
 

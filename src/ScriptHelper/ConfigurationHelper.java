@@ -231,7 +231,7 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequest"));
 			    
-				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST DSL");
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST MANUAL DSL");
 				// Updated the data in Empac screen and create the request.
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -452,7 +452,7 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequest"));
 			    
-				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST MANUAL OLO+DSL");
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST MANUAL OLO AND/OR MANUAL DSL");
 				// Updated the data in Empac screen and create the request.
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -669,7 +669,7 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequestBEnd"));
 			    
-				Select(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")),"REQUEST DSL");
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")),"REQUEST MANUAL DSL");
 				// Updated the data in Empac screen and create the request.
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -885,7 +885,7 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequestBEnd"));
 			    
-				Select(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")),"REQUEST MANUAL OLO+DSL");
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")),"REQUEST MANUAL OLO AND/OR MANUAL DSL");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -1603,9 +1603,12 @@ public class ConfigurationHelper extends DriverHelper{
 		DealClass.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Dealclass"))));
 		TechnicalComplexity.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Technicalcomplexity"))));
 		LeagalComplexity.set(GetValueofInput(getwebelement(xml.getlocator("//locators/LegalComplexity"))));
+		Quotestatus.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
+		System.out.println("Quite Stage on Screee"+GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
 		System.out.println("Deal class after adding all the products is"+DealClass.get());
 		System.out.println("Techincal Complexity after adding all the products is"+TechnicalComplexity.get());
 		System.out.println("Techincal Complexity after adding all the products is"+LeagalComplexity.get());
+		System.out.println("Satage  after adding all the products is"+Quotestatus.get());
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader"),1);
 //		waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
@@ -1644,6 +1647,7 @@ public class ConfigurationHelper extends DriverHelper{
 		List data=RequestID.get();
 		waitForpageload();
 		WaitforCPQloader();
+		Thread.sleep(5000);
 		//WaitforCPQloader2();
 		//WaitforElementtobeclickable(xml.getlocator("//locators/StandrdQuote"));
 		

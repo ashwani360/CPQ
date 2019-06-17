@@ -17,10 +17,42 @@ public class StandardOrderOnnet extends DriverTestcase {
 		
 		C4Chelper.get().Movetoaccount(Data);
 		C4Chelper.get().MovetoOpportunuity(Data);
-		//C4Chelper.get().EditQuote();
+		
 		Thread.sleep(3000);
 		C4Chelper.get().AddQuote();
 		Configurationhelper.get().AddProduct(Data);
+		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for 3rd Party"))
+		{
+			Explorehelper.get().NavigatetoExplore();
+			Explorehelper.get().ExploreWorkflow("Approve");
+			C4Chelper.get().NavigatetoC4C();
+			C4Chelper.get().Movetoaccount(Data);
+			C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			
+			Configurationhelper.get().Reconfigure(Data);
+//			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
+			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
+			{
+			Configurationhelper.get().ReconfigureAgain(Data);
+				Explorehelper.get().ExploreWorkflow("Approve");
+				C4Chelper.get().NavigatetoC4C();
+				C4Chelper.get().Movetoaccount(Data);
+				C4Chelper.get().MovetoOpportunuity(Data);
+				C4Chelper.get().EditQuote();
+				
+				Configurationhelper.get().Reconfigure(Data);
+				
+			}
+		}
+		else if(Configurationhelper.get().Quotestatus.get().equals("POA"))
+		{
+			//Need to write the code
+		}
+		else if(Configurationhelper.get().Quotestatus.get().equals("PPT"))
+		{
+			//Need to write the code
+		}
 		// If Stage is waiting for third Party Need to call All the Explore functions
 		GenralInfohelper.get().GenralInfomration(Data);
 		BCNupdatehelper.get().BCNUpdate(Data);
