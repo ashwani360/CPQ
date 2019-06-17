@@ -133,9 +133,8 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 }
 public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	
-	//waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
+	waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 	waitForpageload();
-	//WaitforCPQloader();
 	//Thread.sleep(10000);
 		//WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
 	safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
@@ -158,10 +157,71 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	Movetoaccount(Inputdata);
 	MovetoOpportunuity(Inputdata);
 	EditQuote();
+	//-----------------------------------------------
+	if(isElementPresent(xml.getlocator("//locators/TechnicalApprovalTab")))
+	{
+		Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+		Clickon(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
+		Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
+	//	Clickon(getwebelement(xml.getlocator("//locators/ReturnToC4C")));
+		
+		SEEngagement();
+		//---------------------------------------------------	
+		CSTEngagement();
+		
+	}
+	
+	
 }
 	}
 
+public void SEEngagement() throws InterruptedException, Exception 
+{
+	openurl("Admin");
+//	Switchtotab();
+	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+	WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User")));
+	Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User"))));
+	WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
+	Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
+	WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
+	Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+	WaitforElementtobeclickable(xml.getlocator("//locators/TechnicalApprovalTab"));
+	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
+	javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
+	Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+	WaitforElementtobeclickable(xml.getlocator("//locators/SubmitToCSTApproval"));
+	Clickon(getwebelement(xml.getlocator("//locators/SubmitToCSTApproval")));
+	openurl("Admin");
+	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+	
+	
+}
 
+public void CSTEngagement() throws InterruptedException, Exception 
+{
+	WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User")));
+	Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User"))));
+	WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
+	Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
+	WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
+	Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+	WaitforElementtobeclickable(xml.getlocator("//locators/TechnicalApprovalTab"));
+	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
+	javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
+	Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+	Clickon(getwebelement(xml.getlocator("//locators/CSTApproval")));
+	openurl("Admin");
+	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+	
+}
 public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws Exception
 {
 	if(ApprovalCase.get().equals("Deal Pricing"))
@@ -170,7 +230,6 @@ public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws E
 	}
 	else if(ApprovalCase.get().equals("VP1 Sales") ||Approvalcase.equals("VP2 Sales"))
 	{
-		//WaitforCPQloader();
 		WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
@@ -189,7 +248,6 @@ public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws E
 		
 	}
 	else {
-		//WaitforCPQloader();
 		WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
@@ -297,11 +355,11 @@ public void ApproveQuote(String Approver) throws Exception
 		case "VP2 Sales" :
 		{
 			// Click on Admin link
-			//WaitforCPQloader();
-			WaitforElementtobeclickable(xml.getlocator("//locators/Admin"));
-			javascriptexecutor(getwebelement(xml.getlocator("//locators/Admin")));
-			
-			Clickon(getwebelement(xml.getlocator("//locators/Admin")));
+//			WaitforElementtobeclickable(xml.getlocator("//locators/Admin"));
+//			javascriptexecutor(getwebelement(xml.getlocator("//locators/Admin")));
+//			
+//			Clickon(getwebelement(xml.getlocator("//locators/Admin")));
+			openurl("Admin");
 			Switchtotab();
 			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
@@ -313,7 +371,7 @@ public void ApproveQuote(String Approver) throws Exception
 		
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
-			//WaitforCPQloader();
+			
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
@@ -348,7 +406,7 @@ public void ApproveQuote(String Approver) throws Exception
 			
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
-			WaitforCPQloader();
+			
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
