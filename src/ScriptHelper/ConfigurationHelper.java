@@ -278,12 +278,17 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequest"));
 			    
-				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST NEARNET");
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST MANUAL NEARNET");
 				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
 				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				Thread.sleep(4000);
+				System.out.println("Additional Wait inserted");
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Connection Type"));
 				SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Connection Type")),"Existing Building Second Entry");
+				SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Connection Type")),Keys.ENTER);
+				
+				Thread.sleep(2000);
 				Clickon(getwebelement(xml.getlocator("//locators/ClickSubmitEmacNearNet")));
 				Thread.sleep(2000);
 				AcceptJavaScriptMethod();
@@ -715,7 +720,7 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequestBEnd"));
 			    
-				Select(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")),"REQUEST NEARNET");
+				Select(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")),"REQUEST MANUAL NEARNET");
 				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
 				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -1639,6 +1644,7 @@ public class ConfigurationHelper extends DriverHelper{
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add Product Button");
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
 		System.out.println(QuoteID.get());
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Newly Created Quote ID is"+QuoteID.get().toString());
 //		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Opportunity Info")));
 //		DealClass.set(Gettext(getwebelement(xml.getlocator("//locators/Dealclass"))));
 //		TechnicalComplexity.set(Gettext(getwebelement(xml.getlocator("//locators/Technicalcomplexity"))));
@@ -1650,7 +1656,7 @@ public class ConfigurationHelper extends DriverHelper{
 //			waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
 			waitForpageload();
 		Clickon(getwebelement(xml.getlocator("//locators/AddProduct")));
-		
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Add Product button");
 		AddFamilyProduct(Inputdata,i);
 //		waitForpageload();
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
@@ -1663,15 +1669,21 @@ public class ConfigurationHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
 		waitForpageload();
 		WaitforCPQloader();
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Save Button");
 		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Opportunity Info")));
 		Thread.sleep(5000);
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
 		System.out.println(QuoteID.get());
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Quote ID is"+QuoteID.get().toString());
 		DealClass.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Dealclass"))));
 		TechnicalComplexity.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Technicalcomplexity"))));
 		LeagalComplexity.set(GetValueofInput(getwebelement(xml.getlocator("//locators/LegalComplexity"))));
 		Quotestatus.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
 		System.out.println("Quite Stage on Screee"+GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Quote stage is"+Quotestatus.get().toString());
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Deal Class is"+DealClass.get().toString());
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Techincal Complaxity is"+TechnicalComplexity.get().toString());
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Legal Complexity is"+LeagalComplexity.get().toString());
 		System.out.println("Deal class after adding all the products is"+DealClass.get());
 		System.out.println("Techincal Complexity after adding all the products is"+TechnicalComplexity.get());
 		System.out.println("Techincal Complexity after adding all the products is"+LeagalComplexity.get());
@@ -1693,6 +1705,9 @@ public class ConfigurationHelper extends DriverHelper{
 		for(int i=0;i<data.size();i++)
 		{
 			Object[] newdata=(Object[]) data.get(i);
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: OLO Reference number for A Site for lineitem-"+i+" is "+newdata[0].toString());
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: OLO Reference number for B Site for lineitem-"+i+" is "+newdata[1].toString());
+			
 			System.out.println("Size Foe Each line item"+newdata.length);
 			System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
 			System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
@@ -1703,6 +1718,9 @@ public class ConfigurationHelper extends DriverHelper{
 		for(int i=0;i<data2.size();i++)
 		{
 			Object[] newdata=(Object[]) data2.get(i);
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: NearNet Reference number for A Site for lineitem-"+i+" is "+newdata[0].toString());
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: NearNet Reference number for B Site for lineitem-"+i+" is "+newdata[1].toString());
+			
 			System.out.println("Size Foe Each line item- Nearnet"+newdata.length);
 			System.out.println("A Site for lineitem Nearnet"+i+" is "+newdata[0].toString());
 			System.out.println("B Site for lineitem Nearnet"+i+" is "+newdata[1].toString());
@@ -1712,6 +1730,7 @@ public class ConfigurationHelper extends DriverHelper{
 	
 	public void Reconfigure(Object[][] Inputdata) throws Exception {
 		List data=RequestID.get();
+		List dataNearnet=RequestIDNearnet.get();
 		waitForpageload();
 		WaitforCPQloader();
 		Thread.sleep(30000);
@@ -1723,6 +1742,13 @@ public class ConfigurationHelper extends DriverHelper{
 		for(int i=0;i<data.size();i++)
 		{
 			Object[] newdata=(Object[]) data.get(i);
+			System.out.println("Size Foe Each line item"+newdata.length);
+			System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
+			System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
+		}
+		for(int i=0;i<dataNearnet.size();i++)
+		{
+			Object[] newdata=(Object[]) dataNearnet.get(i);
 			System.out.println("Size Foe Each line item"+newdata.length);
 			System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
 			System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
@@ -1767,6 +1793,44 @@ public class ConfigurationHelper extends DriverHelper{
 			}
 		}
 		
+		for(int i=0;i<dataNearnet.size();i++)
+		{
+			Object[] newdata=(Object[]) dataNearnet.get(i);
+			if(!(newdata[0].toString().equals("") && newdata[1].toString().equals(""))) 
+			{
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				//Thread.sleep(5000);
+				System.out.println("Date for A site"+newdata[0].toString());
+				System.out.println("Date for B site"+newdata[1].toString());
+				System.out.println("Reconfigure the the lineiten number"+i);
+				WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+				System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				WaitforElementtobeclickable(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+				WaitforElementtobeclickable(xml.getlocator("//locators/Reconfigure"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+				
+				WaitforElementtobeclickable(xml.getlocator("//locators/updateQuote"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+				
+				WaitforElementtobeclickable(xml.getlocator("//locators/ReconfigsaveQuote"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/ReconfigsaveQuote")));
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				// Need to check if New request need to be raised..
+				// raised a request whenever required
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+				
+			}
+		}
 		RequestID.get().clear();
 		RequestIDNearnet.get().clear();
 		Completeset.clear();

@@ -112,5 +112,11 @@
 <AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
 <AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
 <AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
+<TechnicalApprovalTab>(//span[contains(text(),'Approval')])[2]</TechnicalApprovalTab>
+<CheckboxTechnicalApproval>//label[text()='Ready For Technical Approval']/ancestor::div[4]//input</CheckboxTechnicalApproval>
+<SubmitTechnicalApprovalButton>//button[@name='submit_for_technical_approval']</SubmitTechnicalApprovalButton>
+<ReturnToC4C>//button[@name="return_to_c4c"][1]</ReturnToC4C>
+<SubmitToCSTApproval>//button[@name='submit_to_cst_approval']</SubmitToCSTApproval>
+<CSTApproval>//button[@name='approve']</CSTApproval>
 </locators>
 

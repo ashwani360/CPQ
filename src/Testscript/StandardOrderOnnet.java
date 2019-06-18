@@ -24,29 +24,22 @@ public class StandardOrderOnnet extends DriverTestcase {
 		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for 3rd Party"))
 		{
 			Explorehelper.get().NavigatetoExplore();
-			Explorehelper.get().ExploreWorkflow("Approve");
-			C4Chelper.get().NavigatetoC4C();
-			C4Chelper.get().Movetoaccount(Data);
-			C4Chelper.get().MovetoOpportunuity(Data);
-			C4Chelper.get().EditQuote();
-			
-			Configurationhelper.get().Reconfigure(Data);
-			Login.get().Logout("CPQ");
+			Explorehelper.get().ExploreWorkflow(Data);
+			Login.get().Logout("Explore");
 			Login.get().Login("ExploreNearNet");
-			Explorehelper.get().ExploreWorkflownearnet("Approve");
+			Explorehelper.get().ExploreWorkflownearnet(Data);
 			Login.get().Logout("ExploreNearNet");
 			Login.get().Login("C4C");
 			
 			C4Chelper.get().Movetoaccount(Data);
 			C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
-			
 			Configurationhelper.get().Reconfigure(Data);
 //			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
 			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
 			{
 			Configurationhelper.get().ReconfigureAgain(Data);
-				Explorehelper.get().ExploreWorkflow("Approve");
+				Explorehelper.get().ExploreWorkflow(Data);
 				C4Chelper.get().NavigatetoC4C();
 				C4Chelper.get().Movetoaccount(Data);
 				C4Chelper.get().MovetoOpportunuity(Data);
@@ -55,7 +48,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 				Configurationhelper.get().Reconfigure(Data);
 				Login.get().Logout("CPQ");
 				Login.get().Login("ExploreNearNet");
-				Explorehelper.get().ExploreWorkflownearnet("Approve");
+				Explorehelper.get().ExploreWorkflownearnet(Data);
 				Login.get().Logout("ExploreNearNet");
 				Login.get().Login("C4C");
 				

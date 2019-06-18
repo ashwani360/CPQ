@@ -165,7 +165,7 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
 	//	Clickon(getwebelement(xml.getlocator("//locators/ReturnToC4C")));
 		
-		SEEngagement();
+		SEEngagement(Inputdata);
 		//---------------------------------------------------	
 		CSTEngagement();
 		
@@ -175,7 +175,7 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 }
 	}
 
-public void SEEngagement() throws InterruptedException, Exception 
+public void SEEngagement(Object[][] Inputdata) throws InterruptedException, Exception 
 {
 	openurl("Admin");
 //	Switchtotab();
@@ -192,6 +192,13 @@ public void SEEngagement() throws InterruptedException, Exception
 	javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
 	Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+	/// Reconfiguration Options...
+	// No Re-configuration
+	// REconfiguration - Bandwidth Change
+	// REconfiguration - New Custome Feature
+	// REconfiguration - Contract term update
+	// REconfiguration - Address update
+	UpgradeQuote(Inputdata);
 	WaitforElementtobeclickable(xml.getlocator("//locators/SubmitToCSTApproval"));
 	Clickon(getwebelement(xml.getlocator("//locators/SubmitToCSTApproval")));
 	openurl("Admin");
@@ -200,6 +207,14 @@ public void SEEngagement() throws InterruptedException, Exception
 	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
 	
 	
+}
+
+public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception 
+{
+	// For Each----15 and 16
+	   // Reconfigure
+		// Switch the Respective Change:, Bandwidth Change,Feature Change, Site Change, Contract Term change
+	System.out.println("Her SE chnages need to be updated");
 }
 
 public void CSTEngagement() throws InterruptedException, Exception 

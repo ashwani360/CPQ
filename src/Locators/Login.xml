@@ -15,7 +15,7 @@
 <Loginbutton>id=Submit</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
-<UserProfile>//span[contains(@class,'IconMenu')]</UserProfile>
+<UserProfile>//span[contains(@class,'IconMenu')]/parent::*/parent::*/following-sibling::input</UserProfile>
 <Logout>//td[text()='Log Out']</Logout>
 </Explore>
 <ExploreNearNet>
@@ -24,7 +24,7 @@
 <Loginbutton>id=Submit</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
-<UserProfile>//span[contains(@class,'IconMenu')]</UserProfile>
+<UserProfile>//span[contains(@class,'IconMenu')]/parent::*/parent::*/following-sibling::input</UserProfile>
 <Logout>//td[text()='Log Out']</Logout>
 </ExploreNearNet>
 <CPQ>

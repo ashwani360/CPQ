@@ -23,21 +23,21 @@ public class ExploreHelper extends DriverHelper {
 		Geturl(Getkeyvalue("Explore_URL"));
 	
 	}
-	public void ExploreWorkflownearnet(String inputdata) throws InterruptedException, Exception 
-	{
-		switch(inputdata)
+	public void ExploreWorkflownearnet(Object[][] inputdata) throws InterruptedException, Exception 
+	{ List data=RequestIDNearnet.get();
+		for(int i=0;i<data.size();i++)
+		{
+			Object[] newdata=(Object[]) data.get(i);
+			System.out.println("Size Foe Each line item"+newdata.length);
+			System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
+			System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
+		}
+		for(int i=0;i<data.size();i++)
+		{
+		switch(inputdata[i][14].toString())
 		{
 		case "Approve":
-			List data=RequestIDNearnet.get();
-			for(int i=0;i<data.size();i++)
-			{
-				Object[] newdata=(Object[]) data.get(i);
-				System.out.println("Size Foe Each line item"+newdata.length);
-				System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
-				System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
-			}
-				for(int i=0;i<data.size();i++)
-				{
+		{
 					Object[] newdata=(Object[]) data.get(i);
 					for(int j=0;j<newdata.length;j++) {
 						if(!newdata[j].toString().equals(""))
@@ -97,31 +97,43 @@ public class ExploreHelper extends DriverHelper {
 							System.out.println("None of Data update required");
 						}
 					
-					}}
+					}
+					
+		
 					break;
 				}
+			case "Dig Cost not Possible":
+			{
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}
 				
 					}
 
-	public void ExploreWorkflow(String inputdata) throws InterruptedException, Exception 
+	public void ExploreWorkflow(Object[][] inputdata) throws InterruptedException, Exception 
+	{ List data=RequestID.get();
+	for(int i=0;i<data.size();i++)
 	{
-		switch(inputdata)
-		{
+		Object[] newdata=(Object[]) data.get(i);
+		System.out.println("Size Foe Each line item"+newdata.length);
+		System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
+		System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
+	}
+	for(int i=0;i<data.size();i++)
+	{
+	switch(inputdata[i][14].toString())
+	{
+		
 		case "Approve":
 		{	
 		//List data=RequestID.get();
 		//data=RequestID.get();
-		List data=RequestID.get();
-		//data=RequestID.get();
-		for(int i=0;i<data.size();i++)
-		{
-			Object[] newdata=(Object[]) data.get(i);
-			System.out.println("Size Foe Each line item"+newdata.length);
-			System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
-			System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
-		}
-		for(int i=0;i<data.size();i++)
-		{
+		
 			Object[] newdata=(Object[]) data.get(i);
 			for(int j=0;j<newdata.length;j++) {
 				if(!newdata[j].toString().equals(""))
@@ -258,22 +270,12 @@ public class ExploreHelper extends DriverHelper {
 				}
 			
 			}
-		  }
+		 
 			break;
 		}
 		case "Reject":
 		{
-			List data=RequestID.get();
-			//data=RequestID.get();
-			for(int i=0;i<data.size();i++)
-			{
-				Object[] newdata=(Object[]) data.get(i);
-				System.out.println("Size Foe Each line item"+newdata.length);
-				System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
-				System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
-			}
-			for(int i=0;i<data.size();i++)
-			{
+			
 				Object[] newdata=(Object[]) data.get(i);
 				for(int j=0;j<newdata.length;j++) {
 					if(!newdata[j].toString().equals(""))
@@ -318,24 +320,13 @@ public class ExploreHelper extends DriverHelper {
 					}
 				
 				}
-			  }
-			
+			 
 			
 			break;
 		}
 		case "Supplier No Bid":
 		{
-			List data=RequestID.get();
-			//data=RequestID.get();
-			for(int i=0;i<data.size();i++)
-			{
-				Object[] newdata=(Object[]) data.get(i);
-				System.out.println("Size Foe Each line item"+newdata.length);
-				System.out.println("A Site for lineitem"+i+" is "+newdata[0].toString());
-				System.out.println("B Site for lineitem"+i+" is "+newdata[1].toString());
-			}
-			for(int i=0;i<data.size();i++)
-			{
+			
 				Object[] newdata=(Object[]) data.get(i);
 				for(int j=0;j<newdata.length;j++) {
 					if(!newdata[j].toString().equals(""))
@@ -392,19 +383,20 @@ public class ExploreHelper extends DriverHelper {
 						System.out.println("No related Explore Request Raised");
 					}
 				
-				}
-			  }
-			
+				
+			 
 			break;
 		}
 
 		
-	}
+	
 		System.out.println("Completed the Process start sleeping for couple of second to data trasmited");
 		Thread.sleep(50000);
 		System.out.println("Ended the waite time");
 		
 	}
 	
-
+	}
+	}
+	}
 }

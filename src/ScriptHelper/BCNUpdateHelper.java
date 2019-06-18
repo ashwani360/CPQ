@@ -28,6 +28,7 @@ public class BCNUpdateHelper extends DriverHelper{
 		//Thread.sleep(5000);
 		//waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 		waitForpageload();
+		
 		//WaitforCPQloader();
 		//KeydownKey(Keys.CONTROL);
 		System.out.println("Total line item"+getwebelementscount(xml.getlocator("//locators/Lineitemcounter")));
@@ -35,19 +36,22 @@ public class BCNUpdateHelper extends DriverHelper{
 			Thread.sleep(3000);
 			waitForpageload();
 			System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
-			
 			Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
 			Thread.sleep(3000);
-			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select All Product check box to update the BCN");
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the"+String.valueOf(i+1)+" Line item from model Grid");
+			
 			WaitforElementtobeclickable(xml.getlocator("//locators/BillingInfobutton"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For BCN button to be Accessible");
 			Clickon(getwebelement(xml.getlocator("//locators/BillingInfobutton")));
-			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the BCN update button");
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Billing Information button");
 			Thread.sleep(3000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/customerreferece").replace("BCN", Inputdata[0][20].toString()));
 			Clickon(getwebelement(xml.getlocator("//locators/customerreferece").replace("BCN", Inputdata[0][20].toString())));
 			Thread.sleep(2000);
+			
 			EnterText(Inputdata[0][18].toString());
+			
+			
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Customer Reference number");
 			Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/po").replace("BCN", Inputdata[0][20].toString()));
@@ -65,7 +69,8 @@ public class BCNUpdateHelper extends DriverHelper{
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the BCN");
 			WaitforElementtobeclickable(xml.getlocator("//locators/applybutton"));
 			Clickon(getwebelement(xml.getlocator("//locators/applybutton")));
-			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Apply button");
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Clikc on Apply BCN button");
+			
 			Thread.sleep(3000);
 			Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
 			Thread.sleep(3000);
