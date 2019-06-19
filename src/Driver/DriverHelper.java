@@ -108,7 +108,8 @@ public class DriverHelper {
 			;
 		Rerunrequired.set("No");
 		//workitemcounter.set(1);
-		//QuoteID.set("QT-20190612-033096-01");
+		//QuoteID.set("QT-20190619-033310-01");
+		//OpportunityID.set("267837");
 		//DealClass.set("Bronze");
 //		//TotalTCVdisscount.set((float) 0);
 //		List Completeset=new ArrayList();
@@ -155,6 +156,15 @@ public class DriverHelper {
 		 
 	    action.sendKeys(key).build().perform();
 	    action.sendKeys(Keys.TAB).build().perform();
+	    
+	}
+public void ClickswithAction(WebElement el) throws InterruptedException {
+		
+		
+		Actions action = new Actions(driver);
+		 
+	    action.click(el).build().perform();
+	    //action.sendKeys(Keys.TAB).build().perform();
 	    
 	}
 	public void WaitforElementtobeclickable(String locator) throws InterruptedException
