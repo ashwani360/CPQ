@@ -158,22 +158,24 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	Movetoaccount(Inputdata);
 	MovetoOpportunuity(Inputdata);
 	EditQuote();
-	//-----------------------------------------------
-	if(isElementPresent(xml.getlocator("//locators/TechnicalApprovalTab")))
-	{
-		Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
-		Clickon(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
-		Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
-	//	Clickon(getwebelement(xml.getlocator("//locators/ReturnToC4C")));
-		
-		SEEngagement(Inputdata);
-		//---------------------------------------------------	
-		CSTEngagement();
-		
-	}
+	
 	
 	
 }
+	//-----------------------------------------------
+		if(isElementPresent(xml.getlocator("//locators/TechnicalApprovalTab")))
+		{
+			Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+			Thread.sleep(3000);
+			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
+			Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
+		//	Clickon(getwebelement(xml.getlocator("//locators/ReturnToC4C")));
+			
+			SEEngagement(Inputdata);
+			//---------------------------------------------------	
+			CSTEngagement();
+			
+		}
 	}
 
 public void SEEngagement(Object[][] Inputdata) throws InterruptedException, Exception 
