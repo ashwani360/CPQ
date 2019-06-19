@@ -21,6 +21,7 @@ public class DisscountAndAprrovalHelper extends DriverHelper{
 	WebElement el;
 	xmlreader xml=new xmlreader("src\\Locators\\DisscountandAprroval.xml");
 	xmlreader xml2=new xmlreader("src\\Locators\\C4C.xml");
+	xmlreader xml3=new xmlreader("src\\Locators\\Configuration.xml");
 	PropertyReader pr=new PropertyReader();
 	public DisscountAndAprrovalHelper(WebDriver parentdriver)
 	{
@@ -211,10 +212,47 @@ public void SEEngagement(Object[][] Inputdata) throws InterruptedException, Exce
 
 public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception 
 {
-	// For Each----15 and 16
-	   // Reconfigure
-		// Switch the Respective Change:, Bandwidth Change,Feature Change, Site Change, Contract Term change
-	System.out.println("Her SE chnages need to be updated");
+	for(int i=0;i<Data.length;i++) {
+		if(!Data[i][15].toString().equals("")) {
+		WaitforElementtobeclickable(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+		
+		Clickon(getwebelement(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+		WaitforElementtobeclickable(xml3.getlocator("//locators/Reconfigure"));
+		
+		Clickon(getwebelement(xml3.getlocator("//locators/Reconfigure")));
+		Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+		Getmaploaded(xml3.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+	   switch(Data[i][15].toString())
+	   {
+	   case "Bandwidth":
+	   {// Update the Bandwidth from Data[i][16].toString()
+		   break;
+	   }
+	   case "Contract Tearm":
+	   {// Update the Contract tearm Data[i][16].toString()
+		   break;   
+	   }
+	   case "Feature":
+	   {// Add a customer Feature Here Data[i][16].toString()
+		   break; 
+	   }
+	   case "A Site Address":
+	   {// PPT Exception needs to taken care here Data[i][16].toString()
+		   break; 
+	   }
+	   case "B Site Address":
+	   {// PPT Exception needs to taken care here Data[i][16].toString()
+		   break; 
+	   }
+	   default:
+	   {
+		   System.out.println("No  SE chnages need to be updated");
+			   break;
+	   }
+	   }
+	}
+	}
+	
 }
 
 public void CSTEngagement() throws InterruptedException, Exception 

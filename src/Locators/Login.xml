@@ -15,7 +15,7 @@
 <Loginbutton>id=Submit</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
-<UserProfile>//span[contains(@class,'IconMenu')]/parent::*/parent::*/following-sibling::input</UserProfile>
+<UserProfile>//span[contains(@class,'IconMenu')]/parent::*/parent::*</UserProfile>
 <Logout>//td[text()='Log Out']</Logout>
 </Explore>
 <ExploreNearNet>
@@ -24,7 +24,7 @@
 <Loginbutton>id=Submit</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
 <skipwarning>//a[text()='Continue']</skipwarning>
-<UserProfile>//span[contains(@class,'IconMenu')]/parent::*/parent::*/following-sibling::input</UserProfile>
+<UserProfile>//span[contains(@class,'IconMenu')]/parent::*/parent::*</UserProfile>
 <Logout>//td[text()='Log Out']</Logout>
 </ExploreNearNet>
 <CPQ>
@@ -82,7 +82,7 @@
 <bcn>name=radioBCNTable</bcn>
 <applybutton>//a[text()='Apply']</applybutton>
 <LoadingDailog2>//*[@id='loading-dialog']</LoadingDailog2>
-<ApprovalTab>(//span[text()='Approval'])[1]</ApprovalTab>
+<ApprovalTab>(//span[contains(text(),'Approval')])[1]</ApprovalTab>
 <SubmitetoApproval>//a[text()='Submit to Approval']</SubmitetoApproval>
 <customersignatureTab>//span[text()='CUSTOMER SIGNATURE']</customersignatureTab>
 <GenrateProposal>//a[text()='Generate Proposal']</GenrateProposal>

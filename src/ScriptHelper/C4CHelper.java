@@ -57,6 +57,7 @@ public class C4CHelper extends DriverHelper{
 	//Code for Opportunity Add
 	public void Opportunity_Add() throws Exception
 	{
+		Thread.sleep(3000);
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/OpportunuityTab"));
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
@@ -69,9 +70,11 @@ public class C4CHelper extends DriverHelper{
 		
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Newlink")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on New button to create New Opportunuity");
+		Thread.sleep(3000);
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Name"));
 		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Name")),"Auto_opty3");
+		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/Name")),Keys.ENTER);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Opportunuity Name");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Offer"));
@@ -144,6 +147,7 @@ public class C4CHelper extends DriverHelper{
 		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Tcomplexity")),"1");
 		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Tcomplexity")),Keys.ENTER);
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		Thread.sleep(3000);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Update Techincal Complexity");
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/ClickSaveOpty"));
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/ClickSaveOpty")));

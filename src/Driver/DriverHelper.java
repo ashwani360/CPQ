@@ -833,7 +833,7 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		
 	}
 	public void WaitforC4Cloader(String el, int timeout ) throws IOException, InterruptedException
-	{ //Thread.sleep(3000);
+	{ Thread.sleep(1500);
 		
 		try {
 			driver.findElement(By.xpath(el));

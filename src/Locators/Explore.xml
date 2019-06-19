@@ -46,5 +46,6 @@
 <NearNetUnitCost>//th[text()='Cost Category']/ancestor::div[2]//div//table//td[5]</NearNetUnitCost>
 <NearNetCostQuantity>//th[text()='Cost Category']/ancestor::div[2]//div//table//td[6]</NearNetCostQuantity>
 <SendtoSalesNearNet>(//span[text()='Send to Sales'])[1]</SendtoSalesNearNet>
-
+<AssignRequestToMeNearnet>(//tr[@aria-label="Assign To Me "])[2]</AssignRequestToMeNearnet>
+<DigcostnotPossible>(//span[text()='Dig Cost not possible'])[1]</DigcostnotPossible>
 </locators>

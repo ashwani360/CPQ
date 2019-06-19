@@ -54,7 +54,7 @@
 <bcn>name=radioBCNTable</bcn>
 <applybutton>//a[text()='Apply']</applybutton>
 <LoadingDailog2>//*[@id='loading-dialog']</LoadingDailog2>
-<ApprovalTab>(//span[text()='Approval'])[1]</ApprovalTab>
+<ApprovalTab>(//span[contains(text(),'Approval')])[1]</ApprovalTab>
 <SubmitetoApproval>//a[text()='Submit to Approval']</SubmitetoApproval>
 <customersignatureTab>//span[text()='Customer Signature']</customersignatureTab>
 <GenrateProposal>//span[text()='Generate Proposal']/parent::*/parent::*</GenrateProposal>

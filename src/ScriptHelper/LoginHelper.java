@@ -127,39 +127,47 @@ public class LoginHelper extends DriverHelper{
 		switch(Application)
 		{
 		case "C4C":
-		{
+		{   Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+			 Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+			Thread.sleep(20000);
 			break;
 		}
 		case "CPQ":
-		{
+		{   Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+			Thread.sleep(20000);
 			break;
 		}
 		case "Explore":
-		{
+		{   Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+			 Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+			Thread.sleep(20000);
 			break;
 		}
 		case "ExploreNearNet":
 		{
+			Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+			 Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+			Thread.sleep(20000);
 			break;
 		}
 		
 		default:
 		{
-			
+			System.out.println("No Action Required");
 		}
 		}
 		

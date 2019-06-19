@@ -50,10 +50,11 @@ public class ExploreHelper extends DriverHelper {
 //			            Thread.sleep(5000);
 						WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
 						Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
-						WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMe"));
-						Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMe")));
+						WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMeNearnet"));
+						Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMeNearnet")));
 						Thread.sleep(5000);
-						String a =Getattribute(getwebelement("//label[text()='Request Type']/following::span"),"value");
+						//String a =Getattribute(getwebelement("//label[text()='Request Type']/following::span"),"value");
+						String a=Gettext(getwebelement("//label[text()='Request Type']/following::span"));
 						System.out.println(a);
 						if(a.equals("BCP Revalidation")) {
 							WaitforElementtobeclickable(xml.getlocator("//locators/QuoteValiduptomonths"));
