@@ -107,5 +107,8 @@
 <ClickSaveOpty>(//bdi[text()='Save'])[2]</ClickSaveOpty>
 <OptyId>//bdi[text()='Opportunity ID']/parent::*/parent::*/div/span</OptyId>
 </Opportunity>
+<AccountsDropdown>//div[@title="Select View"]//button</AccountsDropdown>
+<SelectAll>//li[text()='All']</SelectAll>
+
 </locators>
 

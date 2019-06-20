@@ -118,5 +118,13 @@
 <ReturnToC4C>//button[@name="return_to_c4c"][1]</ReturnToC4C>
 <SubmitToCSTApproval>//button[@name='submit_to_cst_approval']</SubmitToCSTApproval>
 <CSTApproval>//button[@name='approve']</CSTApproval>
+<BespokeFeature>//select[@name="bespokeFeaturesnew"]</BespokeFeature>
+<BespokeCapex>//input[@name='bespokeCapex_bespokearray-display']</BespokeCapex>
+<IncrementalCapex>//select[@name='typeOfCapex_bespokeArray']</IncrementalCapex>
+<BespokeOpex>//input[@name='bespokeOpex_bespokearray-display']</BespokeOpex>
+<IncrementalOpex>//select[@name='typeOfOpex_bespokeArray']</IncrementalOpex>
+<Frequency>//select[@name='frequency']</Frequency>
+<ProductDescription>//textarea[@name='notesProductDescription_bespokearray']</ProductDescription>
+<LeadTime>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[22])[index]</LeadTime>
 </locators>
 

@@ -43,6 +43,7 @@ import org.testng.annotations.BeforeTest;
 import Listeners.ActionListner;
 import Listeners.TestListener;
 import ScriptHelper.BCNUpdateHelper;
+import ScriptHelper.BespokandNonStandard;
 import ScriptHelper.C4CHelper;
 import ScriptHelper.ConfigurationHelper;
 import ScriptHelper.DisscountAndAprrovalHelper;
@@ -70,9 +71,11 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public static final ThreadLocal<OrderingHelper> Orderinghelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<SendProposalHelper> SendProposalhelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<ExploreHelper> Explorehelper= new InheritableThreadLocal<>();
+	public static final ThreadLocal<BespokandNonStandard> BspokeNonStandard= new InheritableThreadLocal<>();
+	
 	public static ThreadLocal<String> QuoteID=new InheritableThreadLocal<>();
 	public static TestListener Testlistener;
-	//public static CarNorOrderHelper CarNorOrderhelper;
+	//public static CarNorOrderHelper CarNorOrderhelper; 
 	public ThreadLocal<String> TestName=new ThreadLocal(); 
 	public static SessionId session_id;
 	public static ChromeDriver driver;
@@ -313,6 +316,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		OrderingHelper ORD= new OrderingHelper(getwebdriver());
 		SendProposalHelper PRO= new SendProposalHelper(getwebdriver());
 		ExploreHelper EXP=new ExploreHelper(getwebdriver());
+		BespokandNonStandard BEN=new BespokandNonStandard(getwebdriver());
 		Login.set(LN);
 		BCNupdatehelper.set(BCN);
 		C4Chelper.set(C4C);
@@ -322,6 +326,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		Orderinghelper.set(ORD);
 		SendProposalhelper.set(PRO);
 		Explorehelper.set(EXP);
+		BspokeNonStandard.set(BEN);
 		
 	}
 

@@ -51,6 +51,7 @@ public class DriverHelper {
 	WebElement el;
 	List<WebElement> ellist;
 	public static ThreadLocal<String> QuoteID=new ThreadLocal<>();
+	public static ThreadLocal<String> CurrentQuoteURL=new ThreadLocal<>();
 	public static ThreadLocal<String> DealClass=new ThreadLocal<>();
 	public static ThreadLocal<String> TechnicalComplexity=new ThreadLocal<>();
 	public static ThreadLocal<String> LeagalComplexity=new ThreadLocal<>();
@@ -416,6 +417,12 @@ public void ClickswithAction(WebElement el) throws InterruptedException {
 		URL=pr.readproperty(environment+"_URL");
 		
 		driver.get(URL);
+		
+	}
+	public void openurl2(String environment) throws Exception {
+		
+		
+		driver.get(environment);
 		
 	}
 	public void Geturl(String URL) throws Exception {
@@ -805,6 +812,9 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		
 		
 	}
+	public void CurrentURL() {
+		CurrentQuoteURL.set(driver.getCurrentUrl());
+	}
 	public void WaitforCPQloader2( ) throws IOException, InterruptedException
 	{
 		for(int i=0;i<=20;i++) {
@@ -877,6 +887,12 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		Thread.sleep(2000);
 			Alert alert = driver.switchTo().alert();
 			alert.accept();
+			driver.switchTo().defaultContent();
+		}
+	public void CancelJavaScriptMethod() throws InterruptedException{
+		Thread.sleep(2000);
+			Alert alert = driver.switchTo().alert();
+			alert.dismiss();
 			driver.switchTo().defaultContent();
 		}
 	public void waitForpageload() throws InterruptedException

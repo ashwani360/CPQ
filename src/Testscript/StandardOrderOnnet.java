@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import Driver.DataReader;
 import Driver.DriverTestcase;
 import Reporter.ExtentTestManager;
+import ScriptHelper.BespokandNonStandard;
 
 public class StandardOrderOnnet extends DriverTestcase {	
 	
@@ -65,9 +66,11 @@ public class StandardOrderOnnet extends DriverTestcase {
 		}
 		else if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
 		{
-			//Need to write the code
+			//Need to write the codeExceptionPPT()
+			Configurationhelper.get().ExceptionPPT();
 		}
 		// If Stage is waiting for third Party Need to call All the Explore functions
+		BspokeNonStandard.get().Bespoke(Data);
 		GenralInfohelper.get().GenralInfomration(Data);
 		BCNupdatehelper.get().BCNUpdate(Data);
 		//DisscountAndAprrovalhelper.get().DisscountandApprove(Data);

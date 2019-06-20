@@ -104,9 +104,9 @@
 <!-- Manual Near Net Option A End -->
 <!-- Manual Near Net Option B End -->
 <!-- Manual DSL Option A End -->
-<ManualDSLOptionAEnd></ManualDSLOptionAEnd>
+<ManualDSLOptionAEnd>(//*[@id='dslNetA']/table/tbody/tr[3]/td[1]/input)[1]</ManualDSLOptionAEnd>
 <!-- Manual DSL Option B End -->
-<ManualDSLOptionBEnd></ManualDSLOptionBEnd>
+<ManualDSLOptionBEnd>(//*[@id='dslNetB']/table/tbody/tr[3]/td[1]/input)[1]</ManualDSLOptionBEnd>
 <!-- Revalidation/Renegotialtion Offnet Option A End -->
 <!-- Revalidation/Renegotialtion Offnet Option A End Option B End -->
 <!-- Manual OLO+DSL Option A End -->
@@ -183,7 +183,6 @@
 
 <Pricincity>//span[@title='A-END Pricing City ( Linz) Not Found']</Pricincity>
 <Selectrow>//span[@title='A-END Pricing City ( Linz) Not Found']//parent::*/parent::*[1]</Selectrow>
-<Reconfigure>//span[text()='Reconfigure']</Reconfigure>
 <Sitedetails>//span[text()='Site Details']</Sitedetails>
 <PricingCitydropdown>//button[@title='Show All Items']</PricingCitydropdown>
 <Clickupdate>//a[@name='update']</Clickupdate>
@@ -192,5 +191,11 @@
 
 <Pptuser>Do not know</Pptuser>
 </PPT>
+<Nonfeasiblemsg> //*[contains(text(),'The selected interface is not compatible for sites A. and B. ')] </Nonfeasiblemsg>
+<PartialSave>//input[@name='partialSave_Features']</PartialSave>
+<Savetoquote>//a[text()='Save to Quote']</Savetoquote>
+<UsernameProxy>//a[text()='Ashwani.Singh31@colt.net']/parent::*/parent::*/td[5]/a</UsernameProxy>
+<AdditionalProductDataTab>//span[text()='Additional Product Data']</AdditionalProductDataTab>
+<ExistingCapacityLeadTime>//select[@name="existingCapacityLeadTime_qto"]</ExistingCapacityLeadTime>
 </locators>
 

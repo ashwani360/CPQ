@@ -39,6 +39,11 @@ public class C4CHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/Accountlink"));
 		
 		Clickon(getwebelement(xml.getlocator("//locators/Accountlink")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/AccountsDropdown"));
+		Clickon(getwebelement(xml.getlocator("//locators/AccountsDropdown")));
+		Thread.sleep(5000);
+		Clickon(getwebelement(xml.getlocator("//locators/SelectAll")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Account link in navidation");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/AccountSearchField"));

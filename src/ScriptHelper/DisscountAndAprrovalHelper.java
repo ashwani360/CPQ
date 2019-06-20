@@ -175,7 +175,7 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 			
 			SEEngagement(Inputdata);
 			//---------------------------------------------------	
-			CSTEngagement();
+			CSTEngagement(Inputdata);
 			
 		}
 	}
@@ -218,7 +218,7 @@ public void SEEngagement(Object[][] Inputdata) throws InterruptedException, Exce
 public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception 
 {
 	for(int i=0;i<Data.length;i++) {
-		if(!Data[i][15].toString().equals("")) {
+		if(!Data[i][15].toString().equals("")&&!Data[i][15].toString().equals("BeSpoke")&&!Data[i][15].toString().equals("Non Standard")) {
 		WaitforElementtobeclickable(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
 		
 		Clickon(getwebelement(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
@@ -251,7 +251,7 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 			// raised a request whenever required
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 			WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
-			
+			Thread.sleep(10000);
 			break;
 	   }
 	   case "Contract Tearm":
@@ -274,17 +274,37 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 				// raised a request whenever required
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
-				
+				Thread.sleep(10000);
 		   break;   
 	   }
 	   case "Feature":
 	   {// Add a customer Feature Here Data[i][16].toString()
-		   javascriptexecutor(getwebelement(xml3.getlocator("//locators/FeaturesTab")));
-			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Feature Tab");
-			Clickon(getwebelement(xml3.getlocator("//locators/FeaturesTab")));
+		   javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
+		   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Feature Tab");
+		   Clickon(getwebelement(xml.getlocator("//locators/FeaturesTab")));
+		   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+		   Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+		   Select(getwebelement(xml.getlocator("//locators/BespokeFeature")),Data[i][16].toString());
+		   Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+		   getwebelement(xml.getlocator("//locators/BespokeCapex")).clear();
+		   SendKeys(getwebelement(xml.getlocator("//locators/BespokeCapex")),"500");
+		   Select(getwebelement(xml.getlocator("//locators/IncrementalCapex")),"Incremental");
+		   getwebelement(xml.getlocator("//locators/BespokeOpex")).clear();
+		   SendKeys(getwebelement(xml.getlocator("//locators/BespokeOpex")),"500");
+		   Select(getwebelement(xml.getlocator("//locators/IncrementalOpex")),"Incremental");
+		   Select(getwebelement(xml.getlocator("//locators/Frequency")),"Monthly");
+		   SendKeys(getwebelement(xml.getlocator("//locators/ProductDescription")),"Filled by Automation");
+		   Clickon(getwebelement(xml3.getlocator("//locators/Clickupdate")));
+		   Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+			WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
+			
+			Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
+			//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			// Need to check if New request need to be raised..
+			// raised a request whenever required
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
-			Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
-			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Fast Track Option");
+			WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
+			Thread.sleep(10000);
 		   break; 
 	   }
 	   case "A Site Address":
@@ -327,6 +347,26 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User")));
 			Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User"))));
+			WaitforElementtobeclickable(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+			
+			Clickon(getwebelement(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+			WaitforElementtobeclickable(xml3.getlocator("//locators/Reconfigure"));
+			
+			Clickon(getwebelement(xml3.getlocator("//locators/Reconfigure")));
+			Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+			Getmaploaded(xml3.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+			Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+			Clickon(getwebelement(xml3.getlocator("//locators/Clickupdate")));
+			Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+			WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
+			
+			Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
+			//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			// Need to check if New request need to be raised..
+			// raised a request whenever required
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+			WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
+			Thread.sleep(10000);
 			break; 
 	   }
 	   case "B Site Address":
@@ -373,6 +413,27 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 		Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User")));
 		Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User"))));
+		WaitforElementtobeclickable(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+		
+		Clickon(getwebelement(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+		WaitforElementtobeclickable(xml3.getlocator("//locators/Reconfigure"));
+		
+		Clickon(getwebelement(xml3.getlocator("//locators/Reconfigure")));
+		Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+		Getmaploaded(xml3.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+		Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+		Clickon(getwebelement(xml3.getlocator("//locators/Clickupdate")));
+		Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+		WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
+		
+		Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
+		//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+		// Need to check if New request need to be raised..
+		// raised a request whenever required
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+		WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
+		Thread.sleep(10000);
+		break;
 	   }
 	   default:
 	   {
@@ -385,7 +446,7 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 	
 }
 
-public void CSTEngagement() throws InterruptedException, Exception 
+public void CSTEngagement(Object[][] Data) throws InterruptedException, Exception 
 {
 	WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_CST_User")));
 	Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_CST_User"))));
@@ -393,6 +454,7 @@ public void CSTEngagement() throws InterruptedException, Exception
 	Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
 	WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 	Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+	AddLineitemGridLeadTime(Data);
 	WaitforElementtobeclickable(xml.getlocator("//locators/TechnicalApprovalTab"));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 	javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
@@ -404,6 +466,13 @@ public void CSTEngagement() throws InterruptedException, Exception
 	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
 	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
 	
+}
+public void AddLineitemGridLeadTime(Object[][] data) throws InterruptedException, Exception{
+	// Need to write the code
+    for(int i=0;i<data.length;i++) {
+	Clickon(getwebelement(xml.getlocator("//locators/LeadTime").replace("Index", String.valueOf(i+1))));
+	SendKeys(getwebelement(xml.getlocator("//locators/LeadTime")),"20");
+    }
 }
 public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws Exception
 {

@@ -202,7 +202,7 @@ public class ConfigurationHelper extends DriverHelper{
 			case "Automated DSL":
 			{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
-				WaitforElementtobeclickable(xml.getlocator("//locators/OffNetCheckASite"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/DSLCheckASite"));
 			    
 				Clickon(getwebelement(xml.getlocator("//locators/DSLCheckASite")));
 	//			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
@@ -237,12 +237,57 @@ public class ConfigurationHelper extends DriverHelper{
 			    
 				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST MANUAL DSL");
 				// Updated the data in Empac screen and create the request.
+				CancelJavaScriptMethod();
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
 				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
 				System.out.println("Switched to Iframe");
-				// Field in explore window for Manual DSL
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Priority"));
+			    SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Priority")),"Actual");
+			    SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Priority")),Keys.ENTER);
+				
+			    SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Name")),"Ashwani");
+			    SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Name")),Keys.ENTER);
+				
+			    SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Phone")),"+911234567890");
+			    SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Phone")),Keys.ENTER);
+				
+			    SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Email")),"Ashwani.singh31@colt.net");
+			    SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Email")),Keys.ENTER);
+				
+			    //Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Actual")));
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/GetQuoteButton"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/GetQuoteButton")));
+				Thread.sleep(2000);
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				AcceptJavaScriptMethod();
+				// Accept Alert 
+				// Save the Reqord ID for the Explore code.
+				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ClickOloButton"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/ClickOloButton")));
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/RequestId"));
+				referece[0]=(Gettext(getwebelement(xml.getlocator("//locators/RequestId"))).split(":"))[1].trim();;
+				//RequestID.set();
+				switchtodefault();
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/Closebutton"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/Closebutton")));
+				// Select the Newly Created record with waiting for third party into the Grid system.
+				
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
 				// Select the Manula DSL option
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -251,6 +296,7 @@ public class ConfigurationHelper extends DriverHelper{
 				Clickon(getwebelement(xml.getlocator("//locators/ManualDSLOptionAEnd")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				break;
+
 			}
 			case "Nearnet":
 			{
@@ -451,6 +497,11 @@ public class ConfigurationHelper extends DriverHelper{
 			    
 				Clickon(getwebelement(xml.getlocator("//locators/OffNetCheckASite")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/DSLCheckASite"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/DSLCheckASite")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				// Click on Manula request for OLO
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/ManualEngagement"));
@@ -645,7 +696,7 @@ public class ConfigurationHelper extends DriverHelper{
 			case "Automated DSL":
 			{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
-				WaitforElementtobeclickable(xml.getlocator("//locators/OffNetCheckBSite"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/DSLCheckBSite"));
 			    
 				Clickon(getwebelement(xml.getlocator("//locators/DSLCheckBSite")));
 	//			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
@@ -669,23 +720,73 @@ public class ConfigurationHelper extends DriverHelper{
 			// Select any Offnet option
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
-				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
-				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequestBEnd"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/ManualEngagementBEnd"));
 			    
-				Clickon(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")));
+				Clickon(getwebelement(xml.getlocator("//locators/ManualEngagementBEnd")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				
 				// Select the Options for the OLO Cost,Revsalidation,Re negosiation, OLO+DSL
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
-				WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequestBEnd"));
+				//WaitforElementtobeclickable(xml.getlocator("//locators/SelectManualRequestBEnd"));
 			    
 				Select(getwebelement(xml.getlocator("//locators/SelectManualRequestBEnd")),"REQUEST MANUAL DSL");
 				// Updated the data in Empac screen and create the request.
+				CancelJavaScriptMethod();
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
 				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
 				System.out.println("Switched to Iframe");
-				// Field in explore window for Manual DSL
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Priority"));
+			    SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Priority")),"Actual");
+			    SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Priority")),Keys.ENTER);
+				
+			    SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Name")),"Ashwani");
+			    SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Name")),Keys.ENTER);
+				
+			    SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Phone")),"+911234567890");
+			    SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Phone")),Keys.ENTER);
+				
+			    SendKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Email")),"Ashwani.singh31@colt.net");
+			    SendkeaboardKeys(getwebelement((xml.getlocator("//locators/CPQExploreWindowfields").replace("index", "1")).replace("Fieldname", "Email")),Keys.ENTER);
+				
+			    //Clickon(getwebelement(xml.getlocator("//locators/Selectvalue").replace("value", "Actual")));
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/GetQuoteButton"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/GetQuoteButton")));
+				Thread.sleep(2000);
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				AcceptJavaScriptMethod();
+				// Accept Alert 
+				// Save the Reqord ID for the Explore code.
+				switchtofram(getwebelement("//iframe[@name='exploreEngagementComponent']"));
+				
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ClickOloButton"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/ClickOloButton")));
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/RequestId"));
+				referece[0]=(Gettext(getwebelement(xml.getlocator("//locators/RequestId"))).split(":"))[1].trim();;
+				//RequestID.set();
+				switchtodefault();
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/Closebutton"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/Closebutton")));
+				// Select the Newly Created record with waiting for third party into the Grid system.
+				
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
 				// Select the Manula DSL option
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -694,6 +795,7 @@ public class ConfigurationHelper extends DriverHelper{
 				Clickon(getwebelement(xml.getlocator("//locators/ManualDSLOptionBEnd")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				break;
+
 			}
 			case "Nearnet":
 			{
@@ -887,6 +989,11 @@ public class ConfigurationHelper extends DriverHelper{
 				Clickon(getwebelement(xml.getlocator("//locators/OffNetCheckBSite")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				WaitforElementtobeclickable(xml.getlocator("//locators/DSLCheckBSite"));
+			    
+				Clickon(getwebelement(xml.getlocator("//locators/DSLCheckBSite")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/ManualEngagementBEnd"));
 			    
 				Clickon(getwebelement(xml.getlocator("//locators/ManualEngagementBEnd")));
@@ -1060,6 +1167,14 @@ public class ConfigurationHelper extends DriverHelper{
 						Selectconnectivity(Inputdata[i][12].toString(),"BSite",ExploreID,ExploreIDNearnet);
 					}
 					///----------------------------------------------------------------------------------------------
+					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+					
+					if(exception.equalsIgnoreCase("Price Not Found"))
+					{
+						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
+						//Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
+						
+					}
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 					javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Feature Tab");
@@ -1228,15 +1343,14 @@ public class ConfigurationHelper extends DriverHelper{
 					AdditionalProductData();
 //					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote button");
 //					Clickon(getwebelement(xml.getlocator("//locators/AddtoTransaction")));
-					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
 					
-					if(exception.equalsIgnoreCase("Price Not Found"))
+					
+					
+					if(isElementPresent(xml.getlocator("//locators/PPT/Save")))
 					{
-						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
-						
 					}
-					else
+					else 
 					{
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/AddtoTransaction")));
 					}
@@ -1289,6 +1403,14 @@ public class ConfigurationHelper extends DriverHelper{
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				Selectconnectivity(Inputdata[i][11].toString(),"ASite",ExploreID,ExploreIDNearnet);
 				ExploreID[1]="";
+				String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+				
+				if(exception.equalsIgnoreCase("Price Not Found"))
+				{
+					Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
+					//Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
+					
+				}
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
@@ -1304,14 +1426,12 @@ public class ConfigurationHelper extends DriverHelper{
 //				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote button");
 //				Clickon(getwebelement(xml.getlocator("//locators/AddtoTransaction")));
 				AdditionalProductData();
-				String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
-				if(exception.equalsIgnoreCase("Price Not Found"))
+
+				if(isElementPresent(xml.getlocator("//locators/PPT/Save")))
 				{
-					Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
 					Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
-					
 				}
-				else
+				else 
 				{
 					Clickon(getwebelement(xml.getlocator("//locators/PPT/AddtoTransaction")));
 				}
@@ -1388,6 +1508,14 @@ public class ConfigurationHelper extends DriverHelper{
 					
 					}
 					ExploreID[1]="";
+					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+					
+					if(exception.equalsIgnoreCase("Price Not Found"))
+					{
+						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
+						//Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
+						
+					}
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 					javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Feature Tab");
@@ -1401,14 +1529,13 @@ public class ConfigurationHelper extends DriverHelper{
 //					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote button");
 //					Clickon(getwebelement(xml.getlocator("//locators/AddtoTransaction")));
 					AdditionalProductData();
-					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
-					if(exception.equalsIgnoreCase("Price Not Found"))
+					
+					
+					if(isElementPresent(xml.getlocator("//locators/PPT/Save")))
 					{
-						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
-						
 					}
-					else
+					else 
 					{
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/AddtoTransaction")));
 					}
@@ -1483,6 +1610,13 @@ public class ConfigurationHelper extends DriverHelper{
 					
 					}
 					ExploreID[1]="";
+					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+					
+					if(exception.equalsIgnoreCase("Price Not Found"))
+					{
+						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
+						
+					}
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 					javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Feature Tab");
@@ -1494,14 +1628,13 @@ public class ConfigurationHelper extends DriverHelper{
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					AdditionalProductData();
-					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
-					if(exception.equalsIgnoreCase("Price Not Found"))
+					
+					
+					if(isElementPresent(xml.getlocator("//locators/PPT/Save")))
 					{
-						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
-						
 					}
-					else
+					else 
 					{
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/AddtoTransaction")));
 					}
@@ -1561,6 +1694,9 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				//-------------------------------------
+				if(isElementPresent(xml.getlocator("//locators/Nonfeasiblemsg"))) {
+					Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
+				}
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Badwidth");
 				Select(getwebelement(xml.getlocator("//locators/WebServiceBandwidth")), Inputdata[i][9].toString());
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -1572,6 +1708,13 @@ public class ConfigurationHelper extends DriverHelper{
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID,ExploreIDNearnet);
 				Selectconnectivity(Inputdata[i][12].toString(),"Bsite",ExploreID,ExploreIDNearnet);
+				String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+				
+				if(exception.equalsIgnoreCase("Price Not Found"))
+				{
+					Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
+					
+				}
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 				javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Feature Tab");
@@ -1583,14 +1726,11 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				AdditionalProductData();
-				String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
-				if(exception.equalsIgnoreCase("Price Not Found"))
+				if(isElementPresent(xml.getlocator("//locators/PPT/Save")))
 				{
-					Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
 					Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
-					
 				}
-				else
+				else 
 				{
 					Clickon(getwebelement(xml.getlocator("//locators/PPT/AddtoTransaction")));
 				}
@@ -1702,8 +1842,14 @@ public class ConfigurationHelper extends DriverHelper{
 		Completesetnearnet.add(ExploreIDNearnet);
 	}
 	
-	public void AdditionalProductData() {
+	public void AdditionalProductData() throws DocumentException, InterruptedException, IOException {
 		// Need to write the code
+		if(isElementPresent(xml.getlocator("//locators/AdditionalProductDataTab")))
+		{
+			Clickon(getwebelement(xml.getlocator("//locators/AdditionalProductDataTab")));
+			Select(getwebelement(xml.getlocator("//locators/ExistingCapacityLeadTime")),"No");
+			Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
+		}
 		// Arrange the Add to transaction button locator to make it common
 	}
 	public void AddLineitemGridLeadTime(){
@@ -2063,8 +2209,8 @@ public class ConfigurationHelper extends DriverHelper{
 //		Switchtotab();
 		WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 		Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-		WaitforElementtobeclickable(xml.getlocator("//locators/usernameproxy").replace("Prashant.Manu@colt.net", pr.readproperty("CPQ_PPT_User")));
-		Clickon(getwebelement(xml.getlocator("//locators/usernameproxy").replace("Prashant.Manu@colt.net",pr.readproperty("CPQ_PPT_User"))));
+		WaitforElementtobeclickable(xml.getlocator("//locators/usernameproxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_PPT_User")));
+		Clickon(getwebelement(xml.getlocator("//locators/usernameproxy").replace("Ashwani.Singh31@colt.net",pr.readproperty("CPQ_PPT_User"))));
 		WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
 		Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
