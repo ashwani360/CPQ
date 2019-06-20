@@ -83,6 +83,8 @@ public class StandardOrderOnnet extends DriverTestcase {
 			DisscountAndAprrovalhelper.get().ApplyDisscountlinelevel(Data);
 		}
 		DisscountAndAprrovalhelper.get().ApproveQuote(Data);
+		// belowMethods will not call if Quote is not in Aprroved Stage 
+		if(!Configurationhelper.get().Quotestatus.get().equals("Approved")){
 		SendProposalhelper.get().CustomerSign(Data);
 		if(Data[0][24].toString().equals("Email")) {
 			Orderinghelper.get().AcceptsQuote(Data);
@@ -98,7 +100,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 			Orderinghelper.get().AcceptsQuote(Data);
 			Orderinghelper.get().CreateOrder(Data);
 			
-//			
+			}
 	}
 			
 	//Configurationhelper.get().AddProducttest(Data);

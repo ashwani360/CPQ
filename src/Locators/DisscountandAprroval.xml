@@ -112,7 +112,7 @@
 <AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
 <AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
 <AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
-<TechnicalApprovalTab>(//span[contains(text(),'Approval')])[2]</TechnicalApprovalTab>
+<TechnicalApprovalTab>(//span[text()='Technical Approval'])</TechnicalApprovalTab>
 <CheckboxTechnicalApproval>//label[text()='Ready For Technical Approval']/ancestor::div[4]//input</CheckboxTechnicalApproval>
 <SubmitTechnicalApprovalButton>//button[@name='submit_for_technical_approval']</SubmitTechnicalApprovalButton>
 <ReturnToC4C>//button[@name="return_to_c4c"][1]</ReturnToC4C>
@@ -126,5 +126,6 @@
 <Frequency>//select[@name='frequency']</Frequency>
 <ProductDescription>//textarea[@name='notesProductDescription_bespokearray']</ProductDescription>
 <LeadTime>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[22])[index]</LeadTime>
+<ProxyLink>(//img[@alt='Proxy Login']/parent::*)[1]</ProxyLink>
 </locators>
 

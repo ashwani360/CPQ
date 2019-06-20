@@ -103,5 +103,6 @@
 <BSitecom>name=bEndCompanyName</BSitecom>
 <SaveInfo>//a[text()='Save Quote Information']</SaveInfo>
 <CreateOrder>//*[text()='Create Order']</CreateOrder>
+<ProxyLink>(//img[@alt='Proxy Login']/parent::*)[1]</ProxyLink>
 </locators>
 

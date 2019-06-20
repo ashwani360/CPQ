@@ -32,7 +32,11 @@ public class LoginHelper extends DriverHelper{
 	{
 		super(parentdriver);
 	}
-
+	
+	public void ProxyLogout() throws Exception
+	{
+		
+	}
 	public void Docusign(String url) throws Exception
 	{
 //		Gmail gm=new Gmail();

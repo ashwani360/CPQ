@@ -168,7 +168,8 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 		{
 			Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 			Thread.sleep(3000);
-			ClickswithAction(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
+			//javascriptexecutor2(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
+			ClickswithAction(xml.getlocator("//locators/CheckboxTechnicalApproval"));
 			Thread.sleep(3000);
 			Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
 		//	Clickon(getwebelement(xml.getlocator("//locators/ReturnToC4C")));
@@ -182,17 +183,19 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 
 public void SEEngagement(Object[][] Inputdata) throws InterruptedException, Exception 
 {
-	openurl("CPQAdmin");
+	//openurl("CPQAdmin");
 //	Switchtotab();
-	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-	WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User")));
-	Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User"))));
+	
+	//WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User")));
+	//Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_SE_User"))));
+	ProxyLogin("CPQ_SE_User", xml.getlocator("//locators/ProxyLink"));
+	
 	WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
 	Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
 	WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 	Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
-	
+	waitForpageload();
+	WaitforCPQloader();
 	/// Reconfiguration Options...
 	// No Re-configuration
 	// REconfiguration - Bandwidth Change
@@ -207,11 +210,13 @@ public void SEEngagement(Object[][] Inputdata) throws InterruptedException, Exce
 	Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 	WaitforElementtobeclickable(xml.getlocator("//locators/SubmitToCSTApproval"));
 	Clickon(getwebelement(xml.getlocator("//locators/SubmitToCSTApproval")));
-	openurl("CPQAdmin");
-	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
-	
+	Thread.sleep(30000);
+//	openurl("CPQAdmin");
+//	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+//	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+//	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+//	Thread.sleep(30000);
+//	openurl("CPQAdmin");
 	
 }
 
@@ -243,6 +248,7 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 			
 			Clickon(getwebelement(xml3.getlocator("//locators/updateQuote")));
 			Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+			Thread.sleep(3000);
 			WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
 			
 			Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
@@ -266,6 +272,7 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 				
 				Clickon(getwebelement(xml3.getlocator("//locators/updateQuote")));
 				Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+				Thread.sleep(3000);
 				WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
 				
 				Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
@@ -296,6 +303,7 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 		   SendKeys(getwebelement(xml.getlocator("//locators/ProductDescription")),"Filled by Automation");
 		   Clickon(getwebelement(xml3.getlocator("//locators/Clickupdate")));
 		   Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+		   Thread.sleep(3000);
 			WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
 			
 			Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
@@ -448,12 +456,15 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 
 public void CSTEngagement(Object[][] Data) throws InterruptedException, Exception 
 {
-	WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_CST_User")));
-	Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_CST_User"))));
+//	WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_CST_User")));
+//	Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_CST_User"))));
+	ProxyLogin("CPQ_CST_User", xml.getlocator("//locators/ProxyLink"));
 	WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
 	Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
 	WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 	Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+	waitForpageload();
+	WaitforCPQloader();
 	AddLineitemGridLeadTime(Data);
 	WaitforElementtobeclickable(xml.getlocator("//locators/TechnicalApprovalTab"));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
@@ -466,12 +477,19 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
 	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
 	
+	// Open the Quote the As Sales Users
+	
 }
 public void AddLineitemGridLeadTime(Object[][] data) throws InterruptedException, Exception{
 	// Need to write the code
     for(int i=0;i<data.length;i++) {
+    	Thread.sleep(5000);
+    WaitforElementtobeclickable(xml.getlocator("//locators/LeadTime").replace("Index", String.valueOf(i+1)));	
 	Clickon(getwebelement(xml.getlocator("//locators/LeadTime").replace("Index", String.valueOf(i+1))));
-	SendKeys(getwebelement(xml.getlocator("//locators/LeadTime")),"20");
+	//SendKeys(getwebelement(xml.getlocator("//locators/LeadTime")),"20");
+	Thread.sleep(2000);
+	
+	EnterText("20");
     }
 }
 public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws Exception

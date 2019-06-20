@@ -149,6 +149,13 @@ public class DriverHelper {
 		js.executeScript("window.scrollTo(0, 0)");
 		//window.scrollTo(0, 0);
 	}
+	public void javascriptexecutor2(WebElement el) throws InterruptedException
+	{
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView();", el);
+		//js.executeScript("window.scrollTo(0, 0)");
+		//window.scrollTo(0, 0);
+	}
 	
 	public void SendKeyswithAction(WebElement el, String key) throws InterruptedException {
 		
@@ -159,12 +166,12 @@ public class DriverHelper {
 	    action.sendKeys(Keys.TAB).build().perform();
 	    
 	}
-public void ClickswithAction(WebElement el) throws InterruptedException {
+public void ClickswithAction(String el) throws InterruptedException {
 		
 		
 		Actions action = new Actions(driver);
 		 
-	    action.click(el).build().perform();
+	    action.click(driver.findElement(By.xpath(el))).build().perform();
 	    //action.sendKeys(Keys.TAB).build().perform();
 	    
 	}
@@ -392,7 +399,13 @@ public void ClickswithAction(WebElement el) throws InterruptedException {
 		//getwebelement(locator);
 	}
 		//Thread.sleep(1000);
-		System.out.println("Is the element is enabled"+el.isEnabled());
+	try {
+		System.out.println("Is the element is enabled-"+el.isEnabled());
+	}
+	catch(Exception e)
+	{
+		System.out.println(e.getMessage().toString());
+	}
 		return el;
 	}
 	public String gettitle() {
@@ -486,6 +499,27 @@ public void ClickswithAction(WebElement el) throws InterruptedException {
 			Log.info(el.getAttribute(attributename));
 			return el.getAttribute(attributename);
 	  }
+			
+			public void ProxyLogin(String User, String Proxylink) throws Exception
+			{
+				openurl("CPQAdmin");
+				WaitforElementtobeclickable("//a[text()='Internal Users']");
+				Clickon(getwebelement("//a[text()='Internal Users']"));
+				Thread.sleep(2000);
+				String uri=Getattribute(getwebelement(Proxylink),"href");
+				System.out.println("URL is"+uri);
+				String[] URL1=uri.split("user_id=");
+				System.out.println(URL1[0]);
+				System.out.println(URL1[1]);
+				String URL2=(URL1[1].split("&"))[1];
+				System.out.println(URL2);
+				PropertyReader pr=new PropertyReader();
+				String FinalURL=URL1[0]+"user_id="+pr.readproperty(User)+"&"+URL2;
+				System.out.println(FinalURL);
+				
+				Log.info("CPQ_URL");
+				openurl2(FinalURL);
+			}
 public void Moveon(WebElement el) {
 			
 		Actions action = new Actions(driver);
