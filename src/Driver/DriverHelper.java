@@ -108,9 +108,10 @@ public class DriverHelper {
 				.ignoring(StaleElementReferenceException.class)
 			;
 		Rerunrequired.set("No");
+		OpportunityID.set("New");
 		//workitemcounter.set(1);
-		//QuoteID.set("QT-20190619-033310-01");
-		//OpportunityID.set("267837");
+		//QuoteID.set("QT-20190621-033408-01");
+		//OpportunityID.set("267899");
 		//DealClass.set("Bronze");
 //		//TotalTCVdisscount.set((float) 0);
 //		List Completeset=new ArrayList();
@@ -565,7 +566,7 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	((JavascriptExecutor)
 
 			driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[text()='Show Groups']")));
-	safeJavaScriptClick(driver.findElement(By.xpath(locator)));
+	//safeJavaScriptClick(driver.findElement(By.xpath(locator)));
 }
 	public void waitandclickForworkitemsPresent(String locator, int timeout) throws InterruptedException
 	{

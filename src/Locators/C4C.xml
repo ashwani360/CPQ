@@ -19,6 +19,7 @@
 <Accountlink>//a[text()='Accounts']</Accountlink>
 <OCN>//span[text()='Accountnumber']/parent::*/parent::*/following-sibling::*/div/a</OCN>
 <OpportunuityTab>//div[text()='Opportunities']</OpportunuityTab>
+<ProductTab>//div[text()='Products']</ProductTab>
 <Opportunuitynumber>//span[text()='Opportunuitynumber']/parent::*/parent::*/following-sibling::*/div/a</Opportunuitynumber>
 <oppo>//span[text()='Opportunity']/parent::*/parent::*/parent::*/button</oppo>
 <customer>//span[text()='Customer']/parent::*/parent::*/parent::*/button</customer>
@@ -91,6 +92,7 @@
 <AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 <Opportunity>
 <Newlink>//bdi[text()='New']</Newlink>
+<AddProductlink>//bdi[text()='Add']</AddProductlink>
 <Name>//*[text()='Name']/parent::*/parent::*/div/div/div/input</Name>
 <Offer>//*[text()='Offer Type']/parent::*/parent::*/div/div/div/input</Offer>
 <PrimaryProgramme>//*[text()='Primary Programme']/parent::*/parent::*/div/div/div/input</PrimaryProgramme>
@@ -107,6 +109,10 @@
 <ClickSaveOpty>(//bdi[text()='Save'])[2]</ClickSaveOpty>
 <OptyId>//bdi[text()='Opportunity ID']/parent::*/parent::*/div/span</OptyId>
 </Opportunity>
+<Product>
+<Fields>//*[text()='FName']/parent::*/parent::*/div/div/div/input</Fields>
+<Save>(//bdi[text()='Save'])</Save>
+</Product>
 <AccountsDropdown>//div[@title="Select View"]//button</AccountsDropdown>
 <SelectAll>//li[text()='All']</SelectAll>
 

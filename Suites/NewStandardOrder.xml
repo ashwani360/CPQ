@@ -4,7 +4,7 @@
 	  <listener class-name="Listeners.TestListener"/>
 	  <listener class-name="Listeners.AnnotationTransformer"/>  
     </listeners>
-	<test name="CPQ End to End Order" junit="false" preserve-order="true">
+	 <test name="CPQ End to End Order" junit="false" preserve-order="true">
 		<classes>
 			<class name="Testscript.StandardOrderOnnet">	
 				<methods>
@@ -13,9 +13,9 @@
 			</class>
 		</classes>	
 	</test>
-	<!-- <test name="CPQ End to End Order" junit="false" preserve-order="true">
+	<!--<test name="CPQ End to End Order" junit="false" preserve-order="true">
 		<classes>
-			<class name="Testscript.StandardOrderOffnet">	
+			<class name="Testscript.BespokeAndNonStandard">	
 				<methods>
 					<include name="EndtoEndOrderOffnet"/>
 				</methods>	
