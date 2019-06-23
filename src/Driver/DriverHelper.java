@@ -567,6 +567,9 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 
 			driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[text()='Show Groups']")));
 	//safeJavaScriptClick(driver.findElement(By.xpath(locator)));
+	System.out.println("See if Scrolled");
+	Thread.sleep(1000);	
+	System.out.println("Waiting....");
 }
 	public void waitandclickForworkitemsPresent(String locator, int timeout) throws InterruptedException
 	{

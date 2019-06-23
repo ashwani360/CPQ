@@ -40,30 +40,24 @@ public class StandardOrderOnnet extends DriverTestcase {
 			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
 			{
 			Configurationhelper.get().ReconfigureAgain(Data);
-				Explorehelper.get().ExploreWorkflow(Data);
-				C4Chelper.get().NavigatetoC4C();
-				C4Chelper.get().Movetoaccount(Data);
-				C4Chelper.get().MovetoOpportunuity(Data);
-				C4Chelper.get().EditQuote();
-				
-				Configurationhelper.get().Reconfigure(Data);
-				Login.get().Logout("CPQ");
-				Login.get().Login("ExploreNearNet");
-				Explorehelper.get().ExploreWorkflownearnet(Data);
-				Login.get().Logout("ExploreNearNet");
-				Login.get().Login("C4C");
-				
-				C4Chelper.get().Movetoaccount(Data);
-				C4Chelper.get().MovetoOpportunuity(Data);
-				C4Chelper.get().EditQuote();
-				
-				Configurationhelper.get().Reconfigure(Data);
+			Explorehelper.get().NavigatetoExplore();
+			Explorehelper.get().ExploreWorkflow(Data);
+			Login.get().Logout("Explore");
+			Login.get().Login("ExploreNearNet");
+			Explorehelper.get().ExploreWorkflownearnet(Data);
+			Login.get().Logout("ExploreNearNet");
+			Login.get().Login("C4C");
+			
+			C4Chelper.get().Movetoaccount(Data);
+			C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			Configurationhelper.get().Reconfigure(Data);
 			}
 		}
 		else if(Configurationhelper.get().Quotestatus.get().equals("POA"))
 		{
-			//Need to write the code
-		}
+			Configurationhelper.get().POA();
+			}
 		else if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
 		{
 			//Need to write the codeExceptionPPT()

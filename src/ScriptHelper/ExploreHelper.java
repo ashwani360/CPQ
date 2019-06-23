@@ -105,7 +105,23 @@ public class ExploreHelper extends DriverHelper {
 				}
 			case "Dig Cost not Possible":
 			{
+				Object[] newdata=(Object[]) data.get(i);
+				for(int j=0;j<newdata.length;j++) {
+				System.out.println("A Site for lineitem"+i+" is "+newdata[j].toString());
+				WaitforElementtobeclickable(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue"));
+				Clickon(getwebelement(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString()));
+				Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString())));
+//	            Thread.sleep(5000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
+				Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMeNearnet"));
+				Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMeNearnet")));
+				Thread.sleep(5000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/Digcodenotpossible"));
+				Clickon(getwebelement(xml.getlocator("//locators/Digcodenotpossible")));
 				break;
+				}
 			}
 			default:
 			{
@@ -166,7 +182,7 @@ public class ExploreHelper extends DriverHelper {
 					WaitforElementtobeclickable(xml.getlocator("//locators/QuoteValidity"));
 					SendKeys(getwebelement(xml.getlocator("//locators/QuoteValidity")),"45");	
 				}
-				else if(a.equals("ReNegotiation"))
+				else if(a.equals("Renegotiation"))
 				{
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC"));
 					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC")),"600");	
@@ -175,10 +191,43 @@ public class ExploreHelper extends DriverHelper {
 				}
 				else if(a.equals("OLO+DSL"))
 				{
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),"Graz");	
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC"));
-					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC")),"600");	
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC")),"500");	
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC"));
-					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC")),"600");	
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC")),"500");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Term (Years)"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Term (Years)")),"1");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Currency"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Currency")),"EUR");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Price Type"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Price Type")),"ACTUAL");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Connector/Interface"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Connector/Interface")),"100BaseT");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Access Technology"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Access Technology")),"ETH");	
+					Thread.sleep(2000);
+					WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
+					Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
+					WaitforElementtobeclickable(xml.getlocator("//locators/CreateCost"));
+					Clickon(getwebelement(xml.getlocator("//locators/CreateCost")));
+					Thread.sleep(2000);
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Product Name"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Product Name")),"ULL EFM");	
+						}
+				else if(a.equals("DSL"))
+				{
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");	
+					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Product Name"));
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Product Name")),"ULL EFM");	
+					
+					
 				}
 				else {
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));

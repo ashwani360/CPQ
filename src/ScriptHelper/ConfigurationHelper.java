@@ -1886,6 +1886,8 @@ public class ConfigurationHelper extends DriverHelper{
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add Product Button");
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
 		System.out.println(QuoteID.get());
+		CurrentURL();
+		
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Newly Created Quote ID is"+QuoteID.get().toString());
 //		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Opportunity Info")));
 //		DealClass.set(Gettext(getwebelement(xml.getlocator("//locators/Dealclass"))));
@@ -2033,6 +2035,10 @@ public class ConfigurationHelper extends DriverHelper{
 				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 				
 			}
+			Quotestatus.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
+			System.out.println("Quite Stage on Screee"+GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
+			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Quote stage is"+Quotestatus.get().toString());
+			
 		}
 		
 		for(int i=0;i<dataNearnet.size();i++)
@@ -2261,10 +2267,53 @@ public class ConfigurationHelper extends DriverHelper{
 			Clickon(getwebelement(xml.getlocator("//locators/PPT/Clickupdate")));
 			//click on save
 			Clickon(getwebelement(xml.getlocator("//locators/PPT/Clicksave")));
+		}
 			//Return quote to sales
 			Clickon(getwebelement(xml.getlocator("//locators/PPT/Sendtosales")));
+		
+			openurl("CPQAdmin");
+			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+			Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+			openurl2(CurrentQuoteURL.get());
+		
+		
+	}
+	public void POA() throws Exception
+	{
+		Clickon(getwebelement(xml.getlocator("//locators/PPT/EngagePortfolio")));		
+//		openurl("Admin");
+////		Switchtotab();
+//		WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+//		Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/usernameproxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_PPT_User")));
+//		Clickon(getwebelement(xml.getlocator("//locators/usernameproxy").replace("Ashwani.Singh31@colt.net",pr.readproperty("CPQ_PPT_User"))));
+		ProxyLogin("CPQ_DealPrice_User",xml.getlocator("//locators/usernameproxy"));
+		WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
+		Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
+		Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+		//Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+		Clickon(getwebelement(xml.getlocator("//locators/PPT/PLtab")));
+		Select assignuser=new Select(getwebelement(xml.getlocator("//select[@name='portfolioTeamAssignment']")));
+		assignuser.selectByVisibleText("Namita Sinha");
+		Clickon(getwebelement(xml.getlocator("//locators/PPT/Assignquote")));
+		//String exception=xml.getlocator("//locators/PPT/Bpnotfound").toString();
+		if(xml.getlocator("//locators/PPT/POA").toString().equalsIgnoreCase("POA"))
+		{
+			SendKeys(getwebelement(xml.getlocator("//locators/PPT/Basepricenrr")),"555");
+			SendKeys(getwebelement(xml.getlocator("//locators/PPT/Basepricemrr")),"666");
 		}
 		
+		
+			//Return quote to sales
+			Clickon(getwebelement(xml.getlocator("//locators/PPT/Sendtosales")));
+		
+			openurl("CPQAdmin");
+			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+			Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+			openurl2(CurrentQuoteURL.get());
 		
 		
 	}

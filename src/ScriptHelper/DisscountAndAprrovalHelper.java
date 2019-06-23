@@ -135,46 +135,46 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 }
 public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	
-//	waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
-//	waitForpageload();
-//	//Thread.sleep(10000);
-//		//WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
-//	safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
-//	//Clickonoutofviewportwithstring(xml.getlocator("//locators/Showdisscountcoulumn"));
-//		WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
-//		//DecimalFormat df = new DecimalFormat("0.00");
-//		//df.setMaximumFractionDigits(2);
-//		//System.out.println(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))));
-//		//TotalTCVdisscount.set(Float.parseFloat(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount")))));
-//		
-//	//WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
-//	System.out.println(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))));
-//	TotalTCVdisscount.set(Float.parseFloat(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount")))));
-//	DefineApprover(Inputdata);
-//	SubmitforApproval(ApprovalCase.get(),Inputdata);
-//	
-//	ApproveQuote(ApprovalCase.get());
-//	//NavigatetoC4C();
-//	if(!ApprovalCase.get().equals("Self Approve")) {
-//	Movetoaccount(Inputdata);
-//	MovetoOpportunuity(Inputdata);
-//	EditQuote();
-//	
-//	
-//	
-//}
+	waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
+	waitForpageload();
+	//Thread.sleep(10000);
+		//WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
+	safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+	//Clickonoutofviewportwithstring(xml.getlocator("//locators/Showdisscountcoulumn"));
+		WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
+		//DecimalFormat df = new DecimalFormat("0.00");
+		//df.setMaximumFractionDigits(2);
+		//System.out.println(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))));
+		//TotalTCVdisscount.set(Float.parseFloat(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount")))));
+		
+	//WaitforElementtobeclickable(xml.getlocator("//locators/TcvDisscount"));
+	System.out.println(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount"))));
+	TotalTCVdisscount.set(Float.parseFloat(Gettext(getwebelement(xml.getlocator("//locators/TcvDisscount")))));
+	DefineApprover(Inputdata);
+	SubmitforApproval(ApprovalCase.get(),Inputdata);
+	
+	ApproveQuote(ApprovalCase.get());
+	//NavigatetoC4C();
+	if(!ApprovalCase.get().equals("Self Approve")) {
+	Movetoaccount(Inputdata);
+	MovetoOpportunuity(Inputdata);
+	EditQuote();
+	
+	
+	
+}
 	//-----------------------------------------------
 		if(isElementPresent(xml.getlocator("//locators/TechnicalApprovalTab")))
 		{
-//			Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
-//			Thread.sleep(3000);
-//			//javascriptexecutor2(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
-//			ClickswithAction(xml.getlocator("//locators/CheckboxTechnicalApproval"));
-//			Thread.sleep(3000);
-//			Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
-//		//	Clickon(getwebelement(xml.getlocator("//locators/ReturnToC4C")));
-//			
-//			SEEngagement(Inputdata);
+			Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+			Thread.sleep(3000);
+			//javascriptexecutor2(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
+			ClickswithAction(xml.getlocator("//locators/CheckboxTechnicalApproval"));
+			Thread.sleep(3000);
+			Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
+		//	Clickon(getwebelement(xml.getlocator("//locators/ReturnToC4C")));
+			
+			SEEngagement(Inputdata);
 			//---------------------------------------------------	
 			CSTEngagement(Inputdata);
 			
@@ -472,11 +472,13 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
 	Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 	Clickon(getwebelement(xml.getlocator("//locators/CSTApproval")));
+	Thread.sleep(5000);
 	openurl("CPQAdmin");
 	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
 	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
-	
+	openurl2(CurrentQuoteURL.get());
+	WaitforElementtobeclickable(xml.getlocator("//locators/TechnicalApprovalTab"));
 	// Open the Quote the As Sales Users
 	
 }
@@ -485,12 +487,18 @@ public void AddLineitemGridLeadTime(Object[][] data) throws InterruptedException
     for(int i=0;i<data.length;i++) {
     	Thread.sleep(5000);
     	Clickonoutofviewportwithstring(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));
-    WaitforElementtobeclickable(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));	
-	Clickon(getwebelement(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1))));
+    	Thread.sleep(20000);
+    	WaitforElementtobeclickable(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));	
+	//Clickon(getwebelement(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1))));
 	//SendKeys(getwebelement(xml.getlocator("//locators/LeadTime")),"20");
-	Thread.sleep(2000);
+    	Thread.sleep(5000);
+    	ClickswithAction(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));
+    	Clickon(getwebelement(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1))));
+    	
+    	Thread.sleep(20000);
 	
 	EnterText("20");
+	Thread.sleep(2000);
     }
 }
 public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws Exception
