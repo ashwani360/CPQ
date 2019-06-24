@@ -26,6 +26,7 @@
 <OpenQuote>(//span[text()='Quotes']/parent::*/parent::*/parent::*/button)[2]</OpenQuote>
 <QuoteTab>//div[text()='Quotes']</QuoteTab>
 <AddQuote>//bdi[text()='Add']/parent::*/parent::*/parent::*</AddQuote>
+<AddContainterQuote>//bdi[text()='Container - New Business']/parent::*/parent::*/parent::*</AddContainterQuote>
 <Quotenumber>//a[text()='Quotenumber']</Quotenumber>
 <QuoteActions>//bdi[text()='Action']</QuoteActions>
 <QuoteEdit>//bdi[text()='Edit']</QuoteEdit>

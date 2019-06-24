@@ -363,4 +363,49 @@ public class C4CHelper extends DriverHelper{
 		
 	}
 	}
+public void AddContainerQuote() throws Exception {
+		
+		//while (gettitle().toString().contains("SAP Cloud for Customer")) {
+//			System.out.println(gettitle().toString());
+//			System.out.println(gettitle().toString().contains("SAP Cloud for Customer"));
+//			WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
+//		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
+		//Thread.sleep(5000);
+	WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+	WaitforElementtobeclickable(xml.getlocator("//locators/oppo"));
+	Thread.sleep(2000);
+	WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
+	Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
+	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
+	
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		
+		WaitforElementtobeclickable(xml.getlocator("//locators/AddContainterQuote"));
+		Thread.sleep(3000);
+		
+		Clickon(getwebelement(xml.getlocator("//locators/AddContainterQuote")));
+		//Thread.sleep(10000);
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add Quote Button");
+		System.out.print(gettitle().toString());
+		//}
+		System.out.println("Out of While loop");
+		waitForpagenavigated(1);
+//		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
+//		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
+//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
+//		Thread.sleep(5000);
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
+//		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
+//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
+//		Thread.sleep(5000);
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/AddQuote"));
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/AddQuote"));
+//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
+//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
+		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+	}
 }

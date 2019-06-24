@@ -23,7 +23,15 @@ public class SendProposalHelper extends DriverHelper{
 		super(parentdriver);
 	}
 
-
+	public void Containerprices(Object[][] Inputdata) throws Exception {
+		WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
+		Clickon(getwebelement(xml.getlocator("//locators/customersignatureTab")));
+		SendKeys(getwebelement(xml.getlocator("//locators/ContainerNRR")),Inputdata[0][25].toString());
+		SendKeys(getwebelement(xml.getlocator("//locators/ContainerNRR")),Inputdata[0][25].toString());
+		
+	}
+	
 	public void CustomerSign(Object[][] Inputdata) throws Exception {
 		if(Inputdata[0][24].toString().equals("Email")) {
 			//WaitforCPQloader();

@@ -101,7 +101,7 @@
                     <div class="method-list-content failed suite-CPQ_End_to_End_Order">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-CPQ_End_to_End_Order" title="Testscript.BespokeAndNonStandard" hash-for-method="EndtoEndOrderOffnet([[3795623, New, Ethernet &gt; Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...)">EndtoEndOrderOffnet([[3795623, New, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-CPQ_End_to_End_Order" title="Testscript.StandardOrderOnnet" hash-for-method="EndtoEndOrder([[3795623, New, Ethernet &gt; Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...)">EndtoEndOrder([[3795623, New, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-CPQ_End_to_End_Order -->
@@ -119,24 +119,22 @@
           <div class="suite-CPQ_End_to_End_Order-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">Testscript.BespokeAndNonStandard</span>
+              <span class="class-name">Testscript.StandardOrderOnnet</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="EndtoEndOrderOffnet([[3795623, New, Ethernet &gt; Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...)">
-                  </a> <!-- EndtoEndOrderOffnet([[3795623, New, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...) -->
-                  <span class="method-name">EndtoEndOrderOffnet</span>
+                  <a name="EndtoEndOrder([[3795623, New, Ethernet &gt; Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...)">
+                  </a> <!-- EndtoEndOrder([[3795623, New, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...) -->
+                  <span class="method-name">EndtoEndOrder</span>
                   <span class="parameters">([[3795623, New, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 1 Year, , 1 Gbps, Unprotected, Onnet, Onnet, , , Contract Tearm, 5 Years, 44 8882216537, 123566534, 2147483647, New BCN, , , , Email, ashwanis@yopmail.com, Atest, BTest, No, null, Ethernet P2P Order Without disscount Disscount - End to End with Email Intergration, Yes]])</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: (//span[contains(@class,&apos;rowexpander&apos;)]/parent::*/parent::*/parent::*/parent::*/td[22])[index] (tried for 60 second(s) with 1000 MILLISECONDS interval)
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.id: quoteType_t-ro (tried for 60 second(s) with 1000 MILLISECONDS interval)
 	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:184)
-	at ScriptHelper.DisscountAndAprrovalHelper.AddLineitemGridLeadTime(DisscountAndAprrovalHelper.java:488)
-	at ScriptHelper.DisscountAndAprrovalHelper.CSTEngagement(DisscountAndAprrovalHelper.java:468)
-	at ScriptHelper.DisscountAndAprrovalHelper.ApproveQuote(DisscountAndAprrovalHelper.java:179)
-	at Testscript.BespokeAndNonStandard.EndtoEndOrderOffnet(BespokeAndNonStandard.java:23)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: (//span[contains(@class,&apos;rowexpander&apos;)]/parent::*/parent::*/parent::*/parent::*/td[22])[index]
+	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:199)
+	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1882)
+	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: quoteType_t-ro
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
 System info: host: &apos;360NDCLP119&apos;, ip: &apos;172.26.44.65&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_162&apos;
@@ -150,7 +148,7 @@ Driver info: driver.version: unknown
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 29 more
+	... 27 more
 ... Removed 24 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -173,11 +171,11 @@ Driver info: driver.version: unknown
   &lt;/listeners&gt;
   &lt;test name=&quot;CPQ End to End Order&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;Testscript.BespokeAndNonStandard&quot;&gt;
+      &lt;class name=&quot;Testscript.StandardOrderOnnet&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;EndtoEndOrderOffnet&quot;/&gt;
+          &lt;include name=&quot;EndtoEndOrder&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- Testscript.BespokeAndNonStandard --&gt;
+      &lt;/class&gt; &lt;!-- Testscript.StandardOrderOnnet --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- CPQ End to End Order --&gt;
 &lt;/suite&gt; &lt;!-- CPQ End to End Order --&gt;
@@ -219,14 +217,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'EndtoEndOrderOffnet')
-data.setCell(0, 2, 'Testscript.BespokeAndNonStandard')
-data.setCell(0, 3, 229105);
+data.setCell(0, 1, 'EndtoEndOrder')
+data.setCell(0, 2, 'Testscript.StandardOrderOnnet')
+data.setCell(0, 3, 351596);
 window.suiteTableData['CPQ_End_to_End_Order']= { tableData: data, tableDiv: 'times-div-CPQ_End_to_End_Order'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
+              <span class="suite-total-time">Total running time: 5 minutes</span>
               <div id="times-div-CPQ_End_to_End_Order">
               </div> <!-- times-div-CPQ_End_to_End_Order -->
             </div> <!-- times-div -->
@@ -245,7 +243,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">Testscript.BespokeAndNonStandard</span>
+              <span class="ignored-class-name">Testscript.StandardOrderOnnet</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">EndtoEndOrdertest</span>
                 <br/>
@@ -259,28 +257,28 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">Testscript.BespokeAndNonStandard</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">Testscript.StandardOrderOnnet</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">BeforeSuite</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-method before">
-                <span class="method-name">BeforeMethod(public void Testscript.BespokeAndNonStandard.EndtoEndOrderOffnet(java.lang.Object[][]) throws java.l...)</span>
-                <span class="method-start">2144 ms</span>
+                <span class="method-name">BeforeMethod(public void Testscript.StandardOrderOnnet.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Excep...)</span>
+                <span class="method-start">2089 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">EndtoEndOrderOffnet([[3795623, New, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...)</span>
-                <span class="method-start">16276 ms</span>
+                <span class="method-name">EndtoEndOrder([[3795623, New, Ethernet > Ethernet Line, , , 3, Julius-Tandler-Platz, Wien, Austria, Wien, 1090, 3,...)</span>
+                <span class="method-start">17957 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">Teardown2</span>
-                <span class="method-start">245876 ms</span>
+                <span class="method-start">370204 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-test after">
                 <span class="method-name">Teardown</span>
-                <span class="method-start">245878 ms</span>
+                <span class="method-start">370206 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

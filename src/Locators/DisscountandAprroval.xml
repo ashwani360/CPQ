@@ -125,7 +125,7 @@
 <IncrementalOpex>//select[@name='typeOfOpex_bespokeArray']</IncrementalOpex>
 <Frequency>//select[@name='frequency']</Frequency>
 <ProductDescription>//textarea[@name='notesProductDescription_bespokearray']</ProductDescription>
-<LeadTime>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[22])[index]</LeadTime>
 <ProxyLink>(//img[@alt='Proxy Login']/parent::*)[1]</ProxyLink>
+<Quotestatus>id=status_t-ro</Quotestatus>
 </locators>
 

@@ -46,6 +46,7 @@ import ScriptHelper.BCNUpdateHelper;
 import ScriptHelper.BespokandNonStandard;
 import ScriptHelper.C4CHelper;
 import ScriptHelper.ConfigurationHelper;
+import ScriptHelper.ContainerJourneyHelper;
 import ScriptHelper.DisscountAndAprrovalHelper;
 import ScriptHelper.ExploreHelper;
 import ScriptHelper.GenralInfoHelper;
@@ -72,6 +73,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public static final ThreadLocal<SendProposalHelper> SendProposalhelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<ExploreHelper> Explorehelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<BespokandNonStandard> BspokeNonStandard= new InheritableThreadLocal<>();
+	public static final ThreadLocal<ContainerJourneyHelper> ContainerHelper= new InheritableThreadLocal<>();
 	
 	public static ThreadLocal<String> QuoteID=new InheritableThreadLocal<>();
 	public static TestListener Testlistener;
@@ -317,6 +319,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		SendProposalHelper PRO= new SendProposalHelper(getwebdriver());
 		ExploreHelper EXP=new ExploreHelper(getwebdriver());
 		BespokandNonStandard BEN=new BespokandNonStandard(getwebdriver());
+		ContainerJourneyHelper CONTN=new ContainerJourneyHelper(getwebdriver());
 		Login.set(LN);
 		BCNupdatehelper.set(BCN);
 		C4Chelper.set(C4C);
@@ -327,6 +330,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		SendProposalhelper.set(PRO);
 		Explorehelper.set(EXP);
 		BspokeNonStandard.set(BEN);
+		ContainerHelper.set(CONTN);
 		
 	}
 

@@ -102,9 +102,36 @@ public class StandardOrderOnnet extends DriverTestcase {
 		
 	}
 @Test(dataProviderClass=DataReader.class,dataProvider="NewStandrdOrder")
-public void EndtoEndOrdertest(Object[][] Data) throws Exception
+public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 {
-	Configurationhelper.get().AddProducttest(Data);
+	Login.get().Login("C4C");
+	
+	C4Chelper.get().Movetoaccount(Data);
+	C4Chelper.get().MovetoOpportunuity(Data);
+	
+	Thread.sleep(3000);
+	C4Chelper.get().Product_Add();
+	C4Chelper.get().AddContainerQuote();
+	ContainerHelper.get().AddContainerProduct(Data);
+	ContainerHelper.get().ContainerApproveQuote(Data);
+	ContainerHelper.get().ContainerSEApproval();
+	ContainerHelper.get().ContainerCSTApproval(Data);
+	SendProposalhelper.get().Containerprices(Data);
+	if(Data[0][24].toString().equals("Email")) {
+		Orderinghelper.get().AcceptsQuote(Data);
+		Orderinghelper.get().CreateOrder(Data);
+	}
+	else {
+		Orderinghelper.get().AcceptsQuotebyEsignature(Data);
+		C4Chelper.get().NavigatetoC4C();
+		C4Chelper.get().Movetoaccount(Data);
+		C4Chelper.get().MovetoOpportunuity(Data);
+		C4Chelper.get().EditQuote();
+		C4Chelper.get().CheckdocumentSigned();
+		Orderinghelper.get().AcceptsQuote(Data);
+		Orderinghelper.get().CreateOrder(Data);
+		
+		}
 	
 	
 }

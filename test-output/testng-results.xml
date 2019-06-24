@@ -2,57 +2,55 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="CPQ End to End Order" duration-ms="245624" started-at="2019-06-21T02:11:37Z" finished-at="2019-06-21T02:15:43Z">
+  <suite name="CPQ End to End Order" duration-ms="369942" started-at="2019-06-23T15:53:21Z" finished-at="2019-06-23T15:59:31Z">
     <groups>
     </groups>
-    <test name="CPQ End to End Order" duration-ms="245624" started-at="2019-06-21T02:11:37Z" finished-at="2019-06-21T02:15:43Z">
-      <class name="Testscript.BespokeAndNonStandard">
-        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.BespokeAndNonStandard@58651fd0]" name="BeforeSuite" is-config="true" duration-ms="254" started-at="2019-06-21T07:41:37Z" finished-at="2019-06-21T07:41:37Z">
+    <test name="CPQ End to End Order" duration-ms="369942" started-at="2019-06-23T15:53:21Z" finished-at="2019-06-23T15:59:31Z">
+      <class name="Testscript.StandardOrderOnnet">
+        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="BeforeSuite" is-config="true" duration-ms="264" started-at="2019-06-23T21:23:21Z" finished-at="2019-06-23T21:23:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeSuite -->
-        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.BespokeAndNonStandard@58651fd0]" name="BeforeMethod" is-config="true" duration-ms="14132" started-at="2019-06-21T07:41:39Z" finished-at="2019-06-21T07:41:53Z">
+        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="BeforeMethod" is-config="true" duration-ms="15868" started-at="2019-06-23T21:23:23Z" finished-at="2019-06-23T21:23:39Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Testscript.BespokeAndNonStandard.EndtoEndOrderOffnet(java.lang.Object[][]) throws java.lang.Exception]]>
+                <![CDATA[public void Testscript.StandardOrderOnnet.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@5016934]]>
+                <![CDATA[org.testng.TestRunner@4eb1407f]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[[Ljava.lang.Object;@e10809f]]>
+                <![CDATA[[Ljava.lang.Object;@443ec909]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeMethod -->
-        <test-method status="FAIL" signature="EndtoEndOrderOffnet([[Ljava.lang.Object;)[pri:0, instance:Testscript.BespokeAndNonStandard@58651fd0]" name="EndtoEndOrderOffnet" duration-ms="229105" started-at="2019-06-21T07:41:53Z" data-provider="NewStandrdOrder" finished-at="2019-06-21T07:45:42Z">
+        <test-method status="FAIL" signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="EndtoEndOrder" duration-ms="351596" started-at="2019-06-23T21:23:39Z" data-provider="NewStandrdOrder" finished-at="2019-06-23T21:29:30Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[[Ljava.lang.Object;@1f13eabb]]>
+                <![CDATA[[[Ljava.lang.Object;@58b8ee01]]>
               </value>
             </param>
           </params>
           <exception class="org.openqa.selenium.TimeoutException">
             <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: (//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[22])[index] (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
+              <![CDATA[Expected condition failed: waiting for element to be clickable: By.id: quoteType_t-ro (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: (//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[22])[index] (tried for 60 second(s) with 1000 MILLISECONDS interval)
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.id: quoteType_t-ro (tried for 60 second(s) with 1000 MILLISECONDS interval)
 	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:184)
-	at ScriptHelper.DisscountAndAprrovalHelper.AddLineitemGridLeadTime(DisscountAndAprrovalHelper.java:488)
-	at ScriptHelper.DisscountAndAprrovalHelper.CSTEngagement(DisscountAndAprrovalHelper.java:468)
-	at ScriptHelper.DisscountAndAprrovalHelper.ApproveQuote(DisscountAndAprrovalHelper.java:179)
-	at Testscript.BespokeAndNonStandard.EndtoEndOrderOffnet(BespokeAndNonStandard.java:23)
+	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:199)
+	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1882)
+	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -77,7 +75,7 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: (//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[22])[index]
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: quoteType_t-ro
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
 System info: host: '360NDCLP119', ip: '172.26.44.65', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_162'
@@ -91,22 +89,22 @@ Driver info: driver.version: unknown
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 29 more
+	... 27 more
 ]]>
             </full-stacktrace>
           </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- EndtoEndOrderOffnet -->
-        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.BespokeAndNonStandard@58651fd0]" name="Teardown2" is-config="true" duration-ms="0" started-at="2019-06-21T07:45:43Z" finished-at="2019-06-21T07:45:43Z">
+        </test-method> <!-- EndtoEndOrder -->
+        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="Teardown2" is-config="true" duration-ms="0" started-at="2019-06-23T21:29:31Z" finished-at="2019-06-23T21:29:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown2 -->
-        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.BespokeAndNonStandard@58651fd0]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-06-21T07:45:43Z" finished-at="2019-06-21T07:45:43Z">
+        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-06-23T21:29:31Z" finished-at="2019-06-23T21:29:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown -->
-      </class> <!-- Testscript.BespokeAndNonStandard -->
+      </class> <!-- Testscript.StandardOrderOnnet -->
     </test> <!-- CPQ End to End Order -->
   </suite> <!-- CPQ End to End Order -->
 </testng-results>
