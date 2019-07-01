@@ -58,7 +58,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 		{
 			Configurationhelper.get().POA();
 			}
-		else if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
+		else if(Configurationhelper.get().Quotestatus.get().equals("Created"))
 		{
 			//Need to write the codeExceptionPPT()
 			Configurationhelper.get().ExceptionPPT();
@@ -78,7 +78,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 		}
 		DisscountAndAprrovalhelper.get().ApproveQuote(Data);
 		// belowMethods will not call if Quote is not in Aprroved Stage 
-		if(!Configurationhelper.get().Quotestatus.get().equals("Approved")){
+		if(Configurationhelper.get().Quotestatus.get().equals("Approved")){
 		SendProposalhelper.get().CustomerSign(Data);
 		if(Data[0][24].toString().equals("Email")) {
 			Orderinghelper.get().AcceptsQuote(Data);
@@ -101,7 +101,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 	
 		
 	}
-@Test(dataProviderClass=DataReader.class,dataProvider="NewStandrdOrder")
+@Test(dataProviderClass=DataReader.class,dataProvider="NewContainer")
 public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 {
 	Login.get().Login("C4C");
@@ -113,7 +113,7 @@ public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 	C4Chelper.get().Product_Add();
 	C4Chelper.get().AddContainerQuote();
 	ContainerHelper.get().AddContainerProduct(Data);
-	ContainerHelper.get().ContainerApproveQuote(Data);
+	ContainerHelper.get().ContainerApproveQuote();
 	ContainerHelper.get().ContainerSEApproval();
 	ContainerHelper.get().ContainerCSTApproval(Data);
 	SendProposalhelper.get().Containerprices(Data);

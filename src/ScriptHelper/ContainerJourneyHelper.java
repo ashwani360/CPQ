@@ -1,9 +1,6 @@
 package ScriptHelper;
 
-import java.io.IOException;
-
 import org.dom4j.DocumentException;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -28,30 +25,47 @@ public class ContainerJourneyHelper extends DriverHelper {
 	
 	public void AddContainerProduct(Object[][] Data) throws InterruptedException, Exception
 	{
+		Thread.sleep(30000);
+		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
+		System.out.println(QuoteID.get());
+		CurrentURL();
 		for(int i=0; i<Data.length;i++)
 		{
+		Thread.sleep(10000);
 		Clickon(getwebelement(xml.getlocator("//locators/EnterProductName")));
-		SendKeys(getwebelement(xml.getlocator("//locators/EnterProductName")),Data[i][0].toString());
+		SendKeys(getwebelement(xml.getlocator("//locators/EnterProductName")),Data[i][2].toString());
 		Clickon(getwebelement(xml.getlocator("//locators/AddContainerProduct")));
 		getwebelement(xml.getlocator("//locators/EnterProductName")).clear();
 		}
 	}
 	
-	public void ContainerApproveQuote(Object[][] Data) throws Exception, DocumentException
+	public void ContainerApproveQuote() throws Exception, DocumentException
 	{
 		WaitforElementtobeclickable(xml.getlocator("//locators/TechnicalApprovalTab"));
-		Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
-		for(int i=0;i<Data.length;i++)
-		{	
-			Clickon(getwebelement(xml.getlocator("//locators/UploadXlsxAttachment").replace("index", String.valueOf(i+1))));
+		javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+		Thread.sleep(20000);
+		switchtofram(getwebelement("//iframe[@name='ucmIframeApp']"));
+		int a = getwebelementscount(xml.getlocator("//locators/UploadXlsxAttachment").replace("[index]", "")); 
+		System.out.println("count is for:"+xml.getlocator("//locators/UploadXlsxAttachment").replace("[index]", "")+"-----"+a);
+		for(int i=0;i<a;i++)
+		{
+			
+			Thread.sleep(20000);
+			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/UploadXlsxAttachment").replace("index", String.valueOf(i+1))));
 			WaitforElementtobeclickable(xml.getlocator("//locators/SelectCategory").replace("value", "Internal"));
 			Clickon(getwebelement(xml.getlocator("//locators/SelectCategory").replace("value", "Internal")));
-			Select(getwebelement(xml.getlocator("//locators/Selecttype")),"EOF(xls)");
+			Thread.sleep(3000);
+		//	WaitforElementtobeclickable(xml.getlocator("//locators/Selecttype"));
+			Select3(getwebelement(xml.getlocator("//locators/Selecttype")),"EOF(xls)");
+			Thread.sleep(3000);
+			//WaitforElementtobeclickable(xml.getlocator("//locators/ChooseFile"));
 			uploadafile(xml.getlocator("//locators/ChooseFile"),"IP Guardian_Order Form QtO' 1.0.xlsx");
 			isElementPresent(xml.getlocator("//locators/Filename").replace("value", "IP Guardian_Order Form QtO' 1.0.xlsx"));
 			Clickon(getwebelement(xml.getlocator("//locators/UploadFile")));
-			
 		}
+		switchtodefault();
+		Thread.sleep(3000);
 		ClickswithAction(xml.getlocator("//locators/CheckboxTechnicalApproval"));
 		Thread.sleep(3000);
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
@@ -72,6 +86,7 @@ public class ContainerJourneyHelper extends DriverHelper {
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
 		Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+		Thread.sleep(5000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/SubmitToCSTApproval"));
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitToCSTApproval")));
 		Thread.sleep(30000);
@@ -89,18 +104,40 @@ public class ContainerJourneyHelper extends DriverHelper {
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
-		Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
-		for(int i=0;i<Data.length;i++)
+		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
+		Thread.sleep(20000);
+		switchtofram(getwebelement("//iframe[@name='ucmIframeApp']"));
+		int a = getwebelementscount(xml.getlocator("//locators/UploadXlsxAttachment").replace("[index]", ""));
+		System.out.println("count is for:"+xml.getlocator("//locators/UploadXlsxAttachment").replace("[index]", "")+"-----"+a);
+		for(int i=0;i<a;i++)
 		{	
-			Clickon(getwebelement(xml.getlocator("//locators/UploadXlsxAttachment").replace("index", String.valueOf(i+1))));
+			Thread.sleep(20000);
+			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/UploadXlsxAttachment").replace("index", String.valueOf(i+1))));
 			WaitforElementtobeclickable(xml.getlocator("//locators/SelectCategory").replace("value", "Customer Facing"));
 			Clickon(getwebelement(xml.getlocator("//locators/SelectCategory").replace("value", "Customer Facing")));
-			Select(getwebelement(xml.getlocator("//locators/Selecttype")),"EOF(pdf)");
+			Thread.sleep(3000);
+			Select3(getwebelement(xml.getlocator("//locators/Selecttype")),"EOF(pdf)");
+			Thread.sleep(3000);
 			uploadafile(xml.getlocator("//locators/ChooseFile"),"IP Guardian_Order Form QtO' 1.0.pdf");
 			isElementPresent(xml.getlocator("//locators/Filename").replace("value", "IP Guardian_Order Form QtO' 1.0.pdf"));
 			Clickon(getwebelement(xml.getlocator("//locators/UploadFile")));
 		}
+		switchtodefault();
+		Thread.sleep(5000);
 		Clickon(getwebelement(xml.getlocator("//locators/CSTApproval")));
+		Thread.sleep(10000);
+		//proxy logout
+		WaitforElementtobeclickable(xml.getlocator("//locators/ProxyLogout"));
+		Clickon(getwebelement(xml.getlocator("//locators/ProxyLogout")));
+		Thread.sleep(5000);
+		 openurl2(CurrentQuoteURL.get());
+	}
+	
+	public void ContainerCreateOrder() throws InterruptedException, Exception
+	{
+		WaitforElementtobeclickable(xml.getlocator("//locators/CreateOrder"));
+		Clickon(getwebelement(xml.getlocator("//locators/CreateOrder")));
+		
 	}
 }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locators>
 <C4Cloader>//*[contains(@title,'Please wait')]</C4Cloader>
+<QuoteID>id=quoteID_t</QuoteID>
 <ProductTab>//div[text()='Products']</ProductTab>
 <AddProductlink>//bdi[text()='Add']</AddProductlink>
 <Fields>//*[text()='FName']/parent::*/parent::*/div/div/div/input</Fields>
@@ -14,7 +15,7 @@
 <UploadXlsxAttachment>(//div[@id='accordionQuoteLineItems']//span[contains(text(),'Upload')])[index]</UploadXlsxAttachment>
 <SelectCategory>//label[text()='value']</SelectCategory>
 <Selecttype>//select[@id='document_type']</Selecttype>
-<ChooseFile>id=primary_file</ChooseFile>
+<ChooseFile>//input[@name='primary_file']</ChooseFile>
 <Filename>//span[text()="value"]</Filename>
 <UploadFile>//button[text()='Upload']</UploadFile>
 <CheckboxTechnicalApproval>//label[text()='Ready For Technical Approval']/ancestor::div[4]//input</CheckboxTechnicalApproval>
@@ -24,4 +25,6 @@
 <CPQQuotelink>//*[text()='QuoteId']/parent::*/parent::*/parent::*//td//a</CPQQuotelink>
 <SubmitToCSTApproval>//button[@name='submit_to_cst_approval']</SubmitToCSTApproval>
 <CSTApproval>//button[@name='approve']</CSTApproval>
+<ProxyLogout>//span[text()='Proxy Logout']/parent::a</ProxyLogout>
+<CreateOrder>//button[@name='create_order']</CreateOrder>
 </locators>

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" total="1" passed="0">
+<testng-results skipped="0" failed="2" total="2" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="CPQ End to End Order" duration-ms="369942" started-at="2019-06-23T15:53:21Z" finished-at="2019-06-23T15:59:31Z">
+  <suite name="CPQ End to End Order" duration-ms="932394" started-at="2019-06-27T13:58:54Z" finished-at="2019-06-27T14:14:26Z">
     <groups>
     </groups>
-    <test name="CPQ End to End Order" duration-ms="369942" started-at="2019-06-23T15:53:21Z" finished-at="2019-06-23T15:59:31Z">
+    <test name="CPQ End to End Order" duration-ms="930813" started-at="2019-06-27T13:58:54Z" finished-at="2019-06-27T14:14:24Z">
       <class name="Testscript.StandardOrderOnnet">
-        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="BeforeSuite" is-config="true" duration-ms="264" started-at="2019-06-23T21:23:21Z" finished-at="2019-06-23T21:23:21Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeSuite -->
-        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="BeforeMethod" is-config="true" duration-ms="15868" started-at="2019-06-23T21:23:23Z" finished-at="2019-06-23T21:23:39Z">
+        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="BeforeMethod" is-config="true" duration-ms="30671" started-at="2019-06-27T19:28:56Z" finished-at="2019-06-27T19:29:27Z">
           <params>
             <param index="0">
               <value>
@@ -20,36 +16,38 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@4eb1407f]]>
+                <![CDATA[org.testng.TestRunner@64e443c1]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[[Ljava.lang.Object;@443ec909]]>
+                <![CDATA[[Ljava.lang.Object;@3e084d2f]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeMethod -->
-        <test-method status="FAIL" signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="EndtoEndOrder" duration-ms="351596" started-at="2019-06-23T21:23:39Z" data-provider="NewStandrdOrder" finished-at="2019-06-23T21:29:30Z">
+        <test-method status="FAIL" signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="EndtoEndOrder" duration-ms="896632" started-at="2019-06-27T19:29:27Z" data-provider="NewStandrdOrder" finished-at="2019-06-27T19:44:23Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[[Ljava.lang.Object;@58b8ee01]]>
+                <![CDATA[[[Ljava.lang.Object;@6020c1ec]]>
               </value>
             </param>
           </params>
           <exception class="org.openqa.selenium.TimeoutException">
             <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.id: quoteType_t-ro (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
+              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //*[text()='Connected via Colt' or text()='Datacenter Connected via Colt' or text()='Automated Nearnet' or text()='Could not find Onnet and Automated Nearnet Connectivity' or contains(text(),'Please confirm the')] (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.id: quoteType_t-ro (tried for 60 second(s) with 1000 MILLISECONDS interval)
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[text()='Connected via Colt' or text()='Datacenter Connected via Colt' or text()='Automated Nearnet' or text()='Could not find Onnet and Automated Nearnet Connectivity' or contains(text(),'Please confirm the')] (tried for 60 second(s) with 1000 MILLISECONDS interval)
 	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:199)
-	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1882)
+	at Driver.DriverHelper.Getmaploaded(DriverHelper.java:324)
+	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:1105)
+	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:50)
+	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1951)
 	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -75,7 +73,7 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: quoteType_t-ro
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //*[text()='Connected via Colt' or text()='Datacenter Connected via Colt' or text()='Automated Nearnet' or text()='Could not find Onnet and Automated Nearnet Connectivity' or contains(text(),'Please confirm the')]
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
 System info: host: '360NDCLP119', ip: '172.26.44.65', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_162'
@@ -89,22 +87,65 @@ Driver info: driver.version: unknown
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 27 more
+	... 29 more
 ]]>
             </full-stacktrace>
           </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- EndtoEndOrder -->
-        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="Teardown2" is-config="true" duration-ms="0" started-at="2019-06-23T21:29:31Z" finished-at="2019-06-23T21:29:31Z">
+        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="Teardown2" is-config="true" duration-ms="1" started-at="2019-06-27T19:44:24Z" finished-at="2019-06-27T19:44:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown2 -->
-        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-06-23T21:29:31Z" finished-at="2019-06-23T21:29:31Z">
+        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOnnet@58651fd0]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-06-27T19:44:24Z" finished-at="2019-06-27T19:44:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown -->
       </class> <!-- Testscript.StandardOrderOnnet -->
     </test> <!-- CPQ End to End Order -->
+    <test name="CPQ End to End Container New Bussiness" duration-ms="732" started-at="2019-06-27T14:14:25Z" finished-at="2019-06-27T14:14:26Z">
+      <class name="Testscript.StandardOrderOnnet">
+        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrderOnnet@d8355a8]" name="BeforeSuite" is-config="true" duration-ms="395" started-at="2019-06-27T19:28:53Z" finished-at="2019-06-27T19:28:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeSuite -->
+        <test-method status="FAIL" signature="EndtoEndOrderContainerNew([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@d8355a8]" name="EndtoEndOrderContainerNew" duration-ms="0" started-at="2019-06-27T19:44:26Z" data-provider="NewContainer" finished-at="2019-06-27T19:44:26Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:149)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:429)
+	at org.testng.internal.Invoker.handleParameters(Invoker.java:1383)
+	at org.testng.internal.Invoker.createParameters(Invoker.java:1075)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1180)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EndtoEndOrderContainerNew -->
+        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOnnet@d8355a8]" name="Teardown" is-config="true" duration-ms="1" started-at="2019-06-27T19:44:26Z" finished-at="2019-06-27T19:44:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Teardown -->
+      </class> <!-- Testscript.StandardOrderOnnet -->
+    </test> <!-- CPQ End to End Container New Bussiness -->
   </suite> <!-- CPQ End to End Order -->
 </testng-results>

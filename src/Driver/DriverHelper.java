@@ -178,6 +178,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 	}
 	public void WaitforElementtobeclickable(String locator) throws InterruptedException
 	{
+		System.out.print("In Wait for Element Clickable method for - "+locator);
 		waitForpageload();
 		if(locator.startsWith("//") || locator.startsWith("(")) {
 		
@@ -208,7 +209,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 		wait.until(ExpectedConditions.attributeToBe(By.xpath(locator), "style", "display: none;")); 
 		//getwebelement(xml.getlocator("//locators/StandrdQuote"));
 		System.out.println("Waiting Loading mask");
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
 	}
 	
@@ -319,7 +320,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 		driver.switchTo().frame(driver.findElement(By.id(finalval[1])));
 		System.out.println("Switched to Iframe");
 		
-		
+		Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(messagelocator))); 
 		System.out.println("Element found and Waiting");
 		System.out.println(driver.findElement(By.xpath(messagelocator)).getText().toString());
@@ -345,6 +346,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 	public WebElement getwebelement(String locator) throws InterruptedException
 	{   //Log.info("Indriverhelper"+driver);
 	 //WebElement el;
+		System.out.print("In Get element method for - "+locator);
 	String[] finalval;
 	try {
 		if(locator.startsWith("name"))
@@ -718,6 +720,23 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 			
 			        	
 	}
+	public void Select3(WebElement el, String value) throws IOException, InterruptedException
+	{ try {
+		if (el.isEnabled() && el.isDisplayed()) {
+			Log.info("Clicking on element with using java script click");
+
+			((JavascriptExecutor) driver).executeScript("arguments[0].value='"+value+"'",el);
+		} else {
+			Log.info("Unable to click on element");
+		}
+	} catch (StaleElementReferenceException e) {
+		Log.info("Element is not attached to the page document "+ e.getStackTrace());
+	} catch (NoSuchElementException e) {
+		Log.info("Element was not found in DOM "+ e.getStackTrace());
+	} catch (Exception e) {
+		Log.info("Unable to click on element "+ e.getStackTrace());
+	}
+	}
 	
 	public int getwebelementscount(String locator) throws InterruptedException
 	{ 
@@ -919,16 +938,16 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 //	        	Log.info(e.getMessage());
 //	        }
 //		}
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 	}
 	public void AcceptJavaScriptMethod() throws InterruptedException{
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 			Alert alert = driver.switchTo().alert();
 			alert.accept();
 			driver.switchTo().defaultContent();
 		}
 	public void CancelJavaScriptMethod() throws InterruptedException{
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 			Alert alert = driver.switchTo().alert();
 			alert.dismiss();
 			driver.switchTo().defaultContent();
@@ -936,8 +955,8 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	public void waitForpageload() throws InterruptedException
 	{
 		
-		wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));	
-		//Thread.sleep(1000);
+		//wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));	
+		Thread.sleep(8000);
 	}
 	public void waitForpagenavigated(int timeout) throws InterruptedException
 	{

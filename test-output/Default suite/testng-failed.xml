@@ -3,15 +3,16 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Testscript.StandardOrder">
+      <class name="Testscript.StandardOrderOnnet">
         <methods>
           <include name="BeforeMethod"/>
           <include name="EndtoEndOrder" invocation-numbers="0"/>
+          <include name="EndtoEndOrderContainerNew"/>
           <include name="Teardown2"/>
           <include name="BeforeSuite"/>
           <include name="Teardown"/>
         </methods>
-      </class> <!-- Testscript.StandardOrder -->
+      </class> <!-- Testscript.StandardOrderOnnet -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

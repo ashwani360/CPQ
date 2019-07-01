@@ -1337,8 +1337,15 @@ public class ConfigurationHelper extends DriverHelper{
 					
 					
 					}
-					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+					String exception="No Exception";
+					try {
+					exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
 					System.out.println("Exception is"+exception);
+					}
+					catch(Exception e)
+					{
+						System.out.println("Exception is"+exception);
+					}
 					if(exception.equalsIgnoreCase("Price Not Found"))
 					{
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
@@ -1423,8 +1430,15 @@ public class ConfigurationHelper extends DriverHelper{
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 //				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote button");
 //				Clickon(getwebelement(xml.getlocator("//locators/AddtoTransaction")));
-				String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+				String exception="No Exception";
+				try {
+				exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
 				System.out.println("Exception is"+exception);
+				}
+				catch(Exception e)
+				{
+					System.out.println("Exception is"+exception);
+				}
 				if(exception.equalsIgnoreCase("Price Not Found"))
 				{
 					Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
@@ -1439,6 +1453,7 @@ public class ConfigurationHelper extends DriverHelper{
 				}
 				else 
 				{
+					
 					Clickon(getwebelement(xml.getlocator("//locators/PPT/AddtoTransaction")));
 				}
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -1527,8 +1542,15 @@ public class ConfigurationHelper extends DriverHelper{
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 //					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote button");
 //					Clickon(getwebelement(xml.getlocator("//locators/AddtoTransaction")));
-					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+					String exception="No Exception";
+					try {
+					exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
 					System.out.println("Exception is"+exception);
+					}
+					catch(Exception e)
+					{
+						System.out.println("Exception is"+exception);
+					}
 					if(exception.equalsIgnoreCase("Price Not Found"))
 					{
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
@@ -1628,8 +1650,15 @@ public class ConfigurationHelper extends DriverHelper{
 					Clickon(getwebelement(xml.getlocator("//locators/FastTrackAddon")));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+					String exception="No Exception";
+					try {
+					exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
 					System.out.println("Exception is"+exception);
+					}
+					catch(Exception e)
+					{
+						System.out.println("Exception is"+exception);
+					}
 					if(exception.equalsIgnoreCase("Price Not Found"))
 					{
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
@@ -1715,8 +1744,15 @@ public class ConfigurationHelper extends DriverHelper{
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				Selectconnectivity(Inputdata[i][11].toString(),"Asite",ExploreID,ExploreIDNearnet);
 				Selectconnectivity(Inputdata[i][12].toString(),"Bsite",ExploreID,ExploreIDNearnet);
-				String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
-				
+				String exception="No Exception";
+				try {
+				exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+				System.out.println("Exception is"+exception);
+				}
+				catch(Exception e)
+				{
+					System.out.println("Exception is"+exception);
+				}
 				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 				javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
@@ -1828,8 +1864,15 @@ public class ConfigurationHelper extends DriverHelper{
 					Clickon(getwebelement(xml.getlocator("//locators/FastTrackAddon")));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					String exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
-					
+					String exception="No Exception";
+					try {
+					exception=Gettext(getwebelement(xml.getlocator("//locators/PPT/BasePrice")));
+					System.out.println("Exception is"+exception);
+					}
+					catch(Exception e)
+					{
+						System.out.println("Exception is"+exception);
+					}
 					if(exception.equalsIgnoreCase("Price Not Found"))
 					{
 						Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
@@ -1856,7 +1899,7 @@ public class ConfigurationHelper extends DriverHelper{
 	
 	public void AdditionalProductData() throws DocumentException, InterruptedException, IOException {
 		// Need to write the code
-		if(isElementPresent(xml.getlocator("//locators/AdditionalProductDataTab")))
+		if(isElementPresent(xml.getlocator("//locators/AdditionalProductDataTabparent")))
 		{
 			Clickon(getwebelement(xml.getlocator("//locators/AdditionalProductDataTab")));
 			Select(getwebelement(xml.getlocator("//locators/ExistingCapacityLeadTime")),"No");
@@ -1865,6 +1908,7 @@ public class ConfigurationHelper extends DriverHelper{
 			
 			Thread.sleep(5000);
 		}
+		Thread.sleep(10000);
 		// Arrange the Add to transaction button locator to make it common
 	}
 	public void AddLineitemGridLeadTime(){
@@ -1899,9 +1943,13 @@ public class ConfigurationHelper extends DriverHelper{
 //			waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader"),1);
 //			waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
 			waitForpageload();
+			WaitforElementtobeclickable(xml.getlocator("//locators/LineitemGrid"));
+			WaitforElementtobeclickable(xml.getlocator("//locators/AddProduct"));
+			
 		Clickon(getwebelement(xml.getlocator("//locators/AddProduct")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Add Product button");
 		AddFamilyProduct(Inputdata,i);
+		WaitforElementtobeclickable(xml.getlocator("//locators/LineitemGrid"));
 //		waitForpageload();
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader"),1);

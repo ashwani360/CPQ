@@ -179,6 +179,7 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 			CSTEngagement(Inputdata);
 			
 		}
+		
 		Quotestatus.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
 		System.out.println("Quite Stage on Screee"+GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
 		

@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sun Jun 23 21:23:21 IST 2019</td>
+<td>Started on:</td><td>Thu Jun 27 19:28:54 IST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>369 seconds (369942 ms)</td>
+<tr><td>Total time:</td><td>930 seconds (930813 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,14 +75,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Testscript.StandardOrderOnnet.EndtoEndOrder()'><b>EndtoEndOrder</b><br>Test class: Testscript.StandardOrderOnnet<br>Parameters: [[Ljava.lang.Object;@58b8ee01</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.id: quoteType_t-ro (tried for 60 second(s) with 1000 MILLISECONDS interval)
+<td title='Testscript.StandardOrderOnnet.EndtoEndOrder()'><b>EndtoEndOrder</b><br>Test class: Testscript.StandardOrderOnnet<br>Parameters: [[Ljava.lang.Object;@6020c1ec</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[text()=&apos;Connected via Colt&apos; or text()=&apos;Datacenter Connected via Colt&apos; or text()=&apos;Automated Nearnet&apos; or text()=&apos;Could not find Onnet and Automated Nearnet Connectivity&apos; or contains(text(),&apos;Please confirm the&apos;)] (tried for 60 second(s) with 1000 MILLISECONDS interval)
 	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:199)
-	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1882)
+	at Driver.DriverHelper.Getmaploaded(DriverHelper.java:324)
+	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:1105)
+	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:50)
+	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1951)
 	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: quoteType_t-ro
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //*[text()=&apos;Connected via Colt&apos; or text()=&apos;Datacenter Connected via Colt&apos; or text()=&apos;Automated Nearnet&apos; or text()=&apos;Could not find Onnet and Automated Nearnet Connectivity&apos; or contains(text(),&apos;Please confirm the&apos;)]
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
 System info: host: &apos;360NDCLP119&apos;, ip: &apos;172.26.44.65&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_162&apos;
@@ -96,13 +98,15 @@ Driver info: driver.version: unknown
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 27 more
-... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace268639817", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace268639817'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.id: quoteType_t-ro (tried for 60 second(s) with 1000 MILLISECONDS interval)
+	... 29 more
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2035020306", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2035020306'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[text()=&apos;Connected via Colt&apos; or text()=&apos;Datacenter Connected via Colt&apos; or text()=&apos;Automated Nearnet&apos; or text()=&apos;Could not find Onnet and Automated Nearnet Connectivity&apos; or contains(text(),&apos;Please confirm the&apos;)] (tried for 60 second(s) with 1000 MILLISECONDS interval)
 	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:199)
-	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1882)
+	at Driver.DriverHelper.Getmaploaded(DriverHelper.java:324)
+	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:1105)
+	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:50)
+	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1951)
 	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -128,7 +132,7 @@ Driver info: driver.version: unknown
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: quoteType_t-ro
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //*[text()=&apos;Connected via Colt&apos; or text()=&apos;Datacenter Connected via Colt&apos; or text()=&apos;Automated Nearnet&apos; or text()=&apos;Could not find Onnet and Automated Nearnet Connectivity&apos; or contains(text(),&apos;Please confirm the&apos;)]
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
 System info: host: &apos;360NDCLP119&apos;, ip: &apos;172.26.44.65&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_162&apos;
@@ -142,9 +146,9 @@ Driver info: driver.version: unknown
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
 	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 27 more
+	... 29 more
 </pre></div></td>
-<td>351</td>
+<td>896</td>
 <td>Testscript.StandardOrderOnnet@58651fd0</td></tr>
 </table><p>
 </body>

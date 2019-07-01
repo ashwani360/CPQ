@@ -42,7 +42,7 @@
 <HubReference>id=hubReferenceID</HubReference>
 <HubSite>id=siteAddressHubExisting</HubSite>
 <GoogleMapifram>id=siteAddressLink</GoogleMapifram>
-<Messages>//*[text()='Connected via Colt' or text()='Automated Nearnet' or text()='Could not find Onnet and Automated Nearnet Connectivity' or contains(text(),'Please confirm the')]</Messages>
+<Messages>//*[text()='Connected via Colt' or text()='Datacenter Connected via Colt' or text()='Automated Nearnet' or text()='Could not find Onnet and Automated Nearnet Connectivity' or contains(text(),'Please confirm the')]</Messages>
 <AddressDoctorRejectAll>//button[text()='Reject All']</AddressDoctorRejectAll>
 <ConnectivitiCheck>//td[text()='Next']</ConnectivitiCheck>
 <SiteDetailTab>//span[text()='Site Details']</SiteDetailTab>
@@ -195,8 +195,12 @@
 <PartialSave>//input[@name='partialSave_Features']</PartialSave>
 <Savetoquote>//a[text()='Save to Quote']</Savetoquote>
 <UsernameProxy>//a[text()='Ashwani.Singh31@colt.net']/parent::*/parent::*/td[5]/a</UsernameProxy>
-<AdditionalProductDataTab>//span[text()='Additional Product Data']</AdditionalProductDataTab>
+<AdditionalProductDataTab>//span[text()='Additional Product Data'] </AdditionalProductDataTab>
+<AdditionalProductDataTabparent>//span[text()='Additional Product Data']/parent::*/parent::*/parent::*/parent::*[not(contains(@style,'display:none'))]
+ </AdditionalProductDataTabparent>
+
 <ExistingCapacityLeadTime>//select[@name="existingCapacityLeadTime_qto"]</ExistingCapacityLeadTime>
 <ProxyLink>(//img[@alt='Proxy Login']/parent::*)[1]</ProxyLink>
+<LineitemGrid>//*[@id='lig-wrapper']</LineitemGrid>
 </locators>
 

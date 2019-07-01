@@ -39,8 +39,10 @@ public class C4CHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/Accountlink"));
 		
 		Clickon(getwebelement(xml.getlocator("//locators/Accountlink")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/AccountsDropdown"));
 		Clickon(getwebelement(xml.getlocator("//locators/AccountsDropdown")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Thread.sleep(5000);
 		Clickon(getwebelement(xml.getlocator("//locators/SelectAll")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
@@ -137,6 +139,7 @@ public class C4CHelper extends DriverHelper{
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on New button to create New Opportunuity");
 		Thread.sleep(3000);
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		Thread.sleep(10000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Name"));
 		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Name")),"Auto_opty3");
 		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/Name")),Keys.ENTER);
@@ -181,6 +184,7 @@ public class C4CHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/SaveOpenOpty"));
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/SaveOpenOpty")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		Thread.sleep(10000);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Save and Open Opportunuity Option");
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Clickmore"));
 		
@@ -201,6 +205,7 @@ public class C4CHelper extends DriverHelper{
 		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")),"Colt Company"); */
 		//Enter Legal Complexity detail
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		Thread.sleep(10000);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Edit Option to Edit the Details");
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Lcomplexity"));
 		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")),"Standard");

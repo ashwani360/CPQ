@@ -27,8 +27,14 @@ public class SendProposalHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/customersignatureTab")));
-		SendKeys(getwebelement(xml.getlocator("//locators/ContainerNRR")),Inputdata[0][25].toString());
-		SendKeys(getwebelement(xml.getlocator("//locators/ContainerNRR")),Inputdata[0][25].toString());
+		SendKeys(getwebelement(xml.getlocator("//locators/ContainerNRR")),"100");
+		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/ContainerNRR")),Keys.ENTER);
+		Thread.sleep(5000);
+		Clickon(getwebelement(xml.getlocator("//locators/AcceptError")));
+		SendKeys(getwebelement(xml.getlocator("//locators/ContainerMRR")),"100");
+		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/ContainerMRR")),Keys.ENTER);
+		Thread.sleep(5000);
+		Clickon(getwebelement(xml.getlocator("//locators/AcceptError")));
 		
 	}
 	
@@ -48,10 +54,13 @@ public class SendProposalHelper extends DriverHelper{
 			{
 				System.out.println("No Alert Present");
 			}
-		WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
-		Clickon(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
+		Thread.sleep(30000);
 		Thread.sleep(5000);
-		CloseProposalwindow();
+		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
+		
+		Thread.sleep(5000);
+		WaitforElementtobeclickable(xml.getlocator("//locators/Mod"));
+		//CloseProposalwindow();
 		//Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[0][24].toString());
 		Clickon(getwebelement(xml.getlocator("//locators/Mod")));
 		Clickon(getwebelement(xml.getlocator("//locators/ModValue").replace("Workflow", Inputdata[0][24].toString())));
@@ -90,7 +99,7 @@ public class SendProposalHelper extends DriverHelper{
 			//WaitforElementtobeclickable(xml.getlocator("//locators/ForCustomerSignature"));
 			Thread.sleep(5000);
 			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
-			
+			Clickon(getwebelement(xml.getlocator("//locators/ForCustomerSignature")));
 			Thread.sleep(5000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/Mod"));
 			//Select(getwebelement(xml.getlocator("//locators/Mod")), Inputdata[0][24].toString());
