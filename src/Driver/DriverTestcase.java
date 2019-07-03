@@ -40,7 +40,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
-import Listeners.ActionListner;
+//import Listeners.ActionListner;
 import Listeners.TestListener;
 import ScriptHelper.BCNUpdateHelper;
 import ScriptHelper.BespokandNonStandard;
@@ -87,10 +87,10 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		System.out.println("Size of Data in Before method"+data.length);
 		setup();
 		//System.out.println("Driver at the time of initiation"+getwebdriver());
-		EventFiringWebDriver eventDriver = new EventFiringWebDriver(getwebdriver());
-		ActionListner handler = new ActionListner();
-		 eventDriver.register(handler);
-		 eventDriver.get("https://google.com");
+		//EventFiringWebDriver eventDriver = new EventFiringWebDriver(getwebdriver());
+		//ActionListner handler = new ActionListner();
+		// eventDriver.register(handler);
+		// eventDriver.get("https://google.com");
 		Object[][] st1 = null;
 		try 
 		

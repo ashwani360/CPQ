@@ -568,10 +568,11 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	((JavascriptExecutor)
 
 			driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[text()='Show Groups']")));
-	//safeJavaScriptClick(driver.findElement(By.xpath(locator)));
+	//
 	System.out.println("See if Scrolled");
-	Thread.sleep(1000);	
+	Thread.sleep(5000);	
 	System.out.println("Waiting....");
+	safeJavaScriptClick(driver.findElement(By.xpath(locator)));
 }
 	public void waitandclickForworkitemsPresent(String locator, int timeout) throws InterruptedException
 	{
@@ -993,6 +994,10 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	public void EnterText(String s){
 		Actions keyAction = new Actions(driver);     
 		keyAction.sendKeys(s).perform();
+	}
+	public void EnterText2(Keys k){
+		Actions keyAction = new Actions(driver);     
+		keyAction.sendKeys(k).perform();
 	}
 	public void savePage(){
 			Actions keyAction = new Actions(driver);     
