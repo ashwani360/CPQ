@@ -111,8 +111,8 @@
 <OptyId>//bdi[text()='Opportunity ID']/parent::*/parent::*/div/span</OptyId>
 </Opportunity>
 <Product>
-<Fields>//*[text()='FName']/parent::*/parent::*/div/div/div/input</Fields>
-<Save>(//bdi[text()='Save'])</Save>
+<Fields>(//*[text()='FName']/parent::*/parent::*/div/div//div/input)[1]</Fields>
+<Save>(//bdi[text()='Save'])[2]</Save>
 </Product>
 <AccountsDropdown>//div[@title="Select View"]//button</AccountsDropdown>
 <SelectAll>//li[text()='All']</SelectAll>
