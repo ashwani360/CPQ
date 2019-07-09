@@ -164,7 +164,7 @@ public class DriverHelper {
 		Actions action = new Actions(driver);
 		 
 	    action.sendKeys(key).build().perform();
-	    action.sendKeys(Keys.TAB).build().perform();
+	    action.sendKeys(Keys.ENTER).build().perform();
 	    
 	}
 public void ClickswithAction(String el) throws InterruptedException {
@@ -481,6 +481,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			} else {
 				Log.info("Unable to click on element");
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			}
 		} catch (StaleElementReferenceException e) {
 			Log.info("Element is not attached to the page document "+ e.getStackTrace());

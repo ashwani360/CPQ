@@ -41,6 +41,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 //import Listeners.ActionListner;
+
 import Listeners.TestListener;
 import ScriptHelper.BCNUpdateHelper;
 import ScriptHelper.BespokandNonStandard;
@@ -125,6 +126,14 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		    ctx.setAttribute("testName", st[st.length-2].toString());
 	      }
 	      if(method.getName().equals("EndtoEndOrderOffnet"))
+	      {
+	   		//DataReader dt=new DataReader();
+	   		//Object[][] data=dt.datareader();
+		    //Object[] st= (Object[]) data[itr][0];
+		    Log.info(st[st.length-2].toString());
+		    ctx.setAttribute("testName", st[st.length-2].toString());
+	      }
+	      if(method.getName().equals("EndtoEndOrderContainerNew"))
 	      {
 	   		//DataReader dt=new DataReader();
 	   		//Object[][] data=dt.datareader();
@@ -439,7 +448,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public void Teardown2()
 	{
 		System.out.println("Cuurent Thread of diriver need to close-"+getwebdriver());
-		//getwebdriver().close();
+		//getwebdriver().quit();
 	}
 	@AfterTest
 	public void Teardown()

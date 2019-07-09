@@ -1633,6 +1633,7 @@ public class ConfigurationHelper extends DriverHelper{
 					Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
 					
 				}
+				
 				AdditionalProductData();
 				if(isElementPresent(xml.getlocator("//locators/PPT/Save")))
 				{
@@ -1767,8 +1768,11 @@ public class ConfigurationHelper extends DriverHelper{
 	
 	public void AdditionalProductData() throws DocumentException, InterruptedException, IOException {
 		// Need to write the code
+		Thread.sleep(30000);
+		
 		if(isElementPresent(xml.getlocator("//locators/AdditionalProductDataTabparent")))
 		{
+			javascriptexecutor(getwebelement(xml.getlocator("//locators/AdditionalProductDataTabparent")));
 			Clickon(getwebelement(xml.getlocator("//locators/AdditionalProductDataTab")));
 			Select(getwebelement(xml.getlocator("//locators/ExistingCapacityLeadTime")),"No");
 			Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
@@ -2139,6 +2143,67 @@ public class ConfigurationHelper extends DriverHelper{
 		
 	}
 	
+	public void SetCurrectQuoteStage() throws IOException, InterruptedException, DocumentException
+	{
+		Pagerefresh();
+		waitForpageload();
+		WaitforCPQloader();
+//		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
+//		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader"),1);
+//		waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
+//		waitForpageload();
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For Page to Be updated as Stanrad Quote");
+		WaitforElementtobeclickable(xml.getlocator("//locators/StandrdQuote"));
+		
+		getwebelement(xml.getlocator("//locators/StandrdQuote"));
+		Quotestatus.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
+		System.out.println("Quite Stage on Screee"+GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
+		
+	}
+	public void SEDataupdate(Object[][] Inputdata)throws Exception
+	{
+		ProxyLogin("CPQ_SE_User", xml.getlocator("//locators/ProxyLink"));
+		
+		WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
+		Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
+		Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+		waitForpageload();
+		WaitforCPQloader();
+		for(int i=0;i<Inputdata.length;i++) {
+//			waitForpageload();
+//			waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
+//			waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader"),1);
+//			waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
+			waitForpageload();
+			WaitforElementtobeclickable(xml.getlocator("//locators/LineitemGrid"));
+			WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
+				System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				WaitforElementtobeclickable(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+				WaitforElementtobeclickable(xml.getlocator("//locators/Reconfigure"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+				
+				WaitforElementtobeclickable(xml.getlocator("//locators/updateQuote"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+				
+				WaitforElementtobeclickable(xml.getlocator("//locators/ReconfigsaveQuote"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/ReconfigsaveQuote")));
+				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				// Need to check if New request need to be raised..
+				// raised a request whenever required
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));}
+		
+	}
 	public void ExceptionPPT() throws Exception
 	{
 		Clickon(getwebelement(xml.getlocator("//locators/PPT/EngagePortfolio")));	
