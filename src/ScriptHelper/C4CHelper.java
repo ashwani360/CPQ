@@ -391,7 +391,7 @@ public class C4CHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/customersignatureTab")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Customer Signature Tab");
 		
-		WaitforElementtobeclickable(xml.getlocator("//locators/Status"));
+		waitForpageload();
 	if(!(Gettext(getwebelement(xml.getlocator("//locators/Status"))).equals("Signed")))
 	{
 		WaitforElementtobeclickable(xml.getlocator("//locators/Refresh"));
