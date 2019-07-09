@@ -747,11 +747,12 @@ public void ApproveQuote(String Approver) throws Exception
 		
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
-			
+			waitForpageload();
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
+		
 			Clickon(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApproverComment"));
 			SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
@@ -788,7 +789,7 @@ public void ApproveQuote(String Approver) throws Exception
 			
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
-			
+			waitForpageload();
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
