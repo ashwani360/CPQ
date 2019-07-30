@@ -93,13 +93,13 @@
 <Ordernubmer>id=customerOrderNo_t</Ordernubmer>
 <Showordercoulumn>//span[text()='Order Details']/parent::*</Showordercoulumn>
 <Sieble>
-<CustomerOrderTab></CustomerOrderTab>
-<CustomerOrdernumber></CustomerOrdernumber>
-<SrviceOrdernumber></SrviceOrdernumber>
-<Asite></Asite>
-<Bsite></Bsite>
-<Bandwidth></Bandwidth>
-<Resilency></Resilency>
+<CustomerOrderTab>//a[text()='Customer Orders']</CustomerOrderTab>
+<CustomerOrdernumber>//input[@aria-label="Siebel Order #"]</CustomerOrdernumber>
+<SrviceOrdernumber>//a[@name="COLT Service Order Num"]</SrviceOrdernumber>
+<Asite>//td[@id="tdSiteAddressA"]/div[1]</Asite>
+<Bsite>//td[@id="tdSiteAddressB"]/div[1]</Bsite>
+<Bandwidth>//select[@name="Service Bandwidth"]</Bandwidth>
+<Resilency>//select[@name="A End Resilience Option"]</Resilency>
 </Sieble>
 </locators>
 
