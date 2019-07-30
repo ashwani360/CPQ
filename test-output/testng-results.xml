@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results total="7" passed="0" failed="7" skipped="0">
+<testng-results total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-07-04T13:38:32Z" name="CPQ End to End Order" finished-at="2019-07-04T14:23:55Z" duration-ms="2722599">
+  <suite started-at="2019-07-30T07:56:22Z" name="CPQ End to End Order" finished-at="2019-07-30T08:23:17Z" duration-ms="1614478">
     <groups>
     </groups>
-    <test started-at="2019-07-04T13:38:32Z" name="CPQ End to End Order" finished-at="2019-07-04T14:23:55Z" duration-ms="2722599">
+    <test started-at="2019-07-30T07:56:22Z" name="CPQ End to End Order" finished-at="2019-07-30T08:23:17Z" duration-ms="1614478">
       <class name="Testscript.StandardOrderOnnet">
-        <test-method is-config="true" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:08:32Z" name="BeforeSuite" finished-at="2019-07-04T19:08:32Z" duration-ms="155" status="PASS">
+        <test-method is-config="true" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrderOnnet@240237d2]" started-at="2019-07-30T13:26:22Z" name="BeforeSuite" finished-at="2019-07-30T13:26:22Z" duration-ms="163" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeSuite -->
-        <test-method is-config="true" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:08:33Z" name="BeforeMethod" finished-at="2019-07-04T19:08:47Z" duration-ms="14604" status="PASS">
+        <test-method is-config="true" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@240237d2]" started-at="2019-07-30T13:26:23Z" name="BeforeMethod" finished-at="2019-07-30T13:26:34Z" duration-ms="10696" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -20,371 +20,62 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@6326d182]]>
+                <![CDATA[org.testng.TestRunner@5f9678e1]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[[Ljava.lang.Object;@5241cf67]]>
+                <![CDATA[[Ljava.lang.Object;@c4ed84]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeMethod -->
-        <test-method is-config="true" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:08:33Z" name="BeforeMethod" finished-at="2019-07-04T19:08:46Z" duration-ms="13148" status="PASS">
+        <test-method signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@240237d2]" started-at="2019-07-30T13:26:34Z" name="EndtoEndOrder" data-provider="NewStandrdOrder" finished-at="2019-07-30T13:53:16Z" duration-ms="1601816" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void Testscript.StandardOrderOnnet.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@6326d182]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[[Ljava.lang.Object;@716a7124]]>
+                <![CDATA[[[Ljava.lang.Object;@628c4ac0]]>
               </value>
             </param>
           </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeMethod -->
-        <test-method is-config="true" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:08:33Z" name="BeforeMethod" finished-at="2019-07-04T19:08:46Z" duration-ms="13148" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Testscript.StandardOrderOnnet.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@6326d182]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[[Ljava.lang.Object;@77192705]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeMethod -->
-        <test-method signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:08:46Z" name="EndtoEndOrder" data-provider="NewStandrdOrder" finished-at="2019-07-04T19:19:59Z" duration-ms="673419" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[[Ljava.lang.Object;@1c32386d]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
+          <exception class="org.openqa.selenium.StaleElementReferenceException">
             <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1] (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
+              <![CDATA[stale element reference: element is not attached to the page document
+  (Session info: chrome=75.0.3770.142)
+  (Driver info: chromedriver=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 8 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab), userDataDir=C:\Users\ashwanis\AppData\Local\Temp\scoped_dir28468_28204}, takesHeapSnapshot=true, pageLoadStrategy=none, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=75.0.3770.142, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: cc8f6eed2b1f529eaf96ea30a14a1e1b]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1] (tried for 60 second(s) with 1000 MILLISECONDS interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:185)
-	at ScriptHelper.ConfigurationHelper.Selectconnectivity(ConfigurationHelper.java:95)
-	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:1266)
-	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:50)
-	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1819)
-	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:73)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1]
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+              <![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=75.0.3770.142)
+  (Driver info: chromedriver=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 8 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
 Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
 System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 21 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- EndtoEndOrder -->
-        <test-method signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:08:46Z" name="EndtoEndOrder" data-provider="NewStandrdOrder" finished-at="2019-07-04T19:21:17Z" duration-ms="750752" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[[Ljava.lang.Object;@13d73fa]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1] (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1] (tried for 60 second(s) with 1000 MILLISECONDS interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:185)
-	at ScriptHelper.ConfigurationHelper.Selectconnectivity(ConfigurationHelper.java:95)
-	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:1154)
-	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:50)
-	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1819)
-	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:73)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1]
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 21 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- EndtoEndOrder -->
-        <test-method signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:08:47Z" name="EndtoEndOrder" data-provider="NewStandrdOrder" finished-at="2019-07-04T19:20:21Z" duration-ms="694087" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[[Ljava.lang.Object;@6399551e]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1] (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1] (tried for 60 second(s) with 1000 MILLISECONDS interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:185)
-	at ScriptHelper.ConfigurationHelper.Selectconnectivity(ConfigurationHelper.java:95)
-	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:1154)
-	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:50)
-	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1819)
-	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:73)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: (//*[@id='onNetA']/table/tbody/tr[2]/td[1]/input)[1]
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 21 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- EndtoEndOrder -->
-        <test-method is-config="true" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:20:00Z" name="Teardown2" finished-at="2019-07-04T19:20:00Z" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Teardown2 -->
-        <test-method is-config="true" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:20:00Z" name="BeforeMethod" finished-at="2019-07-04T19:20:11Z" duration-ms="10824" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Testscript.StandardOrderOnnet.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@6326d182]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[[Ljava.lang.Object;@625e134e]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeMethod -->
-        <test-method signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:20:11Z" name="EndtoEndOrder" data-provider="NewStandrdOrder" finished-at="2019-07-04T19:34:11Z" duration-ms="840398" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[[Ljava.lang.Object;@74c79fa2]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: (//div[text()='On-Net'])[1] (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: (//div[text()='On-Net'])[1] (tried for 60 second(s) with 1000 MILLISECONDS interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:185)
-	at ScriptHelper.ConfigurationHelper.Selectconnectivity(ConfigurationHelper.java:89)
-	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:1266)
-	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:50)
-	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1819)
-	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:73)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: (//div[text()='On-Net'])[1]
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 21 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- EndtoEndOrder -->
-        <test-method is-config="true" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:20:22Z" name="BeforeMethod" finished-at="2019-07-04T19:20:34Z" duration-ms="11457" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Testscript.StandardOrderOnnet.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@6326d182]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[[Ljava.lang.Object;@72bd06ca]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeMethod -->
-        <test-method is-config="true" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:20:22Z" name="Teardown2" finished-at="2019-07-04T19:20:22Z" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Teardown2 -->
-        <test-method signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:20:34Z" name="EndtoEndOrder" data-provider="NewStandrdOrder" finished-at="2019-07-04T19:31:54Z" duration-ms="680844" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[[Ljava.lang.Object;@5d5f10b2]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[Cannot locate element with text: REQUEST MANUAL NEARNET
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: Cannot locate element with text: REQUEST MANUAL NEARNET
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:151)
-	at Driver.DriverHelper.Select(DriverHelper.java:823)
-	at ScriptHelper.ConfigurationHelper.Selectconnectivity(ConfigurationHelper.java:327)
-	at ScriptHelper.ConfigurationHelper.ConfigureProduct(ConfigurationHelper.java:1154)
-	at ScriptHelper.ConfigurationHelper.AddFamilyProduct(ConfigurationHelper.java:50)
-	at ScriptHelper.ConfigurationHelper.AddProduct(ConfigurationHelper.java:1819)
-	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:24)
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab), userDataDir=C:\Users\ashwanis\AppData\Local\Temp\scoped_dir28468_28204}, takesHeapSnapshot=true, pageLoadStrategy=none, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=75.0.3770.142, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: cc8f6eed2b1f529eaf96ea30a14a1e1b
+	at jdk.internal.reflect.GeneratedConstructorAccessor26.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
+	at org.openqa.selenium.remote.RemoteWebElement.getAttribute(RemoteWebElement.java:124)
+	at Driver.DriverHelper.GetValueofInput(DriverHelper.java:897)
+	at ScriptHelper.DisscountAndAprrovalHelper.ApproveQuote(DisscountAndAprrovalHelper.java:214)
+	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:86)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -402,174 +93,15 @@ Driver info: driver.version: unknown
 	at java.base/java.lang.Thread.run(Thread.java:835)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          </exception> <!-- org.openqa.selenium.StaleElementReferenceException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- EndtoEndOrder -->
-        <test-method is-config="true" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:21:17Z" name="Teardown2" finished-at="2019-07-04T19:21:17Z" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@240237d2]" started-at="2019-07-30T13:53:17Z" name="Teardown2" finished-at="2019-07-30T13:53:17Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown2 -->
-        <test-method is-config="true" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:21:17Z" name="BeforeMethod" finished-at="2019-07-04T19:21:29Z" duration-ms="11524" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Testscript.StandardOrderOnnet.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@6326d182]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[[Ljava.lang.Object;@89c10b7]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeMethod -->
-        <test-method signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:21:29Z" name="EndtoEndOrder" data-provider="NewStandrdOrder" finished-at="2019-07-04T19:23:32Z" duration-ms="123228" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[[Ljava.lang.Object;@5023bb8b]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //a[text()='Accounts'] (tried for 60 second(s) with 1000 MILLISECONDS interval)
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //a[text()='Accounts'] (tried for 60 second(s) with 1000 MILLISECONDS interval)
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:185)
-	at ScriptHelper.C4CHelper.Movetoaccount(C4CHelper.java:39)
-	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:19)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:73)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- EndtoEndOrder -->
-        <test-method is-config="true" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:23:34Z" name="BeforeMethod" finished-at="2019-07-04T19:23:45Z" duration-ms="11686" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void Testscript.StandardOrderOnnet.EndtoEndOrder(java.lang.Object[][]) throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@6326d182]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[[Ljava.lang.Object;@5dbe30be]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeMethod -->
-        <test-method is-config="true" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:23:34Z" name="Teardown2" finished-at="2019-07-04T19:23:34Z" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Teardown2 -->
-        <test-method signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:23:45Z" name="EndtoEndOrder" data-provider="NewStandrdOrder" finished-at="2019-07-04T19:53:54Z" duration-ms="1808713" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[[Ljava.lang.Object;@1e0f9063]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //span[text()='CUSTOMER SIGNATURE'] (tried for 60 second(s) with 1000 MILLISECONDS interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //span[text()='CUSTOMER SIGNATURE'] (tried for 60 second(s) with 1000 MILLISECONDS interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:185)
-	at ScriptHelper.C4CHelper.CheckdocumentSigned(C4CHelper.java:358)
-	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:93)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:73)
-	at org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //span[text()='CUSTOMER SIGNATURE']
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC074', ip: '10.148.1.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.1'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 18 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- EndtoEndOrder -->
-        <test-method is-config="true" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:31:55Z" name="Teardown2" finished-at="2019-07-04T19:31:55Z" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Teardown2 -->
-        <test-method is-config="true" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:34:12Z" name="Teardown2" finished-at="2019-07-04T19:34:12Z" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Teardown2 -->
-        <test-method is-config="true" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:53:54Z" name="Teardown2" finished-at="2019-07-04T19:53:54Z" duration-ms="9" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Teardown2 -->
-        <test-method is-config="true" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOnnet@12d3a4e9]" started-at="2019-07-04T19:53:55Z" name="Teardown" finished-at="2019-07-04T19:53:55Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOnnet@240237d2]" started-at="2019-07-30T13:53:17Z" name="Teardown" finished-at="2019-07-30T13:53:17Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown -->

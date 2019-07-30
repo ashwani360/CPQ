@@ -22,7 +22,7 @@
 <ProductTab>//div[text()='Products']</ProductTab>
 <Opportunuitynumber>//span[text()='Opportunuitynumber']/parent::*/parent::*/following-sibling::*/div/a</Opportunuitynumber>
 <oppo>//span[text()='Opportunity']/parent::*/parent::*/parent::*/button</oppo>
-<customer>//span[text()='Customer']/parent::*/parent::*/parent::*/button</customer>
+<customer>//span[text()='Prospect' or text()='Customer']/parent::*/parent::*/parent::*/button</customer>
 <OpenQuote>(//span[text()='Quotes']/parent::*/parent::*/parent::*/button)[2]</OpenQuote>
 <QuoteTab>//div[text()='Quotes']</QuoteTab>
 <AddQuote>//bdi[text()='Add']/parent::*/parent::*/parent::*</AddQuote>
@@ -94,28 +94,28 @@
 <Opportunity>
 <Newlink>//bdi[text()='New']</Newlink>
 <AddProductlink>//bdi[text()='Add']</AddProductlink>
-<Name>//*[text()='Name']/parent::*/parent::*/div/div/div/input</Name>
-<Offer>//*[text()='Offer Type']/parent::*/parent::*/div/div/div/input</Offer>
-<PrimaryProgramme>//*[text()='Primary Programme']/parent::*/parent::*/div/div/div/input</PrimaryProgramme>
-<PrimaryAttribute>//*[text()='Primary Attribute']/parent::*/parent::*/div/div/div/input</PrimaryAttribute>
-<OpportunityCurrency>//*[text()='Opportunity Currency']/parent::*/parent::*/div/div/div/input</OpportunityCurrency>
+<Name>//*[text()='Name']/parent::*/parent::*/div/div/div/div/input</Name>
+<Offer>//*[text()='Offer Type']/parent::*/parent::*/div/div/div/div/input</Offer>
+<PrimaryProgramme>//*[text()='Primary Programme']/parent::*/parent::*/div/div/div/div/input</PrimaryProgramme>
+<PrimaryAttribute>//*[text()='Primary Attribute']/parent::*/parent::*/div/div/div/div/input</PrimaryAttribute>
+<OpportunityCurrency>//*[text()='Opportunity Currency']/parent::*/parent::*/div/div/div/div/input</OpportunityCurrency>
 <More>//button[@title='More']</More>>
 <SaveOpenOpty>//bdi[text()='Save and Open']</SaveOpenOpty>
 <Searchopty>//button[@title='Search']</Searchopty>
 <Editopty>//button[@title="Edit"]</Editopty>
 <Clickmore>(//bdi[text()="More"])</Clickmore>
-<SalesUnit>//*[text()='Sales Unit']/parent::*/parent::*/div/div/div</SalesUnit>
-<Tcomplexity>//*[text()='Technical complexity']/parent::*/parent::*/div/div/div</Tcomplexity>
-<Lcomplexity>//*[text()='Legal complexity']/parent::*/parent::*/div/div/div</Lcomplexity>
+<SalesUnit>//*[text()='Sales Unit']/parent::*/parent::*/div/div/div/div</SalesUnit>
+<Tcomplexity>//*[text()='Technical complexity']/parent::*/parent::*/div/div/div/div</Tcomplexity>
+<Lcomplexity>//*[text()='Legal complexity']/parent::*/parent::*/div/div/div/div</Lcomplexity>
 <ClickSaveOpty>(//bdi[text()='Save'])[2]</ClickSaveOpty>
 <OptyId>//bdi[text()='Opportunity ID']/parent::*/parent::*/div/span</OptyId>
 </Opportunity>
 <Product>
-<Fields>(//*[text()='FName']/parent::*/parent::*/div/div//div/input)[1]</Fields>
+<Fields>(//*[text()='FName']/parent::*/parent::*/div/div//div/div/input)[1]</Fields>
 <Save>(//bdi[text()='Save'])[2]</Save>
 </Product>
 <AccountsDropdown>//div[@title="Select View"]//button</AccountsDropdown>
 <SelectAll>//li[text()='All']</SelectAll>
-
+<optionlist>//li[normalize-space(string())='option']</optionlist>
 </locators>
 

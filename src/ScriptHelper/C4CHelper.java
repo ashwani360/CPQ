@@ -173,35 +173,38 @@ public class C4CHelper extends DriverHelper{
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Opportunuity Name");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Offer"));
-		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Offer")),"New Business");
-		
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Offer")),"New Business");
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Offer")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Offer"));
-		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/Offer")),Keys.ENTER);
+		Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "New Business")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Offer type");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/PrimaryProgramme"));
-		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryProgramme")),"Business Development");
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryProgramme")),"Business Development");
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryProgramme")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/PrimaryProgramme"));
-		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryProgramme")),Keys.ENTER);
+		Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Business Development")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Primary Program");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/PrimaryAttribute"));
-		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryAttribute")),"Cisco");
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryAttribute")),"Cisco");
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryAttribute")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/PrimaryAttribute"));
-		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/PrimaryAttribute")),Keys.ENTER);
+		Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Cisco")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter PrimaryAttribute");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/OpportunityCurrency"));
-		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency"))," ");
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency"))," ");
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/OpportunityCurrency"));
-		SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency")),"US Dollar");
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency")),"US Dollar");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/OpportunityCurrency"));
-		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Opportunity/OpportunityCurrency")),Keys.ENTER);
+		Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Euro")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Currency");
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/More"));
@@ -211,7 +214,7 @@ public class C4CHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/SaveOpenOpty"));
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/SaveOpenOpty")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
-		Thread.sleep(10000);
+		
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Save and Open Opportunuity Option");
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Clickmore"));
 		
@@ -226,10 +229,10 @@ public class C4CHelper extends DriverHelper{
 		/*WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/SalesUnit"));
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")));
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")));
-		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")),"Colt Company");
+		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")),"Colt");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/SalesUnit"));
-		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")),"Colt Company"); */
+		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/SalesUnit")),"Colt"); */
 		//Enter Legal Complexity detail
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Thread.sleep(10000);
@@ -237,14 +240,18 @@ public class C4CHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Lcomplexity"));
 		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")),"");
 		Thread.sleep(1000);
-		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")),"Standard");
-		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")),Keys.ENTER);
+		//SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")),"Standard");
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")));
+		Thread.sleep(3000);
+		Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Standard")));
 		//Enter Technical Complexity detail
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Update Legal Complexity");
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Tcomplexity"));
-		SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Tcomplexity")),"1");
-		//SendKeys(getwebelement(xml.getlocator("//locators/Opportunity/Tcomplexity")),Keys.ENTER);
+		//SendKeyswithAction(getwebelement(xml.getlocator("//locators/Opportunity/Tcomplexity")),"1");
+		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Tcomplexity")));
+		Thread.sleep(3000);
+		Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "1")));
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Thread.sleep(3000);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Update Techincal Complexity");
@@ -394,8 +401,9 @@ public class C4CHelper extends DriverHelper{
 		waitForpageload();
 	if(!(Gettext(getwebelement(xml.getlocator("//locators/Status"))).equals("Signed")))
 	{
-		WaitforElementtobeclickable(xml.getlocator("//locators/Refresh"));
-		Clickon(getwebelement(xml.getlocator("//locators/Refresh")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/Refresh"));
+//		Clickon(getwebelement(xml.getlocator("//locators/Refresh")));
+		Pagerefresh();
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Refresh link");
 		
 	}

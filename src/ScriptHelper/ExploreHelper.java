@@ -2,6 +2,7 @@ package ScriptHelper;
 
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -120,6 +121,52 @@ public class ExploreHelper extends DriverHelper {
 				Thread.sleep(5000);
 				WaitforElementtobeclickable(xml.getlocator("//locators/Digcodenotpossible"));
 				Clickon(getwebelement(xml.getlocator("//locators/Digcodenotpossible")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/SendtoSalesNearNet"));
+				Clickon(getwebelement(xml.getlocator("//locators/SendtoSalesNearNet")));
+				break;
+				}
+			}
+			case "Sigle Feed":
+			{
+				Object[] newdata=(Object[]) data.get(i);
+				for(int j=0;j<newdata.length;j++) {
+				System.out.println("A Site for lineitem"+i+" is "+newdata[j].toString());
+				WaitforElementtobeclickable(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue"));
+				Clickon(getwebelement(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString()));
+				Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString())));
+//	            Thread.sleep(5000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
+				Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMeNearnet"));
+				Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMeNearnet")));
+				Thread.sleep(5000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/SingleFeed"));
+				Clickon(getwebelement(xml.getlocator("//locators/SingleFeed")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/SendtoSalesNearNet"));
+				Clickon(getwebelement(xml.getlocator("//locators/SendtoSalesNearNet")));
+				break;
+				}
+			}
+			case "Dual Feed":
+			{
+				Object[] newdata=(Object[]) data.get(i);
+				for(int j=0;j<newdata.length;j++) {
+				System.out.println("A Site for lineitem"+i+" is "+newdata[j].toString());
+				WaitforElementtobeclickable(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue"));
+				Clickon(getwebelement(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString()));
+				Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString())));
+//	            Thread.sleep(5000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
+				Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMeNearnet"));
+				Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMeNearnet")));
+				Thread.sleep(5000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/DualFeed"));
+				Clickon(getwebelement(xml.getlocator("//locators/DualFeed")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/SendtoSalesNearNet"));
+				Clickon(getwebelement(xml.getlocator("//locators/SendtoSalesNearNet")));
 				break;
 				}
 			}
@@ -193,8 +240,11 @@ public class ExploreHelper extends DriverHelper {
 				{
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));
 					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");	
-					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node"));
-					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),"Graz");	
+					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),Keys.ARROW_DOWN);	
+					Thread.sleep(3000);
+					//Clickon(getwebelement(xml.getlocator("//locators/NodeDropdown")));
+					Clickon(getwebelement(xml.getlocator("//locators/NodeDropdown")));
+                    //SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),Keys.ENTER);
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC"));
 					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC")),"500");	
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC"));
@@ -232,8 +282,13 @@ public class ExploreHelper extends DriverHelper {
 				else {
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));
 					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");	
-					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node"));
-					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),"Graz");	
+					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),Keys.ARROW_DOWN);	
+					Thread.sleep(3000);
+					//Clickon(getwebelement(xml.getlocator("//locators/NodeDropdown")));
+					Clickon(getwebelement(xml.getlocator("//locators/NodeDropdown")));
+					//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),Keys.ARROW_DOWN);
+
+                   // SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),Keys.ENTER);
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC"));
 					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "NRC")),"500");	
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "MRC"));
@@ -296,10 +351,10 @@ public class ExploreHelper extends DriverHelper {
 //					SendKeys(getwebelement(xml.getlocator("//locators/NameInput")),"ABC");
 //					SendKeys(getwebelement(xml.getlocator("//locators/InputNRCAdditional")),"500");
 //					SendKeys(getwebelement(xml.getlocator("//locators/InputMRCAdditional")),"500");
-					Thread.sleep(2000);
+					Thread.sleep(6000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/ApproveQuoteButton"));
 					Clickon(getwebelement(xml.getlocator("//locators/ApproveQuoteButton")));
-					Thread.sleep(2000);
+					Thread.sleep(6000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
 					Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/ChangeStatus"));

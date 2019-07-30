@@ -30,6 +30,7 @@ public class OrderingHelper extends DriverHelper{
 	public void AcceptsQuote(Object[][] Inputdata) throws Exception {
 		if(Inputdata[0][24].toString().equals("Email")) {
 			//WaitforCPQloader();
+			Thread.sleep(20000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
@@ -59,6 +60,7 @@ public class OrderingHelper extends DriverHelper{
 		else
 		{
 			WaitforCPQloader();
+			Thread.sleep(20000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
 			Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
@@ -104,6 +106,7 @@ public class OrderingHelper extends DriverHelper{
 //				
 //			}
 		WaitforCPQloader();
+		Thread.sleep(20000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/OrderTab")));
@@ -118,10 +121,10 @@ public class OrderingHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/AdditionalinfomrationTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
-		
+		Thread.sleep(10000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/EditCustomerDetails"));
 		Clickon(getwebelement(xml.getlocator("//locators/EditCustomerDetails")));
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		for(int i=0;i<Inputdata.length;i++) {
 			//WaitforElementtobeclickable(xml.getlocator("//locators/Accordian").replace("index",String.valueOf(i+1) ));
 			
@@ -161,7 +164,7 @@ public class OrderingHelper extends DriverHelper{
 			
 		}
 		Clickon(getwebelement(xml.getlocator("//locators/SaveInfo")));
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		
 		//WaitforElementtobeclickable(xml.getlocator("//locators/CreateOrder"));
 		//javascriptexecutor(getwebelement(xml.getlocator("//locators/CreateOrder")));
@@ -170,17 +173,69 @@ public class OrderingHelper extends DriverHelper{
 		
 		Thread.sleep(60000);
 		Pagerefresh();
+		Thread.sleep(30000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/OrderConfirmation"));
+		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showordercoulumn")));
+		Thread.sleep(20000);
+		for(int i=0;i<Inputdata.length;i++) {
+			OrderType.set(GetText(getwebelement(xml.getlocator("//locators/OdrderType").replace("index", String.valueOf(i+1)))));
+		 }
+		if(OrderType.get().equals("SIEBEL"))
+		{
+    	
+		while(GetValueofInput(getwebelement(xml.getlocator("//locators/Ordernubmer"))).equals(""))
+		{
+			Pagerefresh();
+			Thread.sleep(30000);
+			CustomerOrderNumber.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Ordernubmer"))));
+		}
+		}
+		
 	}
 	
+	
+	public void SeibleOrderVerification(Object[][] Inputdata) throws Exception {
+		if(OrderType.get().equals("SIEBEL"))
+		{
+			// Click on Customer Order number
+			Clickon(getwebelement(xml.getlocator("//locators/Sieble/CustomerOrderTab")));
+			SendKeys(getwebelement(xml.getlocator("//locators/Sieble/CustomerOrdernumber")),CustomerOrderNumber.get());
+			//foreach(webelement element as )
+			for(int j=1;j<=getwebelementscount(xml.getlocator("//locators/Sieble/SrviceOrdernumber"));j++)
+					{
+				System.out.println(GetText(getwebelement("("+xml.getlocator("//locators/Sieble/SrviceOrdernumber")+")["+j+"]")));
+				Clickon(getwebelement("("+xml.getlocator("//locators/Sieble/SrviceOrdernumber")+")["+j+"]"));
+				
+				if(Inputdata[j][2].toString().contains("Hub"))
+				{
+					Assert.assertTrue(GetText(getwebelement(xml.getlocator("//locators/Sieble/Asite"))).equals(Inputdata[j][5]));
+				}
+				else
+				{
+					// Verify A Site Address
+					Assert.assertTrue(GetText(getwebelement(xml.getlocator("//locators/Sieble/Asite"))).equals(Inputdata[j][5]));
+					Assert.assertTrue(GetText(getwebelement(xml.getlocator("//locators/Sieble/Bsite"))).equals(Inputdata[j][5]));
+					// Verify B Site Address
+				}
+				// Verify Badwidth
+				Assert.assertTrue(GetText(getwebelement(xml.getlocator("//locators/Sieble/Bandwidth"))).equals(Inputdata[j][9]));
+				// verify resilency
+				Assert.assertTrue(GetText(getwebelement(xml.getlocator("//locators/Sieble/Resilency"))).equals(Inputdata[j][10]));
+					}
+			// Search for  Customer Order Number.
+			// Read All the Service Order numbers and Log.
+			// For Each service Oder number Verify : A end Address, B End Address, Bandwidth and Resiliencey
+		}
+	}
 	public void AcceptsQuotebyEsignature(Object[][] Inputdata) throws Exception {
 
-	Thread.sleep(50000);
+	Thread.sleep(60000);
 	Geturl("http://yopmail.com");
-	
+	Thread.sleep(10000);
 	SendKeys(getwebelement("//input[@id='login']"),Inputdata[0][25].toString().split("@")[0]);
 	Clickon(getwebelement("//input[@value='Check Inbox']"));
-	Thread.sleep(4000);
+	Thread.sleep(30000);
+	//Clickon(getwebelement("//input[@value='Check Inbox']"));
 	switchtofram(getwebelement("name=ifinbox"));
 	System.out.println("Witched to iframe");
 	Clickon(getwebelement("//span[contains(text(),'"+QuoteID.get().toString()+"')]/parent::*"));

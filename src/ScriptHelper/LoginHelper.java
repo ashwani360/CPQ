@@ -130,41 +130,98 @@ public class LoginHelper extends DriverHelper{
 		switch(Application)
 		{
 		case "C4C":
-		{   Thread.sleep(2000);
-			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
-			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
-			 Thread.sleep(2000);
-			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
-			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
-			Thread.sleep(20000);
+		{  
+			try {
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
+				Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+				Thread.sleep(6000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+				Thread.sleep(6000);
+				Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+				Thread.sleep(10000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username"));  
+				//openurl2("https://explore-colt-sit.lastmilexchange.com/saml/logout");
+				}
+				catch(Exception e)
+				{
+					WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
+					Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+					Thread.sleep(6000);
+					Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+					Thread.sleep(6000);
+					WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+					Thread.sleep(6000);
+					Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+					Thread.sleep(10000);
+					WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username")); 
+				}
 			break;
 		}
 		case "CPQ":
 		{   Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
-			Thread.sleep(20000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username")); 
+			Thread.sleep(40000);
 			break;
 		}
 		case "Explore":
-		{   Thread.sleep(2000);
+		{   
+			//openurl2("https://explore-colt-sit.lastmilexchange.com/saml/logout");
+//			Thread.sleep(2000);
+			Pagerefresh();
+			try {
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
-			 Thread.sleep(2000);
+			Thread.sleep(6000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+			Thread.sleep(6000);
 			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
-			Thread.sleep(20000);
+			Thread.sleep(10000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username"));  
+			//openurl2("https://explore-colt-sit.lastmilexchange.com/saml/logout");
+			}
+			catch(Exception e)
+			{
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
+				Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+				Thread.sleep(6000);
+				
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+				Thread.sleep(6000);
+				Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+				Thread.sleep(10000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username")); 
+			}
+		//Thread.sleep(40000);
 			break;
 		}
 		case "ExploreNearNet":
 		{
-			Thread.sleep(2000);
-			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
-			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
-			 Thread.sleep(2000);
-			WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
-			Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
-			Thread.sleep(20000);
+			Pagerefresh();
+			try {
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
+				Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+				Thread.sleep(6000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+				Thread.sleep(6000);
+				Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username"));  
+				//openurl2("https://explore-colt-sit.lastmilexchange.com/saml/logout");
+				}
+				catch(Exception e)
+				{
+					WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/UserProfile"));  
+					Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/UserProfile")));
+					Thread.sleep(6000);
+					
+					Thread.sleep(6000);
+					WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Logout"));  
+					Thread.sleep(6000);
+					Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Logout")));
+				
+					WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username")); 
+				}
 			break;
 		}
 		

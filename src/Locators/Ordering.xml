@@ -67,7 +67,7 @@
 <FileBrowse>id=acceptanceDocument_t</FileBrowse>
 <Fileuploaded>//*[@id='acceptanceDocument_t-link' and contains(text(),'.pdf')]</Fileuploaded>
 <CustomerSignedDate>id=customerSignedDate_t</CustomerSignedDate>
-<ConfirQuoteAction>//span[text()='Confirm Quote Action']/parent::*/parent::*</ConfirQuoteAction>
+<ConfirQuoteAction>//span[text()='Confirm Quote']/parent::*/parent::*</ConfirQuoteAction>
 <AdditionalinfomrationTab>//*[text()='Contact Information']</AdditionalinfomrationTab>
 <Accordian>(//button[@class='accordion'])[index]</Accordian>
 <Asitecomponey>(//td[contains(@headers,'additionalQuoteInformation_t')][5])[index]</Asitecomponey>
@@ -82,9 +82,24 @@
 <AcceptsorReject>//*[text()='Accept']</AcceptsorReject>
 <Reasonedroplist>//*[@id='oj-select-choice-reasonForStatusWon_t']//a</Reasonedroplist>
 <Reasone>//li/*[text()='Price']</Reasone>
+<QuoteActionContainer>//span[text()='Select']</QuoteActionContainer>
+
+<AcceptQuote>//div[text()='Accept']</AcceptQuote>
+
+<ReasonForStatusContainer>//span[text()='Select']</ReasonForStatusContainer>
 <OrderNote>id=requesterComments_t</OrderNote>
 <AcceptatedProposal>(//a[contains(text(),".pdf")])[2]</AcceptatedProposal>
 <OrderConfirmation>//*[text()='#Your Order request is on-going. You will be updated shortly.']</OrderConfirmation>
-<Ordernubmer></Ordernubmer>
+<Ordernubmer>id=customerOrderNo_t</Ordernubmer>
+<Showordercoulumn>//span[text()='Order Details']/parent::*</Showordercoulumn>
+<Sieble>
+<CustomerOrderTab></CustomerOrderTab>
+<CustomerOrdernumber></CustomerOrdernumber>
+<SrviceOrdernumber></SrviceOrdernumber>
+<Asite></Asite>
+<Bsite></Bsite>
+<Bandwidth></Bandwidth>
+<Resilency></Resilency>
+</Sieble>
 </locators>
 

@@ -127,6 +127,18 @@
 <ProductDescription>//textarea[@name='notesProductDescription_bespokearray']</ProductDescription>
 <ProxyLink>(//img[@alt='Proxy Login']/parent::*)[1]</ProxyLink>
 <Quotestatus>id=status_t-ro</Quotestatus>
-<LeadTime>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[23]/span)[index]</LeadTime>
+<LeadTime>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[21]/span)[index]</LeadTime>
+<PLtab>(.//*[normalize-space(text()) and normalize-space(.)='Quote'])[1]/following::span[1]</PLtab>
+<Dealbackground>id=dealBackgroundTextArea_t</Dealbackground>
+<TechnicalSolution>id=technicalSolutionTextArea_t</TechnicalSolution>
+<competitors>id=competitorsTextArea_t</competitors>
+<Quotetcv>id=tCVTotalContractValue_t</Quotetcv>
+<Quoteacv>id=aCVAnnualContractValue_t</Quoteacv>
+<Disscountypecoulumn>((//*[normalize-space(text()) and normalize-space(.)='Priced'])[index]/following::td[4])[1]</Disscountypecoulumn>
+<LinelevelDiscounttype>(//*[normalize-space(string())='type'])[index]</LinelevelDiscounttype>
+<LinelevelNRCdiscountColumn>(//*[normalize-space(string())='type'])/following::td")[index]</LinelevelNRCdiscountColumn>
+<LinelevelNRCdiscount>id=lineDiscountNRC_l-3</LinelevelNRCdiscount>
+<LinelevelMRCdiscountColumn>(//*[normalize-space(string())='type'])/following::td[4]")[index]</LinelevelMRCdiscountColumn>
+<LinelevelMRCdiscount>id=lineDiscountMRC_l-3</LinelevelMRCdiscount>
 </locators>
 

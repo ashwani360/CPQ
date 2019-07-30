@@ -11,7 +11,7 @@
 <CreateCost>//tr[@aria-label="Create Cost "]</CreateCost>
 <CarrierDropdown>//label[text()='Carrier']/following::tr[1]/td[1]//input[@value="▼ "]</CarrierDropdown>
 <Selectvalue>//div[text()='value']</Selectvalue>
-<NodeDropdown>//label[text()='Node']/following::tr[1]/td[3]//input[@value="▼ "]</NodeDropdown>
+<NodeDropdown>//*[@id='LMXFilteringSelect_3_popup0']</NodeDropdown>
 <NRCInput>(//span[text()='NRC']/parent::div/input)[1]</NRCInput>
 <MRCInput>(//span[text()='MRC']/parent::div/input)[1]</MRCInput>
 <TermDropdown>//label[text()='Term (Years)']/following::tr[1]/td[3]//input[@value="▼ "]</TermDropdown>
@@ -48,4 +48,7 @@
 <SendtoSalesNearNet>(//span[text()='Send to Sales'])[1]</SendtoSalesNearNet>
 <AssignRequestToMeNearnet>(//tr[@aria-label="Assign To Me "])[2]</AssignRequestToMeNearnet>
 <DigcostnotPossible>(//span[text()='Dig Cost not possible'])[1]</DigcostnotPossible>
+<Node>(//span[text()='Node']/parent::*/input/ancestor::div[2]//input)[1]</Node>
+<SingleFeed>//label[text()='Building Connected - Single Feed']</SingleFeed>
+<DualFeed>//label[text()='Building Connected - Dual Feed']</DualFeed>
 </locators>

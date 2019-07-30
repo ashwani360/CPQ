@@ -27,9 +27,11 @@ public class StandardOrderOnnet extends DriverTestcase {
 			Explorehelper.get().NavigatetoExplore();
 			Explorehelper.get().ExploreWorkflow(Data);
 			Login.get().Logout("Explore");
+			//Thread.sleep(30000);
 			Login.get().Login("ExploreNearNet");
 			Explorehelper.get().ExploreWorkflownearnet(Data);
 			Login.get().Logout("ExploreNearNet");
+			//Thread.sleep(30000);
 			Login.get().Login("C4C");
 			
 			C4Chelper.get().Movetoaccount(Data);
@@ -77,7 +79,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 			DisscountAndAprrovalhelper.get().ApplyDisscountQuotelevel(Data);
 			
 		}
-		else
+		else if(Data[0][21].toString().contains("Line Level"))
 		{
 			DisscountAndAprrovalhelper.get().ApplyDisscountlinelevel(Data);
 		}
@@ -101,12 +103,22 @@ public class StandardOrderOnnet extends DriverTestcase {
 			Orderinghelper.get().CreateOrder(Data);
 			
 			}
+		
 	}
 			
 	//Configurationhelper.get().AddProducttest(Data);
-	
+		Login.get().Login("Siebel");
+		Orderinghelper.get().SeibleOrderVerification(Data);
 		
 	}
+
+@Test(dataProviderClass=DataReader.class,dataProvider="NewStandrdOrder")
+public void Testermethod(Object[][] Data) throws Exception
+{
+	Login.get().Login("ExploreNearNet");
+	Login.get().Logout("ExploreNearNet");
+}
+
 @Test(dataProviderClass=DataReader.class,dataProvider="NewContainer")
 public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 {

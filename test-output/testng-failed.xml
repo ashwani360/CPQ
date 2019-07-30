@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" data-provider-thread-count="3" name="Failed suite [CPQ End to End Order]">
+<suite thread-count="1" data-provider-thread-count="4" name="Failed suite [CPQ End to End Order]">
   <listeners>
     <listener class-name="Listeners.TestListener"/>
     <listener class-name="Listeners.AnnotationTransformer"/>
@@ -10,7 +10,7 @@
       <class name="Testscript.StandardOrderOnnet">
         <methods>
           <include name="BeforeMethod"/>
-          <include name="EndtoEndOrder" invocation-numbers="0 1 2 5 4 3 6"/>
+          <include name="EndtoEndOrder" invocation-numbers="0"/>
           <include name="Teardown2"/>
           <include name="BeforeSuite"/>
           <include name="Teardown"/>
