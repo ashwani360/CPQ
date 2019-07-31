@@ -542,7 +542,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 			System.out.println("Error in Clickon " + e.getMessage());
 			if(!e.toString().equals("NoSuchElementException")){
 			try {
-			if(e.getMessage().contains("Element is not clickable at point"))
+			if(e.getMessage().contains("is not clickable at point"))
 			{
 				Thread.sleep(3000);
 				System.out.println("Size of the element is not perfect so waited and re-tried the click actions");

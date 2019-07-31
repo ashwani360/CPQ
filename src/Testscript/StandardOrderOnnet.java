@@ -34,8 +34,8 @@ public class StandardOrderOnnet extends DriverTestcase {
 			//Thread.sleep(30000);
 			Login.get().Login("C4C");
 			
-			C4Chelper.get().Movetoaccount(Data);
-			C4Chelper.get().MovetoOpportunuity(Data);
+			//C4Chelper.get().Movetoaccount(Data);
+			//C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			Configurationhelper.get().Reconfigure(Data);
 //			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
@@ -125,7 +125,7 @@ public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 	Login.get().Login("C4C");
 	
 	C4Chelper.get().Movetoaccount(Data);
-	C4Chelper.get().MovetoOpportunuity(Data);
+	C4Chelper.get().MovetoOpportunuityContainer(Data);
 	
 	Thread.sleep(3000);
 	C4Chelper.get().Product_Add();
@@ -133,8 +133,14 @@ public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 	ContainerHelper.get().AddContainerProduct(Data);
 	GenralInfohelper.get().GenralInfomration(Data);
 	ContainerHelper.get().ContainerApproveQuote();
+	if(!Data[0][4].equals("CST")) {
 	ContainerHelper.get().ContainerSEApproval();
 	ContainerHelper.get().ContainerCSTApproval(Data);
+}
+	else
+	{
+		ContainerHelper.get().ContainerCSTApproval(Data);
+	}
 	SendProposalhelper.get().Containerprices(Data);
 	SendProposalhelper.get().CustomerSign(Data);
 	if(Data[0][24].toString().equals("Email")) {

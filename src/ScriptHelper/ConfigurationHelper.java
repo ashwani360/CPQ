@@ -1895,9 +1895,9 @@ public class ConfigurationHelper extends DriverHelper{
 //		waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
 //		waitForpageload();
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For Page to Be updated as Stanrad Quote");
-		WaitforElementtobeclickable(xml.getlocator("//locators/StandrdQuote"));
+		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteID"));
 		
-		getwebelement(xml.getlocator("//locators/StandrdQuote"));
+		getwebelement(xml.getlocator("//locators/QuoteID"));
 		
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add Product Button");
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));

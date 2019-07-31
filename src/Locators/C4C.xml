@@ -117,5 +117,15 @@
 <AccountsDropdown>//div[@title="Select View"]//button</AccountsDropdown>
 <SelectAll>//li[text()='All']</SelectAll>
 <optionlist>//li[normalize-space(string())='option']</optionlist>
+<SalesSection>//h1[text()='Sales']</SalesSection>
+<Quotelink>//a[text()='Quotes']</Quotelink>
+<PricelookupQuote>//bdi[text()='New PriceLookUp Quote']</PricelookupQuote>
+<ColtOrganizationCountry1>(//*[text()='Colt Organisation Country']/parent::*/parent::*/div/div/div/div/input)</ColtOrganizationCountry1>
+<ColtOrganizationCountry>(//*[text()='Colt Organisation Country']/parent::*/parent::*/div/div/div/div/input)</ColtOrganizationCountry>
+<SalesChanel>(//*[text()='Sales Channel']/parent::*/parent::*/div/div/div/div/input)</SalesChanel>
+<QuoteCurrency>(//*[text()='Quote Currency']/parent::*/parent::*/div/div/div/div/input)</QuoteCurrency>
+<PriceLookupLegalComplexity>(//*[text()='Legal Complexity']/parent::*/parent::*/div/div/div/div/input)</PriceLookupLegalComplexity>
+<PriceLookupTechnicalComplexity>(//*[text()='Technical Complexity']/parent::*/parent::*/div/div/div/div/input)</PriceLookupTechnicalComplexity>
+<PriceLookupProceed>//bdi[text()='Proceed']/parent::*/parent::*/parent::*</PriceLookupProceed>
 </locators>
 
