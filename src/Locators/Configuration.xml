@@ -207,7 +207,7 @@
 <CPQQuotelink>//*[text()='QuoteId']/parent::*/parent::*/parent::*//td//a</CPQQuotelink>
 <InternalUser>//a[text()='Internal Users']</InternalUser>
 <Proxylogout>//img[contains(@title,'Logout')]/parent::*</Proxylogout>
-<Listexpander>//*[contains(@aria-labelledby,'TeamAssignment-label')]/*[contains(@class,'oj-select-arrow')]</Listexpander>
+<Listexpander>//*[contains(@aria-labelledby,'Team')]/*[contains(@class,'oj-select-arrow')]</Listexpander>
 <UserSelector>//*[text()='Username']</UserSelector>
 <ClosePopupOffnet>//label[text()='Continue with Selected Buildings']</ClosePopupOffnet>
 <HublistExpander>//button[@title='Show All Items']</HublistExpander>

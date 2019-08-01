@@ -117,10 +117,11 @@ public class DriverHelper {
 		Rerunrequired.set("No");
 		OpportunityID.set("New");
 		OrderType.set("");
+		CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/81744838");
 		//workitemcounter.set(1);
 		//QuoteID.set("QT-20190621-033408-01");
 		//OpportunityID.set("267899");
-		//DealClass.set("Bronze");
+		DealClass.set("Bronze");
 //		//TotalTCVdisscount.set((float) 0);
 //		List Completeset=new ArrayList();
 //		for(int i=0;i<2;i++) {
@@ -572,10 +573,11 @@ public void ClickswithAction(String el) throws InterruptedException {
 		try {
 			if (element.isEnabled() && element.isDisplayed()) {
 				Log.info("Clicking on element with using java script click");
-
+				System.out.println("Clicking on element with using java script click in If");
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			} else {
 				Log.info("Unable to click on element");
+				System.out.println("Clicking on element with using java script click in else");
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			}
 		} catch (StaleElementReferenceException e) {

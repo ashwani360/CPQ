@@ -48,7 +48,7 @@ else if(Inputdata[0][15].equals("Non Standard"))
 	ProxyLogin("CPQ_SE_User", xml.getlocator("//locators/ProxyLink"));
 	
 	NonStandardSE();
-NonStandardSales();
+	NonStandardSales();
 }
 	}
 

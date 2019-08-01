@@ -127,12 +127,20 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 
 	{
+		
+		if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) {
+			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+			}
+			else
+			{
+				System.out.println("All ready selected");
+			}
 		 for(int i=0;i<Inputdata.length;i++) {
 			 if(Inputdata[i][21].toString().contains("Line Level")) {
 				 if(Inputdata[i][21].toString().contains("Percentage Off")) {
 					 System.out.println("NRC Disscount"+Inputdata[i][22].toString());
 					 System.out.println("NRC Disscount"+Inputdata[i][23].toString());
-					 Clickon(getwebelement(xml.getlocator("//locators/Disscountypecoulumn").replace("index", String.valueOf(i+1))));
+					 Clickon(getwebelement(xml.getlocator("//locators/Disscountypecoulumn").replace("index", String.valueOf(i+2))));
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelDiscounttype").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
 					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
@@ -156,7 +164,7 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 				 {
 //					  System.out.println("NRC Disscount"+Inputdata[i][22].toString());
 					 System.out.println("NRC Disscount"+Inputdata[i][23].toString());
-					 Clickon(getwebelement(xml.getlocator("//locators/Disscountypecoulumn").replace("index", String.valueOf(i+1))));
+					 Clickon(getwebelement(xml.getlocator("//locators/Disscountypecoulumn").replace("index", String.valueOf(i+2))));
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelDiscounttype").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
 					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
@@ -184,8 +192,10 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 			 else {
 				 System.out.println("No Disscount Required");
 			 }
+			 
 			  }
-		
+		 Clickon(getwebelement(xml.getlocator("//locators/CalculateDisscountline")));
+			
 		//System.out.println("Line Level Disscount");
 	}
 }
@@ -537,6 +547,9 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
 	openurl2(CurrentQuoteURL.get());
 	WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+	
+	// Code to Again Commercially Approved if Required.
+	// Set the Current Deal ACV,TCV, ARR and Engage Deal Pricing and Then Fully Approove
 	// Open the Quote the As Sales Users
 	
 }
@@ -929,18 +942,23 @@ public void ApproveQuote(String Approver) throws Exception
 			CSV filegenerator=new CSV();
 			filegenerator.createfile(Quoteacv.get(), Quotetcv.get(), Quotearr.get(), Igmad.get(), QuoteID.get());
 			// Assing the Quote
-			ProxyLogin("Deal Pricing Team", xml.getlocator("//locators/ProxyLink"));
-			WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
-			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
-			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
-			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
-			Clickon(getwebelement(xml.getlocator("//locators/PLtab")));
-			Clickon(getwebelement(xml.getlocator("//locators/Adigneelist")));
-			Clickon(getwebelement(xml.getlocator("//locators/Asigneeuser")));
+			ProxyLogin("CPQ_DealPrice_User", xml.getlocator("//locators/ProxyLink"));
+			openurl2(CurrentQuoteURL.get());
+			waitForpageload();
+			Clickon(getwebelement(xml3.getlocator("//locators/PPT/PLtab")));
+			WaitforElementtobeclickable(xml3.getlocator("//locators/Listexpander"));
+			Clickon(getwebelement(xml3.getlocator("//locators/Listexpander")));
+			WaitforElementtobeclickable(xml3.getlocator("//locators/UserSelector").replace("Username", "Namita Singh"));
+			Clickon(getwebelement(xml3.getlocator("//locators/UserSelector").replace("Username", "Namita Singh")));
+			//Select assignuser=new Select(getwebelement("//select[@name='portfolioTeamAssignment']"));
+			//assignuser.selectByVisibleText("Prashant Manu");
+			WaitforElementtobeclickable(xml3.getlocator("//locators/PPT/Assignquote"));
+			Clickon(getwebelement(xml3.getlocator("//locators/PPT/Assignquote")));
+			
 			uploadafile(xml.getlocator("//locators/MMTupload"),QuoteID.get().toString()+".csv");
 			Clickon(getwebelement(xml.getlocator("//locators/Uploadmargin")));
 			 SendKeys(getwebelement(xml.getlocator("//locators/textarea1")),"Comment from Deal team");
-			 SendKeys(getwebelement(xml.getlocator("//locators/textarea1")),"Comment from Deal team");
+			 SendKeys(getwebelement(xml.getlocator("//locators/textarea2")),"Comment from Deal team");
 			//Upload the File
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
             ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");

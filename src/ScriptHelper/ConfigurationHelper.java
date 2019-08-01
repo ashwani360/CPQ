@@ -2255,7 +2255,7 @@ public class ConfigurationHelper extends DriverHelper{
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For Page to Be updated as Stanrad Quote");
 		WaitforElementtobeclickable(xml.getlocator("//locators/StandrdQuote"));
 		
-		getwebelement(xml.getlocator("//locators/StandrdQuote"));
+		getwebelement(xml.getlocator("//locators/QuoteID"));
 		Quotestatus.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
 		System.out.println("Quite Stage on Screee"+GetValueofInput(getwebelement(xml.getlocator("//locators/Quotestatus"))));
 		
@@ -2408,6 +2408,8 @@ public class ConfigurationHelper extends DriverHelper{
 		
 		
 	}
+	
+	
 	public void POA() throws Exception
 	{
 		Clickon(getwebelement(xml.getlocator("//locators/PPT/EngagePortfolio")));	

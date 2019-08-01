@@ -64,14 +64,22 @@ public class BCNUpdateHelper extends DriverHelper{
 			Thread.sleep(2000);
 			//Inputdata[0][20].toString()
 			//Clickon(getwebelement(xml.getlocator("//locators/bcn").replace("BCN", Inputdata[0][20].toString())));
-			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/bcn").replace("BCN", Inputdata[0][20].toString())));
+			Clickon(getwebelement(xml.getlocator("//locators/bcn").replace("BCN", Inputdata[0][20].toString())));
 		
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the BCN");
+			Thread.sleep(5000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/applybutton"));
 			Clickon(getwebelement(xml.getlocator("//locators/applybutton")));
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Clikc on Apply BCN button");
-			
-			Thread.sleep(3000);
+			try {
+				Clickon(getwebelement(xml.getlocator("//locators/applybutton")));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Clikc on Apply BCN button");
+			}
+			catch(Exception e)
+			{
+				System.out.println("Allready Closed");
+			}
+			Thread.sleep(10000);
 			Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
 			Thread.sleep(3000);
 		}

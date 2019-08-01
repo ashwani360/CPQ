@@ -3,9 +3,14 @@ package ScriptHelper;
 import org.dom4j.DocumentException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
+
+import com.google.common.base.Verify;
 import com.relevantcodes.extentreports.LogStatus;
 import Driver.DriverHelper;
 import Driver.xmlreader;
@@ -17,7 +22,7 @@ public class C4CHelper extends DriverHelper{
 	
 	WebElement el;
 	xmlreader xml=new xmlreader("src\\Locators\\C4C.xml");
-	
+	xmlreader xml2=new xmlreader("src\\Locators\\Configuration.xml");
 	public C4CHelper(WebDriver parentdriver)
 	{
 		super(parentdriver);
@@ -234,7 +239,7 @@ public class C4CHelper extends DriverHelper{
 		
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Save and Open Opportunuity Option");
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Clickmore"));
-		
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Clickmore")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on More link to Expand the Details");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
@@ -279,7 +284,8 @@ public class C4CHelper extends DriverHelper{
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/OptyId"));
 		OpportunityID.set(Gettext(getwebelement(xml.getlocator("//locators/Opportunity/OptyId"))));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Newly Created Opportunuity ID is"+OpportunityID.get().toString());
-		}
+		System.out.println(OpportunityID.get());	
+	}
 	public void Opportunity_AddContainer(Object[][] Inputdata) throws Exception
 	{
 		Thread.sleep(3000);
@@ -470,7 +476,39 @@ public class C4CHelper extends DriverHelper{
 		
 		
 	}
-	
+	public void  VerifyQuoteStage() throws Exception {
+		try {
+			Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+		}
+		catch(Exception e)
+		{
+			System.out.println("No Proxy Login enabled");
+		}
+		openurl2(CurrentQuoteURL.get().toString());
+		Thread.sleep(15000);
+		getwebelement(xml2.getlocator("//locators/QuoteID"));
+		Quotestatus.set(GetValueofInput(getwebelement(xml2.getlocator("//locators/Quotestatus"))));
+		System.out.println("Quite Stage on Screee"+GetValueofInput(getwebelement(xml2.getlocator("//locators/Quotestatus"))));
+		openurl("C4C");
+		WaitforElementtobeclickable(xml.getlocator("//locators/SalesSection"));
+		Clickon(getwebelement(xml.getlocator("//locators/SalesSection")));
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the Customer Section in Left Navigation");
+		WaitforElementtobeclickable(xml.getlocator("//locators/Quotelink"));
+		
+		Clickon(getwebelement(xml.getlocator("//locators/Quotelink")));
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		Search(QuoteID.get().toString(),1);
+		
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Search for Current Quote ID"+QuoteID.get().toString());
+		WaitforElementtobeclickable(xml.getlocator("//locators/Quotenumber").replace("Quotenumber", QuoteID.get().toString()));
+		WaitforElementtobeclickable(xml.getlocator("//locators/C4CQuoteStage").replace("QuoteNumber", QuoteID.get().toString()));
+		System.out.println("Quite Stage on Screeen"+GetText(getwebelement(xml.getlocator("//locators/C4CQuoteStage").replace("QuoteNumber", QuoteID.get().toString()))));
+		SoftAssert Verify=new SoftAssert();
+		Verify.assertTrue(GetText(getwebelement(xml.getlocator("//locators/C4CQuoteStage").replace("QuoteNumber", QuoteID.get().toString()))).equalsIgnoreCase(Quotestatus.get().toString()),"Quote Stage are matching");
+		openurl2(CurrentQuoteURL.get().toString());
+		Thread.sleep(15000);
+	}
 	public void  MovetoOpportunuityContainer(Object[][] Inputdata) throws Exception{
 		System.out.println("Current Opp ID="+OpportunityID.get().toString());
 		if((Inputdata[0][1].toString().equals("New"))&& OpportunityID.get().toString().equals("New"))
@@ -537,9 +575,11 @@ public class C4CHelper extends DriverHelper{
 		Thread.sleep(3000);
 		
 		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
-		//Thread.sleep(10000);
+		Thread.sleep(10000);
 		
-		if(getwebelement(xml.getlocator("//locators/ColtOrganizationCountry1")).isDisplayed() & Getattribute(getwebelement(xml.getlocator("//locators/ColtOrganizationCountry1")),"value").equals("")) {
+		if(isElementPresent(xml.getlocator("//locators/PricelookupQuote"))) {	
+			
+		try {
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Add Colt Organization Country");
 			WaitforElementtobeclickable(xml.getlocator("//locators/ColtOrganizationCountry"));
 			Clickon(getwebelement(xml.getlocator("//locators/ColtOrganizationCountry")));
@@ -551,6 +591,11 @@ public class C4CHelper extends DriverHelper{
 			Thread.sleep(3000);
 			Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Wholesale")));
 			WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		}
+		catch(WebDriverException e)
+		{
+			System.out.println("Price Lookup in Account");
+		}
 			WaitforElementtobeclickable(xml.getlocator("//locators/QuoteCurrency"));
 			Clickon(getwebelement(xml.getlocator("//locators/QuoteCurrency")));
 			Thread.sleep(3000);
@@ -568,25 +613,9 @@ public class C4CHelper extends DriverHelper{
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Update Techincal Complexity");
 			Clickon(getwebelement(xml.getlocator("//locators/PriceLookupProceed")));
 		}
-		else if(getwebelement(xml.getlocator("//locators/ColtOrganizationCountry1")).isDisplayed() & !Getattribute(getwebelement(xml.getlocator("//locators/ColtOrganizationCountry1")),"value").equals(""))
+		else
 		{
-			WaitforElementtobeclickable(xml.getlocator("//locators/QuoteCurrency"));
-			Clickon(getwebelement(xml.getlocator("//locators/QuoteCurrency")));
-			Thread.sleep(3000);
-			Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Euro")));
-			WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
-			Clickon(getwebelement(xml.getlocator("//locators/PriceLookupLegalComplexity")));
-			Thread.sleep(3000);
-			Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Standard")));
-			WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
-			Thread.sleep(3000);
-			Clickon(getwebelement(xml.getlocator("//locators/PriceLookupTechnicalComplexity")));
-			Thread.sleep(3000);
-			Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "1")));
-			WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
-			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Update Techincal Complexity");
-			Clickon(getwebelement(xml.getlocator("//locators/PriceLookupProceed")));
-			
+			System.out.println(" Nothing to update here");
 		}
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add Quote Button");
 		System.out.print(gettitle().toString());

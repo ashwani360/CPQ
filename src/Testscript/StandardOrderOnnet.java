@@ -22,6 +22,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 		Thread.sleep(3000);
 		C4Chelper.get().AddQuote();
 		Configurationhelper.get().AddProduct(Data);
+		C4Chelper.get().VerifyQuoteStage();
 		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for 3rd Party"))
 		{
 			Explorehelper.get().NavigatetoExplore();
@@ -38,6 +39,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 			//C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			Configurationhelper.get().Reconfigure(Data);
+			C4Chelper.get().VerifyQuoteStage();
 //			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
 			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
 			{
@@ -50,31 +52,39 @@ public class StandardOrderOnnet extends DriverTestcase {
 			Login.get().Logout("ExploreNearNet");
 			Login.get().Login("C4C");
 			
-			C4Chelper.get().Movetoaccount(Data);
-			C4Chelper.get().MovetoOpportunuity(Data);
+			//C4Chelper.get().Movetoaccount(Data);
+			//C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			Configurationhelper.get().Reconfigure(Data);
+			C4Chelper.get().VerifyQuoteStage();
 			}
 		}
 		else if(Configurationhelper.get().Quotestatus.get().equals("POA"))
 		{
 			Configurationhelper.get().POA();
+			C4Chelper.get().VerifyQuoteStage();
 			}
 		else if(Configurationhelper.get().Quotestatus.get().equals("Created"))
 		{
 			Configurationhelper.get().SEDataupdate(Data);
+			C4Chelper.get().VerifyQuoteStage();
 			}
 		else if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
 		{
 			//Need to write the codeExceptionPPT()
 			Configurationhelper.get().ExceptionPPT();
+			C4Chelper.get().VerifyQuoteStage();
 		}
 		// If Stage is waiting for third Party Need to call All the Explore functions
 		
 		BspokeNonStandard.get().Bespoke(Data);
 		GenralInfohelper.get().GenralInfomration(Data);
-		BCNupdatehelper.get().BCNUpdate(Data);
+		
+	//Login.get().OpenCPQQuoteDirectly();
+	BCNupdatehelper.get().BCNUpdate(Data);
 		//DisscountAndAprrovalhelper.get().DisscountandApprove(Data);
+		
+		
 		if(Data[0][21].toString().contains("Quote Level")){
 			DisscountAndAprrovalhelper.get().ApplyDisscountQuotelevel(Data);
 			
@@ -85,12 +95,16 @@ public class StandardOrderOnnet extends DriverTestcase {
 		}
 		DisscountAndAprrovalhelper.get().ApproveQuote(Data);
 		Configurationhelper.get().SetCurrectQuoteStage();
+		C4Chelper.get().VerifyQuoteStage();
 		// belowMethods will not call if Quote is not in Aprroved Stage 
 		if(Configurationhelper.get().Quotestatus.get().equals("Approved")){
 		SendProposalhelper.get().CustomerSign(Data);
+		C4Chelper.get().VerifyQuoteStage();
 		if(Data[0][24].toString().equals("Email")) {
 			Orderinghelper.get().AcceptsQuote(Data);
+			C4Chelper.get().VerifyQuoteStage();
 			Orderinghelper.get().CreateOrder(Data);
+			C4Chelper.get().VerifyQuoteStage();
 		}
 		else {
 			Orderinghelper.get().AcceptsQuotebyEsignature(Data);
@@ -99,8 +113,11 @@ public class StandardOrderOnnet extends DriverTestcase {
 			C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			C4Chelper.get().CheckdocumentSigned();
+			C4Chelper.get().VerifyQuoteStage();
 			Orderinghelper.get().AcceptsQuote(Data);
+			C4Chelper.get().VerifyQuoteStage();
 			Orderinghelper.get().CreateOrder(Data);
+			C4Chelper.get().VerifyQuoteStage();
 			
 			}
 		
@@ -131,11 +148,14 @@ public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 	C4Chelper.get().Product_Add();
 	C4Chelper.get().AddContainerQuote();
 	ContainerHelper.get().AddContainerProduct(Data);
+	C4Chelper.get().VerifyQuoteStage();
 	GenralInfohelper.get().GenralInfomration(Data);
 	ContainerHelper.get().ContainerApproveQuote();
 	if(!Data[0][4].equals("CST")) {
 	ContainerHelper.get().ContainerSEApproval();
+	C4Chelper.get().VerifyQuoteStage();
 	ContainerHelper.get().ContainerCSTApproval(Data);
+	C4Chelper.get().VerifyQuoteStage();
 }
 	else
 	{
@@ -160,6 +180,84 @@ public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 		
 		}
 	
+	
+}
+@Test(dataProviderClass=DataReader.class,dataProvider="Bulkupload")
+public void EndtoEndOrderBulkUpload(Object[][] Data) throws Exception
+{
+	//ExtentTestManager.getTest().setDescription("Login Into C4C");
+
+	Login.get().Login("C4C");
+	
+	C4Chelper.get().Movetoaccount(Data);
+	C4Chelper.get().MovetoOpportunuity(Data);
+	
+	Thread.sleep(3000);
+	C4Chelper.get().AddQuote();
+	BulkHelper.get().AddProductWithbulkTemplate(Data);
+	if(Configurationhelper.get().Quotestatus.get().equals("POA"))
+	{
+		Configurationhelper.get().POA();
+		C4Chelper.get().VerifyQuoteStage();
+		}
+	else if(Configurationhelper.get().Quotestatus.get().equals("Created"))
+	{
+		Configurationhelper.get().SEDataupdate(Data);
+		C4Chelper.get().VerifyQuoteStage();
+	}
+	else if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
+	{
+		//Need to write the codeExceptionPPT()
+		Configurationhelper.get().ExceptionPPT();
+		C4Chelper.get().VerifyQuoteStage();
+	}
+	// If Stage is waiting for third Party Need to call All the Explore functions
+	
+	GenralInfohelper.get().GenralInfomration(Data);
+	BCNupdatehelper.get().BCNUpdate(Data);
+	//DisscountAndAprrovalhelper.get().DisscountandApprove(Data);
+	
+	
+	if(Data[0][21].toString().contains("Quote Level")){
+		DisscountAndAprrovalhelper.get().ApplyDisscountQuotelevel(Data);
+		
+	}
+	else if(Data[0][21].toString().contains("Line Level"))
+	{
+		DisscountAndAprrovalhelper.get().ApplyDisscountlinelevel(Data);
+	}
+	DisscountAndAprrovalhelper.get().ApproveQuote(Data);
+	Configurationhelper.get().SetCurrectQuoteStage();
+	// belowMethods will not call if Quote is not in Aprroved Stage 
+	if(Configurationhelper.get().Quotestatus.get().equals("Approved")){
+	SendProposalhelper.get().CustomerSign(Data);
+	C4Chelper.get().VerifyQuoteStage();
+	if(Data[0][24].toString().equals("Email")) {
+		Orderinghelper.get().AcceptsQuote(Data);
+		C4Chelper.get().VerifyQuoteStage();
+		Orderinghelper.get().CreateOrder(Data);
+		C4Chelper.get().VerifyQuoteStage();
+	}
+	else {
+		Orderinghelper.get().AcceptsQuotebyEsignature(Data);
+		C4Chelper.get().NavigatetoC4C();
+		C4Chelper.get().Movetoaccount(Data);
+		C4Chelper.get().MovetoOpportunuity(Data);
+		C4Chelper.get().EditQuote();
+		C4Chelper.get().CheckdocumentSigned();
+		C4Chelper.get().VerifyQuoteStage();
+		Orderinghelper.get().AcceptsQuote(Data);
+		C4Chelper.get().VerifyQuoteStage();
+		Orderinghelper.get().CreateOrder(Data);
+		C4Chelper.get().VerifyQuoteStage();
+		
+		}
+	
+}
+		
+//Configurationhelper.get().AddProducttest(Data);
+	Login.get().Login("Siebel");
+	Orderinghelper.get().SeibleOrderVerification(Data);
 	
 }
 

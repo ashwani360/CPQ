@@ -54,7 +54,7 @@ import ScriptHelper.GenralInfoHelper;
 import ScriptHelper.LoginHelper;
 import ScriptHelper.OrderingHelper;
 import ScriptHelper.SendProposalHelper;
-
+import ScriptHelper.BulkHelper;
 
 public class DriverTestcase{
 	
@@ -75,7 +75,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public static final ThreadLocal<ExploreHelper> Explorehelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<BespokandNonStandard> BspokeNonStandard= new InheritableThreadLocal<>();
 	public static final ThreadLocal<ContainerJourneyHelper> ContainerHelper= new InheritableThreadLocal<>();
-	
+	public static final ThreadLocal<BulkHelper> BulkHelper= new InheritableThreadLocal<>();
 	public static ThreadLocal<String> QuoteID=new InheritableThreadLocal<>();
 	public static TestListener Testlistener;
 	//public static CarNorOrderHelper CarNorOrderhelper; 
@@ -142,6 +142,14 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		    ctx.setAttribute("testName", st[st.length-2].toString());
 	      }
 	      if(method.getName().equals("Testermethod"))
+	      {
+	   		//DataReader dt=new DataReader();
+	   		//Object[][] data=dt.datareader();
+		    //Object[] st= (Object[]) data[itr][0];
+		    Log.info(st[st.length-2].toString());
+		    ctx.setAttribute("testName", st[st.length-2].toString());
+	      }
+	      if(method.getName().equals("EndtoEndOrderBulkUpload"))
 	      {
 	   		//DataReader dt=new DataReader();
 	   		//Object[][] data=dt.datareader();
@@ -337,8 +345,10 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		ExploreHelper EXP=new ExploreHelper(getwebdriver());
 		BespokandNonStandard BEN=new BespokandNonStandard(getwebdriver());
 		ContainerJourneyHelper CONTN=new ContainerJourneyHelper(getwebdriver());
+		BulkHelper BU=new BulkHelper(getwebdriver());
 		Login.set(LN);
 		BCNupdatehelper.set(BCN);
+		BulkHelper.set(BU);
 		C4Chelper.set(C4C);
 		Configurationhelper.set(CON);
 		DisscountAndAprrovalhelper.set(DISAAPR);

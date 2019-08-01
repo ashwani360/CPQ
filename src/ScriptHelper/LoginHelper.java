@@ -121,9 +121,18 @@ public class LoginHelper extends DriverHelper{
 		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Password");
 		WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Loginbutton"));
 		
+		
 		Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Loginbutton")));
+		
 		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Login Button");
 		
+	}
+	
+	public void OpenCPQQuoteDirectly() throws Exception {
+		Login("CPQ");
+		Thread.sleep(10000);
+		openurl2(CurrentQuoteURL.get().toString());
+		Thread.sleep(30000);
 	}
 	public void Logout(String Application) throws Exception
 	{

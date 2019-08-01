@@ -135,10 +135,15 @@
 <Quotetcv>id=tCVTotalContractValue_t</Quotetcv>
 <Quoteacv>id=aCVAnnualContractValue_t</Quoteacv>
 <Disscountypecoulumn>((//*[normalize-space(text()) and normalize-space(.)='Priced'])[index]/following::td[4])[1]</Disscountypecoulumn>
-<LinelevelDiscounttype>(//*[normalize-space(string())='type'])[index]</LinelevelDiscounttype>
-<LinelevelNRCdiscountColumn>(//*[normalize-space(string())='type'])/following::td")[index]</LinelevelNRCdiscountColumn>
+<LinelevelDiscounttype>(//li/div[normalize-space(string())='type'])[index]</LinelevelDiscounttype>
+<LinelevelNRCdiscountColumn>(//span[normalize-space(string())='type']/parent::td/following::td)[index]</LinelevelNRCdiscountColumn>
 <LinelevelNRCdiscount>id=lineDiscountNRC_l-3</LinelevelNRCdiscount>
-<LinelevelMRCdiscountColumn>(//*[normalize-space(string())='type'])/following::td[4]")[index]</LinelevelMRCdiscountColumn>
+<LinelevelMRCdiscountColumn>(//span[normalize-space(string())='type']/parent::td/following::td[4])[index]</LinelevelMRCdiscountColumn>
 <LinelevelMRCdiscount>id=lineDiscountMRC_l-3</LinelevelMRCdiscount>
+<CalculateDisscountline>(//span[text()='Calculate Discount']/parent::*/parent::*)[last()]</CalculateDisscountline>
+<MMTupload>id=uploadFile_t</MMTupload>
+<Uploadmargin>//span[text()='Upload Key Financials']/parent::*/parent::*</Uploadmargin>
+<textarea1>id=pricePositioningTextArea_t</textarea1>
+<textarea2>id=commercialRiskTextArea_t</textarea2>
 </locators>
 
