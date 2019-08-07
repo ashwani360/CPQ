@@ -622,23 +622,7 @@ public class C4CHelper extends DriverHelper{
 		//}
 		System.out.println("Out of While loop");
 		waitForpagenavigated(1);
-//		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
-//		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
-//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
-//		Thread.sleep(5000);
-//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
-//		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteTab"));
-//		Clickon(getwebelement(xml.getlocator("//locators/QuoteTab")));
-//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
-//		Thread.sleep(5000);
-//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
-//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
-//		WaitforElementtobeclickable(xml.getlocator("//locators/AddQuote"));
-//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
-//		WaitforElementtobeclickable(xml.getlocator("//locators/AddQuote"));
-//		Clickon(getwebelement(xml.getlocator("//locators/AddQuote")));
-//		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
-		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		// Verify the Opportunuity and Account data
 	}
 	public void EditQuote() throws Exception {
 		Thread.sleep(5000);
