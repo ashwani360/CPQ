@@ -41,6 +41,8 @@ public class DisscountAndAprrovalHelper extends DriverHelper{
 public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 	
 		System.out.println("Quote Level Disscount");
+		Clickon(getwebelement(xml3.getlocator("//locators/saveQuote")));
+		waitForpageload();
 		
 		
 		if(Inputdata[0][21].toString().split(">")[1].trim().equals("Percentage Off")) {
@@ -127,6 +129,8 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 
 	{
+		Clickon(getwebelement(xml3.getlocator("//locators/saveQuote")));
+		waitForpageload();
 		
 		if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) {
 			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
@@ -203,6 +207,9 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	
 	waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 	waitForpageload();
+	Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
+	waitForpageload();
+	
 	//Thread.sleep(10000);
 		//WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
 	if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) {
@@ -547,7 +554,7 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
 	openurl2(CurrentQuoteURL.get());
 	WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-	
+	waitForpageload();
 	// Code to Again Commercially Approved if Required.
 	// Set the Current Deal ACV,TCV, ARR and Engage Deal Pricing and Then Fully Approove
 	// Open the Quote the As Sales Users
@@ -555,7 +562,7 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 }
 public void AddLineitemGridLeadTime(Object[][] data) throws InterruptedException, Exception{
 	// Need to write the code
-    for(int i=0;i<data.length;i++) {
+    for(int i=0;i<data.length-1;i++) {
     	Thread.sleep(5000);
     	Clickonoutofviewportwithstring(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));
     	Thread.sleep(20000);

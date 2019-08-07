@@ -5,17 +5,17 @@
     <listener class-name="Listeners.TestListener"/>
     <listener class-name="Listeners.AnnotationTransformer"/>
   </listeners>
-  <test name="CPQ End to End Order(failed)">
+  <test name="CPQ End to End Container New Bussiness(failed)">
     <classes>
       <class name="Testscript.StandardOrderOnnet">
         <methods>
           <include name="BeforeMethod"/>
-          <include name="EndtoEndOrder" invocation-numbers="0"/>
           <include name="Teardown2"/>
           <include name="BeforeSuite"/>
           <include name="Teardown"/>
+          <include name="EndtoEndOrderBulkUpload" invocation-numbers="0"/>
         </methods>
       </class> <!-- Testscript.StandardOrderOnnet -->
     </classes>
-  </test> <!-- CPQ End to End Order(failed) -->
+  </test> <!-- CPQ End to End Container New Bussiness(failed) -->
 </suite> <!-- Failed suite [CPQ End to End Order] -->

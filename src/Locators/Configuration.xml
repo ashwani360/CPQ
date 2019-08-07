@@ -213,5 +213,6 @@
 <HublistExpander>//button[@title='Show All Items']</HublistExpander>
 <HubReferencelist>//li/a[text()='Hubnumber']</HubReferencelist>
 <Legend>//b[text()='Legend']</Legend>
+<Promocode>//div[text()='promo']/parent::*</Promocode>
 </locators>
 

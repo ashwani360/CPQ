@@ -127,7 +127,7 @@
 <ProductDescription>//textarea[@name='notesProductDescription_bespokearray']</ProductDescription>
 <ProxyLink>(//img[@alt='Proxy Login']/parent::*)[1]</ProxyLink>
 <Quotestatus>id=status_t-ro</Quotestatus>
-<LeadTime>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[21]/span)[index]</LeadTime>
+<LeadTime>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[contains(@class,'leadTime')]/span)[index]</LeadTime>
 <PLtab>(.//*[normalize-space(text()) and normalize-space(.)='Quote'])[1]/following::span[1]</PLtab>
 <Dealbackground>id=dealBackgroundTextArea_t</Dealbackground>
 <TechnicalSolution>id=technicalSolutionTextArea_t</TechnicalSolution>

@@ -194,6 +194,7 @@ public void EndtoEndOrderBulkUpload(Object[][] Data) throws Exception
 	
 	Thread.sleep(3000);
 	C4Chelper.get().AddQuote();
+	//Login.get().OpenCPQQuoteDirectly();
 	BulkHelper.get().AddProductWithbulkTemplate(Data);
 	if(Configurationhelper.get().Quotestatus.get().equals("POA"))
 	{

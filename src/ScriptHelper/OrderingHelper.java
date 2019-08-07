@@ -20,7 +20,7 @@ public class OrderingHelper extends DriverHelper{
 	
 	WebElement el;
 	xmlreader xml=new xmlreader("src\\Locators\\Ordering.xml");
-	
+	xmlreader xml2=new xmlreader("src\\Locators\\Configuration.xml");
 	public OrderingHelper(WebDriver parentdriver)
 	{
 		super(parentdriver);
@@ -30,6 +30,8 @@ public class OrderingHelper extends DriverHelper{
 	public void AcceptsQuote(Object[][] Inputdata) throws Exception {
 		if(Inputdata[0][24].toString().equals("Email")) {
 			//WaitforCPQloader();
+			Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
+			waitForpageload();
 			Thread.sleep(20000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/OrderTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/OrderTab")));
@@ -118,6 +120,8 @@ public class OrderingHelper extends DriverHelper{
 	}
 	public void CreateOrder(Object[][] Inputdata) throws Exception {
 		//WaitforCPQloader();
+		Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
+		waitForpageload();
 		WaitforElementtobeclickable(xml.getlocator("//locators/AdditionalinfomrationTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/AdditionalinfomrationTab")));

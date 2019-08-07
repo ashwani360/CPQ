@@ -1207,7 +1207,7 @@ public class ConfigurationHelper extends DriverHelper{
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Site Detail Tab");
 					Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
 					////// Code for Near Net Selection
-					
+					SelectPromotion(Inputdata, i);
 					///////////////////////////////////
 					
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Contract Term");
@@ -1335,7 +1335,7 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Site Detail Tab");
 				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
 			////// Code for Near Net Selection
-				
+				SelectPromotion(Inputdata, i);
 								///////////////////////////////////
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Contract Term");
 				Select(getwebelement(xml.getlocator("//locators/Contractterm")), Inputdata[i][7].toString());
@@ -1446,7 +1446,7 @@ public class ConfigurationHelper extends DriverHelper{
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Site Detail Tab");
 					Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
 				////// Code for Near Net Selection
-					
+					SelectPromotion(Inputdata, i);
 									///////////////////////////////////
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Contract Term");
 					Select(getwebelement(xml.getlocator("//locators/Contractterm")), Inputdata[i][7].toString());
@@ -1562,7 +1562,7 @@ public class ConfigurationHelper extends DriverHelper{
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Site Detail Tab");
 					Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
 				////// Code for Near Net Selection
-					
+					SelectPromotion(Inputdata, i);
 									///////////////////////////////////
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Contract Term");
 					Select(getwebelement(xml.getlocator("//locators/Contractterm")), Inputdata[i][7].toString());
@@ -1680,7 +1680,7 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Site Detail Tab");
 				Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
 			////// Code for Near Net Selection
-				
+				SelectPromotion(Inputdata, i);
 								///////////////////////////////////
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Contract Term");
 				Select(getwebelement(xml.getlocator("//locators/Contractterm")), Inputdata[i][7].toString());
@@ -1778,6 +1778,7 @@ public class ConfigurationHelper extends DriverHelper{
 					Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Site Detail Tab");
 					Clickon(getwebelement(xml.getlocator("//locators/SiteDetailTab")));
+					SelectPromotion(Inputdata, i);
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Contract Term");
 					Select(getwebelement(xml.getlocator("//locators/Contractterm")), Inputdata[i][7].toString());
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -1894,6 +1895,7 @@ public class ConfigurationHelper extends DriverHelper{
 //		waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader"),1);
 //		waitandForElementDisplay(xml.getlocator("//locators/AddProduct"),1);
 //		waitForpageload();
+		
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting For Page to Be updated as Stanrad Quote");
 		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteID"));
 		
@@ -1903,7 +1905,20 @@ public class ConfigurationHelper extends DriverHelper{
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
 		System.out.println(QuoteID.get());
 		CurrentURL();
+		////--------------------------------------------------
 		
+		//Verify the OCN number
+		// Verify the Opportunity number/
+		// Currency
+		// Legal Complexity
+		// Technical contact
+		// Deal Class
+		// Pricing Segment
+		// Sales Channel
+		//Quote Created, Quote Expiry.
+		//Status
+		
+		////---------------------------------------------------
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Newly Created Quote ID is"+QuoteID.get().toString());
 //		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Opportunity Info")));
 //		DealClass.set(Gettext(getwebelement(xml.getlocator("//locators/Dealclass"))));
@@ -1929,7 +1944,7 @@ public class ConfigurationHelper extends DriverHelper{
 //		waitForpageload();
 		
 		}
-		AddLineitemGridLeadTime();
+		//AddLineitemGridLeadTime();
 		Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
 		waitForpageload();
 		WaitforCPQloader();
@@ -2270,6 +2285,8 @@ public class ConfigurationHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
 		waitForpageload();
 		WaitforCPQloader();
+		Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
+		waitForpageload();
 		for(int i=0;i<Inputdata.length;i++) {
 //			waitForpageload();
 //			waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
@@ -2323,7 +2340,9 @@ public class ConfigurationHelper extends DriverHelper{
 //		Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
 //		//Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
 		openurl2(CurrentQuoteURL.get());
+		Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
 		waitForpageload();
+		
 		WaitforCPQloader();
 		Thread.sleep(10000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/PPT/PLtab"));
@@ -2429,6 +2448,8 @@ public class ConfigurationHelper extends DriverHelper{
 		//Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
 		//Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
 		openurl2(CurrentQuoteURL.get());
+		Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
+		waitForpageload();
 		waitForpageload();
 		WaitforCPQloader();
 		Thread.sleep(10000);
@@ -2482,5 +2503,13 @@ public class ConfigurationHelper extends DriverHelper{
 		openurl2(CurrentQuoteURL.get());
 		WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 		
+	}
+	
+	public void SelectPromotion(Object[][] data, int i) throws InterruptedException, DocumentException
+	{
+		if(!data[i][29].toString().equals(""))
+		{
+			Clickon(getwebelement(xml.getlocator("//locators/Promocode").replace("promo", data[i][29].toString())));
+		}
 	}
 }

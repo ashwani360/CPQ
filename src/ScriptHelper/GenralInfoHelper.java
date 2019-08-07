@@ -17,7 +17,7 @@ public class GenralInfoHelper extends DriverHelper{
 	
 	WebElement el;
 	xmlreader xml=new xmlreader("src\\Locators\\GeneralInfo.xml");
-	
+	xmlreader xml2=new xmlreader("src\\Locators\\Configuration.xml");
 	public GenralInfoHelper(WebDriver parentdriver)
 	{
 		super(parentdriver);
@@ -26,6 +26,8 @@ public class GenralInfoHelper extends DriverHelper{
 
 	public void GenralInfomration(Object[][] Inputdata) throws Exception {
 		WaitforCPQloader();
+		Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
+		waitForpageload();
 		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Legal Contact Details")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Legal Contact Details")));
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
 		WaitforElementtobeclickable("//div[contains(@aria-labelledby,'-label')]/div[contains(text(),'Contact')]");

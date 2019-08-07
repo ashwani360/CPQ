@@ -17,7 +17,7 @@ public class SendProposalHelper extends DriverHelper{
 	
 	WebElement el;
 	xmlreader xml=new xmlreader("src\\Locators\\SendProposal.xml");
-	
+	xmlreader xml2=new xmlreader("src\\Locators\\Configuration.xml");
 	public SendProposalHelper(WebDriver parentdriver)
 	{
 		super(parentdriver);
@@ -41,6 +41,9 @@ public class SendProposalHelper extends DriverHelper{
 	public void CustomerSign(Object[][] Inputdata) throws Exception {
 		if(Inputdata[0][24].toString().equals("Email")) {
 			//WaitforCPQloader();
+			Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
+			waitForpageload();
+			
 		WaitforElementtobeclickable(xml.getlocator("//locators/customersignatureTab"));
 		javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 		Clickon(getwebelement(xml.getlocator("//locators/customersignatureTab")));

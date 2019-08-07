@@ -4,7 +4,7 @@
 	  <listener class-name="Listeners.TestListener"/>
 	  <listener class-name="Listeners.AnnotationTransformer"/>  
     </listeners>
-	 <test name="CPQ End to End Order" junit="false" preserve-order="true">
+	<!--   <test name="CPQ End to End Order" junit="false" preserve-order="true">
 		<classes>
 			<class name="Testscript.StandardOrderOnnet">	
 				<methods>
@@ -13,7 +13,7 @@
 			</class>
 		</classes>	
 	</test>
-	<!--  <test name="CPQ End to End Container New Bussiness" junit="false" preserve-order="true">
+	<test name="CPQ End to End Container New Bussiness" junit="false" preserve-order="true">
 		<classes>
 			<class name="Testscript.StandardOrderOnnet">	
 				<methods>
@@ -22,7 +22,15 @@
 			</class>
 		</classes>	
 	</test>-->
-	
+	<test name="CPQ End to End Container New Bussiness" junit="false" preserve-order="true">
+		<classes>
+			<class name="Testscript.StandardOrderOnnet">	
+				<methods>
+					<include name="EndtoEndOrderBulkUpload"/>
+				</methods>	
+			</class>
+		</classes>	
+	</test>
 </suite>
 
  

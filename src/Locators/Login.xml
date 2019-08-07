@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locators>
 <C4C>
-<Username>id=username</Username>
+<Username>id=userId</Username>
 <Password>id=password</Password>
 <Loginbutton>//*[@type='submit']</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>
@@ -28,7 +28,7 @@
 <Logout>//td[text()='Log Out']</Logout>
 </ExploreNearNet>
 <CPQ>
-<Username>id=username</Username>
+<Username>id=userId</Username>
 <Password>id=password</Password>
 <Loginbutton>//*[@type='submit']</Loginbutton>
 <!--<SiebelUserinfo>//*[@id="gen_menu_6"]</SiebelUserinfo>-->

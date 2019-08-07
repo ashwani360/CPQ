@@ -17,7 +17,7 @@ public class BCNUpdateHelper extends DriverHelper{
 	
 	WebElement el;
 	xmlreader xml=new xmlreader("src\\Locators\\BCNUpdate.xml");
-	
+	xmlreader xml2=new xmlreader("src\\Locators\\Configuration.xml");
 	public BCNUpdateHelper(WebDriver parentdriver)
 	{
 		super(parentdriver);
@@ -27,6 +27,8 @@ public class BCNUpdateHelper extends DriverHelper{
 	public void BCNUpdate(Object[][] Inputdata) throws Exception {
 		//Thread.sleep(5000);
 		//waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
+		waitForpageload();
+		Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
 		waitForpageload();
 		
 		//WaitforCPQloader();
@@ -84,7 +86,7 @@ public class BCNUpdateHelper extends DriverHelper{
 			Thread.sleep(3000);
 		}
 		//KeyupKey(Keys.CONTROL);
-		Thread.sleep(1000);
+		waitForpageload();
 		//Clickon(getwebelement(xml.getlocator("//locators/Alllineitem")));
 		
 	}

@@ -211,7 +211,7 @@ public class DataReader {
 		
 		 FileInputStream file = new FileInputStream(new File("src\\Data\\AutomationInputSheet_Phase 2ARegressionJetUI.xlsx"));
 		 XSSFWorkbook workbook = new XSSFWorkbook(file);
-		 XSSFSheet sheet = workbook.getSheetAt(0);
+		 XSSFSheet sheet = workbook.getSheetAt(2);
 		 XSSFRow r1=sheet.getRow(0);
 		 XSSFRow r;
 		 int rowindex=0;

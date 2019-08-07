@@ -177,7 +177,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			Map<String, Object> prefs = new HashMap<String, Object>();
 			 // Set the notification setting it will override the default setting
 			prefs.put("profile.default_content_setting_values.notifications", 2);
-			
+			prefs.put("download.default_directory", System.getProperty("user.dir")+"\\src\\Data\\Downloads");
 			
             // Create object of ChromeOption class
 			ChromeOptions options = new ChromeOptions();

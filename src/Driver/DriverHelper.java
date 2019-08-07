@@ -117,7 +117,7 @@ public class DriverHelper {
 		Rerunrequired.set("No");
 		OpportunityID.set("New");
 		OrderType.set("");
-		CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/81744838");
+		CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/82478413");
 		//workitemcounter.set(1);
 		//QuoteID.set("QT-20190621-033408-01");
 		//OpportunityID.set("267899");
@@ -589,7 +589,13 @@ public void ClickswithAction(String el) throws InterruptedException {
 		}
 	}
 	public void switchtofram(WebElement el){
+		
 		driver.switchTo().frame(el);
+		
+	}
+	public void Waitforswitchtofram(String Locator){
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(Locator)); 
+	
 		
 	}
 	public void switchtodefault(){
