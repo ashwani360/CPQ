@@ -171,7 +171,7 @@
 <Save>id=save</Save>
 <AddtoTransaction>id=add_to_transaction</AddtoTransaction>
 <EngagePortfolio>(//span[text()='Engage Portfolio Pricing' or text()='Request POA Prices']/parent::*/parent::*[not(contains(@style,'display'))])</EngagePortfolio>
-<PLtab>//*[@id="ui-id-41"]/span</PLtab>
+<PLtab>(.//*[normalize-space(text()) and normalize-space(.)='Quote'])[1]/following::span[1]</PLtab>
 <Portfolio>//div[@id='oj-select-choice-portfolioTeamAssignment']</Portfolio>
 <Assignquote>//span[text()='Assign Quote']/parent::*/parent::*</Assignquote>
 <Bpnotfound>//span[text()='Base price not found']</Bpnotfound>
@@ -214,5 +214,59 @@
 <HubReferencelist>//li/a[text()='Hubnumber']</HubReferencelist>
 <Legend>//b[text()='Legend']</Legend>
 <Promocode>//div[text()='promo']/parent::*</Promocode>
+<!-- Product Model Rules -->
+<AEndpricingcity>//form//input[@id='attribute-pricingCityAEnd']</AEndpricingcity>
+<BEndpricingcity>//form//input[@id='attribute-pricingCityBEnd']</BEndpricingcity>
+<AEndcountry>//form//input[@id='attribute-countryCodeAEnd']</AEndcountry>
+<BEndcountry>//form//input[@id='attribute-countryCodeBEnd']</BEndcountry>
+<AEndbuildingtype>//form//input[@id='siteTypeAEnd']</AEndbuildingtype>
+<BEndbuildingtype>//form//input[@id='siteTypeBEnd']</BEndbuildingtype>
+<ValidationMessage>//*[@id='bandwidthWarningMessage']/span</ValidationMessage>
+<Coverage>//form//input[@id='coveragePage2']</Coverage>
+<NewLogoflag>id=newLogo_t</NewLogoflag>
+<!-- Product Model Rules -->
+<!-- FieldsLevel Validation -->
+<OCNCPQ>id=oCN_t</OCNCPQ>
+<OCNName>id=accountName_t</OCNName>
+<Address>id=address_t</Address>
+<SalesChannel>id=salesChannelAccount_t</SalesChannel>
+<PricingSegment>id=pricingSegment_t-ro</PricingSegment>
+<CustomerTear>id=customerTier_t</CustomerTear>
+<ColtOrganizationCountry>id=coltOrganisationCountry_t</ColtOrganizationCountry>
+<AccountValidation>id=accountValidatedFlag_t</AccountValidation>
+<Oppo>id=opportunityID_t</Oppo>
+<OppName>id=opportunityName_t</OppName>
+<Offertype>id=offerType_t</Offertype>
+<Createdby>id=opportunityCreatedBy_t</Createdby>
+<Technical>id=technicalComplexity_t</Technical>
+<Leagal>id=legalComplexity_t</Leagal>
+<goApproval>id=go0Approval_t</goApproval>
+<!-- Feature -->
+<Outside_Business_Hours_Installation>//div[@id='attribute-outsideBusinessHoursInstallationSiteEnd']//span//input</Outside_Business_Hours_Installation>
+<Long_Lining>//div[@id='attribute-longLiningSiteEnd']//span//input</Long_Lining>
+<Internal_Cabling>//div[@id='attribute-internalCablingSiteEnd']//span//input</Internal_Cabling>
+<Link_Aggregation>//div[@id='attribute-linkAggregationLAGSiteEnd']//span//input</Link_Aggregation>
+<Dual_Entry>//div[@id='attribute-dualEntrySiteEnd']//span//input</Dual_Entry>
+<Demarcation_device>//div[@id='attribute-demarcationDeviceSiteEnd']//span//input</Demarcation_device>
+<Carrier_Hotel_Cross_Connect>//div[@id='attribute-carrierHotelCrossConnectSiteEnd']//span//input</Carrier_Hotel_Cross_Connect>
+<Diversity>//div[@id='attribute-diversity']//span//input</Diversity>
+<Class_of_Service>//div[@id='attribute-classOfServiceAddon']//span//input</Class_of_Service>
+<Performance_Reporting>//div[@id='attribute-performanceReportingAddon']//span//input</Performance_Reporting>
+<Pro_Active_Management>//div[@id='attribute-proactiveManagementAddon']//span//input</Pro_Active_Management>
+<Fast_Track>//div[@id='attribute-fasttrackAddon']//span//input</Fast_Track>
+<Error>
+<Outside_Business_Hours_Installation>//div[@id='attribute-outsideBusinessHoursInstallationSiteEnd_message']/p</Outside_Business_Hours_Installation>
+<Long_Lining>//div[@id='attribute-longLiningSiteEnd_message']/p</Long_Lining>
+<Internal_Cabling>//div[@id='attribute-internalCablingSiteEnd_message']/p</Internal_Cabling>
+<Link_Aggregation>//div[@id='attribute-linkAggregationLAGSiteEnd_message']/p</Link_Aggregation>
+<Dual_Entry>//div[@id='attribute-dualEntrySiteEnd_message']/p</Dual_Entry>
+<Demarcation_device>//div[@id='attribute-demarcationDeviceSiteEnd_message']/p</Demarcation_device>
+<Carrier_Hotel_Cross_Connect>//div[@id='attribute-carrierHotelCrossConnectSiteEnd_message']/p</Carrier_Hotel_Cross_Connect>
+<Diversity>//div[@id='attribute-diversity_message']/p</Diversity>
+<Class_of_Service>//div[@id='attribute-classOfServiceAddon_message']/p</Class_of_Service>
+<Performance_Reporting>//div[@id='attribute-performanceReportingAddon_message']/p</Performance_Reporting>
+<Pro_Active_Management>//div[@id='attribute-proactiveManagementAddon_message']/p</Pro_Active_Management>
+<Fast_Track>//div[@id='attribute-fasttrackAddon_message']/p</Fast_Track>
+</Error>
 </locators>
 

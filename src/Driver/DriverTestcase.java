@@ -14,6 +14,7 @@ import org.apache.poi.hdgf.chunks.ChunkFactory.CommandDefinition;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -53,7 +54,9 @@ import ScriptHelper.ExploreHelper;
 import ScriptHelper.GenralInfoHelper;
 import ScriptHelper.LoginHelper;
 import ScriptHelper.OrderingHelper;
+import ScriptHelper.ProductModelRule;
 import ScriptHelper.SendProposalHelper;
+import ScriptHelper.Tester;
 import ScriptHelper.BulkHelper;
 
 public class DriverTestcase{
@@ -62,7 +65,7 @@ public class DriverTestcase{
 	
 public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new InheritableThreadLocal<>();
 //public static final ThreadLocal<RemoteWebDriver> WEB_DRIVER_THREAD_LOCAL = new InheritableThreadLocal<>();
-	
+	public static final ThreadLocal<Tester> TesterHeler= new InheritableThreadLocal<>();
 	public static final ThreadLocal<LoginHelper> Login= new InheritableThreadLocal<>();
 	public static final ThreadLocal<BCNUpdateHelper> BCNupdatehelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<C4CHelper> C4Chelper= new InheritableThreadLocal<>();
@@ -76,6 +79,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public static final ThreadLocal<BespokandNonStandard> BspokeNonStandard= new InheritableThreadLocal<>();
 	public static final ThreadLocal<ContainerJourneyHelper> ContainerHelper= new InheritableThreadLocal<>();
 	public static final ThreadLocal<BulkHelper> BulkHelper= new InheritableThreadLocal<>();
+	public static final ThreadLocal<ProductModelRule> PrductModelHelper= new InheritableThreadLocal<>();
 	public static ThreadLocal<String> QuoteID=new InheritableThreadLocal<>();
 	public static TestListener Testlistener;
 	//public static CarNorOrderHelper CarNorOrderhelper; 
@@ -157,6 +161,14 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		    Log.info(st[st.length-2].toString());
 		    ctx.setAttribute("testName", st[st.length-2].toString());
 	      }
+	      if(method.getName().equals("ProductmodelRules"))
+	      {
+	   		//DataReader dt=new DataReader();
+	   		//Object[][] data=dt.datareader();
+		    //Object[] st= (Object[]) data[itr][0];
+		    Log.info(st[st.length-2].toString());
+		    ctx.setAttribute("testName", st[st.length-2].toString());
+	      }
 	      
 	}
 
@@ -177,6 +189,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			Map<String, Object> prefs = new HashMap<String, Object>();
 			 // Set the notification setting it will override the default setting
 			prefs.put("profile.default_content_setting_values.notifications", 2);
+			prefs.put("profile.default_content_setting_values.popups", 1);
 			prefs.put("download.default_directory", System.getProperty("user.dir")+"\\src\\Data\\Downloads");
 			
             // Create object of ChromeOption class
@@ -185,6 +198,9 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			options.addArguments("--start-maximized");
 			options.addArguments("disable-infobars");
 			options.addArguments("--disable-popup-blocking");
+			//options.addArguments("user-data-dir=C:/Users/ashwanis/AppData/Local/Google/Chrome/User Data");
+
+			
 			//options.setExperimentalOption("excludeSwitches", "disable-popup-blocking");
 			capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
 			//capabilities.setCapability(CapabilityType.l, "none");
@@ -196,20 +212,20 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			dr= new ChromeDriver(capabilities);
 			//driver.manage().window().maximize();
 			
-			
-			dr.get("chrome://settings/content/popups");
-			//dr.findElement(By.xpath(h1[text()='Pop-ups and redirects']);
-			//dr.switchTo().frame("settings");
-			//Thread.sleep(2000);
-			//dr.findElement(By.xpath("//*[@id='popups']")).click();
-			Thread.sleep(6000);
-			Actions builder = new Actions(dr);
-			builder.sendKeys(Keys.TAB).build().perform();
-			builder.sendKeys(Keys.TAB).build().perform();
-			builder.sendKeys(Keys.TAB).build().perform();
-			builder.sendKeys(Keys.ENTER).build().perform();
-			//dr.findElement(By.id("control")).click();
-			//Thread.sleep(4000);
+//			
+//			dr.get("chrome://settings/content/popups");
+//			//dr.findElement(By.xpath(h1[text()='Pop-ups and redirects']);
+//			//dr.switchTo().frame("settings");
+//			//Thread.sleep(2000);
+//			//dr.findElement(By.xpath("//*[@id='popups']")).click();
+//			Thread.sleep(6000);
+//			Actions builder = new Actions(dr);
+//			builder.sendKeys(Keys.TAB).build().perform();
+//			builder.sendKeys(Keys.TAB).build().perform();
+//			builder.sendKeys(Keys.TAB).build().perform();
+//			builder.sendKeys(Keys.ENTER).build().perform();
+//			//dr.findElement(By.id("control")).click();
+//			//Thread.sleep(4000);
 		}
 		else if (targatedbrowser.equals("ie"))
 		{
@@ -291,18 +307,29 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 				DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 				Map<String, Object> prefs = new HashMap<String, Object>();
 				prefs.put("profile.default_content_setting_values.notifications", 2);
+				//prefs.put("--user-data-dir", "C:\\Users\\ashwanis\\AppData\\Local\\Google\\Chrome\\User Data");
+				//prefs.put("profile.default_content_setting_values.popups", 1);
+				//\
 				ChromeOptions options = new ChromeOptions();
-				options.setExperimentalOption("prefs", prefs);
-				options.addArguments("--start-maximized");
-				options.addArguments("disable-infobars");
-				options.addArguments("--disable-popup-blocking");	
+				//options.setExperimentalOption("prefs", prefs);
+				//options.setExperimentalOption("excludeSwitches", "enable-popup-blocking");
+				//options.addArguments("--start-maximized");
+				//options.addArguments("disable-infobars");
+				//options.addArguments("-incognito");
+				//options.addArguments("--disable-popup-blocking");	
+				//options.addArguments("--user-data-dir=/lib/");
 				
+				options.addArguments("user-data-dir=C:/Users/ashwanis/AppData/Local/Google/Chrome/User Data");
+
 				capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				capabilities.setCapability(CapabilityType.SUPPORTS_FINDING_BY_CSS, true);
 				System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
+				
 				System.setProperty("driver.name","RemoteWebdriver");
+				
 				dr= new ChromeDriver(capabilities);
+			
 				System.out.println("browser launched");
 			    HttpCommandExecutor executor = (HttpCommandExecutor) ((RemoteWebDriver) dr).getCommandExecutor();
 			    url2 = executor.getAddressOfRemoteServer();
@@ -312,16 +339,56 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 				
 			 System.out.println("Session ID is "+session_id);
 			 System.out.println("URL is "+url2);
+			// dr.setProfile()
 			 dr.get("chrome://settings/content/popups");
 				//dr.findElement(By.xpath(h1[text()='Pop-ups and redirects']);
 				//dr.switchTo().frame("settings");
 				//Thread.sleep(2000);
 				//dr.findElement(By.xpath("//*[@id='popups']")).click();
-				Thread.sleep(6000);
+			 Thread.sleep(20000);
+			 	waitandForElementDisplay("//body", 1);
+			 	
 				Actions builder = new Actions(dr);
 				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
 				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
 				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				 builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				 builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				 builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				 builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				 builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				 builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				 builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				 builder.sendKeys(Keys.TAB).build().perform();
+				 Thread.sleep(3000);
+				
+				
 				builder.sendKeys(Keys.ENTER).build().perform();
 				//dr.findElement(By.id("control")).click();
 				//Thread.sleep(4000);
@@ -346,6 +413,8 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		BespokandNonStandard BEN=new BespokandNonStandard(getwebdriver());
 		ContainerJourneyHelper CONTN=new ContainerJourneyHelper(getwebdriver());
 		BulkHelper BU=new BulkHelper(getwebdriver());
+		 ProductModelRule PRM=new ProductModelRule(getwebdriver());
+		 Tester TR=new Tester(getwebdriver());
 		Login.set(LN);
 		BCNupdatehelper.set(BCN);
 		BulkHelper.set(BU);
@@ -358,7 +427,8 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 		Explorehelper.set(EXP);
 		BspokeNonStandard.set(BEN);
 		ContainerHelper.set(CONTN);
-		
+		PrductModelHelper.set(PRM);
+		TesterHeler.set(TR);
 	}
 
 	@org.testng.annotations.BeforeSuite
@@ -366,8 +436,35 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	itr=0;
 	DOMConfigurator.configure("log4j.xml");
 	}
-	
-	
+	public boolean isElementPresent(String locator) {
+	    try {
+	        getwebdriver().findElement(By.xpath(locator));
+	        Log.info("Element Found: True");
+	        return true;
+	    } catch (NoSuchElementException e) {
+	    	 Log.info("Element Found: False");
+	        return false;
+	    }
+	}
+	public void waitandForElementDisplay(String locator, int timeout) throws InterruptedException
+	{
+			for(int i=0;i<=timeout*60/20;i++){
+				try {
+		            if (isElementPresent(locator)){
+		                break;
+		            }
+		            else{
+		            	Log.info("Refreshing the Pages");
+			        	//driver.navigate().refresh();
+			        	Log.info("Waiting For 20 Sec");
+			        	Thread.sleep(20000);
+		            }
+		            }
+		        catch (Exception e) {
+		        	Log.info(e.getMessage());
+		        }
+			}
+	}	
 	public static WebDriver createDriverFromSession(final SessionId sessionId, URL command_executor){
 		WebDriver drsession = null;
 		CommandExecutor executor = null;
@@ -466,7 +563,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public void Teardown2()
 	{
 		System.out.println("Cuurent Thread of diriver need to close-"+getwebdriver());
-		//getwebdriver().quit();
+		getwebdriver().quit();
 	}
 	@AfterTest
 	public void Teardown()

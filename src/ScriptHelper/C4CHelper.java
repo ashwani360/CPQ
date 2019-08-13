@@ -239,7 +239,7 @@ public class C4CHelper extends DriverHelper{
 		
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Save and Open Opportunuity Option");
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Clickmore"));
-		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),2);
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Clickmore")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on More link to Expand the Details");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
@@ -370,6 +370,7 @@ public class C4CHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Clickmore")));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on More link to Expand the Details");
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+		Thread.sleep(10000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Opportunity/Editopty"));
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Editopty")));
 		

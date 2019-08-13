@@ -1150,7 +1150,35 @@ public class ConfigurationHelper extends DriverHelper{
 	}
 	
 	
-	
+	public void FeidldlevelValidationAccount(Object[][] Inputdata) throws InterruptedException, DocumentException, Exception {
+
+        ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Save Button");
+
+    Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Account Details")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Account Details")));
+
+        Thread.sleep(5000);
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/OCNCPQ"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/OCNName"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/Address"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/SalesChannel"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/PricingSegment"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/CustomerTear"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/ColtOrganizationCountry"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/AccountValidation"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/NewLogoflag"))).equals(null));
+ NewLogoflag.set(GetValueofInput(getwebelement(xml.getlocator("//locators/NewLogoflag"))).toString());
+ }
+
+ public void FeidldlevelValidationOpp(Object[][] Inputdata) throws InterruptedException, DocumentException, Exception {
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/Oppo"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/OppName"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/Offertype"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/Createdby"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/Technical"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/Leagal"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/Dealclass"))).equals(null));
+ Assert.assertTrue(!GetValueofInput(getwebelement(xml.getlocator("//locators/goApproval"))).equals(null));
+ }
 	public void ConfigureProduct(String Prodcutname,Object[][] Inputdata, int i) throws Exception
 	{		Object[] ExploreID=new Object[2];
 			ExploreID[0]="";
@@ -1905,6 +1933,7 @@ public class ConfigurationHelper extends DriverHelper{
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
 		System.out.println(QuoteID.get());
 		CurrentURL();
+		FeidldlevelValidationAccount(Inputdata);
 		////--------------------------------------------------
 		
 		//Verify the OCN number
@@ -1951,6 +1980,7 @@ public class ConfigurationHelper extends DriverHelper{
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Save Button");
 		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Opportunity Info")));
 		Thread.sleep(5000);
+		FeidldlevelValidationOpp(Inputdata);
 		QuoteID.set(GetValueofInput(getwebelement(xml.getlocator("//locators/QuoteID"))));
 		System.out.println(QuoteID.get());
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Quote ID is"+QuoteID.get().toString());
@@ -2424,6 +2454,9 @@ public class ConfigurationHelper extends DriverHelper{
 			Thread.sleep(30000);
 			openurl2(CurrentQuoteURL.get());
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+			
+			
+			
 		
 		
 	}
@@ -2507,9 +2540,15 @@ public class ConfigurationHelper extends DriverHelper{
 	
 	public void SelectPromotion(Object[][] data, int i) throws InterruptedException, DocumentException
 	{
+		try {
 		if(!data[i][29].toString().equals(""))
 		{
 			Clickon(getwebelement(xml.getlocator("//locators/Promocode").replace("promo", data[i][29].toString())));
+		}
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("Ni Promotions Applied");
 		}
 	}
 }

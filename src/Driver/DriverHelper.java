@@ -105,6 +105,13 @@ public class DriverHelper {
 	public static ThreadLocal<String> CustomerOrderNumber=new ThreadLocal<>();
 	public static ThreadLocal<String> OrderType=new ThreadLocal<>();
 	public static ThreadLocal<String> Connectivitytype=new ThreadLocal<>();
+	public static ThreadLocal<String> AEndCity=new ThreadLocal<>();
+	public static ThreadLocal<String> BEndCity=new ThreadLocal<>();
+	public static ThreadLocal<String> AEndCountry=new ThreadLocal<>();
+	public static ThreadLocal<String> BEndCountry=new ThreadLocal<>();
+	public static ThreadLocal<String> AEndbuilding=new ThreadLocal<>();
+	public static ThreadLocal<String> BEndbuilding=new ThreadLocal<>();
+	public static ThreadLocal<String> NewLogoflag=new ThreadLocal<>();
 	public DriverHelper(WebDriver dr)
 	{
 		driver=dr;
@@ -117,11 +124,16 @@ public class DriverHelper {
 		Rerunrequired.set("No");
 		OpportunityID.set("New");
 		OrderType.set("");
-		CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/82478413");
+		CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/83077551");
+		Quotetcv.set("3931.2");
+		Quoteacv.set("3931.2");
+		Quotearr.set("3571.2");
+		Igmad.set("18");
 		//workitemcounter.set(1);
-		//QuoteID.set("QT-20190621-033408-01");
+		QuoteID.set("QT-20190809-036261-01");
 		//OpportunityID.set("267899");
 		DealClass.set("Bronze");
+		Connectivitytype.set("Onnet");
 //		//TotalTCVdisscount.set((float) 0);
 //		List Completeset=new ArrayList();
 //		for(int i=0;i<2;i++) {
@@ -159,6 +171,19 @@ public class DriverHelper {
 		js.executeScript("window.scrollTo(0, 0)");
 		//window.scrollTo(0, 0);
 	}
+
+public boolean checkOptions(String[] expected, WebElement el){
+		List<WebElement> options = el.findElements(By.xpath(".//option"));
+		int k = 0;
+		for (WebElement opt : options){
+			if (!opt.getText().equals(expected[k]))
+				{
+				return false;
+               }
+			k = k + 1;
+           }
+           return true;
+       }
 	public void javascriptexecutor2(WebElement el) throws InterruptedException
 	{
 		JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -514,8 +539,19 @@ public void ClickswithAction(String el) throws InterruptedException {
 		
 		
 		driver.get(environment);
+		Thread.sleep(5000);
+		clickOKonError();
+	}
+	public void clickOKonError() throws Exception {
+		
+		
+		if(isElementPresent("//*[contains(@class,'dialog-footer')]/button[string()='OK']"))
+		{
+			Clickon(getwebelement2("//*[contains(@class,'dialog-footer')]/button[string()='OK']"));
+		}
 		
 	}
+	
 	public void Geturl(String URL) throws Exception {
 	
 		driver.get(URL);
@@ -626,6 +662,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 				
 				Log.info("CPQ_URL");
 				openurl2(FinalURL);
+				Thread.sleep(20000);
 			}
 public void Moveon(WebElement el) {
 			
@@ -1028,6 +1065,7 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		}
 		catch(Exception e) {
 			Log.info("No Loader displayed");
+			System.out.println("No Loader");
 		}
 //		for(int i=0;i<=timeout*60/20;i++){
 //			try {
@@ -1123,17 +1161,28 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	{
 		String str = System.getProperty("user.dir")+"\\src\\Data\\"+FileName;
 		String[]  finalval=locator.split("=");
-		WebElement el=driver.findElement(By.id(finalval[1])); 
-		el.sendKeys(str);
-//		// + "\\Lib\\chromedriver.exe"
-//		Toolkit toolkit = Toolkit.getDefaultToolkit();
-//		Clipboard clipboard = toolkit.getSystemClipboard();
-//		StringSelection strSel = new StringSelection(str);
-//		clipboard.setContents(strSel, null);
-//		Actions keyAction = new Actions(driver); 
-//		keyAction.keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).perform();
-//		keyAction.sendKeys(Keys.ENTER);
-		
+		WebElement el;
+		if(locator.startsWith("id")) 
+			{
+			el=driver.findElement(By.id(finalval[1]));
+			}
+		else if(locator.startsWith("name"))
+			{
+			el=driver.findElement(By.name(finalval[1]));
+			}
+		else 
+			{
+			el=driver.findElement(By.xpath(finalval[1]));
+			}
+				el.sendKeys(str);
+				// + "\\Lib\\chromedriver.exe"
+				//Toolkit toolkit = Toolkit.getDefaultToolkit();
+				// Clipboard clipboard = toolkit.getSystemClipboard();
+				// StringSelection strSel = new StringSelection(str);
+				// clipboard.setContents(strSel, null);
+				// Actions keyAction = new Actions(driver);
+				// keyAction.keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).perform();
+				// keyAction.sendKeys(Keys.ENTER);
 	}
 	public String capturescreenshotforelement(WebElement ele) throws IOException
 	{

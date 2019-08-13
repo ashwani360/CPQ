@@ -41,7 +41,7 @@ public class BulkHelper extends DriverHelper{
 				WaitforElementtobeclickable(xml.getlocator("//locators/UploadNewFile"));
 				Clickon(getwebelement(xml.getlocator("//locators/UploadNewFile")));
 				WaitforElementtobeclickable(xml.getlocator("//locators/FileInput"));
-				uploadafile(xml.getlocator("//locators/FileInput"),"Bulk_Upload_Template_V1.5.xlsm");
+				uploadafile(xml.getlocator("//locators/FileInput"),Inputdata[0][5].toString());
 				Thread.sleep(4000);
 				WaitforElementtobeclickable(xml.getlocator("//locators/Uploadfile"));
 				Clickon(getwebelement(xml.getlocator("//locators/Uploadfile")));

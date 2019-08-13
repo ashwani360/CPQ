@@ -22,7 +22,7 @@ public class StandardOrderOnnet extends DriverTestcase {
 		Thread.sleep(3000);
 		C4Chelper.get().AddQuote();
 		Configurationhelper.get().AddProduct(Data);
-		C4Chelper.get().VerifyQuoteStage();
+		//C4Chelper.get().VerifyQuoteStage();
 		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for 3rd Party"))
 		{
 			Explorehelper.get().NavigatetoExplore();
@@ -132,8 +132,8 @@ public class StandardOrderOnnet extends DriverTestcase {
 @Test(dataProviderClass=DataReader.class,dataProvider="NewStandrdOrder")
 public void Testermethod(Object[][] Data) throws Exception
 {
-	Login.get().Login("ExploreNearNet");
-	Login.get().Logout("ExploreNearNet");
+	Login.get().OpenCPQQuoteDirectly();
+	TesterHeler.get().Testert(Data);
 }
 
 @Test(dataProviderClass=DataReader.class,dataProvider="NewContainer")
@@ -262,5 +262,15 @@ public void EndtoEndOrderBulkUpload(Object[][] Data) throws Exception
 	
 }
 
+@Test(dataProviderClass=DataReader.class,dataProvider="ProductModel")
+public void ProductmodelRules(Object[][] Data) throws Exception
 
+{
+		Login.get().Login("C4C");
+       C4Chelper.get().Movetoaccount(Data);
+       C4Chelper.get().MovetoOpportunuity(Data);
+       Thread.sleep(3000);
+       C4Chelper.get().AddQuote();
+       PrductModelHelper.get().AddProductrule(Data);
+}
 }

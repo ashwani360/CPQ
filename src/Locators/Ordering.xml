@@ -70,8 +70,8 @@
 <ConfirQuoteAction>//span[text()='Confirm Quote']/parent::*/parent::*</ConfirQuoteAction>
 <AdditionalinfomrationTab>//*[text()='Contact Information']</AdditionalinfomrationTab>
 <Accordian>(//button[@class='accordion'])[index]</Accordian>
-<Asitecomponey>(//td[contains(@headers,'additionalQuoteInformation_t')][5])[index]</Asitecomponey>
-<BSitecom>(//td[contains(@headers,'additionalQuoteInformation_t')][6])[index]</BSitecom>
+<Asitecomponey>(//td[contains(@headers,'additionalQuoteInformation_t') and contains(@class,'companyName') ])[index]</Asitecomponey>
+<BSitecom>(//td[contains(@headers,'additionalQuoteInformation_t') and contains(@class,'companyNameB') ])[index]</BSitecom>
 <SaveInfo>(//*[text()='Save']/parent::*/parent::*)[2]</SaveInfo>
 <CreateOrder>//*[text()='Create Order']/parent::*/parent::*</CreateOrder>
 <AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>

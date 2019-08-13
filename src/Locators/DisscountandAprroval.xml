@@ -85,7 +85,7 @@
 <UsernameProxy>//a[text()='Ashwani.Singh31@colt.net']/parent::*/parent::*/td[5]/a</UsernameProxy>
 <CPQQuotelink>//*[text()='QuoteId']/parent::*/parent::*/parent::*//td//a</CPQQuotelink>
 <ApproverComment>//input[contains(@id,'comment')]</ApproverComment>
-<ApproveasApprover>//span[text()='Approve']</ApproveasApprover>
+<ApproveasApprover>//span[text()='Approve']/parent::*/span[1]</ApproveasApprover>
 <Proxylogout>//img[contains(@title,'Logout')]/parent::*</Proxylogout>
 <SubmitetoApproval>//span[text()='Submit to Approval']/parent::*/parent::*</SubmitetoApproval>
 <customersignatureTab>//span[text()='Customer Signature']</customersignatureTab>
@@ -134,6 +134,7 @@
 <competitors>id=competitorsTextArea_t</competitors>
 <Quotetcv>id=tCVTotalContractValue_t</Quotetcv>
 <Quoteacv>id=aCVAnnualContractValue_t</Quoteacv>
+<Quotearr>id=aRRAnnualRecurringRevenue_t</Quotearr>
 <Disscountypecoulumn>((//*[normalize-space(text()) and normalize-space(.)='Priced'])[index]/following::td[4])[1]</Disscountypecoulumn>
 <LinelevelDiscounttype>(//li/div[normalize-space(string())='type'])[index]</LinelevelDiscounttype>
 <LinelevelNRCdiscountColumn>(//span[normalize-space(string())='type']/parent::td/following::td)[index]</LinelevelNRCdiscountColumn>
@@ -145,5 +146,6 @@
 <Uploadmargin>//span[text()='Upload Key Financials']/parent::*/parent::*</Uploadmargin>
 <textarea1>id=pricePositioningTextArea_t</textarea1>
 <textarea2>id=commercialRiskTextArea_t</textarea2>
+<CSTApprovalMessage>//div[@id='approvalHistorySubmitHtml_t']//div[contains(string(),'Submitted for CST Approval')]</CSTApprovalMessage>
 </locators>
 

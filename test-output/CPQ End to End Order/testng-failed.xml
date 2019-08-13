@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" data-provider-thread-count="1" name="Failed suite [CPQ End to End Order]">
+<suite thread-count="1" data-provider-thread-count="4" name="Failed suite [CPQ End to End Order]">
   <listeners>
     <listener class-name="Listeners.TestListener"/>
     <listener class-name="Listeners.AnnotationTransformer"/>
   </listeners>
-  <test name="CPQ End to End Container New Bussiness(failed)">
+  <test name="CPQ End to End Order(failed)">
     <classes>
       <class name="Testscript.StandardOrderOnnet">
         <methods>
           <include name="BeforeMethod"/>
+          <include name="EndtoEndOrder" invocation-numbers="3 4 2 0 7 5 1 9 6 8 13 11 12 15 14 10 18 16 19 17 20 21 22 23 26 24 25 29 27 28 31 32 33 30 34 35 38 39 36 37 40 41 42 43 44 45 46 47 48 50 51 49 52 53 54 55 56 57 58 59 60 61 62 63 66 64 65 67 68 69 70 71 72 73"/>
           <include name="Teardown2"/>
           <include name="BeforeSuite"/>
           <include name="Teardown"/>
-          <include name="EndtoEndOrderBulkUpload" invocation-numbers="0"/>
         </methods>
       </class> <!-- Testscript.StandardOrderOnnet -->
     </classes>
-  </test> <!-- CPQ End to End Container New Bussiness(failed) -->
+  </test> <!-- CPQ End to End Order(failed) -->
 </suite> <!-- Failed suite [CPQ End to End Order] -->
