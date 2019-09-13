@@ -28,9 +28,9 @@
 <Logout>//td[text()='Log Out']</Logout>
 </ExploreNearNet>
 <CPQ>
-<Username>id=userId</Username>
-<Password>id=password</Password>
-<Loginbutton>//*[@type='submit']</Loginbutton>
+<Username>id=username</Username>
+<Password>id=psword</Password>
+<Loginbutton>//a[text()='Log in']/parent::*/parent::*/parent::*/parent::*/parent::*</Loginbutton>
 <!--<SiebelUserinfo>//*[@id="gen_menu_6"]</SiebelUserinfo>-->
 <AccountSettingButton>//li[@title="Settings"]</AccountSettingButton>
 <Logout>//span[text()='Log out']/parent::*</Logout>

@@ -16,7 +16,7 @@
 <Logout>//button[text()="Logout"]</Logout>
 </CPQ>
 <CustomerSection>//h1[text()='Customers']</CustomerSection>
-<Accountlink>//a[text()='Accounts']</Accountlink>
+<Accountlink>//a[text()='Accounts']</Accountlink>Save
 <OCN>//span[text()='100119208']/parent::*/parent::*/following-sibling::*/div/a</OCN>
 <OpportunuityTab>//div[text()='Opportunities']</OpportunuityTab>
 <Opportunuitynumber>//span[text()='265292']/parent::*/parent::*/following-sibling::*/div/a</Opportunuitynumber>
@@ -34,7 +34,10 @@
 <EthernetHub>//a[text()='Ethernet Hub']</EthernetHub>
 <EtherNetSpoke>//a[text()='Ethernet Spoke']</EtherNetSpoke>
 <Opticalfamily>//a[text()='Optical']</Opticalfamily>
+<FamilyName>//a[text()='Familyname']</FamilyName>
+<Productname>//a[text()='Productname']</Productname>
 <OpticalWave>//a[text()='Wave']</OpticalWave>
+
 <Asite>id=siteAddressAEnd</Asite>
 <Bsite>id=siteAddressBEnd</Bsite>
 <HubType>id=hubType</HubType>
@@ -45,6 +48,7 @@
 <Messages>//*[text()='Connected via Colt' or text()='Datacenter Connected via Colt' or text()='Automated Nearnet' or text()='Could not find Onnet and Automated Nearnet Connectivity' or contains(text(),'Please confirm the')]</Messages>
 <AddressDoctorRejectAll>//button[text()='Reject All']</AddressDoctorRejectAll>
 <ConnectivitiCheck>//td[text()='Next']</ConnectivitiCheck>
+<ConnectivitiCheckIP>//a[text()='Next']</ConnectivitiCheckIP>
 <SiteDetailTab>//span[text()='Site Details']</SiteDetailTab>
 <Contractterm>id=contractTermInYears</Contractterm>
 <Interface>id=interfaceWavePage2</Interface>
@@ -165,6 +169,7 @@
 <ExpRequestIDNearNet>(//*[contains(@class,'field-id')])[4]</ExpRequestIDNearNet>
 <ManualNearNetAsite>//*[@id='nearNetA']//*[text()='Manual']/parent::*/td/input</ManualNearNetAsite>
 <Quotestatus>id=status_t-ro</Quotestatus>
+<POALineItem>//*[text()='Waiting for POA']</POALineItem>
 <PPT>
 <BasePrice>//td[text()='Price Not Found' or text()='POA']</BasePrice>
 <PartialSave>//div[@class='tab-content ' and not(contains(@style,'display:none'))]//input[@name='partialSave_Features' or @name='partialSave_SiteDetails']</PartialSave>
@@ -174,25 +179,33 @@
 <PLtab>(.//*[normalize-space(text()) and normalize-space(.)='Quote'])[1]/following::span[1]</PLtab>
 <Portfolio>//div[@id='oj-select-choice-portfolioTeamAssignment']</Portfolio>
 <Assignquote>//span[text()='Assign Quote']/parent::*/parent::*</Assignquote>
-<Bpnotfound>//span[text()='Base price not found']</Bpnotfound>
+<Bpnotfound>(//span[text()='Base price not found' or text()='FastTrack price not found'])[index]</Bpnotfound>
+<PricingCutinotfoundmodel>//span[contains(text(),'Pricing City') and contains(text(),'Not Found')]/parent::*/parent::*/preceding-sibling::*[1]</PricingCutinotfoundmodel>
 <POA>//span[text()='POA']</POA>
 <Fastnotfound>//span[text()='FastTrack price not found']</Fastnotfound>
-<Pricingcitynotfound>//span[text()='A-END Pricing City ( Linz) Not Found']</Pricingcitynotfound>
-<Basepricenrr>//span[@title='Base price not found']/parent::*/parent::*/td[12]/span</Basepricenrr>
-<Basepricemrr>//span[@title='Base price not found']/parent::*/parent::*/td[14]/span</Basepricemrr>
-<Fastracknrr>//span[@title='FastTrack price not found']/parent::*/parent::*/td[12]/span</Fastracknrr>
+<Pricingcitynotfound>//span[contains(text(),'Pricing City') and contains(text(),'Not Found')]</Pricingcitynotfound>
+<Basepricenrr>(//span[@title='Base price not found' or @title='Waiting for POA']/parent::*/parent::*/td[contains(@class,'nRCGross')]/span)[index]</Basepricenrr>
+<Basepricemrr>(//span[@title='Base price not found' or @title='Waiting for POA']/parent::*/parent::*/td[contains(@class,'mRCGross')]/span)[index]</Basepricemrr>
+<Fastracknrr>(//span[@title='FastTrack price not found']/parent::*/parent::*/td[contains(@class,'nRCGross')]/span)[index]</Fastracknrr>
 
-<Pricincity>//span[@title='A-END Pricing City ( Linz) Not Found']</Pricincity>
-<Selectrow>//span[@title='A-END Pricing City ( Linz) Not Found']//parent::*/parent::*[1]</Selectrow>
+<Pricincity>//span[contains(@title,'Pricing City') and contains(text(),'Not Found')]</Pricincity>
+<Selectrow>//span[contains(@title,'Pricing City') and contains(text(),'Not Found')]//parent::*/parent::*[1]</Selectrow>
 <Sitedetails>//span[text()='Site Details']</Sitedetails>
 <PricingCitydropdown>//button[@title='Show All Items']</PricingCitydropdown>
 <Clickupdate>//a[@name='update']</Clickupdate>
 <Clicksave>//a[@name='save']</Clicksave>
-<Sendtosales>//span[text()='Send To Sales']</Sendtosales>>
-
+<Sendtosales>//span[text()='Send To Sales' or text()='Submit POA Prices']/parent::*/parent::*[@style=""]</Sendtosales>>
+<AEndPrincingCitylist></AEndPrincingCitylist>
+<BEndPrincingCitylist></BEndPrincingCitylist>
+<AEndCityExpander>//button[@title='Show All Items']</AEndCityExpander>
+<AEndCity>//li/a[text()='CityName']</AEndCity>
+<BEndCityExpander>//button[@title='Show All Items']</BEndCityExpander>
+<BEndCity>//li/a[text()='CityName']</BEndCity>
 <Pptuser>Do not know</Pptuser>
+<POALineItem>//span[@title='Base price not found' or @title='Waiting for POA']</POALineItem>
+<Pricenotfound>//span[@title='Base price not found' or @title='FastTrack price not found']</Pricenotfound>
 </PPT>
-<Nonfeasiblemsg> //*[contains(text(),'The selected interface is not compatible for sites A. and B. ')] </Nonfeasiblemsg>
+<Nonfeasiblemsg> //*[contains(text(),'The selected interface is not compatible for sites A. and B.')] </Nonfeasiblemsg>
 <PartialSave>//input[@name='partialSave_Features']</PartialSave>
 <Savetoquote>//a[text()='Save to Quote']</Savetoquote>
 <UsernameProxy>//a[text()='Ashwani.Singh31@colt.net']/parent::*/parent::*/td[5]/a</UsernameProxy>
@@ -267,6 +280,35 @@
 <Performance_Reporting>//div[@id='attribute-performanceReportingAddon_message']/p</Performance_Reporting>
 <Pro_Active_Management>//div[@id='attribute-proactiveManagementAddon_message']/p</Pro_Active_Management>
 <Fast_Track>//div[@id='attribute-fasttrackAddon_message']/p</Fast_Track>
+
 </Error>
+<Nearnetpopup>//span[contains(text(),'Submit')]</Nearnetpopup>
+<HubAddresslabel>//label[text()='Hub Address']</HubAddresslabel>
+<quoteName>id=quoteName_t</quoteName>
+<Start>//a[text()='Start']</Start>
+<ContracttermIP>id=contractTermAEnd</ContracttermIP>
+<ServiceResilenceIP>id=layer2ResilienceAEnd</ServiceResilenceIP>
+<Billingtype>id=billingTypeAEnd</Billingtype>
+<FutureSupport>id=CircuitReqToSupportHigherBWInTheFutureWithoutPhysicalChangeAEnd_true</FutureSupport>
+<Routertype>id=selectRouterTypeAEnd</Routertype>
+<LanInterface>id=selectInterfaceTypeAEnd</LanInterface>
+<RouterFeature>//*[text()='Featurename']/parent::*/following-sibling::div[1]//input</RouterFeature>
+<Interfacetype>id=servicePresentationInterfaceType</Interfacetype>
+<interface>id=interfaceAEnd</interface>
+<Connector>id=connectorAEnd</Connector>
+<IPAddressFomate>id=iPAddressingFormatAEnd</IPAddressFomate>
+<IPV4Type>id=iPv4AddressingTypeAEnd</IPV4Type>
+<IPV4number>id=numberOfIPv4AddressesAEnd</IPV4number>
+<IPV6Type>id=iPv6AddressingTypeAEnd</IPV6Type>
+<IPV6number>id=numberOfIPv6AddressesAEnd</IPV6number>
+<Layer3Resilency>id=layer3Resiliency</Layer3Resilency>
+<SecondarySite>//span[text()='Secondary Address']/parent::a/parent::div</SecondarySite>
+<Sameasprimary>//*[text()='Same as Primary Address']</Sameasprimary>
+<ServiceBandwidthBackup>id=backupBandwidth</ServiceBandwidthBackup>
+<ServiceResilenceLayer2>id=layer2ResilienceAEnd</ServiceResilenceLayer2>
+<Diversity>id=diversity_true</Diversity>
+<ParitalSaveIP>//*[@id='markForPartialSaveSysConfig_true']</ParitalSaveIP>
+<ExitingLeadtime>id=existingCapacityLeadTimeAEnd</ExitingLeadtime>
+<Promotion></Promotion>
 </locators>
 

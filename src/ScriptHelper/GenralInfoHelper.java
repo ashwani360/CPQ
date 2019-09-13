@@ -25,13 +25,14 @@ public class GenralInfoHelper extends DriverHelper{
 
 
 	public void GenralInfomration(Object[][] Inputdata) throws Exception {
-		WaitforCPQloader();
+		//WaitforCPQloader();
+		waitForpageload();
 		Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
 		waitForpageload();
 		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Legal Contact Details")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Legal Contact Details")));
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
-		WaitforElementtobeclickable("//div[contains(@aria-labelledby,'-label')]/div[contains(text(),'Contact')]");
-		
+		WaitforElementtobeclickable(xml.getlocator("//locators/Selectionpopup").replace("Popupbox", "Legal Contact Details"));
+		waitForpageload();
 		//Clickonoutofviewport(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
 		//Clickon(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));
 		//waitandForElementDisplay(xml.getlocator("//locators/Selectprimarycontact"),1);
@@ -43,15 +44,18 @@ public class GenralInfoHelper extends DriverHelper{
 //		{
 //			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
 //		}
+		WaitforElementtobeclickable(xml.getlocator("//locators/Selectprimarycontact"));
 		Clickon(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitContact")));
-		
+		waitForpageload();
 		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Technical/Ordering Contacts")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Technical/Ordering Contacts")));
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/TechnicalcontactGetdetail")));
 		//Clickon(getwebelement(xml.getlocator("//locators/TechnicalcontactGetdetail")));
 		//waitandForElementDisplay(xml.getlocator("//locators/Selectprimarycontact"),1);
 		//Thread.sleep(3000);
-		WaitforElementtobeclickable("//div[contains(@aria-labelledby,'-label')]/div[contains(text(),'Contact')]");
+		WaitforElementtobeclickable(xml.getlocator("//locators/Selectionpopup").replace("Popupbox", "Technical/Ordering Contacts"));
+		waitForpageload();
+		//WaitforElementtobeclickable("//div[contains(@aria-labelledby,'-label')]/div[contains(text(),'Contact')]");
 //		try {
 //			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
 //			}
@@ -59,6 +63,7 @@ public class GenralInfoHelper extends DriverHelper{
 //			{
 //				safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
 //			}
+		WaitforElementtobeclickable(xml.getlocator("//locators/Selectprimarycontact"));
 		Clickon(getwebelement(xml.getlocator("//locators/Selectprimarycontact")));
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitContact")));
 		waitForpageload();

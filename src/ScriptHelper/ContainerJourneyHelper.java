@@ -37,6 +37,8 @@ public class ContainerJourneyHelper extends DriverHelper {
 		SendKeys(getwebelement(xml.getlocator("//locators/EnterProductName")),Data[i][2].toString());
 		Thread.sleep(2000);
 		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/EnterProductName")),Keys.ENTER);
+		waitForpageload();
+		Thread.sleep(8000);
 		Clickon(getwebelement(xml.getlocator("//locators/AddContainerProduct")));
 		getwebelement(xml.getlocator("//locators/EnterProductName")).clear();
 		}
@@ -130,7 +132,8 @@ public class ContainerJourneyHelper extends DriverHelper {
 		Clickon(getwebelement(xml.getlocator("//locators/CSTApproval")));
 		Thread.sleep(10000);
 		//proxy logout
-		WaitforElementtobeclickable(xml.getlocator("//locators/ProxyLogout"));
+		waitForpageload();
+		//WaitforElementtobeclickable(xml.getlocator("//locators/ProxyLogout"));
 		Clickon(getwebelement(xml.getlocator("//locators/ProxyLogout")));
 		Thread.sleep(5000);
 		 openurl2(CurrentQuoteURL.get());

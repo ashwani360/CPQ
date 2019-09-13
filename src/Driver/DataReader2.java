@@ -3,8 +3,10 @@ package Driver;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.apache.poi.ss.usermodel.Cell;
@@ -129,12 +131,9 @@ public class DataReader2 {
 	}
 	
 	public static void main(String []args) throws Exception {
-	//DOMConfigurator.configure("log4j.xml");
-	//Log.info(Integer.toString(datareader().length));
-	//System.out.println(Integer.toString(datareader().length));
-		//System.out.println("hi");
-		String pattern = "dd/MM/yyyy";
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		String pattern = "yyMMdd";
+		SimpleDateFormat simpleDateFormat =
+		        new SimpleDateFormat(pattern, new Locale("en", "UK"));
 
 		String date = simpleDateFormat.format(new Date());
 		System.out.println(date);

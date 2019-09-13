@@ -13,7 +13,9 @@ public class StandardOrderOnnet extends DriverTestcase {
 	public void EndtoEndOrder(Object[][] Data) throws Exception
 	{
 		//ExtentTestManager.getTest().setDescription("Login Into C4C");
-	
+		//Login.get().Login1("CPQ");
+		//C4Chelper.get().Submitformlogin();
+		//C4Chelper.get().proxylogininCPQ();
 		Login.get().Login("C4C");
 		
 		C4Chelper.get().Movetoaccount(Data);
@@ -23,10 +25,10 @@ public class StandardOrderOnnet extends DriverTestcase {
 		C4Chelper.get().AddQuote();
 		Configurationhelper.get().AddProduct(Data);
 		//C4Chelper.get().VerifyQuoteStage();
-		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for 3rd Party"))
+		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for BCP"))
 		{
+			System.out.println("inBCP");
 			Explorehelper.get().NavigatetoExplore();
-			Explorehelper.get().ExploreWorkflow(Data);
 			Login.get().Logout("Explore");
 			//Thread.sleep(30000);
 			Login.get().Login("ExploreNearNet");
@@ -39,41 +41,66 @@ public class StandardOrderOnnet extends DriverTestcase {
 			//C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			Configurationhelper.get().Reconfigure(Data);
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
+//			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
+			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
+			{
+			Configurationhelper.get().ReconfigureAgain(Data);
+			Explorehelper.get().NavigatetoExplore();
+			Login.get().Logout("Explore");
+			Login.get().Login("ExploreNearNet");
+			Explorehelper.get().ExploreWorkflownearnet(Data);
+			Login.get().Logout("ExploreNearNet");
+			Login.get().Login("C4C");
+			
+			//C4Chelper.get().Movetoaccount(Data);
+			//C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			Configurationhelper.get().Reconfigure(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+			}
+		}
+		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for 3rd Party"))
+		{
+			System.out.println("in 3rd party");
+			Explorehelper.get().NavigatetoExplore();
+			Explorehelper.get().ExploreWorkflow(Data);
+			
+			C4Chelper.get().NavigatetoC4C();
+			//C4Chelper.get().Movetoaccount(Data);
+			//C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			Configurationhelper.get().Reconfigure(Data);
+			//C4Chelper.get().VerifyQuoteStage();
 //			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
 			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
 			{
 			Configurationhelper.get().ReconfigureAgain(Data);
 			Explorehelper.get().NavigatetoExplore();
 			Explorehelper.get().ExploreWorkflow(Data);
-			Login.get().Logout("Explore");
-			Login.get().Login("ExploreNearNet");
-			Explorehelper.get().ExploreWorkflownearnet(Data);
-			Login.get().Logout("ExploreNearNet");
-			Login.get().Login("C4C");
-			
+			C4Chelper.get().NavigatetoC4C();
 			//C4Chelper.get().Movetoaccount(Data);
 			//C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			Configurationhelper.get().Reconfigure(Data);
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 			}
 		}
-		else if(Configurationhelper.get().Quotestatus.get().equals("POA"))
+		if(Configurationhelper.get().Quotestatus.get().equals("POA"))
 		{
 			Configurationhelper.get().POA();
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 			}
-		else if(Configurationhelper.get().Quotestatus.get().equals("Created"))
+		if(Configurationhelper.get().Quotestatus.get().equals("Created"))
 		{
 			Configurationhelper.get().SEDataupdate(Data);
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 			}
-		else if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
+		if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
 		{
 			//Need to write the codeExceptionPPT()
 			Configurationhelper.get().ExceptionPPT();
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 		}
 		// If Stage is waiting for third Party Need to call All the Explore functions
 		
@@ -95,45 +122,48 @@ public class StandardOrderOnnet extends DriverTestcase {
 		}
 		DisscountAndAprrovalhelper.get().ApproveQuote(Data);
 		Configurationhelper.get().SetCurrectQuoteStage();
-		C4Chelper.get().VerifyQuoteStage();
+		//C4Chelper.get().VerifyQuoteStage();
 		// belowMethods will not call if Quote is not in Aprroved Stage 
 		if(Configurationhelper.get().Quotestatus.get().equals("Approved")){
 		SendProposalhelper.get().CustomerSign(Data);
-		C4Chelper.get().VerifyQuoteStage();
+		//C4Chelper.get().VerifyQuoteStage();
 		if(Data[0][24].toString().equals("Email")) {
 			Orderinghelper.get().AcceptsQuote(Data);
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 			Orderinghelper.get().CreateOrder(Data);
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 		}
 		else {
 			Orderinghelper.get().AcceptsQuotebyEsignature(Data);
 			C4Chelper.get().NavigatetoC4C();
-			C4Chelper.get().Movetoaccount(Data);
-			C4Chelper.get().MovetoOpportunuity(Data);
+//			C4Chelper.get().Movetoaccount(Data);
+//			C4Chelper.get().MovetoOpportunuity(Data);
 			C4Chelper.get().EditQuote();
 			C4Chelper.get().CheckdocumentSigned();
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 			Orderinghelper.get().AcceptsQuote(Data);
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 			Orderinghelper.get().CreateOrder(Data);
-			C4Chelper.get().VerifyQuoteStage();
+			//C4Chelper.get().VerifyQuoteStage();
 			
 			}
 		
 	}
 			
 	//Configurationhelper.get().AddProducttest(Data);
-		Login.get().Login("Siebel");
-		Orderinghelper.get().SeibleOrderVerification(Data);
+		//Login.get().Login("Siebel");
+		//Orderinghelper.get().SeibleOrderVerification(Data);
 		
 	}
 
 @Test(dataProviderClass=DataReader.class,dataProvider="NewStandrdOrder")
 public void Testermethod(Object[][] Data) throws Exception
 {
-	Login.get().OpenCPQQuoteDirectly();
-	TesterHeler.get().Testert(Data);
+	
+	C4Chelper.get().LoginAsC4CAddmin("C4C");
+	C4Chelper.get().OpenOpportunutiDetail();
+	C4Chelper.get().UpdateOpportunuty();
+	//C4Chelper.get().Logout();
 }
 
 @Test(dataProviderClass=DataReader.class,dataProvider="NewContainer")
@@ -146,16 +176,16 @@ public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 	
 	Thread.sleep(3000);
 	C4Chelper.get().Product_Add();
-	C4Chelper.get().AddContainerQuote();
+	C4Chelper.get().AddContainerQuote(Data);
 	ContainerHelper.get().AddContainerProduct(Data);
-	C4Chelper.get().VerifyQuoteStage();
+	//C4Chelper.get().VerifyQuoteStage();
 	GenralInfohelper.get().GenralInfomration(Data);
 	ContainerHelper.get().ContainerApproveQuote();
 	if(!Data[0][4].equals("CST")) {
 	ContainerHelper.get().ContainerSEApproval();
-	C4Chelper.get().VerifyQuoteStage();
+	//C4Chelper.get().VerifyQuoteStage();
 	ContainerHelper.get().ContainerCSTApproval(Data);
-	C4Chelper.get().VerifyQuoteStage();
+	//C4Chelper.get().VerifyQuoteStage();
 }
 	else
 	{
@@ -171,8 +201,8 @@ public void EndtoEndOrderContainerNew(Object[][] Data) throws Exception
 	else {
 		Orderinghelper.get().AcceptsQuotebyEsignature(Data);
 		C4Chelper.get().NavigatetoC4C();
-		C4Chelper.get().Movetoaccount(Data);
-		C4Chelper.get().MovetoOpportunuity(Data);
+		//C4Chelper.get().Movetoaccount(Data);
+		//C4Chelper.get().MovetoOpportunuity(Data);
 		C4Chelper.get().EditQuote();
 		C4Chelper.get().CheckdocumentSigned();
 		Orderinghelper.get().AcceptsQuote(Data);

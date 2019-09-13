@@ -13,8 +13,9 @@ public class xmlreader {
 		fileloaction=filepath;
 	}
 	
-public String getlocator(String nodepath) throws DocumentException
+public String getlocator(String nodepath) throws DocumentException, InterruptedException
 {
+	
 	String locator=null;
 	File Inputfile=new File(fileloaction);
 	SAXReader xmlreader=new SAXReader();

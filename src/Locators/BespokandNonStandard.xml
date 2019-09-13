@@ -33,8 +33,8 @@
 <Frequency>//select[@name='frequency']</Frequency>
 <Notes>//textarea[@name='notesProductDescription_bespokearray']</Notes>
 <Update>//a[@name='update']</Update>
-<Save>//a[@name='save']</Save>
-<PLtab>//*[@id="ui-id-41"]/span</PLtab>
+<Save>(//*[text()='Save']/parent::*/parent::*)[1]</Save>
+<PLtab>(.//*[normalize-space(text()) and normalize-space(.)='Quote'])[1]/following::span[1]</PLtab>
 <Tsolution>//*[@id='technicalSolutionTextArea_t']</Tsolution>
 <Dealbackground>//*[@id='dealBackgroundTextArea_t']</Dealbackground>
 <Comparea>//*[@id='competitorsTextArea_t']</Comparea>

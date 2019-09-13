@@ -70,8 +70,8 @@
 <ConfirQuoteAction>//span[text()='Confirm Quote']/parent::*/parent::*</ConfirQuoteAction>
 <AdditionalinfomrationTab>//*[text()='Contact Information']</AdditionalinfomrationTab>
 <Accordian>(//button[@class='accordion'])[index]</Accordian>
-<Asitecomponey>(//td[contains(@headers,'additionalQuoteInformation_t') and contains(@class,'companyName') ])[index]</Asitecomponey>
-<BSitecom>(//td[contains(@headers,'additionalQuoteInformation_t') and contains(@class,'companyNameB') ])[index]</BSitecom>
+<Asitecomponey>(//td[contains(@headers,'additionalQuoteInformation_t') and contains(@class,'companyName')]//span )[index]</Asitecomponey>
+<BSitecom>(//td[contains(@headers,'additionalQuoteInformation_t') and contains(@class,'companyNameB')]//span )[index]</BSitecom>
 <SaveInfo>(//*[text()='Save']/parent::*/parent::*)[2]</SaveInfo>
 <CreateOrder>//*[text()='Create Order']/parent::*/parent::*</CreateOrder>
 <AjaxLoader>//*[@aria-label='Fetching Data...']</AjaxLoader>
@@ -92,6 +92,9 @@
 <OrderConfirmation>//*[text()='#Your Order request is on-going. You will be updated shortly.']</OrderConfirmation>
 <Ordernubmer>id=customerOrderNo_t</Ordernubmer>
 <Showordercoulumn>//span[text()='Order Details']/parent::*</Showordercoulumn>
+<OdrderType>(//*[contains(@class,'col-siebelOrders_l')]/span)[index]</OdrderType>
+<ServiceOrderNumber>(//*[contains(@class,'serviceOrderNo_l')]/span)[index]</ServiceOrderNumber>
+<Workitem>(//*[@title='Collapse']/parent::*/parent::*)[index]/*[contains(@class,'col-workItemReferenceNumberqto_l')]/span</Workitem>
 <Sieble>
 <CustomerOrderTab>//a[text()='Customer Orders']</CustomerOrderTab>
 <CustomerOrdernumber>//input[@aria-label="Siebel Order #"]</CustomerOrdernumber>
@@ -101,5 +104,8 @@
 <Bandwidth>//select[@name="Service Bandwidth"]</Bandwidth>
 <Resilency>//select[@name="A End Resilience Option"]</Resilency>
 </Sieble>
+<GeneralinformationTab>//span[text()='General Information']</GeneralinformationTab>
+<Asitecomponeyinput>//input[@id='companyName-index']</Asitecomponeyinput>
+<Bsitecomponeyinput>//input[@id='companyNameB-index']</Bsitecomponeyinput>
 </locators>
 

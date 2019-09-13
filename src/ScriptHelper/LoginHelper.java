@@ -127,7 +127,24 @@ public class LoginHelper extends DriverHelper{
 		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Login Button");
 		
 	}
-	
+	public void Login1(String Application) throws Exception
+	{
+		openurl(Application);
+		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Navigated to "+Application+" Login Page");
+		WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Username"));  
+		SendKeys(getwebelement(xml.getlocator("//locators/"+Application+"/Username")),Getkeyvalue(Application+"_Username"));
+		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter User Name");
+		WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Password"));
+		SendKeys(getwebelement(xml.getlocator("//locators/"+Application+"/Password")),Getkeyvalue(Application+"_Password"));
+		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter Password");
+		WaitforElementtobeclickable(xml.getlocator("//locators/"+Application+"/Loginbutton"));
+		//getwebelement(xml.getlocator("//locators/"+Application+"/Password")).submit();
+		//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/"+Application+"/Password")),Keys.ENTER);
+		//Clickon(getwebelement(xml.getlocator("//locators/"+Application+"/Loginbutton")));
+		javascriptexecutor2("loginform");
+		//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Login Button");
+		
+	}
 	public void OpenCPQQuoteDirectly() throws Exception {
 		Login("CPQ");
 		Thread.sleep(10000);

@@ -23,16 +23,19 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -50,6 +53,7 @@ public class DriverHelper {
 	Wait<WebDriver> wait;
 	WebElement el;
 	List<WebElement> ellist;
+	public static ThreadLocal<WebElement> element=new ThreadLocal<>();
 	public static ThreadLocal<String> QuoteID=new ThreadLocal<>();
 	public static ThreadLocal<String> CurrentQuoteURL=new ThreadLocal<>();
 	public static ThreadLocal<String> DealClass=new ThreadLocal<>();
@@ -112,28 +116,32 @@ public class DriverHelper {
 	public static ThreadLocal<String> AEndbuilding=new ThreadLocal<>();
 	public static ThreadLocal<String> BEndbuilding=new ThreadLocal<>();
 	public static ThreadLocal<String> NewLogoflag=new ThreadLocal<>();
+	public static ThreadLocal<String> DealpriceinCoomerceApproval=new ThreadLocal<>();
+	public static ThreadLocal<String> PriceChangesSE=new ThreadLocal<>();
 	public DriverHelper(WebDriver dr)
 	{
 		driver=dr;
 		wait = new FluentWait<WebDriver>(driver) 
-				.withTimeout(60, TimeUnit.SECONDS)    
-				.pollingEvery(1000, TimeUnit.MILLISECONDS)    
+				.withTimeout(480, TimeUnit.SECONDS)    
+				.pollingEvery(500, TimeUnit.MILLISECONDS)    
 				.ignoring(NoSuchElementException.class)
-				.ignoring(StaleElementReferenceException.class)
+				
 			;
 		Rerunrequired.set("No");
 		OpportunityID.set("New");
-		OrderType.set("");
-		CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/83077551");
-		Quotetcv.set("3931.2");
-		Quoteacv.set("3931.2");
-		Quotearr.set("3571.2");
-		Igmad.set("18");
-		//workitemcounter.set(1);
-		QuoteID.set("QT-20190809-036261-01");
-		//OpportunityID.set("267899");
-		DealClass.set("Bronze");
-		Connectivitytype.set("Onnet");
+		DealpriceinCoomerceApproval.set("No");
+		PriceChangesSE.set("No");
+//		OrderType.set("");
+		CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/84152274");
+//		Quotetcv.set("3931.2");
+//		Quoteacv.set("3931.2");
+//		Quotearr.set("3571.2");
+//		Igmad.set("18");
+//		//workitemcounter.set(1);
+//		QuoteID.set("QT-20190817-033088-01");
+//		//OpportunityID.set("267899");
+//		DealClass.set("Bronze");
+//		Connectivitytype.set("Onnet");
 //		//TotalTCVdisscount.set((float) 0);
 //		List Completeset=new ArrayList();
 //		for(int i=0;i<2;i++) {
@@ -171,6 +179,19 @@ public class DriverHelper {
 		js.executeScript("window.scrollTo(0, 0)");
 		//window.scrollTo(0, 0);
 	}
+	public void javascriptexecutor2(String st) throws InterruptedException
+	{
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("document."+st+".submit();");
+		//js.executeScript("window.scrollTo(0, 0)");
+		//window.scrollTo(0, 0);
+	}
+	public void Proxylogout() throws Exception
+	{
+		openurl2("https://coltuat1.bigmachines.com/logout.jsp?proxy_logout=true&_bm_trail_refresh_=true");
+		Thread.sleep(8000);
+	}
+	
 
 public boolean checkOptions(String[] expected, WebElement el){
 		List<WebElement> options = el.findElements(By.xpath(".//option"));
@@ -240,10 +261,21 @@ public void ClickswithAction(String el) throws InterruptedException {
 	}
 	public void Getloadingcomplete(String locator) throws InterruptedException
 	{
+		Thread.sleep(1000);
+		try {
 		wait.until(ExpectedConditions.attributeToBe(By.xpath(locator), "style", "display: none;")); 
 		//getwebelement(xml.getlocator("//locators/StandrdQuote"));
 		System.out.println("Waiting Loading mask");
 		Thread.sleep(5000);
+		}
+		catch(StaleElementReferenceException e2)
+		{
+			Thread.sleep(5000);
+		}
+		catch(TimeoutException e)
+		{
+			Thread.sleep(5000);
+		}
 		
 	}
 	
@@ -378,10 +410,26 @@ public void ClickswithAction(String el) throws InterruptedException {
 //		}
 		
 	}
-	
+	public void Waittilljquesryupdated() throws InterruptedException
+	{
+		//wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));	
+		while(!((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"))
+		{
+			System.out.println("dom state is" +((JavascriptExecutor) driver).executeScript("return document.readyState"));
+			Thread.sleep(500);
+			//wait.until(ExpectedConditions.jsReturnsValue(_PAGE_WHEN_READY_SCRIPT));
+		}
+	}
+	public void WaitforFiletobeDownloaded(String Filename) throws InterruptedException
+	{
+		String str = System.getProperty("user.dir")+"\\src\\Data\\Downloads\\"+Filename;
+		File file=new File(str);
+		wait.until((driver)->file.exists());
+	}
 	public WebElement getwebelement(String locator) throws InterruptedException
 	{   //Log.info("Indriverhelper"+driver);
 	 //WebElement el;
+		WaitforElementtobeclickable(locator);
 		System.out.print("In Get element method for - "+locator);
 	String[] finalval;
 	try {
@@ -523,6 +571,16 @@ public void ClickswithAction(String el) throws InterruptedException {
 					el=(WebElement) driver.findElement(By.xpath(locator)); 
 					return driver.findElement(By.xpath(locator));     	
 		}
+		else if (locator.startsWith("id"))
+		{	
+					el=(WebElement) driver.findElement(By.id(locator.split("=")[1])); 
+					return driver.findElement(By.xpath(locator));     	
+		}
+		else if (locator.startsWith("name"))
+		{	
+					el=(WebElement) driver.findElement(By.name(locator.split("=")[1])); 
+					return driver.findElement(By.xpath(locator));     	
+		}
 		Thread.sleep(1000);
 		return el;
 	}
@@ -531,8 +589,9 @@ public void ClickswithAction(String el) throws InterruptedException {
 		PropertyReader pr=new PropertyReader();
 		Log.info(environment+"_URL");
 		URL=pr.readproperty(environment+"_URL");
-		
+		System.out.println(URL);
 		driver.get(URL);
+		
 		
 	}
 	public void openurl2(String environment) throws Exception {
@@ -543,19 +602,40 @@ public void ClickswithAction(String el) throws InterruptedException {
 		clickOKonError();
 	}
 	public void clickOKonError() throws Exception {
+		if(isElementPresent("//*[contains(@class,'dialog-footer')]/button[string()='OK']")) {
+		while(isElementPresent("//*[contains(@class,'dialog-footer')]/button[string()='OK']")) {
 		
-		
-		if(isElementPresent("//*[contains(@class,'dialog-footer')]/button[string()='OK']"))
-		{
 			Clickon(getwebelement2("//*[contains(@class,'dialog-footer')]/button[string()='OK']"));
+		
+		}
+		}
+	}
+	public void clickOKonError2(String Locator) throws Exception {
+		safeJavaScriptClick(getwebelement(Locator));
+		waitForpageload();
+		if(isElementPresent("//*[contains(@class,'dialog-footer')]/button[string()='OK']")) {
+		while(isElementPresent("//*[contains(@class,'dialog-footer')]/button[string()='OK']")) {
+		
+			Clickon(getwebelement2("//*[contains(@class,'dialog-footer')]/button[string()='OK']"));
+			Pagerefresh();
+			waitForpageload();
+			safeJavaScriptClick(getwebelement(Locator));
+			waitForpageload();
+			Thread.sleep(5000);
 		}
 		
+		
+		}
 	}
 	
 	public void Geturl(String URL) throws Exception {
 	
 		driver.get(URL);
 		
+	}
+	public void Submitform(WebElement el)
+	{
+		el.submit();
 	}
 	public void Clickon(WebElement el) throws InterruptedException {
 		//Thread.sleep(3000);
@@ -571,6 +651,14 @@ public void ClickswithAction(String el) throws InterruptedException {
 	//js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
 		
 		}
+		catch(StaleElementReferenceException e)
+		{   Thread.sleep(8000);
+			waitForpageload();
+			el.click();
+			System.out.println(" was staleElement but waited and try to click on the element");
+			
+		}
+		
 		catch(WebDriverException e)
 		//Thread.sleep(3000);
 		{
@@ -581,7 +669,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 			try {
 			if(e.getMessage().contains("is not clickable at point"))
 			{
-				Thread.sleep(3000);
+				Thread.sleep(8000);
 				System.out.println("Size of the element is not perfect so waited and re-tried the click actions");
 				//js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
@@ -629,10 +717,32 @@ public void ClickswithAction(String el) throws InterruptedException {
 		driver.switchTo().frame(el);
 		
 	}
-	public void Waitforswitchtofram(String Locator){
+	public void Waitforswitchtofram(String Locator) throws InterruptedException{
+		//WaitforElementtobeclickable("id=engagementComponent");
+		//Thread.sleep(2000);
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(Locator)); 
 	
 		
+	}
+	public void Waitforswitchtofram2(String Locator) throws InterruptedException{
+		
+		//Thread.sleep(5000);
+		//wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(Locator)); 
+	
+		Thread.sleep(1500);
+		/*try {
+			for(int i=0;i<=10;i++) {
+			while(isElementPresent(Locator))
+			{
+				Thread.sleep(500);
+			}
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage().toString());
+		}
+		Thread.sleep(300);*/
 	}
 	public void switchtodefault(){
 		driver.switchTo().defaultContent();
@@ -662,7 +772,7 @@ public void ClickswithAction(String el) throws InterruptedException {
 				
 				Log.info("CPQ_URL");
 				openurl2(FinalURL);
-				Thread.sleep(20000);
+				
 			}
 public void Moveon(WebElement el) {
 			
@@ -895,8 +1005,34 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		//el.
 		//System.out.println(el.getRect().getHeight()+"-"+el.getRect().getWidth()+"-"+el.getRect().x+"-"+el.getRect().x);
 		//ExtentTestManager.getTest().log(LogStatus.PASS,ExtentTestManager.getTest().addBase64ScreenShot(capturescreenshotforelement(el)));
-		el.sendKeys(value);
+try {
+			
+			//JavascriptExecutor js = (JavascriptExecutor) driver;
+	        //use executeScript() method and pass the arguments 
+	        //Here i pass values based on css style. Yellow background color with solid red color border. 
+	// js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+	el.sendKeys(value);
+		System.out.println("try to click on the element");
+	//js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
 		
+		}
+		catch(WebDriverException e)
+		//Thread.sleep(3000);
+		{
+			//Thread.sleep(3000);
+			//JavascriptExecutor js = (JavascriptExecutor) driver;
+			System.out.println("Error in Clickon " + e.getMessage());
+			if(!e.toString().equals("NoSuchElementException")){
+			try {
+				Thread.sleep(8000);
+			
+				el.sendKeys(value);
+			}
+			catch(Exception e1)
+			{
+				System.out.println(e1.getMessage().toString());
+			}
+			}}
 		//Thread.sleep(3000);
 	}
 	
@@ -964,14 +1100,26 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	
 	public void Select(WebElement el, String value) throws IOException, InterruptedException
 		{ //Thread.sleep(3000);
+		if(!value.equals("")) {
 			Select s1=new Select(el);
 			s1.selectByVisibleText(value);
+		}
+		else
+		{
+			System.out.println("Noting to select");
+		}
 			//Thread.sleep(3000);
 		}
 	public void Select2(WebElement el, String value) throws IOException, InterruptedException
 	{ //Thread.sleep(3000);
+		if(!value.equals("")) {
 		Select s1=new Select(el);
 		s1.selectByValue(value);
+		}
+		else
+		{
+			System.out.println("Noting to select");
+		}
 		//Thread.sleep(3000);
 	}
 	public void Clear(WebElement el) throws IOException, InterruptedException
@@ -981,37 +1129,7 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		}
 	public void WaitforCPQloader( ) throws IOException, InterruptedException
 	{
-		
-		try {
-			//Thread.sleep(3000);
-			System.out.println(driver.findElement(By.xpath("//html")).getAttribute("class"));
-			//wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//html[contains(@class,'loading')]"))));
-			//System.out.println(driver.findElement(By.xpath("//html")).getAttribute("class"));
-			//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//html[contains(@class,'loading')]")));
-			System.out.println(driver.findElement(By.xpath("//html")).getAttribute("class"));
-			//Thread.sleep(3000);
-			//wait.until(ExpectedConditions.attributeContains(driver.findElement(By.xpath("//html")), "class", "loading")ExpectedConditions.attributeContains(driver.findElement(By.xpath("//html")), "class", "page-loaded loading"));
-			//wait.until(ExpectedConditions.and(),
-				//	ExpectedConditions.and(ExpectedConditions.attributeContains(driver.findElement(By.xpath("//html")), "class", "page-loaded loading")));
-			//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//html[contains(@class,'page-loaded')]")));
-			System.out.println(driver.findElement(By.xpath("//html")).getAttribute("class"));
-			
-			wait.until(ExpectedConditions.attributeContains(driver.findElement(By.xpath("//html")), "class", "loading"));
-			Thread.sleep(700);
-			wait.until(ExpectedConditions.attributeContains(driver.findElement(By.xpath("//html")), "class", "page-loaded loading"));
-			
-				}
-				catch(Exception e) {
-					Log.info("No Loader displayed");
-					System.out.println("in catch");
-					Thread.sleep(1000);
-					//WaitforCPQloader();
-//					String currentstate=driver.findElement(By.xpath("//html")).getAttribute("class");
-//					if(currentstate.contains("loading"))
-//					{
-//						WaitforCPQloader( );
-//					}
-				}
+		System.out.println("Data missing");
 		
 		
 	}
@@ -1059,8 +1177,13 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	{ Thread.sleep(1500);
 		
 		try {
-			driver.findElement(By.xpath(el));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(el)));
+			while(isElementPresent(el))
+					{
+				Thread.sleep(500);
+				System.out.println("in C4C loader loop");
+					}
+			//;
+			//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(el)));
 	//wait.until(ExpectedConditions.presenceOfElementLocated(driver.findElement(By.xpath(el))));
 		}
 		catch(Exception e) {
@@ -1085,13 +1208,20 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 //	        	Log.info(e.getMessage());
 //	        }
 //		}
-		Thread.sleep(8000);
+		//Thread.sleep(8000);
 	}
 	public void AcceptJavaScriptMethod() throws InterruptedException{
-		Thread.sleep(1000);
+		try {
+			wait.until(ExpectedConditions.alertIsPresent());
 			Alert alert = driver.switchTo().alert();
 			alert.accept();
 			driver.switchTo().defaultContent();
+		}
+		
+		catch(Exception e)
+		{
+			System.out.println("No Alert Present");
+		}
 		}
 	public void CancelJavaScriptMethod() throws InterruptedException{
 		Thread.sleep(1000);
@@ -1103,7 +1233,63 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	{
 		
 		//wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));	
-		Thread.sleep(20000);
+		
+		Thread.sleep(1500);
+		try {
+			for(int i=0;i<=10;i++) {
+			while(isElementPresent("//html[contains(@class,'loading')]"))
+			{
+				Thread.sleep(500);
+			}
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage().toString());
+		}
+		Thread.sleep(300);
+		waitForpageloadmask();
+		Waittilljquesryupdated();
+	}
+	public void waitForpageloadmask() throws InterruptedException
+	{
+		
+		//wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));	
+		
+		Thread.sleep(1500);
+		try {
+			for(int i=0;i<=10;i++) {
+			while(isElementPresent("//div[@id='lockCreateScreen' and not(@style='display: none;')]"))
+			{
+				Thread.sleep(500);
+			}
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage().toString());
+		}
+		Thread.sleep(300);
+	}
+	public void waitForpageloadExplore() throws InterruptedException
+	{
+		
+		//wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));	
+		
+		Thread.sleep(1500);
+		try {
+			for(int i=0;i<=2;i++) {
+			while(isElementPresent("//div[contains(text(),'Loading data')]"))
+			{
+				Thread.sleep(500);
+			}
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage().toString());
+		}
+		Thread.sleep(1000);
 	}
 	public void waitForpagenavigated(int timeout) throws InterruptedException
 	{

@@ -24,6 +24,8 @@
 <oppo>//span[text()='Opportunity']/parent::*/parent::*/parent::*/button</oppo>
 <customer>//span[text()='Prospect' or text()='Customer']/parent::*/parent::*/parent::*/button</customer>
 <OpenQuote>(//span[text()='Quotes']/parent::*/parent::*/parent::*/button)[2]</OpenQuote>
+<QuoteActions1>//bdi[text()='Actions']</QuoteActions1>
+<EditQuote>//bdi[text()='Edit']</EditQuote>
 <QuoteTab>//div[text()='Quotes']</QuoteTab>
 <AddQuote>//bdi[text()='Add']/parent::*/parent::*/parent::*</AddQuote>
 <AddContainterQuote>//bdi[text()='Container - New Business']/parent::*/parent::*/parent::*</AddContainterQuote>
@@ -93,6 +95,7 @@
 <AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 <Opportunity>
 <Newlink>//bdi[text()='New']</Newlink>
+<NewOpportubutytab>//span[text()='New Opportunity']</NewOpportubutytab>
 <AddProductlink>//bdi[text()='Add']</AddProductlink>
 <Name>//*[text()='Name']/parent::*/parent::*/div/div/div/div/input</Name>
 <Offer>//*[text()='Offer Type']/parent::*/parent::*/div/div/div/div/input</Offer>
@@ -109,6 +112,7 @@
 <Lcomplexity>//*[text()='Legal complexity']/parent::*/parent::*/div/div/div/div</Lcomplexity>
 <ClickSaveOpty>(//bdi[text()='Save'])[2]</ClickSaveOpty>
 <OptyId>//bdi[text()='Opportunity ID']/parent::*/parent::*/div/span</OptyId>
+<SolutionPartner>//*[text()='Solution Partner involved']/parent::*/parent::*/div/div/div/div</SolutionPartner>
 </Opportunity>
 <Product>
 <Fields>(//*[text()='FName']/parent::*/parent::*/div/div//div/div/input)[1]</Fields>
@@ -129,5 +133,18 @@
 <PriceLookupProceed>//bdi[text()='Proceed']/parent::*/parent::*/parent::*</PriceLookupProceed>
 <Proxylogout>//*[@title='Proxy Logout']</Proxylogout>
 <C4CQuoteStage>//*[text()='QuoteNumber']/parent::*/parent::*/parent::tr/td[7]//span</C4CQuoteStage>
+<GOapproval>
+<UserMenu>id=shell-header-user-image</UserMenu>
+<Logoutlink>//bdi[text()='Sign Out']</Logoutlink>
+<Confirmation>//bdi[text()='Yes']</Confirmation>
+<Relogin>//span[text()='Log On']/parent::*</Relogin>
+
+</GOapproval>
+<Salseopportunuty>//a[text()='Opportunities']</Salseopportunuty>
+
+<Ooprtnuitylink>//*[text()='Opportunitinumber']/parent::*/parent::*/following-sibling::*[1]//a</Ooprtnuitylink>
+<RequestGoclosure>(//*[normalize-space(text()) and normalize-space(.)='Request GO! Closure'])[1]/following::div[2]</RequestGoclosure>
+<SalseApproved>(//*[normalize-space(text()) and normalize-space(.)='Sales Approved'])[1]/following::div[2]</SalseApproved>
+<SolutionApproved>(//*[normalize-space(text()) and normalize-space(.)='Solution Approved'])[1]/following::div[2]</SolutionApproved>
 </locators>
 

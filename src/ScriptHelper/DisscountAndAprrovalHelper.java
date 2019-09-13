@@ -49,7 +49,7 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuoteTab"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			Clickon(getwebelement(xml.getlocator("//locators/CPQQuoteTab")));
-			Thread.sleep(5000);
+			//Thread.sleep(5000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/DiscountType"));
 		//Select(getwebelement(xml.getlocator("//locators/Percentage/DiscountType")), Inputdata[0][21].toString().split(">")[1].trim());
 		Clickon(getwebelement(xml.getlocator("//locators/Percentage/DiscountType")));
@@ -62,12 +62,13 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 		Clear(getwebelement(xml.getlocator("//locators/Percentage/MRCDiscount")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/MRCDiscount"));
 		SendKeys(getwebelement(xml.getlocator("//locators/Percentage/MRCDiscount")), Inputdata[0][23].toString());
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 //		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/CalculateDisscount"));
 //		Clickon(getwebelement(xml.getlocator("//locators/Percentage/CalculateDisscount")));
 		SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Percentage/MRCDiscount")),Keys.TAB);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Percentage/CalculateDisscount"));
 		Clickon(getwebelement(xml.getlocator("//locators/Percentage/CalculateDisscount")));
+		waitForpageload();
 		System.out.println("NRC Disscount"+Inputdata[0][22].toString());
 		System.out.println("NRC Disscount"+Inputdata[0][23].toString());
 		}
@@ -87,9 +88,10 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			Clear(getwebelement(xml.getlocator("//locators/Ammountoff/MRCDiscount")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/MRCDiscount"));
 			SendKeys(getwebelement(xml.getlocator("//locators/Ammountoff/MRCDiscount")), Inputdata[0][23].toString());
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/CalculateDisscount"));
 			Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/CalculateDisscount")));
+			waitForpageload();
 			//WaitforElementtobeclickable(xml.getlocator("//locators/Ammountoff/CalculateDisscount"));
 			//Clickon(getwebelement(xml.getlocator("//locators/Ammountoff/CalculateDisscount")));
 			System.out.println("NRC Disscount"+Inputdata[0][22].toString());
@@ -112,11 +114,12 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 			Clear(getwebelement(xml.getlocator("//locators/TargetPrice/MRCDiscount")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/MRCDiscount"));
 			SendKeys(getwebelement(xml.getlocator("//locators/TargetPrice/MRCDiscount")), Inputdata[0][23].toString());
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/CalculateDisscount"));
 			Clickon(getwebelement(xml.getlocator("//locators/TargetPrice/CalculateDisscount")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/TargetPrice/CalculateDisscount"));
 			Clickon(getwebelement(xml.getlocator("//locators/TargetPrice/CalculateDisscount")));
+			waitForpageload();
 			System.out.println("NRC Disscount"+Inputdata[0][22].toString());
 			System.out.println("NRC Disscount"+Inputdata[0][23].toString());
 		}
@@ -134,6 +137,7 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 		
 		if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) {
 			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+			waitForpageload();
 			}
 			else
 			{
@@ -145,12 +149,16 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 					 System.out.println("NRC Disscount"+Inputdata[i][22].toString());
 					 System.out.println("NRC Disscount"+Inputdata[i][23].toString());
 					 Clickon(getwebelement(xml.getlocator("//locators/Disscountypecoulumn").replace("index", String.valueOf(i+2))));
-					 Thread.sleep(5000);
+					 //Thread.sleep(5000);
+					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelDiscounttype").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
 					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscountColumn").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
 					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
 							
@@ -170,11 +178,15 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 //					  System.out.println("NRC Disscount"+Inputdata[i][22].toString());
 					 System.out.println("NRC Disscount"+Inputdata[i][23].toString());
 					 Clickon(getwebelement(xml.getlocator("//locators/Disscountypecoulumn").replace("index", String.valueOf(i+2))));
+					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelDiscounttype").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
 					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscountColumn").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
 					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
 							
@@ -184,11 +196,15 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 //					 System.out.println("NRC Disscount"+Inputdata[i][22].toString());
 					 System.out.println("NRC Disscount"+Inputdata[i][23].toString());
 					 Clickon(getwebelement(xml.getlocator("//locators/Disscountypecoulumn").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelDiscounttype").replace("type", "Target Price").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Target Price").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
 					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscountColumn").replace("type", "Target Price").replace("index", String.valueOf(i+1))));
+					 waitForpageload();
 					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
 					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
 							
@@ -200,6 +216,7 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 			 
 			  }
 		 Clickon(getwebelement(xml.getlocator("//locators/CalculateDisscountline")));
+		 waitForpageload();
 			
 		//System.out.println("Line Level Disscount");
 	}
@@ -211,10 +228,11 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	Clickon(getwebelement(xml3.getlocator("//locators/saveQuote")));
 	waitForpageload();
 	
-	//Thread.sleep(10000);
+	////Thread.sleep(10000);
 		//WaitforElementtobeclickable(xml.getlocator("//locators/Showdisscountcoulumn"));
 	if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) {
 	safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+	waitForpageload();
 	}
 	else
 	{
@@ -246,16 +264,19 @@ public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	//-----------------------------------------------
 		if(isElementPresent(xml.getlocator("//locators/TechnicalApprovalTab")))
 		{
+			//WaitforElementtobeclickable(
 			Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
-			Thread.sleep(3000);
-			javascriptexecutor2(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
+			waitForpageload();
+			javascriptexecutor2(getwebelement2(xml.getlocator("//locators/CheckboxTechnicalApproval")));
 			//((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
-			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/CheckboxTechnicalApproval")));
+			safeJavaScriptClick(getwebelement2(xml.getlocator("//locators/CheckboxTechnicalApproval")));
 			//ClickswithAction(xml.getlocator("//locators/CheckboxTechnicalApproval"));
-			Thread.sleep(3000);
+			//Thread.sleep(3000);
 			Clickon(getwebelement(xml.getlocator("//locators/SubmitTechnicalApprovalButton")));
 		//	Clickon(getwebelement(xml.getlocator("//locators/ReturnToC4C")));
-			
+			Thread.sleep(10000);
+			//WaitforElementtobeclickable(xml.getlocator("//locators/CSTApprovalMessage"));
+			waitForpageload();
 			SEEngagement(Inputdata);
 			//---------------------------------------------------	
 			CSTEngagement(Inputdata);
@@ -294,25 +315,26 @@ public void SEEngagement(Object[][] Inputdata) throws InterruptedException, Exce
 	javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
 	Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
-	Thread.sleep(5000);
+	//Thread.sleep(12000);
 	WaitforElementtobeclickable(xml.getlocator("//locators/SubmitToCSTApproval"));
 	Clickon(getwebelement(xml.getlocator("//locators/SubmitToCSTApproval")));
-	Thread.sleep(40000);
+	//Thread.sleep(40000);
 	try {
 	WaitforElementtobeclickable(xml.getlocator("//locators/CSTApprovalMessage"));
 	}
 	catch(Exception e)
 	{
 		EnterText2(Keys.ENTER);
+		//Thread.sleep(10000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/CSTApprovalMessage"));
 	}
-	Thread.sleep(40000);
+	//Thread.sleep(40000);
 //	openurl("CPQAdmin");
 //	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 //	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-//	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+//	Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
 	//div[@id='approvalHistorySubmitHtml_t']//div[contains(string(),'Submitted for CST Approval')]
-//	Thread.sleep(30000);
+//	//Thread.sleep(30000);
 //	openurl("CPQAdmin");
 	
 }
@@ -345,7 +367,7 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 			
 			Clickon(getwebelement(xml3.getlocator("//locators/updateQuote")));
 			Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
-			Thread.sleep(3000);
+			//Thread.sleep(3000);
 			WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
 			
 			Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
@@ -354,7 +376,8 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 			// raised a request whenever required
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 			WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
-			Thread.sleep(10000);
+			PriceChangesSE.set("Yes");
+			//Thread.sleep(10000);
 			break;
 	   }
 	   case "Contract Term":
@@ -369,7 +392,7 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 				
 				Clickon(getwebelement(xml3.getlocator("//locators/updateQuote")));
 				Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
-				Thread.sleep(3000);
+				//Thread.sleep(3000);
 				WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
 				
 				Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
@@ -378,7 +401,8 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 				// raised a request whenever required
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
-				Thread.sleep(10000);
+				//Thread.sleep(10000);
+				PriceChangesSE.set("Yes");
 		   break;   
 	   }
 	   case "Feature":
@@ -398,9 +422,9 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 		   Select(getwebelement(xml.getlocator("//locators/IncrementalOpex")),"Incremental");
 		   Select(getwebelement(xml.getlocator("//locators/Frequency")),"Monthly");
 		   SendKeys(getwebelement(xml.getlocator("//locators/ProductDescription")),"Filled by Automation");
-		   Clickon(getwebelement(xml3.getlocator("//locators/Clickupdate")));
+		   Clickon(getwebelement(xml3.getlocator("//locators/updateQuote")));
 		   Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
-		   Thread.sleep(3000);
+		   //Thread.sleep(3000);
 			WaitforElementtobeclickable(xml3.getlocator("//locators/ReconfigsaveQuote"));
 			
 			Clickon(getwebelement(xml3.getlocator("//locators/ReconfigsaveQuote")));
@@ -409,14 +433,15 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 			// raised a request whenever required
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 			WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
-			Thread.sleep(10000);
+			//Thread.sleep(10000);
+			PriceChangesSE.set("Yes");
 		   break; 
 	   }
 	   case "A Site Address":
 	   { 
 		   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter A Site Address");
 			SendKeys(getwebelement(xml3.getlocator("//locators/Asite")),Data[i][16].toString());
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
 			//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 			SendkeaboardKeys(getwebelement(xml3.getlocator("//locators/Asite")),Keys.ENTER);
 			//getwebelement(xml.getlocator("//locators/LoadingDailog"));
@@ -467,21 +492,22 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 			// raised a request whenever required
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 			WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
-			Thread.sleep(10000);
+			//Thread.sleep(10000);
+			PriceChangesSE.set("Yes");
 			break; 
 	   }
 	   case "B Site Address":
 	   {
 		   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter B Siter Address");
-		 //Thread.sleep(2000);
+		 ////Thread.sleep(2000);
 		SendKeys(getwebelement(xml3.getlocator("//locators/Bsite")),Data[i][16].toString());
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		//SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Asite")),Keys.ARROW_DOWN);
 		SendkeaboardKeys(getwebelement(xml3.getlocator("//locators/Bsite")),Keys.ENTER);
 		//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 		Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
-		//Thread.sleep(3000);
+		////Thread.sleep(3000);
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Map to be loaded completly");
 		Getmaploaded(xml3.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
@@ -527,12 +553,18 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 		// raised a request whenever required
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 		WaitforElementtobeclickable(xml3.getlocator("//locators/ApprovalTab"));
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
+		PriceChangesSE.set("Yes");
 		break;
 	   }
 	   default:
 	   {
-		   System.out.println("No  SE chnages need to be updated");
+		  // Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+			WaitforElementtobeclickable(xml3.getlocator("//locators/updateQuote"));
+			
+			Clickon(getwebelement(xml3.getlocator("//locators/updateQuote")));
+			Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+			PriceChangesSE.set("No");
 			   break;
 	   }
 	   }
@@ -553,48 +585,74 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 	waitForpageload();
 	WaitforCPQloader();
 	AddLineitemGridLeadTime(Data);
+	//Pagerefresh();
+	//waitForpageload();
+	javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 	WaitforElementtobeclickable(xml.getlocator("//locators/TechnicalApprovalTab"));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 	javascriptexecutor(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
 	Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 	Clickon(getwebelement(xml.getlocator("//locators/CSTApproval")));
-	Thread.sleep(5000);
+	WaitforElementtobeclickable(xml.getlocator("//locators/MessageforCST"));
+	//Thread.sleep(5000);
 	openurl("CPQAdmin");
 	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+	///waitForpageload();
+	WaitforElementtobeclickable(xml.getlocator("//locators/Proxylogout"));
 	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+	WaitforElementtobeclickable((xml.getlocator("//locators/userlist")));
 	openurl2(CurrentQuoteURL.get());
-	WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 	waitForpageload();
+	//Thread.sleep(10000);
+	WaitforElementtobeclickable(xml.getlocator("//locators/TechnicalApprovalTab"));
 	// Code to Again Commercially Approved if Required.
 	// Set the Current Deal ACV,TCV, ARR and Engage Deal Pricing and Then Fully Approove
 	// Open the Quote the As Sales Users
+	if(PriceChangesSE.get().toString().equals("Yes")&& DealpriceinCoomerceApproval.get().toString().equals("Yes"))
+	{
+		ApprovalCase.set("Deal Pricing");
+		SubmitforApproval(ApprovalCase.get(),Data);
+		ApproveQuote(ApprovalCase.get());
+	}
 	
 }
 public void AddLineitemGridLeadTime(Object[][] data) throws InterruptedException, Exception{
 	// Need to write the code
-    for(int i=0;i<data.length-1;i++) {
-    	Thread.sleep(5000);
+    for(int i=0;i<data.length;i++) {
+    	//Thread.sleep(5000);
     	Clickonoutofviewportwithstring(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));
-    	Thread.sleep(20000);
+    	
     	//WaitforElementtobeclickable(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));	
 	//Clickon(getwebelement(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1))));
 	//SendKeys(getwebelement(xml.getlocator("//locators/LeadTime")),"20");
-    	//Thread.sleep(5000);
+    	////Thread.sleep(5000);
     	//ClickswithAction(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));
     	//Clickon(getwebelement(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1))));
-    	
-    	Thread.sleep(20000);
+    	waitForpageload();
+    	//Thread.sleep(8000);
     	EnterText2(Keys.BACK_SPACE);
+    	//waitForpageload();
 		EnterText2(Keys.BACK_SPACE);
+		//waitForpageload();
 		EnterText2(Keys.BACK_SPACE);
+		//waitForpageload();
 		EnterText2(Keys.BACK_SPACE);
+		//waitForpageload();
 		EnterText2(Keys.BACK_SPACE);
-		Thread.sleep(2000);
+		//waitForpageload();
+		//Thread.sleep(2000);
 		EnterText("20");
+		//waitForpageload();
+		EnterText2(Keys.ENTER);
+		waitForpageload();
+		//Thread.sleep(10000);
 	
     }
+   Clickon(getwebelement(xml3.getlocator("//locators/saveQuote")));
+   waitForpageload();
+   clickOKonError();
 }
 public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws Exception
 {
@@ -605,7 +663,7 @@ public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws E
 		System.out.println("Deal Pricing Jouney Need to follow");
 		// Click on PL tab ang enter the mandatory data
 		Clickon(getwebelement(xml.getlocator("//locators/PLtab")));
-		Thread.sleep(30000);
+		//Thread.sleep(30000);
 		// Set Total TCV
 				Quotetcv.set(Getattribute(getwebelement(xml.getlocator("//locators/Quotetcv")),"aria-valuenow"));
 				System.out.println("Quite TCV on Screee"+Getattribute(getwebelement(xml.getlocator("//locators/Quotetcv")),"aria-valuenow"));
@@ -638,14 +696,17 @@ public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws E
 		WaitforElementtobeclickable(xml.getlocator("//locators/SubmitetoApproval"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitetoApproval")));
+		waitForpageload();
 		WaitforElementtobeclickable(xml.getlocator("//locators/ApproverCommentFinal"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
 		SendKeys(getwebelement(xml.getlocator("//locators/ApproverCommentFinal")),"Automation Comemnt");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/FinalSubmit"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
 		Clickon(getwebelement(xml.getlocator("//locators/FinalSubmit")));
-		Thread.sleep(30000);
+		waitForpageload();
+		WaitforElementtobeclickable(xml.getlocator("//locators/SaleuserSubmited"));
+		//Thread.sleep(30000);
 	}
 	else if(ApprovalCase.get().equals("VP1 Sales") ||Approvalcase.equals("VP2 Sales"))
 	{
@@ -658,14 +719,18 @@ public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws E
 		WaitforElementtobeclickable(xml.getlocator("//locators/SubmitetoApproval"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitetoApproval")));
+		waitForpageload();
 		WaitforElementtobeclickable(xml.getlocator("//locators/ApproverCommentFinal"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
 		SendKeys(getwebelement(xml.getlocator("//locators/ApproverCommentFinal")),"Automation Comemnt");
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/FinalSubmit"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
 		Clickon(getwebelement(xml.getlocator("//locators/FinalSubmit")));
-		Thread.sleep(30000);
+		
+		waitForpageload();
+		WaitforElementtobeclickable(xml.getlocator("//locators/SaleuserSubmited"));
+		//Thread.sleep(30000);
 		
 	}
 	else {
@@ -678,6 +743,9 @@ public void SubmitforApproval(String Approvalcase,Object[][] Inputdata) throws E
 		WaitforElementtobeclickable(xml.getlocator("//locators/SubmitetoApproval"));
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Submite for Approval");
 		Clickon(getwebelement(xml.getlocator("//locators/SubmitetoApproval")));
+		waitForpageload();
+		//waitForpageload();
+		WaitforElementtobeclickable(xml.getlocator("//locators/SaleuserSubmited"));
 		
 		
 	}
@@ -692,7 +760,7 @@ public void Movetoaccount(Object[][] Inputdata) throws Exception
 {
 	
 	//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Customer Section");
-	//Thread.sleep(10000);
+	////Thread.sleep(10000);
 
 	Clickon(getwebelement(xml2.getlocator("//locators/CustomerSection")));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the Customer Section in Left Navigation");
@@ -707,21 +775,21 @@ public void  MovetoOpportunuity(Object[][] Inputdata) throws Exception{
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Opportunuity Tab");
 	Clickon(getwebelement(xml2.getlocator("//locators/Opportunuitynumber").replace("Opportunuitynumber", Inputdata[0][1].toString())));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Opportunuity Name ");
-	Thread.sleep(10000);
+	//Thread.sleep(10000);
 	Clickon(getwebelement(xml2.getlocator("//locators/QuoteTab")));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Quote Tab in Opportunuity Detail page ");
-	Thread.sleep(10000);
+	//Thread.sleep(10000);
 }
 public void EditQuote() throws Exception {
 	Clickon(getwebelement(xml2.getlocator("//locators/Quotenumber").replace("Quotenumber", QuoteID.get().toString())));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
-	Thread.sleep(10000);
+	//Thread.sleep(10000);
 	Clickon(getwebelement(xml2.getlocator("//locators/QuoteActions")));
-	Thread.sleep(10000);
+	//Thread.sleep(10000);
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
 	Clickon(getwebelement(xml2.getlocator("//locators/QuoteEdit")));
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Add to Quote Button");
-	Thread.sleep(10000);
+	//Thread.sleep(10000);
 	WaitforElementtobeclickable(xml2.getlocator("//locators/customersignatureTab"));
 		
 }
@@ -729,7 +797,7 @@ public ThreadLocal<String> DefineApprover(Object[][] Inputdata)
 {  //String ApprovalCase = null;
 System.out.println("Deal Class is"+DealClass.get());
 System.out.println("Toatal TCV Disscount is"+TotalTCVdisscount.get());
-	if(DealClass.get().equals("Bronze")&& !Inputdata[0][28].toString().equals("Yes")) 
+	if(DealClass.get().equals("Bronze")&& !Inputdata[0][28].toString().equals("Yes") && !(Inputdata[0][15].equals("BeSpoke")||Inputdata[0][15].equals("NonStandard"))) 
 	{
 		if(TotalTCVdisscount.get()<5.00) {
 			System.out.println("Self Approve");
@@ -737,16 +805,16 @@ System.out.println("Toatal TCV Disscount is"+TotalTCVdisscount.get());
 			ApprovalCase.set("Self Approve");
 		}
 		else if(TotalTCVdisscount.get()<10.00 && TotalTCVdisscount.get()>=5.00) {
-			System.out.println("VP1 Sales");
-			//ApprovalCase="VP1 Sales";
-			ApprovalCase.set("VP1 Sales");
-		}
-		else if(TotalTCVdisscount.get()<15.00 && TotalTCVdisscount.get()>=10.00) {
 			System.out.println("VP2 Sales");
-			//ApprovalCase="VP2 Sales";
+			//ApprovalCase="VP1 Sales";
 			ApprovalCase.set("VP2 Sales");
 		}
-		else if(TotalTCVdisscount.get()>15.00) {
+		else if(TotalTCVdisscount.get()<15.00 && TotalTCVdisscount.get()>=10.00) {
+			System.out.println("VP1 Sales");
+			//ApprovalCase="VP2 Sales";
+			ApprovalCase.set("VP1 Sales");
+		}
+		else if(TotalTCVdisscount.get()>15.00 ) {
 			System.out.println("Deal Pricing");
 			//ApprovalCase="Deal Pricing";
 			ApprovalCase.set("Deal Pricing");
@@ -775,7 +843,7 @@ public void ExceptionPPT() throws Exception
 	//Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
 	waitForpageload();
 	WaitforCPQloader();
-	Thread.sleep(10000);
+	//Thread.sleep(10000);
 	WaitforElementtobeclickable(xml.getlocator("//locators/PPT/PLtab"));
 	Clickon(getwebelement(xml.getlocator("//locators/PPT/PLtab")));
 	WaitforElementtobeclickable(xml.getlocator("//locators/Listexpander"));
@@ -787,13 +855,13 @@ public void ExceptionPPT() throws Exception
 	WaitforElementtobeclickable(xml.getlocator("//locators/PPT/Assignquote"));
 	Clickon(getwebelement(xml.getlocator("//locators/PPT/Assignquote")));
 	//String exception=xml.getlocator("//locators/PPT/Bpnotfound").toString();
-	Thread.sleep(20000);
+	//Thread.sleep(20000);
 	if(GetText(getwebelement(xml.getlocator("//locators/PPT/Bpnotfound").toString())).equalsIgnoreCase("Base price not found"))
 	{
 		//SendKeys(getwebelement(xml.getlocator("//locators/PPT/Basepricenrr")),"555");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/PPT/Basepricenrr")));
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		EnterText2(Keys.BACK_SPACE);
 		EnterText2(Keys.BACK_SPACE);
 		EnterText2(Keys.BACK_SPACE);
@@ -802,9 +870,9 @@ public void ExceptionPPT() throws Exception
 		
 		EnterText("555");
 		SendKeys(getwebelement(xml.getlocator("//locators/PPT/Basepricemrr")),"666");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/PPT/Basepricemrr")));
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		EnterText2(Keys.BACK_SPACE);
 		EnterText2(Keys.BACK_SPACE);
 		EnterText2(Keys.BACK_SPACE);
@@ -816,9 +884,9 @@ public void ExceptionPPT() throws Exception
 	else if(GetText(getwebelement(xml.getlocator("//locators/PPT/Fastnotfound").toString())).equalsIgnoreCase("FastTrack price not found"))
 	{
 		//Clickon(getwebelement(xml.getlocator("//locators/PPT/Fastracknrr")));
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/PPT/Fastracknrr")));
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		EnterText2(Keys.BACK_SPACE);
 		EnterText2(Keys.BACK_SPACE);
 		EnterText2(Keys.BACK_SPACE);
@@ -845,14 +913,14 @@ public void ExceptionPPT() throws Exception
 		Clickon(getwebelement(xml.getlocator("//locators/PPT/Clicksave")));
 	}
 		//Return quote to sales
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
 		Clickon(getwebelement(xml.getlocator("//locators/PPT/Sendtosales")));
-		Thread.sleep(30000);
+		//Thread.sleep(30000);
 		openurl("CPQAdmin");
 		WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 		Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-		Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
-		Thread.sleep(30000);
+		Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
+		//Thread.sleep(30000);
 		openurl2(CurrentQuoteURL.get());
 		WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 	
@@ -865,7 +933,7 @@ public void ApproveQuote(String Approver) throws Exception
 		case "Self Approve" :
 		{
 			System.out.println("No Further Approval Required");
-			Thread.sleep(30000);
+			//Thread.sleep(30000);
 			break;
 		}
 		case "VP2 Sales" :
@@ -882,7 +950,7 @@ public void ApproveQuote(String Approver) throws Exception
 //			WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_VP1_Sales")));
 //			Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_VP1_Sales"))));
 			ProxyLogin("CPQ_VP2_Sales", xml.getlocator("//locators/ProxyLink"));
-			Thread.sleep(20000);
+			//Thread.sleep(20000);
 //			WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
 //			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
 //			
@@ -901,17 +969,20 @@ public void ApproveQuote(String Approver) throws Exception
 			SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
 			Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
-			
+			WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "VP Sales - 2"));
+			waitForpageload();
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			openurl("CPQAdmin");
 			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-			Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
+			Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
+			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
 			openurl2(CurrentQuoteURL.get());
-			Thread.sleep(30000);
+			//Thread.sleep(30000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-			Thread.sleep(30000);
+			//Thread.sleep(30000);
 			break;
 		}
 		case "VP1 Sales" :
@@ -927,7 +998,7 @@ public void ApproveQuote(String Approver) throws Exception
 //			WaitforElementtobeclickable(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_VP1_Sales")));
 //			Clickon(getwebelement(xml.getlocator("//locators/UsernameProxy").replace("Ashwani.Singh31@colt.net", pr.readproperty("CPQ_VP1_Sales"))));
 			ProxyLogin("CPQ_VP1_Sales", xml.getlocator("//locators/ProxyLink"));
-			Thread.sleep(20000);
+			//Thread.sleep(20000);
 //			WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
 //			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
 //			
@@ -944,17 +1015,22 @@ public void ApproveQuote(String Approver) throws Exception
 			SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
 			Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
-			
+			WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "VP Sales - 1"));
+			waitForpageload();
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 			openurl("CPQAdmin");
 			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
 			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-			Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
+			Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
+			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
 			openurl2(CurrentQuoteURL.get());
-			Thread.sleep(30000);
+			//Thread.sleep(30000);
+			waitForpageload();
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-			Thread.sleep(30000);
+			break;
+			//Thread.sleep(30000);
 		}
 		
 		case "Deal Pricing":
@@ -964,6 +1040,7 @@ public void ApproveQuote(String Approver) throws Exception
 			System.out.println("Quote TCV is "+Quotetcv.get().toString());
 			System.out.println("Quote ARR is "+Quotearr.get().toString());
 			System.out.println("Quote Igmag is "+Igmad.get().toString());
+			DealpriceinCoomerceApproval.set("Yes");
 			CSV filegenerator=new CSV();
 			filegenerator.createfile(Quoteacv.get().toString(), Quotetcv.get().toString(), Quotearr.get().toString(), Igmad.get().toString(), QuoteID.get().toString());
 			// Assing the Quote
@@ -981,36 +1058,38 @@ public void ApproveQuote(String Approver) throws Exception
 			Clickon(getwebelement(xml3.getlocator("//locators/PPT/Assignquote")));
 			WaitforElementtobeclickable(xml.getlocator("//locators/MMTupload"));
 			uploadafile(xml.getlocator("//locators/MMTupload"),QuoteID.get().toString()+".csv");
-			Thread.sleep(5000);
+			//Thread.sleep(5000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/Uploadmargin"));
 			Clickon(getwebelement(xml.getlocator("//locators/Uploadmargin")));
 			 SendKeys(getwebelement(xml.getlocator("//locators/textarea1")),"Comment from Deal team");
 			 SendKeys(getwebelement(xml.getlocator("//locators/textarea2")),"Comment from Deal team");
 			//Upload the File
-			Thread.sleep(5000);
+			//Thread.sleep(5000);
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 	        ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Scroll the Page to Top");
 	        javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 	        ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
 	        Clickon(getwebelement(xml.getlocator("//locators/ApprovalTab")));
-	        Thread.sleep(4000);
+	        //Thread.sleep(4000);
 	        WaitforElementtobeclickable(xml.getlocator("//locators/ApproverComment"));
 	        SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
-	        Thread.sleep(2000);
+	        //Thread.sleep(2000);
 	        WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
 	        Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
-	        Thread.sleep(5000);
+	        //Thread.sleep(5000);
+	        WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "Deal Pricing"));
+	        waitForpageload();
 	        WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 	        javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
 	        openurl("CPQAdmin");
-	        Thread.sleep(5000);
-	        WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-	        Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-	        Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
-	        Thread.sleep(10000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
+			Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
+			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
 	        openurl2(CurrentQuoteURL.get());
 	        
-	        Thread.sleep(30000);
+	        //Thread.sleep(30000);
 	        WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			// Approve From All the Approver based on Igmad and Connectivity.
 			if(Integer.parseInt(Igmad.get())>=0 && Integer.parseInt(Igmad.get())<=17 && Connectivitytype.get().equals("Onnet") ) 
@@ -1030,6 +1109,7 @@ public void ApproveQuote(String Approver) throws Exception
 				ApproveQuote("CRO");
 				ApproveQuote("CFO");
 			}
+			break;
 		}
 		case "VP1 Finanace":
 
@@ -1047,15 +1127,19 @@ public void ApproveQuote(String Approver) throws Exception
                SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
                WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
                Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
+               WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "VP Finanace - 1"));
+               waitForpageload();
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
                javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
                openurl("CPQAdmin");
-               WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-               Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-               Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+   			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+   			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+   			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
+   			Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
+   			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
                openurl2(CurrentQuoteURL.get());
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-               Thread.sleep(30000);
+               //Thread.sleep(30000);
 
                break;
 
@@ -1080,16 +1164,22 @@ public void ApproveQuote(String Approver) throws Exception
                WaitforElementtobeclickable(xml.getlocator("//locators/ApproverComment"));
                SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
                WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
+               
                Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
+               WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "VP Finanace - 2"));
+               
+               waitForpageload();
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
                javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
                openurl("CPQAdmin");
-               WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-               Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-               Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+   			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+   			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+   			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
+   			Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
+   			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
                openurl2(CurrentQuoteURL.get());
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-               Thread.sleep(30000);
+               //Thread.sleep(30000);
                break;
 
         }
@@ -1110,15 +1200,20 @@ public void ApproveQuote(String Approver) throws Exception
                SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
                WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
                Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
+               WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "CRO"));
+               
+               waitForpageload();
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
                javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
                openurl("CPQAdmin");
-               WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-               Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-               Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+   			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+   			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+   			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
+   			Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
+   			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
                openurl2(CurrentQuoteURL.get());
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-               Thread.sleep(30000);
+               //Thread.sleep(30000);
                break;
 
         }
@@ -1139,15 +1234,20 @@ public void ApproveQuote(String Approver) throws Exception
                SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
                WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
                Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
+               WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "CFO"));
+               
+               waitForpageload();
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
                javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
                openurl("CPQAdmin");
-               WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-               Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-               Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
+   			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+   			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+   			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
+   			Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
+   			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
                openurl2(CurrentQuoteURL.get());
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-               Thread.sleep(30000);
+               //Thread.sleep(30000);
                break;
 
         }

@@ -60,12 +60,14 @@ else if(Inputdata[0][15].equals("Non Standard"))
 		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Quotelink").replace("QuoteId", QuoteID.get().trim())));
 		
 		//Code to reconfigure
+		waitForpageload();
 		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/PLtab"));
+		waitForpageload();
 		System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(1)));
 		WaitforElementtobeclickable(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(1)));
 		
 		Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(1))));
-		Thread.sleep(3000);
+		////Thread.sleep(3000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Reconfigure"));
 		
 		Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
@@ -95,11 +97,12 @@ else if(Inputdata[0][15].equals("Non Standard"))
 		Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Save")));
 		//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-		
+		waitForpageload();
 		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/PLtab")));
 		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Tsolution")), "TS");
-		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Save")));
+		//Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Save")));
 		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Proxylogout")));
+		Thread.sleep(10000);
 		
 		}
 	
@@ -108,22 +111,25 @@ else if(Inputdata[0][15].equals("Non Standard"))
 	public void BespokeSales() throws Exception
 	{
 		openurl2(CurrentQuoteURL.get().toString());
+		waitForpageload();
 		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/PLtab"));		
 		
-		VerifyTextpresent("Deal Pricing Review Required");			
-		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/PLtab"));		
-		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/PLtab")));
-		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Tsolution"));
-		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Tsolution")), "TS");
-		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Dealbackground"));
-		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Dealbackground")), "DB");
-		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Comparea"));
-		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Comparea")), "CM");
-		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Approvaltab")));
-		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/SubmittoApproval")));
-		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/GeneralInfo"));
-		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/GeneralInfo")));
-		VerifyTextpresent("Deal Pricing Review");
+		//VerifyTextpresent("Deal Pricing Review Required");	
+		
+//		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/PLtab"));		
+//		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/PLtab")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Tsolution"));
+//		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Tsolution")), "TS");
+//		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Dealbackground"));
+//		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Dealbackground")), "DB");
+//		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Comparea"));
+//		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Comparea")), "CM");
+//		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Approvaltab")));
+//		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/SubmittoApproval")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/GeneralInfo"));
+//		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/GeneralInfo")));
+//		VerifyTextpresent("Deal Pricing Review");
+		waitForpageload();
 		
 	}
 	public void NonStandardSE() throws Exception
@@ -137,7 +143,7 @@ else if(Inputdata[0][15].equals("Non Standard"))
 		WaitforElementtobeclickable(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(1)));
 		
 		Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(1))));
-		Thread.sleep(3000);
+		////Thread.sleep(3000);
 		WaitforElementtobeclickable(xml.getlocator("//locators/Reconfigure"));
 		
 		Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
@@ -183,22 +189,24 @@ else if(Inputdata[0][15].equals("Non Standard"))
 	public void NonStandardSales() throws Exception
 	{
 		openurl2(CurrentQuoteURL.get().toString());
+		waitForpageload();
 		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/PLtab"));		
 			
-		VerifyTextpresent("Deal Pricing Review Required");			
-		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/PLtab"));		
-		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/PLtab")));
-		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/Tsolution"));
-		SendKeys(getwebelement(xml.getlocator("//locators/NonStandard/Tsolution")), "TS");
-		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/Dealbackground"));
-		SendKeys(getwebelement(xml.getlocator("//locators/NonStandard/Dealbackground")), "DB");
-		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/Comparea"));
-		SendKeys(getwebelement(xml.getlocator("//locators/NonStandard/Comparea")), "CM");
-		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/Approvaltab")));
-		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/SubmittoApproval")));
-		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/GeneralInfo"));
-		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/GeneralInfo")));
-		VerifyTextpresent("Deal Pricing Review");
+//		VerifyTextpresent("Deal Pricing Review Required");			
+//		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/PLtab"));		
+//		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/PLtab")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/Tsolution"));
+//		SendKeys(getwebelement(xml.getlocator("//locators/NonStandard/Tsolution")), "TS");
+//		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/Dealbackground"));
+//		SendKeys(getwebelement(xml.getlocator("//locators/NonStandard/Dealbackground")), "DB");
+//		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/Comparea"));
+//		SendKeys(getwebelement(xml.getlocator("//locators/NonStandard/Comparea")), "CM");
+//		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/Approvaltab")));
+//		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/SubmittoApproval")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/NonStandard/GeneralInfo"));
+//		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/GeneralInfo")));
+//		VerifyTextpresent("Deal Pricing Review");
+		
 	}
 
 }

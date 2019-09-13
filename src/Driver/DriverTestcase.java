@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import javax.swing.Action;
@@ -210,9 +211,10 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 			System.setProperty("webdriver.chrome.driver",".\\lib\\chromedriver.exe");
 			dr= new ChromeDriver(capabilities);
-			//driver.manage().window().maximize();
+			dr.manage().deleteAllCookies();
+			//dr.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			//dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 			
-//			
 //			dr.get("chrome://settings/content/popups");
 //			//dr.findElement(By.xpath(h1[text()='Pop-ups and redirects']);
 //			//dr.switchTo().frame("settings");

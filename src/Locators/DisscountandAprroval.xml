@@ -30,7 +30,7 @@
 <Asite>id=siteAddressAEnd</Asite>
 <Bsite>id=siteAddressBEnd</Bsite>
 <GoogleMapifram>id=siteAddressLink</GoogleMapifram>
-<Messages>//span[text()='Connected via Colt']</Messages>
+<Messages>//*[text()='Connected via Colt' or text()='Datacenter Connected via Colt' or text()='Automated Nearnet' or text()='Could not find Onnet and Automated Nearnet Connectivity' or contains(text(),'Please confirm the')]</Messages>
 <ConnectivitiCheck>//td[text()='Next']</ConnectivitiCheck>
 <SiteDetailTab>//span[text()='Site Details']</SiteDetailTab>
 <Contractterm>id=contractTermInYears</Contractterm>
@@ -147,5 +147,9 @@
 <textarea1>id=pricePositioningTextArea_t</textarea1>
 <textarea2>id=commercialRiskTextArea_t</textarea2>
 <CSTApprovalMessage>//div[@id='approvalHistorySubmitHtml_t']//div[contains(string(),'Submitted for CST Approval')]</CSTApprovalMessage>
+<MessageforCST>//div[@id='approvalHistorySubmitHtml_t']//div[contains(string(),'Approved on the date')]</MessageforCST>
+<userlist>//td[contains(text(),'User Administration List')]</userlist>
+<SaleuserSubmited>//li[contains(text(),'submitted for approval')]</SaleuserSubmited>
+<Approverupdate>//li[contains(text(),'approved Usergroup')]</Approverupdate>
 </locators>
 

@@ -80,5 +80,6 @@
 <AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 <ModelSelector>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[3])[index]</ModelSelector>
 <Lineitemcounter>//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*</Lineitemcounter>
+<BCNpopup>//div[contains(@class,'popup_on_viewbcn')]</BCNpopup>
 </locators>
 

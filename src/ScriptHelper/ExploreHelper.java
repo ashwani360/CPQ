@@ -21,7 +21,12 @@ public class ExploreHelper extends DriverHelper {
 	
 	public void NavigatetoExplore() throws Exception
 	{
-		Geturl(Getkeyvalue("Explore_URL"));
+		System.out.println("Waiting Started");
+		Thread.sleep(10000);
+		System.out.println("Waiting End");
+		openurl2("https://explore-colt-sit.lastmilexchange.com");
+		
+		
 	
 	}
 	public void ExploreWorkflownearnet(Object[][] inputdata) throws InterruptedException, Exception 
@@ -48,7 +53,7 @@ public class ExploreHelper extends DriverHelper {
 						Clickon(getwebelement(xml.getlocator("//locators/NearNetFibrePlanningWorkQueue")));
 						WaitforElementtobeclickable(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString()));
 						Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", newdata[j].toString())));
-//			            Thread.sleep(5000);
+			            Thread.sleep(5000);
 						WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
 						Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
 						WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMeNearnet"));
@@ -71,26 +76,48 @@ public class ExploreHelper extends DriverHelper {
 							WaitforElementtobeclickable(xml.getlocator("//locators/ExploreNearNetCurrency"));
 							Clickon(getwebelement(xml.getlocator("//locators/ExploreNearNetCurrency")));
 							SendKeys(getwebelement(xml.getlocator("//locators/ExploreNearNetCurrency")),"EUR");
+							Thread.sleep(2000);
 							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetAddCost"));
 							Clickon(getwebelement(xml.getlocator("//locators/NearNetAddCost")));
-							SendKeys(getwebelement(xml.getlocator("//locators/NearNetAddCost")),"EUR");
-							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetAddCost"));
-							Clickon(getwebelement(xml.getlocator("//locators/NearNetAddCost")));
+							
+//							SendKeys(getwebelement(xml.getlocator("//locators/NearNetAddCost")),"EUR");
+//							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetAddCost"));
+//							Clickon(getwebelement(xml.getlocator("//locators/NearNetAddCost")));
+							Thread.sleep(2000);
 							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetCostCatogory"));
 							Clickon(getwebelement(xml.getlocator("//locators/NearNetCostCatogory")));
-							SendKeys(getwebelement(xml.getlocator("//locators/NearNetCostCatogory")),"Construction");
+							Thread.sleep(1000);
+							EnterText("Construction");
+							EnterText2(Keys.ENTER);
+							//SendKeys(getwebelement(xml.getlocator("//locators/NearNetCostCatogory")),"Construction");
+							Thread.sleep(2000);
 							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetSubCostCatogory"));
 							Clickon(getwebelement(xml.getlocator("//locators/NearNetSubCostCatogory")));
-							SendKeys(getwebelement(xml.getlocator("//locators/NearNetSubCostCatogory")),"WayLeave");
+							Thread.sleep(1000);
+							EnterText("WayLeave");
+							EnterText2(Keys.ENTER);
+							//SendKeys(getwebelement(xml.getlocator("//locators/NearNetSubCostCatogory")),"WayLeave");
+							Thread.sleep(2000);
 							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetUnitCost"));
 							Clickon(getwebelement(xml.getlocator("//locators/NearNetUnitCost")));
-							SendKeys(getwebelement(xml.getlocator("//locators/NearNetUnitCost")),"100");
+							Thread.sleep(1000);
+							EnterText("100");
+							EnterText2(Keys.ENTER);
+							//SendKeys(getwebelement(xml.getlocator("//locators/NearNetUnitCost")),"100");
+							Thread.sleep(2000);
 							WaitforElementtobeclickable(xml.getlocator("//locators/NearNetCostQuantity"));
 							Clickon(getwebelement(xml.getlocator("//locators/NearNetCostQuantity")));
-							SendKeys(getwebelement(xml.getlocator("//locators/NearNetCostQuantity")),"1");
+							Thread.sleep(1000);
+							EnterText("1");
+							EnterText2(Keys.ENTER);
+							//SendKeys(getwebelement(xml.getlocator("//locators/NearNetCostQuantity")),"1");
+							Thread.sleep(2000);
 							WaitforElementtobeclickable(xml.getlocator("//locators/SendtoSalesNearNet"));
 							Clickon(getwebelement(xml.getlocator("//locators/SendtoSalesNearNet")));
-						
+							Thread.sleep(2000);
+							Clickon(getwebelement(xml.getlocator("//locators/Backtolist")));
+							Thread.sleep(2000);
+							
 						}
 						}
 			
@@ -212,17 +239,18 @@ public class ExploreHelper extends DriverHelper {
 					
 //					Clickon(getwebelement(xml.getlocator("//locators/SearchQuoteId").replace("value", "20190527115421")));
 //					System.out.println("workflow");
-					Thread.sleep(2000);
+					//Thread.sleep(2000);
+					waitForpageloadExplore();
 					WaitforElementtobeclickable(xml.getlocator("//locators/ButtonAction"));
 					Clickon(getwebelement(xml.getlocator("//locators/ButtonAction")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/AssignRequestToMe"));
 					Clickon(getwebelement(xml.getlocator("//locators/AssignRequestToMe")));
-					Thread.sleep(2000);
+					waitForpageloadExplore();
 					WaitforElementtobeclickable(xml.getlocator("//locators/ActionButton"));
 					Clickon(getwebelement(xml.getlocator("//locators/ActionButton")));
 					WaitforElementtobeclickable(xml.getlocator("//locators/CreateCost"));
 					Clickon(getwebelement(xml.getlocator("//locators/CreateCost")));
-					Thread.sleep(2000);
+					waitForpageloadExplore();
 					String a =Getattribute(getwebelement("//label[text()='Conversion Type']/following::td[1]/div//input"),"value");
 					System.out.println(a);
 				if(a.equals("Revalidation")) {

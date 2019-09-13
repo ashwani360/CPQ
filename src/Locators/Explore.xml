@@ -35,6 +35,7 @@
 <Filedsname>//span[text()='Fieldname']/parent::*/input</Filedsname>
 <Logout>//td[text()='Log Out']</Logout>
 <NearNetFibrePlanningWorkQueue>//span[text()='Fibre Planning Work Queue']</NearNetFibrePlanningWorkQueue>
+<Backtolist>//a[contains(text(),'Back to Work Queue')]</Backtolist>
 <AssignNearNetRequestToMe>(//tr[@aria-label="Assign To Me"])[2]</AssignNearNetRequestToMe>
 <QuoteValiduptomonths>(//label[text()='Quote Valid Up to (months)']/following::div/input)[2]</QuoteValiduptomonths>>
 <ExploreNearNetCurrency>(//label[text()='Currency']/following::div/input)[3]</ExploreNearNetCurrency>
@@ -51,4 +52,5 @@
 <Node>(//span[text()='Node']/parent::*/input/ancestor::div[2]//input)[1]</Node>
 <SingleFeed>//label[text()='Building Connected - Single Feed']</SingleFeed>
 <DualFeed>//label[text()='Building Connected - Dual Feed']</DualFeed>
+<Pageloadedmask>//div[contains(text(),'Loading data')]</Pageloadedmask>
 </locators>

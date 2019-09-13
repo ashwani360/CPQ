@@ -15,7 +15,7 @@
 <UploadXlsxAttachment>(//div[@id='accordionQuoteLineItems']//span[contains(text(),'Upload')])[index]</UploadXlsxAttachment>
 <SelectCategory>//label[text()='value']</SelectCategory>
 <Selecttype>//select[@id='document_type']</Selecttype>
-<ChooseFile>//input[@name='primary_file']</ChooseFile>
+<ChooseFile>name=primary_file</ChooseFile>
 <Filename>//span[text()="value"]</Filename>
 <UploadFile>//button[text()='Upload']</UploadFile>
 <CheckboxTechnicalApproval>//label[text()='Ready For Technical Approval']/ancestor::div[4]//input</CheckboxTechnicalApproval>
@@ -25,6 +25,6 @@
 <CPQQuotelink>//*[text()='QuoteId']/parent::*/parent::*/parent::*//td//a</CPQQuotelink>
 <SubmitToCSTApproval>//button[@name='submit_to_cst_approval']</SubmitToCSTApproval>
 <CSTApproval>//button[@name='approve']</CSTApproval>
-<ProxyLogout>//span[text()='Proxy Logout']/parent::a</ProxyLogout>
+<ProxyLogout>//img[@title='Proxy Logout']/parent::a</ProxyLogout>
 <CreateOrder>//button[@name='create_order']</CreateOrder>
 </locators>

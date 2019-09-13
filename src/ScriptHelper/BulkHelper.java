@@ -32,23 +32,23 @@ public class BulkHelper extends DriverHelper{
 				Clickon(getwebelement(xml.getlocator("//locators/BulkuploadTab")));
 				WaitforElementtobeclickable(xml.getlocator("//locators/BulkuploadApp"));
 				//Waitforswitchtofram(xml.getlocator("//locators/BulkuploadApp"));
-				Thread.sleep(10000);
+				////Thread.sleep(10000);
 				switchtofram(getwebelement(xml.getlocator("//locators/BulkuploadApp")));
 				System.out.println(gettitle());
 				WaitforElementtobeclickable(xml.getlocator("//locators/AddNewLineitems"));
 				Clickon(getwebelement(xml.getlocator("//locators/AddNewLineitems")));
-				Thread.sleep(3000);
+				////Thread.sleep(3000);
 				WaitforElementtobeclickable(xml.getlocator("//locators/UploadNewFile"));
 				Clickon(getwebelement(xml.getlocator("//locators/UploadNewFile")));
 				WaitforElementtobeclickable(xml.getlocator("//locators/FileInput"));
 				uploadafile(xml.getlocator("//locators/FileInput"),Inputdata[0][5].toString());
-				Thread.sleep(4000);
+				////Thread.sleep(4000);
 				WaitforElementtobeclickable(xml.getlocator("//locators/Uploadfile"));
 				Clickon(getwebelement(xml.getlocator("//locators/Uploadfile")));
-				Thread.sleep(8000);
+				////Thread.sleep(8000);
 				//WaitforElementtobeclickable(xml.getlocator("//locators/LoaderDiv"));
 				waitandForElementtobenotDisplay(xml.getlocator("//locators/LoaderDiv"),1);
-				Thread.sleep(4000);
+				////Thread.sleep(4000);
 				WaitforElementtobeclickable(xml.getlocator("//locators/DetailLink"));
 				Clickon(getwebelement(xml.getlocator("//locators/DetailLink")));
 				WaitforElementtobeclickable(xml.getlocator("//locators/CheckConnectivity"));
@@ -62,7 +62,7 @@ public class BulkHelper extends DriverHelper{
 					System.out.println("In Start of loop the- Style Value"+Getattribute(getwebelement(xml.getlocator("//locators/CCPendingbutton")),"style"));
 					
 					System.out.println("In Start of loop the- Condition Value"+Getattribute(getwebelement(xml.getlocator("//locators/CCPendingbutton")),"style").contains("display: none;"));
-					Thread.sleep(3000);
+					////Thread.sleep(3000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/RefreshButton"));
 					Clickon(getwebelement(xml.getlocator("//locators/RefreshButton")));
 					System.out.println("In End of loop the- Style Value"+Getattribute(getwebelement(xml.getlocator("//locators/CCPendingbutton")),"style"));
@@ -70,7 +70,7 @@ public class BulkHelper extends DriverHelper{
 					System.out.println("In End of loop the- Condition Value"+Getattribute(getwebelement(xml.getlocator("//locators/CCPendingbutton")),"style").contains("display: none;"));
 					
 				}
-				Thread.sleep(10000);
+				////Thread.sleep(10000);
 				WaitforElementtobeclickable(xml.getlocator("//locators/SelectAll"));
 				Clickon(getwebelement(xml.getlocator("//locators/SelectAll")));
 				WaitforElementtobeclickable(xml.getlocator("//locators/AddtoQuote"));
@@ -82,7 +82,7 @@ public class BulkHelper extends DriverHelper{
 					System.out.println("In Start of loop the- Style Value"+Getattribute(getwebelement(xml.getlocator("//locators/Pendingbutton")),"style"));
 					
 					System.out.println("In Start of loop the- Condition Value"+Getattribute(getwebelement(xml.getlocator("//locators/Pendingbutton")),"style").contains("display: none;"));
-					Thread.sleep(3000);
+					////Thread.sleep(3000);
 					WaitforElementtobeclickable(xml.getlocator("//locators/RefreshButton"));
 					Clickon(getwebelement(xml.getlocator("//locators/RefreshButton")));
 					System.out.println("In End of loop the- Style Value"+Getattribute(getwebelement(xml.getlocator("//locators/Pendingbutton")),"style"));
@@ -96,7 +96,7 @@ public class BulkHelper extends DriverHelper{
 				WaitforCPQloader();
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Save Button");
 				Expandthesection(getwebelement(xml2.getlocator("//locators/SectionName").replace("Sectionname", "Opportunity Info")),getwebelement(xml2.getlocator("//locators/Clickableelemt").replace("Sectionname", "Opportunity Info")));
-				Thread.sleep(5000);
+				////Thread.sleep(5000);
 				QuoteID.set(GetValueofInput(getwebelement(xml2.getlocator("//locators/QuoteID"))));
 				System.out.println(QuoteID.get());
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Quote ID is"+QuoteID.get().toString());

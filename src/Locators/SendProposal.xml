@@ -83,5 +83,7 @@
 <ContainerNRR>//input[@id='nRCqto_t']</ContainerNRR>
 <ContainerMRR>//input[@id="mRCqto_t"]</ContainerMRR>
 <AcceptError>(//span[text()='OK']/parent::div/parent::button)[1]</AcceptError>
+<GeneratedMessage>//*[@id='showMessageForProposalGeneratedDate_t']</GeneratedMessage>
+<ProposalLink>//a[text()='QuoteID.pdf']</ProposalLink>
 </locators>
 
