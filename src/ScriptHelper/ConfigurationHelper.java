@@ -2629,6 +2629,149 @@ public class ConfigurationHelper extends DriverHelper{
 	}
 	public void SEDataupdate(Object[][] Inputdata)throws Exception
 	{
+		
+		if(Inputdata[0][2].toString().split(">")[1].trim().equals("Colt IP Access"))
+		{
+			ProxyLogin("CPQ_SE_User", xml.getlocator("//locators/ProxyLink"));
+			
+			WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
+			Clickon(getwebelement(xml.getlocator("//locators/QuotetoOrderLink")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
+			Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+			waitForpageload();
+			WaitforCPQloader();
+			Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
+			waitForpageload();
+			
+			for(int i=0;i<Inputdata.length;i++) 
+			{
+				
+				
+				waitForpageload();
+				WaitforElementtobeclickable(xml.getlocator("//locators/LineitemGrid"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+				System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				WaitforElementtobeclickable(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+				Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+				WaitforElementtobeclickable(xml.getlocator("//locators/Reconfigure"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				WaitforElementtobeclickable(xml.getlocator("//locators/updateQuote"));
+				Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				// code for Diversity
+				if(Inputdata[i][46].toString().contains("Yes"))
+				{
+				WaitforElementtobeclickable(xml.getlocator("//locators/DiversityTab"));
+				Clickon(getwebelement(xml.getlocator("//locators/DiversityTab")));
+		//		WaitforElementtobeclickable(xml.getlocator("//locators/Diversity"));
+		//		Clickon(getwebelement(xml.getlocator("//locators/Diversity")));
+				
+				if(!getwebelement(xml.getlocator("//locators/DiversityCheckbox")).getAttribute("checked").contains("checked"))
+				{
+					System.out.println("Diversity Checkbox is not enabled, need to enabled first");
+					WaitforElementtobeclickable(xml.getlocator("//locators/Diversity"));
+					Clickon(getwebelement(xml.getlocator("//locators/Diversity")));
+				}
+				else {
+					System.out.println("Diversity checkbox is enabled!!");	
+				}
+				waitandForElementDisplayed(xml.getlocator("//locators/CommentsforSalerelatedtoDiversity"));
+				SendKeys(getwebelement(xml.getlocator("//locators/CommentsforSalerelatedtoDiversity")), Inputdata[i][29].toString());
+				
+				WaitforElementtobeclickable(xml.getlocator("//locators/DiversityType"));
+				Select(getwebelement(xml.getlocator("//locators/DiversityType")), Inputdata[i][30].toString());
+				waitForpageload();
+				waitandForElementDisplayed(xml.getlocator("//locators/diverseFromServiceReferenceDiversity"));
+				Clear(getwebelement(xml.getlocator("//locators/diverseFromServiceReferenceDiversity")));
+				SendKeys(getwebelement(xml.getlocator("//locators/diverseFromServiceReferenceDiversity")), Inputdata[i][29].toString());
+				
+				waitandForElementDisplayed(xml.getlocator("//locators/DiversityDescription"));
+				Clear(getwebelement(xml.getlocator("//locators/DiversityDescription")));
+				SendKeys(getwebelement(xml.getlocator("//locators/DiversityDescription")), Inputdata[i][31].toString());
+				
+				waitandForElementDisplayed(xml.getlocator("//locators/diverseFromServiceReferenceDiversity"));
+				javascriptexecutor(getwebelement(xml.getlocator("//locators/NotesAndProductDescription")));
+				waitandForElementDisplayed(xml.getlocator("//locators/NotesAndProductDescription"));
+				Clear(getwebelement(xml.getlocator("//locators/NotesAndProductDescription")));
+				SendKeys(getwebelement(xml.getlocator("//locators/NotesAndProductDescription")), Inputdata[i][32].toString());
+				waitandForElementDisplayed(xml.getlocator("//locators/Clickupdate"));
+				Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
+				Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
+				waitandForElementDisplayed(xml.getlocator("//locators/Save"));
+				Clickon(getwebelement(xml.getlocator("//locators/Save")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Proxylogout();
+				
+				openurl2(CurrentQuoteURL.get());
+				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+				
+				
+				
+			    }
+				// code for Bespoke
+				else if(Inputdata[i][47].toString().contains("Yes"))
+				{
+					WaitforElementtobeclickable(xml.getlocator("//locators/BespokeTab"));
+					Clickon(getwebelement(xml.getlocator("//locators/BespokeTab")));
+					waitForpageload();
+					
+					if(!getwebelement(xml.getlocator("//locators/Bespoke")).getAttribute("checked").contains("checked"))
+					{
+						System.out.println("Diversity Checkbox is not enabled, need to enabled first");
+						WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke"));
+						Clickon(getwebelement(xml.getlocator("//locators/Bespoke")));
+					}
+					else {
+						System.out.println("Diversity checkbox is enabled!!");	
+					}
+					waitandForElementDisplayed(xml.getlocator("//locators/BasePokeCommentsforsale"));
+					SendKeys(getwebelement(xml.getlocator("//locators/BasePokeCommentsforsale")), Inputdata[i][29].toString());
+					
+					WaitforElementtobeclickable(xml.getlocator("//locators/BesPokeFeatures"));
+					Select(getwebelement(xml.getlocator("//locators/BesPokeFeatures")), Inputdata[i][30].toString());
+					waitForpageload();
+					
+					waitandForElementDisplayed(xml.getlocator("//locators/BesPokeDescription"));
+					Clear(getwebelement(xml.getlocator("//locators/BesPokeDescription")));
+					SendKeys(getwebelement(xml.getlocator("//locators/BesPokeDescription")), Inputdata[i][29].toString());
+					
+					waitandForElementDisplayed(xml.getlocator("//locators/BespokeFeatureLevel"));
+					Select(getwebelement(xml.getlocator("//locators/BespokeFeatureLevel")), Inputdata[i][30].toString());		
+					
+					
+					waitandForElementDisplayed(xml.getlocator("//locators/BesPokeDescription"));
+					javascriptexecutor(getwebelement(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke")));
+					waitandForElementDisplayed(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke"));
+					Clear(getwebelement(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke")));
+					SendKeys(getwebelement(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke")), Inputdata[i][32].toString());
+				    
+					WaitforElementtobeclickable(xml.getlocator("//locators/Clickupdate"));
+					javascriptexecutor(getwebelement(xml.getlocator("//locators/Clickupdate")));
+					Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+					waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
+					Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
+					waitandForElementDisplayed(xml.getlocator("//locators/Save"));
+					Clickon(getwebelement(xml.getlocator("//locators/Save")));
+					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+					Proxylogout();
+					
+					openurl2(CurrentQuoteURL.get());
+					WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+					
+					
+				}
+			
+			}	
+		}
+		else
+		{
 		ProxyLogin("CPQ_SE_User", xml.getlocator("//locators/ProxyLink"));
 		
 		WaitforElementtobeclickable(xml.getlocator("//locators/QuotetoOrderLink"));
@@ -2671,7 +2814,12 @@ public class ConfigurationHelper extends DriverHelper{
 				// raised a request whenever required
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));}
+				Proxylogout();
 		
+				openurl2(CurrentQuoteURL.get());
+				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+		
+		}
 	}
 	public void ExceptionPPT() throws Exception
 	{

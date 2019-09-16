@@ -135,6 +135,33 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 		Clickon(getwebelement(xml3.getlocator("//locators/saveQuote")));
 		waitForpageload();
 		
+		//     Ubb Discount
+		for(int i=0; i<Inputdata.length;i++)
+		{
+		if(Inputdata[i][48].equals("Yes"))
+		{
+		
+			WaitforElementtobeclickable((xml.getlocator("//locators/DiscountedUBBTarrif").replace("Index", String.valueOf(i+1))));
+			 Clickon(getwebelement((xml.getlocator("//locators/DiscountedUBBTarrif").replace("Index", String.valueOf(i+1)))));
+			 Thread.sleep(2000);
+			 Clickon(getwebelement(xml.getlocator("//locators/UBBTarrifValue").replace("UBBValue", Inputdata[i][49].toString())));
+			 waitForpageload();
+			 WaitforElementtobeclickable((xml.getlocator("//locators/DiscountedAccessValue").replace("Index", String.valueOf(i+1))));
+			 Clickon(getwebelement((xml.getlocator("//locators/DiscountedAccessValue").replace("Index", String.valueOf(i+1)))));
+			 waitForpageload();
+			 getwebelement((xml.getlocator("//locators/DiscountedAccessValue").replace("Index", String.valueOf(i+1)))).clear();
+			 waitForpageload();
+			 SendKeys(getwebelement(xml.getlocator("//locators/DiscountedAccessValue").replace("Index", String.valueOf(i+1))), Inputdata[i][50].toString());
+		
+			
+		}
+		}
+		
+		
+		
+		
+	
+		
 		if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) {
 			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
 			waitForpageload();

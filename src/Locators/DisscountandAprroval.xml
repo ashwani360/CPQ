@@ -150,6 +150,9 @@
 <MessageforCST>//div[@id='approvalHistorySubmitHtml_t']//div[contains(string(),'Approved on the date')]</MessageforCST>
 <userlist>//td[contains(text(),'User Administration List')]</userlist>
 <SaleuserSubmited>//li[contains(text(),'submitted for approval')]</SaleuserSubmited>
+<DiscountedUBBTarrif>(//td[contains(@class,'uBBTarrifName')])[Index]/span</DiscountedUBBTarrif>
+<UBBTarrifValue>//div[text()='UBBValue']/parent::*</UBBTarrifValue>
+<DiscountedAccessValue>(//td[contains(@class,'uBBTarrifValue')])[Index]/span</DiscountedAccessValue>
 <Approverupdate>//li[contains(text(),'approved Usergroup')]</Approverupdate>
 </locators>
 

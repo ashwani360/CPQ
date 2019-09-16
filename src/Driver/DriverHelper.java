@@ -748,7 +748,8 @@ public void ClickswithAction(String el) throws InterruptedException {
 		driver.switchTo().defaultContent();
 		
 	}
-			public String Getattribute(WebElement el,String attributename) {
+			public String Getattribute(WebElement el,String attributename) 
+			{
 			Log.info(el.getAttribute(attributename));
 			return el.getAttribute(attributename);
 	  }
@@ -910,7 +911,33 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	public void waitandForElementDisplayed(String locator) throws InterruptedException
 	{
 		Thread.sleep(2000);
-	wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))));
+		System.out.println("In Wait for Element Clickable method for - "+locator);
+		//waitForpageload();
+		if(locator.startsWith("//") || locator.startsWith("(")) {
+		
+			wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))));
+	
+		//getwebelement(xml.getlocator("//locators/StandrdQuote"));
+		System.out.println("Waiting for Element to be clickabal and active"+locator);
+		//Thread.sleep(2000);
+		}
+		else if(locator.startsWith("name"))
+		{
+			wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.name(locator.split("=")[1]))));
+			//getwebelement(xml.getlocator("//locators/StandrdQuote"));
+			System.out.println("Waiting for Element to be clickabal and active"+locator);
+			//Thread.sleep(2000);
+			
+		}
+		else if(locator.startsWith("id"))
+		{
+			wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(locator.split("=")[1]))));
+			//getwebelement(xml.getlocator("//locators/StandrdQuote"));
+			System.out.println("Waiting for Element to be clickabal and active"+locator);
+			//Thread.sleep(2000);
+			
+		}
+		
 	}
 	public void waitandForElementDisplay(String locator, int timeout) throws InterruptedException
 	{

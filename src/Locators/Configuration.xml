@@ -307,6 +307,31 @@
 <ServiceBandwidthBackup>id=backupBandwidth</ServiceBandwidthBackup>
 <ServiceResilenceLayer2>id=layer2ResilienceAEnd</ServiceResilenceLayer2>
 <Diversity>id=diversity_true</Diversity>
+<DiversityTab>(//span[text()='Diversity']/parent::a)[2]</DiversityTab>
+<!-- IP Acess Diversity -->
+<DiversityCheckbox>id=diversity_true</DiversityCheckbox>
+<CommentsforSalerelatedtoDiversity>id=notes</CommentsforSalerelatedtoDiversity>
+<DiversityType>id=typeDiversityBespokeRid-0</DiversityType>
+<diverseFromServiceReferenceDiversity>id=diverseFromServiceReferenceDiversity-0</diverseFromServiceReferenceDiversity>
+<DiversityDescription>id=description-0</DiversityDescription>
+
+<additionalCostsRequiredCheckbox>id=additionalCostsRequired_0</additionalCostsRequiredCheckbox>
+<CapexPrice>id=bespokeCapex-0-display-0</CapexPrice>
+<incrementalReplacementOpex>id=incrementalReplacementOpex-0</incrementalReplacementOpex>
+
+<NotesAndProductDescription>id=notesProductDescription_diversity-0</NotesAndProductDescription>
+<NextBtn>id=next_model</NextBtn>
+<BespokeTab>(//span[text()='Bespoke Features']/parent::a)[2]</BespokeTab>
+<!-- IP Acess Bespoke -->
+<BespokeyCheckbox>id=bespokeFeatureRequired_true</BespokeyCheckbox>
+<BasePokeCommentsforsale>id=bespokeNotes</BasePokeCommentsforsale>
+<BesPokeFeatures>id=bespokeFeatures-0</BesPokeFeatures>
+<BesPokeDescription>idbespokeDescription-0</BesPokeDescription>
+<BespokeFeatureLevel>id=bespokeFeatureLevel-0</BespokeFeatureLevel>
+<NotesAndProductDescriptionForBespoke>id=bespokeNotesProductDescription-0</NotesAndProductDescriptionForBespoke>
+
+<PricesAndPromotionsTab>//span[text()='Prices and Promotions']/parent::a</PricesAndPromotionsTab>
+<Bespoke>id=bespokeFeatureRequired_true</Bespoke>
 <ParitalSaveIP>//*[@id='markForPartialSaveSysConfig_true']</ParitalSaveIP>
 <ExitingLeadtime>id=existingCapacityLeadTimeAEnd</ExitingLeadtime>
 <Promotion></Promotion>
