@@ -2,13 +2,15 @@ package Reporter;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
- 
+
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
  
 public class ExtentTestManager {
     static Map extentTestMap = new HashMap();
-    static ExtentReports extent = ExtentManager.getReporter();
+   // ExtentManager.loadConfig(new File(workingDir+"/config-report.xml"));
+    static ExtentReports extent = ExtentManager.getReporter();;
  
     public static synchronized ExtentTest getTest() {
     	

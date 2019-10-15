@@ -30,7 +30,8 @@ public class ExploreHelper extends DriverHelper {
 	
 	}
 	public void ExploreWorkflownearnet(Object[][] inputdata) throws InterruptedException, Exception 
-	{ List data=RequestIDNearnet.get();
+	{ 
+		List data=RequestIDNearnet.get();
 		for(int i=0;i<data.size();i++)
 		{
 			Object[] newdata=(Object[]) data.get(i);
@@ -309,7 +310,8 @@ public class ExploreHelper extends DriverHelper {
 				}
 				else {
 					WaitforElementtobeclickable(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier"));
-					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");	
+					SendKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Carrier")),"Colt");
+					Thread.sleep(3000);
 					SendkeaboardKeys(getwebelement(xml.getlocator("//locators/Filedsname").replace("Fieldname", "Node")),Keys.ARROW_DOWN);	
 					Thread.sleep(3000);
 					//Clickon(getwebelement(xml.getlocator("//locators/NodeDropdown")));

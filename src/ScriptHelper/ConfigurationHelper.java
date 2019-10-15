@@ -332,7 +332,7 @@ public class ConfigurationHelper extends DriverHelper{
 				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/RequestId"));
-				referece[0]=(Gettext(getwebelement(xml.getlocator("//locators/RequestId"))).split(":"))[1].trim();;
+				referece[0]=(Gettext(getwebelement(xml.getlocator("//locators/RequestId"))).split(":"))[1].trim();
 				//RequestID.set();
 				switchtodefault();
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
@@ -888,7 +888,7 @@ public class ConfigurationHelper extends DriverHelper{
 				//Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/RequestId"));
-				referece[0]=(Gettext(getwebelement(xml.getlocator("//locators/RequestId"))).split(":"))[1].trim();;
+				referece[1]=(Gettext(getwebelement(xml.getlocator("//locators/RequestId"))).split(":"))[1].trim();;
 				//RequestID.set();
 				switchtodefault();
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");

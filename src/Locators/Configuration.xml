@@ -108,9 +108,9 @@
 <!-- Manual Near Net Option A End -->
 <!-- Manual Near Net Option B End -->
 <!-- Manual DSL Option A End -->
-<ManualDSLOptionAEnd>(//*[@id='dslNetA']/table/tbody/tr[3]/td[1]/input)[1]</ManualDSLOptionAEnd>
+<ManualDSLOptionAEnd>//*[@id='dslNetA']/table/tbody/tr[2]/td/input</ManualDSLOptionAEnd>
 <!-- Manual DSL Option B End -->
-<ManualDSLOptionBEnd>(//*[@id='dslNetB']/table/tbody/tr[3]/td[1]/input)[1]</ManualDSLOptionBEnd>
+<ManualDSLOptionBEnd>//*[@id='dslNetB']/table/tbody/tr[2]/td/input</ManualDSLOptionBEnd>
 <!-- Revalidation/Renegotialtion Offnet Option A End -->
 <!-- Revalidation/Renegotialtion Offnet Option A End Option B End -->
 <!-- Manual OLO+DSL Option A End -->
