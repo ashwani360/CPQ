@@ -179,13 +179,13 @@
 <PLtab>(.//*[normalize-space(text()) and normalize-space(.)='Quote'])[1]/following::span[1]</PLtab>
 <Portfolio>//div[@id='oj-select-choice-portfolioTeamAssignment']</Portfolio>
 <Assignquote>//span[text()='Assign Quote']/parent::*/parent::*</Assignquote>
-<Bpnotfound>(//span[text()='Base price not found' or text()='FastTrack price not found'])[index]</Bpnotfound>
+<Bpnotfound>(//span[text()='Base price not found' or text()='FastTrack price not found' or @title ='Base Price POA'])[index]</Bpnotfound>
 <PricingCutinotfoundmodel>//span[contains(text(),'Pricing City') and contains(text(),'Not Found')]/parent::*/parent::*/preceding-sibling::*[1]</PricingCutinotfoundmodel>
 <POA>//span[text()='POA']</POA>
 <Fastnotfound>//span[text()='FastTrack price not found']</Fastnotfound>
 <Pricingcitynotfound>//span[contains(text(),'Pricing City') and contains(text(),'Not Found')]</Pricingcitynotfound>
-<Basepricenrr>(//span[@title='Base price not found' or @title='Waiting for POA']/parent::*/parent::*/td[contains(@class,'nRCGross')]/span)[index]</Basepricenrr>
-<Basepricemrr>(//span[@title='Base price not found' or @title='Waiting for POA']/parent::*/parent::*/td[contains(@class,'mRCGross')]/span)[index]</Basepricemrr>
+<Basepricenrr>(//span[@title='Base price not found' or @title='Waiting for POA' or @title ='Base Price POA']/parent::*/parent::*/td[contains(@class,'nRCGross')]/span)[index]</Basepricenrr>
+<Basepricemrr>(//span[@title='Base price not found' or @title='Waiting for POA' or @title ='Base Price POA']/parent::*/parent::*/td[contains(@class,'mRCGross')]/span)[index]</Basepricemrr>
 <Fastracknrr>(//span[@title='FastTrack price not found']/parent::*/parent::*/td[contains(@class,'nRCGross')]/span)[index]</Fastracknrr>
 
 <Pricincity>//span[contains(@title,'Pricing City') and contains(text(),'Not Found')]</Pricincity>
@@ -202,16 +202,15 @@
 <BEndCityExpander>//button[@title='Show All Items']</BEndCityExpander>
 <BEndCity>//li/a[text()='CityName']</BEndCity>
 <Pptuser>Do not know</Pptuser>
-<POALineItem>//span[@title='Base price not found' or @title='Waiting for POA']</POALineItem>
-<Pricenotfound>//span[@title='Base price not found' or @title='FastTrack price not found']</Pricenotfound>
+<POALineItem>//span[@title='Base price not found' or @title='Waiting for POA' or @title ='Base Price POA']</POALineItem>
+<Pricenotfound>//span[@title='Base price not found' or @title='FastTrack price not found' or @title ='Base Price POA']</Pricenotfound>
 </PPT>
 <Nonfeasiblemsg> //*[contains(text(),'The selected interface is not compatible for sites A. and B.')] </Nonfeasiblemsg>
 <PartialSave>//input[@name='partialSave_Features']</PartialSave>
 <Savetoquote>//a[text()='Save to Quote']</Savetoquote>
 <UsernameProxy>//a[text()='Ashwani.Singh31@colt.net']/parent::*/parent::*/td[5]/a</UsernameProxy>
-<AdditionalProductDataTab>//span[text()='Additional Product Data'] </AdditionalProductDataTab>
-<AdditionalProductDataTabparent>//span[text()='Additional Product Data']/parent::*/parent::*/parent::*/parent::*[not(contains(@style,'display:none'))]
- </AdditionalProductDataTabparent>
+<AdditionalProductDataTab>//span[text()='Additional Product Data']</AdditionalProductDataTab>
+<AdditionalProductDataTabparent>//span[text()='Additional Product Data']/parent::*/parent::*/parent::*/parent::*[not(contains(@style,'display:none'))]</AdditionalProductDataTabparent>
 
 <ExistingCapacityLeadTime>//select[@name="existingCapacityLeadTime_qto"]</ExistingCapacityLeadTime>
 <ProxyLink>(//img[@alt='Proxy Login']/parent::*)[1]</ProxyLink>
@@ -298,7 +297,7 @@
 <Connector>id=connectorAEnd</Connector>
 <IPAddressFomate>id=iPAddressingFormatAEnd</IPAddressFomate>
 <IPV4Type>id=iPv4AddressingTypeAEnd</IPV4Type>
-<IPV4number>id=numberOfIPv4AddressesAEnd</IPV4number>
+<IPV4number>id=numberOfIPv4Addresses</IPV4number>
 <IPV6Type>id=iPv6AddressingTypeAEnd</IPV6Type>
 <IPV6number>id=numberOfIPv6AddressesAEnd</IPV6number>
 <Layer3Resilency>id=layer3Resiliency</Layer3Resilency>
@@ -334,6 +333,70 @@
 <Bespoke>id=bespokeFeatureRequired_true</Bespoke>
 <ParitalSaveIP>//*[@id='markForPartialSaveSysConfig_true']</ParitalSaveIP>
 <ExitingLeadtime>id=existingCapacityLeadTimeAEnd</ExitingLeadtime>
-<Promotion></Promotion>
+<RouterTechnology>id=routerTechnology</RouterTechnology>
+<Promotion>//div[text()='promotion']</Promotion>
+<!-- IpAccess Family Product  -->
+
+<BGP4FeedType>id=bGP4FeedTypeAEnd</BGP4FeedType>
+
+<IPAccessContactfirstName>id=firstName</IPAccessContactfirstName>
+<IPAccessContactlastName>id=lastName</IPAccessContactlastName>
+<IPAccessContactNumber>id=contactNumber</IPAccessContactNumber>
+<IPAccessContactmobileNumber>id=mobileNumber</IPAccessContactmobileNumber>
+<IPAccessContactemail>id=email</IPAccessContactemail>
+<IPAccessContactfaxNumber>id=faxNumber</IPAccessContactfaxNumber>
+
+<CommittedBandwidth>id=committedBandwidth</CommittedBandwidth>
+<MaximumBandwidth>id=maximumBandwidth</MaximumBandwidth>
+
+<IpAccessFamily>//a[text()='IP Access']</IpAccessFamily>
+<IpGaurdian>//a[text()='Colt IP Guardian']</IpGaurdian>
+<IpAccessProduct>//select[@name='iPAccessipguardian']</IpAccessProduct>
+<IpAccessServiceReference>name=iPAccessServiceReferenceipguardian</IpAccessServiceReference>
+<ServiceBandwidthIpGaurdian>name=serviceBandwidthIpGuardian</ServiceBandwidthIpGaurdian>
+<LoadingDailog>//*[@id='loading-mask']</LoadingDailog>
+<CustomerType>//select[@name="customerType"]</CustomerType>
+<ContractTerm>//select[@name='contractTermInYears']</ContractTerm>
+<SelectIpGaurdianType>//select[@name='selectIPGuardianType_IpGuardian']</SelectIpGaurdianType>
+<SaveToQuote>//a[text()='Save to Quote']</SaveToQuote>
+<CommercialApprovalTab>//span[text()='Commercial Approval']/parent::a</CommercialApprovalTab>
+<SubmitToApproval>//span[text()='Submit to Approval']/ancestor::button</SubmitToApproval>
+
+<IpDomain>//a[text()='Colt IP Domain']</IpDomain>
+<DomainIpAccess>id=iPAccess</DomainIpAccess>
+<DomainIpAccessServiceReference>name=iPAccessServiceReference</DomainIpAccessServiceReference>
+<DomainCountryDropDown>//select[@id="countryIPD"]/following::button[1]</DomainCountryDropDown>
+<DomainCountryValue>//a[text()='value']</DomainCountryValue>
+<NumberOfGenericDomains>//label[text()='Number of Generic Domains']/parent::div/following-sibling::div/input</NumberOfGenericDomains>
+<GenericDomainOrderType>(//td[@class='cell-domainOrderTypeGeneric ']//select)[index]</GenericDomainOrderType>
+<GenericDomainName>(//td[@class='cell-domainName ']//input)[index]</GenericDomainName>
+<GenericTopLevelDomain>(//td[@class='cell-topLevelDomainGenericPickList ']//select)[index]</GenericTopLevelDomain>
+<NoOfCountrySpecificDomains>//label[text()='Number of Country Specific Domains']/parent::div/following-sibling::div/input</NoOfCountrySpecificDomains>
+<CountryDomainOrderType>(//td[@class='cell-domainOrderTypeCountrySpecific ']//select)[index]</CountryDomainOrderType>
+<Country>(//td[@class='cell-country ']//select)[index]</Country>
+<CountrySpecificDomainName>(//td[@class='cell-domainNameCountrySpecific ']//input)[index]</CountrySpecificDomainName>
+<CountrySpecificSecondLevelDomain>(//td[@class='cell-secondLevelDomainpicklistCountrySpecific ']//select)[index]</CountrySpecificSecondLevelDomain>
+<CountrySpecificTopLevelDomain>(//td[@class='cell-topLevelDomainCountrySpecificPickList ']//select)[index]</CountrySpecificTopLevelDomain>
+<UpdateButton>//a[text()='Update']</UpdateButton>
+
+
+<ColtManagedVirtualFireWall>//a[text()='Colt Managed Virtual Firewall']</ColtManagedVirtualFireWall>
+<VirtualFirewallIpAccess>id=iPAccessIPMVF</VirtualFirewallIpAccess>
+<VirtualIpAccessServiceReference>id=iPAccessServiceReferenceIPMVF</VirtualIpAccessServiceReference>
+<VirtualServiceBandWidth>id=serviceBandwidthIPMVF</VirtualServiceBandWidth>
+<VirtualLayer3Resiliency>id=layer3ResiliencyIPMVF</VirtualLayer3Resiliency>
+<VirtualBackupBandwidth>id=backupBandwidthIPMVF</VirtualBackupBandwidth>
+<ManagedVirtualFirewallServiceBandwidth>id=managedVirtualFirewallServiceBandwidth</ManagedVirtualFirewallServiceBandwidth>
+
+<ColtManagedDedicatedFirewall>//a[text()='Colt Managed Dedicated Firewall']</ColtManagedDedicatedFirewall>
+<DedicatedFirewallIpAccess>id=iPAccessIPMDF</DedicatedFirewallIpAccess>
+<DedicatedIpAccessServiceReference>id=iPAccessServiceReferenceIPMDF</DedicatedIpAccessServiceReference>
+<ManagedDedicatedFirewallCountry>id=managedDedicatedFirewallCountryAEnd</ManagedDedicatedFirewallCountry>
+<DedicatedServiceBandwidth>id=serviceBandwidthIPMDF</DedicatedServiceBandwidth>
+<DedicatedLayer3Resiliency>id=layer3ResiliencyIPMDF</DedicatedLayer3Resiliency>
+<DedicatedBackupBandwidth>//select[@id='backupBandwidthIPMDF']</DedicatedBackupBandwidth>
+<DedicatedServiceOption>id=selectServiceOptionIPMDF</DedicatedServiceOption>
+<HighAvailabilityRequired>id=highAvailabilityRequiredIPMDF</HighAvailabilityRequired>
+<DedicatedFirewall>//select[@id='firewallIPMDF']</DedicatedFirewall>
 </locators>
 

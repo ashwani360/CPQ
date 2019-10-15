@@ -295,7 +295,7 @@ public class C4CHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/Opportunity/Lcomplexity")));
 		//////Thread.sleep(3000);
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
-		if(!(Inputdata[0][15].equals("BeSpoke")||Inputdata[0][15].equals("NonStandard"))) {
+		if(!(Inputdata[0][15].equals("BeSpoke")||Inputdata[0][15].equals("NonStandard")||Inputdata[0][47].equals("Yes"))) {
 		Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Standard")));
 		
 		//Enter Technical Complexity detail
@@ -310,6 +310,7 @@ public class C4CHelper extends DriverHelper{
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		//////Thread.sleep(3000);
 		}
+		
 		else {
 			Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Non-Standard")));
 			
@@ -655,7 +656,7 @@ public class C4CHelper extends DriverHelper{
 		
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		}
-		
+		System.out.println("Move Oppertunity finished off");
 		
 	}
 	public void  VerifyQuoteStage() throws Exception {
@@ -838,8 +839,8 @@ public class C4CHelper extends DriverHelper{
 		WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		//////Thread.sleep(2000);
 		//WaitforElementtobeclickable(xml.getlocator("//locators/OpenQuote"));
-		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteActions1"));
-		Clickon(getwebelement(xml.getlocator("//locators/QuoteActions1")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/QuoteActions"));
+		Clickon(getwebelement(xml.getlocator("//locators/QuoteActions")));
 		
 		//WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 		

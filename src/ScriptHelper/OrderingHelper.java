@@ -162,9 +162,9 @@ public class OrderingHelper extends DriverHelper{
 				SendKeys(getwebelement(xml.getlocator("//locators/Asitecomponeyinput").replace("index",String.valueOf(i))),Inputdata[i-1][26].toString());
 				//EnterText(Inputdata[i][26].toString());
 				EnterText2(Keys.TAB);
-				//Thread.sleep(2000);
-				
-				waitForpageload();
+				Thread.sleep(2000);
+				EnterText2(Keys.TAB);
+	//			waitForpageload();
 				//Clickon(getwebelement(xml.getlocator("//locators/BSitecom").replace("index",String.valueOf(i+1))));
 //				WaitforElementtobeclickable(xml.getlocator("//locators/BSitecom").replace("index",String.valueOf(i+1)));
 //				Clickon(getwebelement(xml.getlocator("//locators/BSitecom").replace("index",String.valueOf(i+1))));

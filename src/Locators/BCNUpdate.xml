@@ -79,6 +79,8 @@
 <AjaxLoader1>//*[contains(@class,'progress-bar-overlay')]</AjaxLoader1>
 <AddProduct>//*[text()='Add Product']/parent::*/parent::*</AddProduct>
 <ModelSelector>(//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*/td[3])[index]</ModelSelector>
+<LineItemProductSelector>(//div[contains(@class,'rowexpander')and contains(@class,'expansion-0')]/parent::td)[index]</LineItemProductSelector>
+<LineItemSelector>(//table[@aria-label='Line Item Grid']//tbody/tr/td[3]//span/parent::td)[index]</LineItemSelector>
 <Lineitemcounter>//span[contains(@class,'rowexpander')]/parent::*/parent::*/parent::*/parent::*</Lineitemcounter>
 <BCNpopup>//div[contains(@class,'popup_on_viewbcn')]</BCNpopup>
 </locators>

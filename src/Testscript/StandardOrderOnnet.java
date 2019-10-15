@@ -23,6 +23,8 @@ public class StandardOrderOnnet extends DriverTestcase {
 		
 		Thread.sleep(3000);
 		C4Chelper.get().AddQuote();
+		
+	
 		Configurationhelper.get().AddProduct(Data);
 		//C4Chelper.get().VerifyQuoteStage();
 		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for BCP"))
@@ -94,12 +96,14 @@ public class StandardOrderOnnet extends DriverTestcase {
 		if(Configurationhelper.get().Quotestatus.get().equals("Created"))
 		{
 			Configurationhelper.get().SEDataupdate(Data);
+	
 			//C4Chelper.get().VerifyQuoteStage();
 			}
 		if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
 		{
 			//Need to write the codeExceptionPPT()
 			Configurationhelper.get().ExceptionPPT();
+			
 			//C4Chelper.get().VerifyQuoteStage();
 		}
 		// If Stage is waiting for third Party Need to call All the Explore functions

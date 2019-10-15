@@ -118,11 +118,14 @@ public class DriverHelper {
 	public static ThreadLocal<String> NewLogoflag=new ThreadLocal<>();
 	public static ThreadLocal<String> DealpriceinCoomerceApproval=new ThreadLocal<>();
 	public static ThreadLocal<String> PriceChangesSE=new ThreadLocal<>();
+	
+	public static ThreadLocal<String> FieldName = new ThreadLocal<>();
+	
 	public DriverHelper(WebDriver dr)
 	{
 		driver=dr;
 		wait = new FluentWait<WebDriver>(driver) 
-				.withTimeout(480, TimeUnit.SECONDS)    
+				.withTimeout(180, TimeUnit.SECONDS)    
 				.pollingEvery(500, TimeUnit.MILLISECONDS)    
 				.ignoring(NoSuchElementException.class)
 				
@@ -131,8 +134,9 @@ public class DriverHelper {
 		OpportunityID.set("New");
 		DealpriceinCoomerceApproval.set("No");
 		PriceChangesSE.set("No");
+		FieldName.set(null);
 //		OrderType.set("");
-		CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/84152274");
+		//CurrentQuoteURL.set("https://colttest1.bigmachines.com/commerce/transaction/oraclecpqo/84152274");
 //		Quotetcv.set("3931.2");
 //		Quoteacv.set("3931.2");
 //		Quotearr.set("3571.2");
@@ -188,7 +192,9 @@ public class DriverHelper {
 	}
 	public void Proxylogout() throws Exception
 	{
-		openurl2("https://coltuat1.bigmachines.com/logout.jsp?proxy_logout=true&_bm_trail_refresh_=true");
+		openurl2(Getkeyvalue("CPQ_URL")+"/logout.jsp?proxy_logout=true&_bm_trail_refresh_=true");
+		Log.info("Performing Proxy Logout");
+		System.out.println("Proxy logout is called");
 		Thread.sleep(8000);
 	}
 	
@@ -647,7 +653,10 @@ public void ClickswithAction(String el) throws InterruptedException {
 	        //Here i pass values based on css style. Yellow background color with solid red color border. 
 	// js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
 		el.click();
-		System.out.println("try to click on the element");
+		System.out.println("try to click on the element ");
+	//	System.out.println("try to click on the element "+el.toString().split("xpath:")[1]);
+	//	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On "+el.toString().split("xpath:")[1]+" Button");
+
 	//js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
 		
 		}

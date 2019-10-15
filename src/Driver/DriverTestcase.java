@@ -565,7 +565,7 @@ public static final ThreadLocal<WebDriver> WEB_DRIVER_THREAD_LOCAL = new Inherit
 	public void Teardown2()
 	{
 		System.out.println("Cuurent Thread of diriver need to close-"+getwebdriver());
-		getwebdriver().quit();
+	//	getwebdriver().quit();
 	}
 	@AfterTest
 	public void Teardown()

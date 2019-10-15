@@ -129,40 +129,71 @@ public void ApplyDisscountQuotelevel(Object[][] Inputdata) throws Exception {
 		}
 	
 }
-public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
+public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception 
+{
 
-	{
 		Clickon(getwebelement(xml3.getlocator("//locators/saveQuote")));
 		waitForpageload();
 		
 		//     Ubb Discount
+		if(Inputdata[0][2].toString().split(">")[1].trim().equals("Colt IP Access"))
+		{
+			if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) 
+			{
+				safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
+				waitForpageload();
+				}
+				else
+				{
+					System.out.println("All ready selected");
+				}
 		for(int i=0; i<Inputdata.length;i++)
 		{
 		if(Inputdata[i][48].equals("Yes"))
 		{
 		
-			WaitforElementtobeclickable((xml.getlocator("//locators/DiscountedUBBTarrif").replace("Index", String.valueOf(i+1))));
-			 Clickon(getwebelement((xml.getlocator("//locators/DiscountedUBBTarrif").replace("Index", String.valueOf(i+1)))));
+			WaitforElementtobeclickable(xml.getlocator("//locators/DiscountedUBBTarrifplan").replace("index", String.valueOf(i+1)));
+			 Clickon(getwebelement(xml.getlocator("//locators/DiscountedUBBTarrifplan").replace("index", String.valueOf(i+1))));
+			 waitForpageload();
 			 Thread.sleep(2000);
-			 Clickon(getwebelement(xml.getlocator("//locators/UBBTarrifValue").replace("UBBValue", Inputdata[i][49].toString())));
+			 WaitforElementtobeclickable(xml.getlocator("//locators/DiscountedUBBTarrif").replace("value", Inputdata[i][49].toString()).replace("index", String.valueOf(i+1)));
+			 Clickon(getwebelement(xml.getlocator("//locators/DiscountedUBBTarrif").replace("value", Inputdata[i][49].toString()).replace("index", String.valueOf(i+1))));
+			 Thread.sleep(2000);
+			// Clickon(getwebelement(xml.getlocator("//locators/UBBTarrifValue").replace("UBBValue", Inputdata[i][49].toString())));
 			 waitForpageload();
-			 WaitforElementtobeclickable((xml.getlocator("//locators/DiscountedAccessValue").replace("Index", String.valueOf(i+1))));
-			 Clickon(getwebelement((xml.getlocator("//locators/DiscountedAccessValue").replace("Index", String.valueOf(i+1)))));
+			 
+			 Clickonoutofviewportwithstring(xml.getlocator("//locators/DiscountedAccessValue").replace("index", String.valueOf(i+1)));
 			 waitForpageload();
-			 getwebelement((xml.getlocator("//locators/DiscountedAccessValue").replace("Index", String.valueOf(i+1)))).clear();
-			 waitForpageload();
-			 SendKeys(getwebelement(xml.getlocator("//locators/DiscountedAccessValue").replace("Index", String.valueOf(i+1))), Inputdata[i][50].toString());
-		
+		    	EnterText2(Keys.BACK_SPACE);
+				EnterText2(Keys.BACK_SPACE);
+				EnterText2(Keys.BACK_SPACE);
+				EnterText2(Keys.BACK_SPACE);
+				EnterText2(Keys.BACK_SPACE);
+				EnterText(Inputdata[i][50].toString());
+				//waitForpageload();
+				EnterText2(Keys.ENTER);
+				waitForpageload();
+			 
+			 
+//			 WaitforElementtobeclickable(xml.getlocator("//locators/DiscountedAccessValue").replace("index", String.valueOf(i+1)));
+//			 Clickon(getwebelement((xml.getlocator("//locators/DiscountedAccessValue").replace("index", String.valueOf(i+1)))));
+//			 waitForpageload();
+//			 Thread.sleep(1000);
+//			 getwebelement(xml.getlocator("//locators/DiscountedAccessValue").replace("index", String.valueOf(i+1))).clear();
+//			 waitForpageload();
+//			 SendKeys(getwebelement(xml.getlocator("//locators/DiscountedAccessValue").replace("index", String.valueOf(i+1))), "2.8");
 			
 		}
 		}
-		
-		
-		
-		
+		}
 	
 		
-		if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) {
+		
+		else
+		{
+		
+		if(!Getattribute(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")),"class").contains("selected")) 
+		{
 			safeJavaScriptClick(getwebelement(xml.getlocator("//locators/Showdisscountcoulumn")));
 			waitForpageload();
 			}
@@ -242,17 +273,19 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception {
 			 }
 			 
 			  }
+		}
 		 Clickon(getwebelement(xml.getlocator("//locators/CalculateDisscountline")));
 		 waitForpageload();
 			
 		//System.out.println("Line Level Disscount");
 	}
-}
 public void ApproveQuote(Object[][] Inputdata) throws Exception {
 	
 	waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 	waitForpageload();
-	Clickon(getwebelement(xml3.getlocator("//locators/saveQuote")));
+// commented for unit testing	
+//	Clickon(getwebelement(xml3.getlocator("//locators/saveQuote")));
+	
 	waitForpageload();
 	
 	////Thread.sleep(10000);
@@ -368,8 +401,79 @@ public void SEEngagement(Object[][] Inputdata) throws InterruptedException, Exce
 
 public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception 
 {
-	for(int i=0;i<Data.length;i++) {
-		if(!Data[i][15].toString().equals("")&&!Data[i][15].toString().equals("BeSpoke")&&!Data[i][15].toString().equals("Non Standard")) {
+	if(Data[0][2].toString().split(">")[1].trim().equals("Colt IP Access"))
+	{
+		for(int a=0;a<Data.length;a++) 
+		{
+			if(!Data[a][15].toString().equals("")&&!Data[a][15].toString().equals("BeSpoke")&&!Data[a][15].toString().equals("Non Standard")) 
+			{
+			WaitforElementtobeclickable(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(a+1)));
+			
+			Clickon(getwebelement(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(a+1))));
+			WaitforElementtobeclickable(xml3.getlocator("//locators/Reconfigure"));
+			
+			Clickon(getwebelement(xml3.getlocator("//locators/Reconfigure")));
+			Getloadingcomplete(xml3.getlocator("//locators/LoadingDailog"));
+			Getmaploaded(xml3.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
+		   switch(Data[a][15].toString())
+		   {
+		   case "Bandwidth":
+		   {
+			   javascriptexecutor(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button to Run the Connectivity Check");
+				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
+				//getwebelement(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Map to be loaded completly");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Badwidth");
+				Select(getwebelement(xml.getlocator("//locators/ServiceBandwidth")), Data[a][9].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
+				Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
+				waitandForElementDisplayed(xml.getlocator("//locators/Save"));
+				Clickon(getwebelement(xml.getlocator("//locators/Save")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			   break;
+		   }
+		   case "Contract Term":
+		   {
+			   javascriptexecutor(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button to Run the Connectivity Check");
+				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
+				//getwebelement(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Map to be loaded completly");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Contract Term");
+				Select(getwebelement(xml.getlocator("//locators/ContracttermIP")), Data[a][7].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
+				Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
+				waitandForElementDisplayed(xml.getlocator("//locators/Save"));
+				Clickon(getwebelement(xml.getlocator("//locators/Save")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				break;
+		   }
+		   
+		   }
+			}
+	}
+	}
+	else
+	{
+	for(int i=0;i<Data.length;i++) 
+	{
+		if(!Data[i][15].toString().equals("")&&!Data[i][15].toString().equals("BeSpoke")&&!Data[i][15].toString().equals("Non Standard")) 
+		{
 		WaitforElementtobeclickable(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
 		
 		Clickon(getwebelement(xml3.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
@@ -597,6 +701,7 @@ public void UpgradeQuote(Object[][] Data) throws InterruptedException, Exception
 	   }
 	}
 	}
+	}
 	
 }
 
@@ -624,8 +729,8 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 	WaitforElementtobeclickable(xml.getlocator("//locators/MessageforCST"));
 	//Thread.sleep(5000);
 	openurl("CPQAdmin");
-	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+//	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+//	Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
 	///waitForpageload();
 	WaitforElementtobeclickable(xml.getlocator("//locators/Proxylogout"));
 	Clickon(getwebelement(xml.getlocator("//locators/Proxylogout")));
@@ -657,7 +762,7 @@ public void AddLineitemGridLeadTime(Object[][] data) throws InterruptedException
     	////Thread.sleep(5000);
     	//ClickswithAction(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));
     	//Clickon(getwebelement(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1))));
-    	waitForpageload();
+  //  	waitForpageload();
     	//Thread.sleep(8000);
     	EnterText2(Keys.BACK_SPACE);
     	//waitForpageload();
@@ -1154,7 +1259,7 @@ public void ApproveQuote(String Approver) throws Exception
                SendKeys(getwebelement(xml.getlocator("//locators/ApproverComment")),"Approve");
                WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
                Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
-               WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "VP Finanace - 1"));
+               WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "VP Finance - 1"));
                waitForpageload();
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
                javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
@@ -1193,7 +1298,7 @@ public void ApproveQuote(String Approver) throws Exception
                WaitforElementtobeclickable(xml.getlocator("//locators/ApproveasApprover"));
                
                Clickon(getwebelement(xml.getlocator("//locators/ApproveasApprover")));
-               WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "VP Finanace - 2"));
+               WaitforElementtobeclickable(xml.getlocator("//locators/Approverupdate").replace("Usergroup", "VP Finance - 2"));
                
                waitForpageload();
                WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));

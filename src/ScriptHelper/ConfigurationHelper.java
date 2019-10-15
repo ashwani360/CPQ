@@ -72,6 +72,14 @@ public class ConfigurationHelper extends DriverHelper{
 			Clickon(getwebelement(xml.getlocator("//locators/Opticalfamily")));
 		      break; // break is optional
 		   }
+		   case "IpAccess" :
+		   {
+			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct Family");
+			   WaitforElementtobeclickable((xml.getlocator("//locators/IpAccessFamily")));
+			   Clickon(getwebelement(xml.getlocator("//locators/IpAccessFamily")));
+			   break;
+			   
+		   }
 		   
 		   default :  
 		   		{ ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Producct Family");
@@ -273,7 +281,14 @@ public class ConfigurationHelper extends DriverHelper{
 			    
 				Select(getwebelement(xml.getlocator("//locators/SelectManualRequest")),"REQUEST MANUAL DSL");
 				// Updated the data in Empac screen and create the request.
+				try
+				{
 				CancelJavaScriptMethod();
+				}
+				catch(Exception e)
+				{
+					System.out.println("No Alert is present");
+				}
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
 				//WaitforElementtobeclickable(xml.getlocator("//locators/PriorityDropdown"));
@@ -716,7 +731,7 @@ public class ConfigurationHelper extends DriverHelper{
                 	System.out.println("No Popup Window");
                 }
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for A site");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the On net Tab for B site");
 				WaitforElementtobeclickable(xml.getlocator("//locators/ManualEngagementBEnd"));
 			    
 				Clickon(getwebelement(xml.getlocator("//locators/ManualEngagementBEnd")));
@@ -1291,17 +1306,20 @@ public class ConfigurationHelper extends DriverHelper{
 				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				Select(getwebelement(xml.getlocator("//locators/Billingtype")), Inputdata[i][29].toString());
-				
-				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
+				Select(getwebelement(xml.getlocator("//locators/Billingtype")), Inputdata[i][30].toString());
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				if(Inputdata[i][30].toString().equals("Yes")) {
-					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button to Run the Connectivity Check");
-					Clickon(getwebelement(xml.getlocator("//locators/FutureSupport")));
-					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
+				if (Inputdata[i][30].toString().contains("UBB"))
+				{
+					Select(getwebelement(xml.getlocator("//locators/CommittedBandwidth")), Inputdata[i][52].toString());
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Committed bandwidth");
+					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+					Select(getwebelement(xml.getlocator("//locators/MaximumBandwidth")), Inputdata[i][59].toString());
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Maximum bandwidth");
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+					
 				}
+				
 				//----------------------------------
 				if(Inputdata[i][11].toString().contains("Offnet Revalidation")||Inputdata[i][11].toString().contains("Offnet Renegotiation")) {
 					Selectconnectivity("Manual Offnet","ASite",ExploreID,ExploreIDNearnet);
@@ -1317,16 +1335,37 @@ public class ConfigurationHelper extends DriverHelper{
 				Selectconnectivity(Inputdata[i][11].toString(),"ASite",ExploreID,ExploreIDNearnet);
 				
 				}
+				// --------------------------------------------------------------------------------------------
+				String exception="No Exception";
+				try {
+				exception=Gettext(getwebelement2(xml.getlocator("//locators/PPT/BasePrice")));
+				System.out.println("Exception is"+exception);
+				}
+				catch(Exception e)
+				{
+					System.out.println("Exception is"+exception);
+				}
+				if(exception.equalsIgnoreCase("Price Not Found"))
+				{
+					System.out.println("Pricing Execption found nd needs to partial save");
+				//	javascriptexecutor(getwebelement(xml.getlocator("//locators/FeaturesTab")));
+					WaitforElementtobeclickable(xml.getlocator("//locators/PPT/PartialSave"));
+					Clickon(getwebelement(xml.getlocator("//locators/PPT/PartialSave")));
+					//Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
+					
+				}
 				
 				///----------------------------------------------------------------------------------------------
+				
+				WaitforElementtobeclickable(xml.getlocator("//locators/ConnectivitiCheckIP"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button");
 				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
-				//getwebelement(xml.getlocator("//locators/LoadingDailog"));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				Select(getwebelement(xml.getlocator("//locators/Routertype")), Inputdata[i][32].toString());
 				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				Select(getwebelement(xml.getlocator("//locators/LanInterface")), Inputdata[i][33].toString());
+	//			Select(getwebelement(xml.getlocator("//locators/LanInterface")), Inputdata[i][33].toString());
 				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
@@ -1338,7 +1377,10 @@ public class ConfigurationHelper extends DriverHelper{
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button");
 					Clickon(getwebelement(xml.getlocator("//locators/RouterFeature").replace("Featurename", Allfeatures[j])));
 				}
-				Select(getwebelement(xml.getlocator("//locators/Interfacetype")), Inputdata[i][35].toString());
+				
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Select(getwebelement(xml.getlocator("//locators/BGP4FeedType")), Inputdata[i][60].toString());
+				
 				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
@@ -1379,6 +1421,8 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button");
 				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
 				// Site Addons Use Feature Tab
+				Thread.sleep(5000);
+				WaitforElementtobeclickable(xml.getlocator("//locators/ConnectivitiCheckIP"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button");
 				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
 				Select(getwebelement(xml.getlocator("//locators/Layer3Resilency")), Inputdata[i][43].toString());
@@ -1437,59 +1481,99 @@ public class ConfigurationHelper extends DriverHelper{
 					}
 					if(!Inputdata[i][12].toString().equals("")) {
 					Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
-					Select(getwebelement(xml.getlocator("//locators/Routertype")), Inputdata[i][31].toString());
+					Select(getwebelement(xml.getlocator("//locators/Routertype")), Inputdata[i][32].toString());
 					
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					Select(getwebelement(xml.getlocator("//locators/LanInterface")), Inputdata[i][32].toString());
+					Select(getwebelement(xml.getlocator("//locators/LanInterface")), Inputdata[i][33].toString());
 					
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					String[] AllfeaturesB=Inputdata[i][33].toString().split(",");
-					for(int j=0;i<AllfeaturesB.length;i++)
+					String[] AllfeaturesB=Inputdata[i][34].toString().split(",");
+					for(int j=0;j<AllfeaturesB.length;j++)
 					{
 						ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button");
-						Clickon(getwebelement(xml.getlocator("//locators/RouterFeature").replace("Featurename", Allfeatures[i])));
+						Clickon(getwebelement(xml.getlocator("//locators/RouterFeature").replace("Featurename", Allfeatures[j])));
 					}
 					}
 					Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
 					// Site Addons Use Feature Tab
+					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
 					
 				}
-				if(Inputdata[i][45].toString().equals("Yes")) {
+				if(Inputdata[i][46].toString().equals("Yes")) {
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button to Run the Connectivity Check");
 					Clickon(getwebelement(xml.getlocator("//locators/Diversity")));
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					if(!Getattribute(getwebelement(xml.getlocator("//locators/ParitalSave")),"checked").equals("checked")) {
-					Clickon(getwebelement(xml.getlocator("//locators/ParitalSave")));
+					System.out.println("Partial save button is : "+getwebelement(xml.getlocator("//locators/ParitalSaveIP")).getAttribute("checked"));
+					try 
+					{
+					if(!getwebelement(xml.getlocator("//locators/ParitalSaveIP")).getAttribute("checked").contains("true")) 
+					{
+					Clickon(getwebelement(xml.getlocator("//locators/ParitalSaveIP")));
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+					}
+					}
+					catch(Exception e)
+					{
+						System.out.println("Partial save is in Catch block");
+						Clickon(getwebelement(xml.getlocator("//locators/ParitalSaveIP")));
+						Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					}
 					
 				}
 				Thread.sleep(2000);
 				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
 				
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				
 				// Service Addone current column used for the Service Addone
 				// For Site Level Addition column can be added
 				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
 				if(Inputdata[i][47].toString().equals("Yes")) {
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Next button to Run the Connectivity Check");
-					Clickon(getwebelement(xml.getlocator("//locators/BespokeRequired")));
+					Clickon(getwebelement(xml.getlocator("//locators/Bespoke")));
 					//getwebelement(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					if(!Getattribute(getwebelement(xml.getlocator("//locators/ParitalSave")),"checked").equals("checked")) {
-						Clickon(getwebelement(xml.getlocator("//locators/ParitalSave")));
+//					try
+//					{
+					System.out.println("partial save button is : "+getwebelement(xml.getlocator("//locators/ParitalSaveIP")).getAttribute("checked"));
+					try
+					{
+					if(!Getattribute(getwebelement(xml.getlocator("//locators/ParitalSaveIP")),"checked").equals("true")) 
+					{
+						Clickon(getwebelement(xml.getlocator("//locators/ParitalSaveIP")));
 						Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-						}
+					}
+					}
+					catch(Exception e)
+					{
+						System.out.println("Partial save is in Catch block");
+						Clickon(getwebelement(xml.getlocator("//locators/ParitalSaveIP")));
+						Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+					}
 				}
 				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Thread.sleep(5000);
 				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
 				Select(getwebelement(xml.getlocator("//locators/ExitingLeadtime")), "No");
+		
+				Select(getwebelement(xml.getlocator("//locators/RouterTechnology")), Inputdata[i][58].toString());
+				
+				// Additional Contact Details
+				waitandForElementDisplayed(xml.getlocator("//locators/IPAccessContactfirstName"));
+				SendKeys(getwebelement(xml.getlocator("//locators/IPAccessContactfirstName")), "Test");
+
+				SendKeys(getwebelement(xml.getlocator("//locators/IPAccessContactlastName")), "Script");
+				SendKeys(getwebelement(xml.getlocator("//locators/IPAccessContactNumber")), "+44675675657");
+				SendKeys(getwebelement(xml.getlocator("//locators/IPAccessContactmobileNumber")), "+44675675657");
+				SendKeys(getwebelement(xml.getlocator("//locators/IPAccessContactemail")), "test@email.com");
+				SendKeys(getwebelement(xml.getlocator("//locators/IPAccessContactfaxNumber")), "45465321");
 				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
@@ -1497,15 +1581,249 @@ public class ConfigurationHelper extends DriverHelper{
 				Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
-				Clickon(getwebelement(xml.getlocator("//locators/Promotion").replace("promotion", Inputdata[i][29].toString())));
-				if(isElementPresent(xml.getlocator("//locators/PPT/Save")))
+				
+				// Promotion to Apply
+	//			Clickon(getwebelement(xml.getlocator("//locators/Promotion").replace("promotion", Inputdata[i][29].toString())));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				if(isElementPresent(xml.getlocator("//locators/Savetoquote")))
 				{
-					Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
+					Clickon(getwebelement(xml.getlocator("//locators/Savetoquote")));
 				}
 				else 
 				{
 					Clickon(getwebelement(xml.getlocator("//locators/PPT/AddtoTransaction")));
 				}
+				break;
+		   }
+		   
+		   case "IpGaurdian" :
+		   {
+			   
+	//		   WaitforElementtobeclickable((xml.getlocator("//locators/IpAccessFamily")));
+	//			Clickon(getwebelement(xml.getlocator("//locators/IpAccessFamily")));
+			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Product: IpGaurdian");
+				WaitforElementtobeclickable((xml.getlocator("//locators/IpGaurdian")));
+				Clickon(getwebelement(xml.getlocator("//locators/IpGaurdian")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the IpAccessProduct Type");
+				WaitforElementtobeclickable((xml.getlocator("//locators/IpAccessProduct")));
+				Select(getwebelement(xml.getlocator("//locators/IpAccessProduct")),"Existing");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter the IpAccess Service Reference ID");
+				WaitforElementtobeclickable((xml.getlocator("//locators/IpAccessServiceReference")));
+				SendKeys(getwebelement(xml.getlocator("//locators/IpAccessServiceReference")),Inputdata[i][51].toString());
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Service Bandwidth");
+				WaitforElementtobeclickable((xml.getlocator("//locators/ServiceBandwidthIpGaurdian")));
+				Select(getwebelement(xml.getlocator("//locators/ServiceBandwidthIpGaurdian")),Inputdata[i][9].toString());
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Customer Type");
+				WaitforElementtobeclickable((xml.getlocator("//locators/CustomerType")));
+				Select(getwebelement(xml.getlocator("//locators/CustomerType")),"Other Websites");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Contact Term");
+				WaitforElementtobeclickable((xml.getlocator("//locators/ContractTerm")));
+				Select(getwebelement(xml.getlocator("//locators/ContractTerm")),Inputdata[i][7].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Ip Gaurdian Type");
+				WaitforElementtobeclickable((xml.getlocator("//locators/SelectIpGaurdianType")));
+				Select(getwebelement(xml.getlocator("//locators/SelectIpGaurdianType")),"Standard");
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the Save to quote");
+				WaitforElementtobeclickable((xml.getlocator("//locators/SaveToQuote")));
+				Clickon(getwebelement(xml.getlocator("//locators/SaveToQuote")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				WaitforElementtobeclickable((xml.getlocator("//locators/CommercialApprovalTab")));
+			   
+				break;
+			   
+		   }
+		   
+		   case "IpDomain" :
+		   {
+	//		   WaitforElementtobeclickable((xml.getlocator("//locators/IpAccessFamily")));
+	//			Clickon(getwebelement(xml.getlocator("//locators/IpAccessFamily")));
+			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Product: IpDomain");
+				WaitforElementtobeclickable((xml.getlocator("//locators/IpDomain")));
+				Clickon(getwebelement(xml.getlocator("//locators/IpDomain")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Ip Access Type");
+				WaitforElementtobeclickable((xml.getlocator("//locators/DomainIpAccess")));
+				Select(getwebelement(xml.getlocator("//locators/DomainIpAccess")),"Existing");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter the Ip Access Service Reference Id");
+				WaitforElementtobeclickable((xml.getlocator("//locators/DomainIpAccessServiceReference")));
+				SendKeys(getwebelement(xml.getlocator("//locators/DomainIpAccessServiceReference")),Inputdata[i][51].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Country ");
+				WaitforElementtobeclickable((xml.getlocator("//locators/DomainCountryDropDown")));
+				Clickon(getwebelement(xml.getlocator("//locators/DomainCountryDropDown")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/DomainCountryValue").replace("value", Inputdata[i][57].toString()));
+				System.out.println("the Country value is : "+Inputdata[i][57].toString());
+				Clickon(getwebelement(xml.getlocator("//locators/DomainCountryValue").replace("value", Inputdata[i][57].toString())));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Contact Term");
+				WaitforElementtobeclickable((xml.getlocator("//locators/ContractTerm")));
+				Select(getwebelement(xml.getlocator("//locators/ContractTerm")),Inputdata[i][7].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step:Enter the number of generic Domains");
+				WaitforElementtobeclickable((xml.getlocator("//locators/NumberOfGenericDomains")));
+				Clickon(getwebelement(xml.getlocator("//locators/NumberOfGenericDomains")));
+				getwebelement(xml.getlocator("//locators/NumberOfGenericDomains")).clear();
+				SendKeys(getwebelement(xml.getlocator("//locators/NumberOfGenericDomains")),Inputdata[i][53].toString());
+				SendkeaboardKeys(getwebelement(xml.getlocator("//locators/NumberOfGenericDomains")),Keys.ENTER);
+				Thread.sleep(5000);
+				System.out.println("The value of Generic domains"+Integer.parseInt(Inputdata[i][53].toString()));
+				for(int a=1;a<=Integer.parseInt(Inputdata[i][53].toString());a++)
+				{
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter the Generic Domain Order Type");
+					WaitforElementtobeclickable((xml.getlocator("//locators/GenericDomainOrderType").replace("index", String.valueOf(a))));
+					Select(getwebelement(xml.getlocator("//locators/GenericDomainOrderType").replace("index", String.valueOf(a))),"New");
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter The Generic domain name");
+					WaitforElementtobeclickable((xml.getlocator("//locators/GenericDomainName").replace("index", String.valueOf(a))));
+					SendKeys(getwebelement(xml.getlocator("//locators/GenericDomainName").replace("index", String.valueOf(a))),"ABCD");
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Generic Top Level Domain");
+					WaitforElementtobeclickable((xml.getlocator("//locators/GenericTopLevelDomain").replace("index", String.valueOf(a))));
+					Select(getwebelement(xml.getlocator("//locators/GenericTopLevelDomain").replace("index", String.valueOf(a))),"asia");
+					
+				}
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter the no. of Country specific domains");
+				WaitforElementtobeclickable((xml.getlocator("//locators/NoOfCountrySpecificDomains")));
+				Clickon(getwebelement(xml.getlocator("//locators/NoOfCountrySpecificDomains")));
+				getwebelement(xml.getlocator("//locators/NoOfCountrySpecificDomains")).clear();
+				SendKeys(getwebelement(xml.getlocator("//locators/NoOfCountrySpecificDomains")),Inputdata[i][54].toString());
+				SendkeaboardKeys(getwebelement(xml.getlocator("//locators/NoOfCountrySpecificDomains")),Keys.ENTER);
+				Thread.sleep(5000);
+				System.out.println("The value of Country domains"+Integer.parseInt(Inputdata[i][54].toString()));
+				for(int a=1;a<=Integer.parseInt(Inputdata[i][54].toString());a++)
+				{
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the country domain Order Type");
+					WaitforElementtobeclickable((xml.getlocator("//locators/CountryDomainOrderType").replace("index", String.valueOf(a))));
+					Select(getwebelement(xml.getlocator("//locators/CountryDomainOrderType").replace("index", String.valueOf(a))),"New");
+					Thread.sleep(2000);
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Country");
+					WaitforElementtobeclickable((xml.getlocator("//locators/Country").replace("index", String.valueOf(a))));
+					Select(getwebelement(xml.getlocator("//locators/Country").replace("index", String.valueOf(a))),"United Kingdom");
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter the country specific domain name");
+					WaitforElementtobeclickable((xml.getlocator("//locators/CountrySpecificDomainName").replace("index", String.valueOf(a))));
+					SendKeys(getwebelement(xml.getlocator("//locators/CountrySpecificDomainName").replace("index", String.valueOf(a))),"ABCD");
+					Thread.sleep(2000);
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Country specific second level domain");
+					WaitforElementtobeclickable((xml.getlocator("//locators/CountrySpecificSecondLevelDomain").replace("index", String.valueOf(a))));
+					Select(getwebelement(xml.getlocator("//locators/CountrySpecificSecondLevelDomain").replace("index", String.valueOf(a))),"NA");
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the country specific top level domain");
+					Thread.sleep(3000);
+					WaitforElementtobeclickable((xml.getlocator("//locators/CountrySpecificTopLevelDomain").replace("index", String.valueOf(a))));
+					Select(getwebelement(xml.getlocator("//locators/CountrySpecificTopLevelDomain").replace("index", String.valueOf(a))),"uk");
+					
+					
+				}
+				Thread.sleep(5000);
+				WaitforElementtobeclickable((xml.getlocator("//locators/UpdateButton")));
+				Clickon(getwebelement(xml.getlocator("//locators/UpdateButton")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Thread.sleep(10000);
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on save to quote");
+				WaitforElementtobeclickable((xml.getlocator("//locators/SaveToQuote")));
+				Clickon(getwebelement(xml.getlocator("//locators/SaveToQuote")));
+				WaitforElementtobeclickable((xml.getlocator("//locators/CommercialApprovalTab")));
+				break;
+		   }
+		   
+		   case "ColtManagedVirtualFirewall" :
+		   {
+		//	   WaitforElementtobeclickable((xml.getlocator("//locators/IpAccessFamily")));
+		//		Clickon(getwebelement(xml.getlocator("//locators/IpAccessFamily")));
+			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Product: ColtManagedVirtualFirewall");
+				WaitforElementtobeclickable((xml.getlocator("//locators/ColtManagedVirtualFireWall")));
+				Clickon(getwebelement(xml.getlocator("//locators/ColtManagedVirtualFireWall")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Ip Access Product type");
+				WaitforElementtobeclickable((xml.getlocator("//locators/VirtualFirewallIpAccess")));
+				Select(getwebelement(xml.getlocator("//locators/VirtualFirewallIpAccess")),"Existing");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Ip Access Service Reference");
+				WaitforElementtobeclickable((xml.getlocator("//locators/VirtualIpAccessServiceReference")));
+				SendKeys(getwebelement(xml.getlocator("//locators/VirtualIpAccessServiceReference")),Inputdata[i][51].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Service Bandwidth");
+				WaitforElementtobeclickable((xml.getlocator("//locators/VirtualServiceBandWidth")));
+				Select(getwebelement(xml.getlocator("//locators/VirtualServiceBandWidth")),Inputdata[i][9].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the virtual layer3 Resilience");
+				WaitforElementtobeclickable((xml.getlocator("//locators/VirtualLayer3Resiliency")));
+				Select(getwebelement(xml.getlocator("//locators/VirtualLayer3Resiliency")),Inputdata[i][55].toString());
+				
+				if(isElementPresent(xml.getlocator("//locators/VirtualBackupBandwidth")))
+				{
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Virtual backup bandwidth");
+					WaitforElementtobeclickable((xml.getlocator("//locators/VirtualBackupBandwidth")));
+					Select(getwebelement(xml.getlocator("//locators/VirtualBackupBandwidth")),Inputdata[i][52].toString());
+					
+				}
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the contract term");
+				WaitforElementtobeclickable((xml.getlocator("//locators/ContractTerm")));
+				Select(getwebelement(xml.getlocator("//locators/ContractTerm")),Inputdata[i][7].toString());
+//				WaitforElementtobeclickable((xml.getlocator("//locators/ManagedVirtualFirewallServiceBandwidth")));
+//				Select(getwebelement(xml.getlocator("//locators/ManagedVirtualFirewallServiceBandwidth")),"2 Gbps");
+				WaitforElementtobeclickable((xml.getlocator("//locators/UpdateButton")));
+				Clickon(getwebelement(xml.getlocator("//locators/UpdateButton")));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the Save to quote");
+				WaitforElementtobeclickable((xml.getlocator("//locators/SaveToQuote")));
+				Clickon(getwebelement(xml.getlocator("//locators/SaveToQuote")));
+				WaitforElementtobeclickable((xml.getlocator("//locators/CommercialApprovalTab")));
+				break;
+			   
+		   }
+		   
+		   case "ColtManagedDedicatedFirewall":
+		   {
+			//   WaitforElementtobeclickable((xml.getlocator("//locators/IpAccessFamily")));
+			//	Clickon(getwebelement(xml.getlocator("//locators/IpAccessFamily")));
+			   ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Product: ColtManagedDedicatedFirewall");
+				WaitforElementtobeclickable((xml.getlocator("//locators/ColtManagedDedicatedFirewall")));
+				Clickon(getwebelement(xml.getlocator("//locators/ColtManagedDedicatedFirewall")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Ip Access Product type");
+				WaitforElementtobeclickable((xml.getlocator("//locators/DedicatedFirewallIpAccess")));
+				Select(getwebelement(xml.getlocator("//locators/DedicatedFirewallIpAccess")),"Existing");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter the Ip Access Service reference id");
+				WaitforElementtobeclickable((xml.getlocator("//locators/DedicatedIpAccessServiceReference")));
+				SendKeys(getwebelement(xml.getlocator("//locators/DedicatedIpAccessServiceReference")),Inputdata[i][51].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Managed Dedicated Firewall Country");
+				WaitforElementtobeclickable((xml.getlocator("//locators/ManagedDedicatedFirewallCountry")));
+				Select(getwebelement(xml.getlocator("//locators/ManagedDedicatedFirewallCountry")),Inputdata[i][57].toString());
+				Thread.sleep(3000);
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Service Bandwidth");
+				WaitforElementtobeclickable((xml.getlocator("//locators/DedicatedServiceBandwidth")));
+				Select(getwebelement(xml.getlocator("//locators/DedicatedServiceBandwidth")),Inputdata[i][9].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Dedicated layer3 resiliency");
+				WaitforElementtobeclickable((xml.getlocator("//locators/DedicatedLayer3Resiliency")));
+				Select(getwebelement(xml.getlocator("//locators/DedicatedLayer3Resiliency")),Inputdata[i][56].toString());
+				Thread.sleep(5000);
+				if(isElementPresent(xml.getlocator("//locators/DedicatedBackupBandwidth")))
+				{
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Dedicated Backup Bandwidth");
+					WaitforElementtobeclickable((xml.getlocator("//locators/DedicatedBackupBandwidth")));
+					Select(getwebelement(xml.getlocator("//locators/DedicatedBackupBandwidth")),Inputdata[i][52].toString());
+					
+				}
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Contract term");
+				WaitforElementtobeclickable((xml.getlocator("//locators/ContractTerm")));
+				Select(getwebelement(xml.getlocator("//locators/ContractTerm")),Inputdata[i][7].toString());
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Dedicated Service Option");
+				WaitforElementtobeclickable((xml.getlocator("//locators/DedicatedServiceOption")));
+				Select(getwebelement(xml.getlocator("//locators/DedicatedServiceOption")),"Standard");
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the High Availability required");
+				WaitforElementtobeclickable((xml.getlocator("//locators/HighAvailabilityRequired")));
+				Select(getwebelement(xml.getlocator("//locators/HighAvailabilityRequired")),"Yes");
+				
+				if(isElementPresent(xml.getlocator("//locators/DedicatedFirewall")))
+				{	
+					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Dedicated Firewall");	
+				WaitforElementtobeclickable((xml.getlocator("//locators/DedicatedFirewall")));
+				Select(getwebelement(xml.getlocator("//locators/DedicatedFirewall")),"Juniper SRX345");
+				}
+				
+				WaitforElementtobeclickable((xml.getlocator("//locators/UpdateButton")));
+				Clickon(getwebelement(xml.getlocator("//locators/UpdateButton")));
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the save to quote");
+				WaitforElementtobeclickable((xml.getlocator("//locators/SaveToQuote")));
+				Clickon(getwebelement(xml.getlocator("//locators/SaveToQuote")));
+				WaitforElementtobeclickable((xml.getlocator("//locators/CommercialApprovalTab")));
+			   break;
 		   }
 		   case "Ethernet Line" :
 			   { 
@@ -2296,7 +2614,10 @@ public class ConfigurationHelper extends DriverHelper{
 		
 		}
 		//AddLineitemGridLeadTime();
+//   Commented for Unit Testing
+		
 		Clickon(getwebelement(xml.getlocator("//locators/saveQuote")));
+		
 		waitForpageload();
 		WaitforCPQloader();
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On Save Button");
@@ -2703,8 +3024,8 @@ public class ConfigurationHelper extends DriverHelper{
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
 				Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
-				waitandForElementDisplayed(xml.getlocator("//locators/Save"));
-				Clickon(getwebelement(xml.getlocator("//locators/Save")));
+				waitandForElementDisplayed(xml.getlocator("//locators/PPT/Save"));
+				Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				Proxylogout();
 				
@@ -2723,12 +3044,12 @@ public class ConfigurationHelper extends DriverHelper{
 					
 					if(!getwebelement(xml.getlocator("//locators/Bespoke")).getAttribute("checked").contains("checked"))
 					{
-						System.out.println("Diversity Checkbox is not enabled, need to enabled first");
+						System.out.println("Bespoke Checkbox is not enabled, need to enabled first");
 						WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke"));
 						Clickon(getwebelement(xml.getlocator("//locators/Bespoke")));
 					}
 					else {
-						System.out.println("Diversity checkbox is enabled!!");	
+						System.out.println("Bespoke checkbox is enabled!!");	
 					}
 					waitandForElementDisplayed(xml.getlocator("//locators/BasePokeCommentsforsale"));
 					SendKeys(getwebelement(xml.getlocator("//locators/BasePokeCommentsforsale")), Inputdata[i][29].toString());
@@ -2757,8 +3078,8 @@ public class ConfigurationHelper extends DriverHelper{
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
 					Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
-					waitandForElementDisplayed(xml.getlocator("//locators/Save"));
-					Clickon(getwebelement(xml.getlocator("//locators/Save")));
+					waitandForElementDisplayed(xml.getlocator("//locators/PPT/Save"));
+					Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
 					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					Proxylogout();
 					
@@ -2867,7 +3188,7 @@ public class ConfigurationHelper extends DriverHelper{
 		{
 		for(int i=1;i<=totalpricelines;i++) {
 		//while(Quotestatus.get().toString().equals("Priced")){
-		if(GetText(getwebelement2(xml.getlocator("//locators/PPT/Bpnotfound").replace("index", String.valueOf(i)))).equalsIgnoreCase("Base price not found"))
+		if(GetText(getwebelement2(xml.getlocator("//locators/PPT/Bpnotfound").replace("index", String.valueOf(i)))).equalsIgnoreCase("Base Price POA"))
 		{
 			//SendKeys(getwebelement(xml.getlocator("//locators/PPT/Basepricenrr")),"555");
 			////Thread.sleep(2000);

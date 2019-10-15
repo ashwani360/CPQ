@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" data-provider-thread-count="3" name="Failed suite [CPQ End to End Order]">
+<suite thread-count="1" name="Failed suite [CPQ End to End Order]" data-provider-thread-count="2">
   <listeners>
     <listener class-name="Listeners.TestListener"/>
     <listener class-name="Listeners.AnnotationTransformer"/>
@@ -10,31 +10,12 @@
       <class name="Testscript.StandardOrderOnnet">
         <methods>
           <include name="BeforeMethod"/>
-          <include name="BeforeMethod"/>
-          <include name="EndtoEndOrder" invocation-numbers="1"/>
-          <include name="Teardown2"/>
+          <include name="EndtoEndOrder" invocation-numbers="0"/>
           <include name="Teardown2"/>
           <include name="BeforeSuite"/>
-          <include name="Teardown"/>
           <include name="Teardown"/>
         </methods>
       </class> <!-- Testscript.StandardOrderOnnet -->
     </classes>
   </test> <!-- CPQ End to End Order(failed) -->
-  <test name="CPQ End to End Bulk Uploads(failed)">
-    <classes>
-      <class name="Testscript.StandardOrderOnnet">
-        <methods>
-          <include name="BeforeMethod"/>
-          <include name="BeforeMethod"/>
-          <include name="Teardown2"/>
-          <include name="Teardown2"/>
-          <include name="BeforeSuite"/>
-          <include name="Teardown"/>
-          <include name="Teardown"/>
-          <include name="EndtoEndOrderBulkUpload" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- Testscript.StandardOrderOnnet -->
-    </classes>
-  </test> <!-- CPQ End to End Bulk Uploads(failed) -->
 </suite> <!-- Failed suite [CPQ End to End Order] -->

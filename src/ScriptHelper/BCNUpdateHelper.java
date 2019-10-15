@@ -28,17 +28,20 @@ public class BCNUpdateHelper extends DriverHelper{
 		////Thread.sleep(5000);
 		//waitandForElementtobenotDisplay(xml.getlocator("//locators/AjaxLoader1"),1);
 		waitForpageload();
-		Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
+//   Commented for Unit Testing
+//		Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
 		waitForpageload();
 		
 		//WaitforCPQloader();
 		//KeydownKey(Keys.CONTROL);
-		System.out.println("Total line item"+getwebelementscount(xml.getlocator("//locators/Lineitemcounter")));
-		for(int i=0;i<getwebelementscount(xml.getlocator("//locators/Lineitemcounter"));i++){
+		System.out.println("Total line item"+getwebelementscount(xml.getlocator("//locators/LineItemProductSelector").replace("[index]", "")));
+		System.out.println("Total line item"+getwebelementscount(xml.getlocator("//locators/Lineitemcounter").replace("[index]", "")));
+		for(int i=0;i<getwebelementscount(xml.getlocator("//locators/LineItemProductSelector").replace("[index]", ""));i++){
 			//Thread.sleep(3000);
 			waitForpageload();
-			System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
-			Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+			System.out.println(xml.getlocator("//locators/LineItemProductSelector").replace("index", String.valueOf(i+1)));
+			Clickon(getwebelement(xml.getlocator("//locators/LineItemProductSelector").replace("index", String.valueOf(i+1))));
+	//		Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
 			//Thread.sleep(3000);
 			ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the"+String.valueOf(i+1)+" Line item from model Grid");
 			
@@ -85,7 +88,7 @@ public class BCNUpdateHelper extends DriverHelper{
 				System.out.println("Allready Closed");
 			}
 			Thread.sleep(10000);
-			Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+	//		Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
 			//Thread.sleep(3000);
 		}
 		//KeyupKey(Keys.CONTROL);

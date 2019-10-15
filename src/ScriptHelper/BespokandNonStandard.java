@@ -22,7 +22,175 @@ public class BespokandNonStandard extends DriverHelper
 	}
 
 public void Bespoke(Object[][] Inputdata) throws Exception
-	{	
+	{
+	
+	if(Inputdata[0][2].toString().split(">")[1].trim().equals("Colt IP Access"))
+	{
+		ProxyLogin("CPQ_SE_User", xml.getlocator("//locators/ProxyLink"));
+		
+		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/QuotetoOrderLink"));
+		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/QuotetoOrderLink")));
+		WaitforElementtobeclickable(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim()));
+		Clickon(getwebelement(xml.getlocator("//locators/CPQQuotelink").replace("QuoteId", QuoteID.get().trim())));
+		waitForpageload();
+		WaitforCPQloader();
+		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/Savequote")));
+		waitForpageload();
+		
+		for(int i=0;i<Inputdata.length;i++) 
+		{
+			if(Inputdata[i][2].toString().split(">")[1].trim().equals("Colt IP Access"))
+			{
+			
+			
+			waitForpageload();
+			WaitforElementtobeclickable(xml.getlocator("//locators/LineitemGrid"));
+			WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Approvaltab"));
+			System.out.println(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+			WaitforElementtobeclickable(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1)));
+			Clickon(getwebelement(xml.getlocator("//locators/ModelSelector").replace("index", String.valueOf(i+1))));
+			WaitforElementtobeclickable(xml.getlocator("//locators/Reconfigure"));
+			
+			Clickon(getwebelement(xml.getlocator("//locators/Reconfigure")));
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			
+			WaitforElementtobeclickable(xml.getlocator("//locators/updateQuote"));
+			Clickon(getwebelement(xml.getlocator("//locators/updateQuote")));
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			try
+			{
+			WaitforElementtobeclickable(xml.getlocator("//locators/BespokeTab"));
+			Clickon(getwebelement(xml.getlocator("//locators/BespokeTab")));
+			waitForpageload();
+			}catch(Exception e) 
+			{
+				WaitforElementtobeclickable(xml.getlocator("//locators/PrimaryConnectionTab"));
+				Clickon(getwebelement(xml.getlocator("//locators/PrimaryConnectionTab")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/IpFeature"));
+				Clickon(getwebelement(xml.getlocator("//locators/IpFeature")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Select(getwebelement(xml.getlocator("//locators/BGP4FeedType")), Inputdata[i][60].toString());
+				WaitforElementtobeclickable(xml.getlocator("//locators/Clickupdate"));
+				javascriptexecutor(getwebelement(xml.getlocator("//locators/Clickupdate")));
+				Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				WaitforElementtobeclickable(xml.getlocator("//locators/BespokeTab"));
+				Clickon(getwebelement(xml.getlocator("//locators/BespokeTab")));
+				
+			}
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			Thread.sleep(5000);
+			try
+			{
+			System.out.println(" Bespoke required value is : "+getwebelement(xml.getlocator("//locators/Bespoke")).getAttribute("checked"));
+			
+			if(!Getattribute(getwebelement(xml.getlocator("//locators/Bespoke")),"checked").equals("true"))
+			{
+				System.out.println("Diversity Checkbox is not enabled, need to enabled first");
+				WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke"));
+				Clickon(getwebelement(xml.getlocator("//locators/Bespoke")));
+			}
+			}catch(Exception e)
+			{
+				System.out.println("Partial save checkbox is enabled!!");	
+			}
+			
+			waitandForElementDisplayed(xml.getlocator("//locators/BasePokeCommentsforsale"));
+			SendKeys(getwebelement(xml.getlocator("//locators/BasePokeCommentsforsale")), "Test For automation");
+			
+			WaitforElementtobeclickable(xml.getlocator("//locators/BesPokeFeatures"));
+			Select(getwebelement(xml.getlocator("//locators/BesPokeFeatures")), "Custom Feature-Bespoke");
+			waitForpageload();
+			
+			waitandForElementDisplayed(xml.getlocator("//locators/BesPokeDescription"));
+			Clear(getwebelement(xml.getlocator("//locators/BesPokeDescription")));
+			SendKeys(getwebelement(xml.getlocator("//locators/BesPokeDescription")), "Automation");
+			
+			waitandForElementDisplayed(xml.getlocator("//locators/BespokeFeatureLevel"));
+			Select(getwebelement(xml.getlocator("//locators/BespokeFeatureLevel")), "Primary");		
+			
+			waitandForElementDisplayed(xml.getlocator("//locators/BespokeCostCheckbox"));
+			Clickon(getwebelement(xml.getlocator("//locators/BespokeCostCheckbox")));
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			
+			waitandForElementDisplayed(xml.getlocator("//locators/BespokeCostCapex"));
+			Clear(getwebelement(xml.getlocator("//locators/BespokeCostCapex")));
+			SendKeys(getwebelement(xml.getlocator("//locators/BespokeCostCapex")), "€42");
+			waitandForElementDisplayed(xml.getlocator("//locators/BespokeIncrementReplacementCapex"));
+			Select(getwebelement(xml.getlocator("//locators/BespokeIncrementReplacementCapex")), "Incremental");
+			
+			waitandForElementDisplayed(xml.getlocator("//locators/BespokeCostOpex"));
+			Clear(getwebelement(xml.getlocator("//locators/BespokeCostOpex")));
+			SendKeys(getwebelement(xml.getlocator("//locators/BespokeCostOpex")), "€62");
+			waitandForElementDisplayed(xml.getlocator("//locators/BespokeIncrementReplacementOpex"));
+			Select(getwebelement(xml.getlocator("//locators/BespokeIncrementReplacementOpex")), "Incremental");
+			waitandForElementDisplayed(xml.getlocator("//locators/BespokeFrequency"));
+			Select(getwebelement(xml.getlocator("//locators/BespokeFrequency")), "Monthly");
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			
+			waitandForElementDisplayed(xml.getlocator("//locators/BesPokeDescription"));
+			
+			javascriptexecutor(getwebelement(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke")));
+			waitandForElementDisplayed(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke"));
+			Clear(getwebelement(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke")));
+			SendKeys(getwebelement(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke")), "Bespoke is done through Automation");
+		    
+			try
+			{
+			if(Getattribute(getwebelement(xml.getlocator("//locators/ParitalSaveIP")),"checked").equals("true")) 
+			{
+				Clickon(getwebelement(xml.getlocator("//locators/ParitalSaveIP")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			}
+			}
+			catch(Exception e)
+			{
+				System.out.println("Partial save is in Catch block");
+				Clickon(getwebelement(xml.getlocator("//locators/ParitalSaveIP")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			}
+			
+			
+			WaitforElementtobeclickable(xml.getlocator("//locators/Clickupdate"));
+			javascriptexecutor(getwebelement(xml.getlocator("//locators/Clickupdate")));
+			Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
+			Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			WaitforElementtobeclickable(xml.getlocator("//locators/Save"));
+	//		waitandForElementDisplayed(xml.getlocator("//locators/Save"));
+			Clickon(getwebelement(xml.getlocator("//locators/Save")));
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			Thread.sleep(2000);
+	//		waitForpageload();
+			WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/PLtab"));
+			Clickon(getwebelement(xml.getlocator("//locators/Bespoke/PLtab")));
+			WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Tsolution"));
+			SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Tsolution")), "TS");
+			Thread.sleep(2000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/ConfigurationCompleteSendtoSalesbtn"));
+			Clickon(getwebelement(xml.getlocator("//locators/ConfigurationCompleteSendtoSalesbtn")));
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			Thread.sleep(2000);
+			Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Proxylogout")));
+			
+			
+			
+	//		Proxylogout();
+			Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+			Thread.sleep(5000);
+			openurl2(CurrentQuoteURL.get());
+			WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/Approvaltab"));
+			
+			
+			}
+	}
+	}
+	else
+	{
+	
 	CurrentURL();
 System.out.println("In Bespoke and Non Standrard");
 if(Inputdata[0][15].equals("BeSpoke")){
@@ -51,7 +219,7 @@ else if(Inputdata[0][15].equals("Non Standard"))
 	NonStandardSales();
 }
 	}
-
+	}
 	public void BespokeSE() throws Exception
 	{
 		WaitforElementtobeclickable(xml.getlocator("//locators/Bespoke/QuotetoOrderLink"));
@@ -100,8 +268,15 @@ else if(Inputdata[0][15].equals("Non Standard"))
 		waitForpageload();
 		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/PLtab")));
 		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Tsolution")), "TS");
+		Thread.sleep(2000);
+		WaitforElementtobeclickable(xml.getlocator("//locators/ConfigurationCompleteSendtoSalesbtn"));
+		Clickon(getwebelement(xml.getlocator("//locators/ConfigurationCompleteSendtoSalesbtn")));
+		Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+		Thread.sleep(2000);
+		waitForpageload();
 		//Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Save")));
 		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Proxylogout")));
+		//waitForpageload();
 		Thread.sleep(10000);
 		
 		}

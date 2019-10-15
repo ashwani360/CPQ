@@ -21,13 +21,15 @@ public class GenralInfoHelper extends DriverHelper{
 	public GenralInfoHelper(WebDriver parentdriver)
 	{
 		super(parentdriver);
+		
 	}
 
 
 	public void GenralInfomration(Object[][] Inputdata) throws Exception {
 		//WaitforCPQloader();
 		waitForpageload();
-		Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
+//  Commented for Unit Testing		
+//		Clickon(getwebelement(xml2.getlocator("//locators/saveQuote")));
 		waitForpageload();
 		Expandthesection(getwebelement(xml.getlocator("//locators/SectionName").replace("Sectionname", "Legal Contact Details")),getwebelement(xml.getlocator("//locators/Clickableelemt").replace("Sectionname", "Legal Contact Details")));
 		safeJavaScriptClick(getwebelement(xml.getlocator("//locators/LegalcontactGetdetail")));

@@ -24,7 +24,7 @@ public class ExploreHelper extends DriverHelper {
 		System.out.println("Waiting Started");
 		Thread.sleep(10000);
 		System.out.println("Waiting End");
-		openurl2("https://explore-colt-sit.lastmilexchange.com");
+		openurl2(Getkeyvalue("Explore_URL"));
 		
 		
 	
