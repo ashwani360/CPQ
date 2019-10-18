@@ -96,7 +96,7 @@
 <RequestId>//span[contains(text(),'ONQT New')]/following::span[1]/span</RequestId>
 <Closebutton>//td[text()='CLOSE']</Closebutton>
 <!-- Manual Offnet Option A End -->
-<SelectManualOffNet>(//span[text()='A END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input)[1]</SelectManualOffNet>
+<SelectManualOffNet>(//span[contains(text(),'SITE DETAILS')]/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input)[1]</SelectManualOffNet>
 <!-- Manual Offnet Option B End -->
 <SelectManualOffNetBEnd>//span[text()='B END SITE DETAILS']/following::td[text()='Waiting for 3rd Party']/following-sibling::td[9]/input</SelectManualOffNetBEnd>
 <!-- Manual Offnet Revalidation and Renogotiation Option A End -->
@@ -194,7 +194,8 @@
 <PricingCitydropdown>//button[@title='Show All Items']</PricingCitydropdown>
 <Clickupdate>//a[@name='update']</Clickupdate>
 <Clicksave>//a[@name='save']</Clicksave>
-<Sendtosales>//span[text()='Send To Sales' or text()='Submit POA Prices']/parent::*/parent::*[@style=""]</Sendtosales>>
+<Sendtosales>//span[text()='Send To Sales' or text()='Submit POA Prices']/parent::*/parent::*[@style=""]</Sendtosales>
+<RefreshAllPrices>//span[text()='Refresh All Prices']/parent::*/parent::*[@style=""]</RefreshAllPrices>
 <AEndPrincingCitylist></AEndPrincingCitylist>
 <BEndPrincingCitylist></BEndPrincingCitylist>
 <AEndCityExpander>//button[@title='Show All Items']</AEndCityExpander>

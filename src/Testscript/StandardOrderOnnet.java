@@ -19,140 +19,140 @@ public class StandardOrderOnnet extends DriverTestcase {
 		Login.get().Login("C4C");
 		
 		C4Chelper.get().Movetoaccount(Data);
-//		C4Chelper.get().MovetoOpportunuity(Data);
-//		
-//		Thread.sleep(3000);
-//		C4Chelper.get().AddQuote();
-//		
-//	
-//		Configurationhelper.get().AddProduct(Data);
-//		//C4Chelper.get().VerifyQuoteStage();
-//		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for BCP"))
-//		{
-//			System.out.println("inBCP");
-//			Explorehelper.get().NavigatetoExplore();
-//			Login.get().Logout("Explore");
-//			//Thread.sleep(30000);
-//			Login.get().Login("ExploreNearNet");
-//			Explorehelper.get().ExploreWorkflownearnet(Data);
-//			Login.get().Logout("ExploreNearNet");
-//			//Thread.sleep(30000);
-//			Login.get().Login("C4C");
-//			
-//			//C4Chelper.get().Movetoaccount(Data);
-//			//C4Chelper.get().MovetoOpportunuity(Data);
-//			C4Chelper.get().EditQuote();
-//			Configurationhelper.get().Reconfigure(Data);
-//			//C4Chelper.get().VerifyQuoteStage();
-////			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
-//			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
-//			{
-//			Configurationhelper.get().ReconfigureAgain(Data);
-//			Explorehelper.get().NavigatetoExplore();
-//			Login.get().Logout("Explore");
-//			Login.get().Login("ExploreNearNet");
-//			Explorehelper.get().ExploreWorkflownearnet(Data);
-//			Login.get().Logout("ExploreNearNet");
-//			Login.get().Login("C4C");
-//			
-//			//C4Chelper.get().Movetoaccount(Data);
-//			//C4Chelper.get().MovetoOpportunuity(Data);
-//			C4Chelper.get().EditQuote();
-//			Configurationhelper.get().Reconfigure(Data);
-//			//C4Chelper.get().VerifyQuoteStage();
-//			}
-//		}
-//		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for 3rd Party"))
-//		{
-//			System.out.println("in 3rd party");
-//			Explorehelper.get().NavigatetoExplore();
-//			Explorehelper.get().ExploreWorkflow(Data);
-//			
-//			C4Chelper.get().NavigatetoC4C();
-//			//C4Chelper.get().Movetoaccount(Data);
-//			//C4Chelper.get().MovetoOpportunuity(Data);
-//			C4Chelper.get().EditQuote();
-//			Configurationhelper.get().Reconfigure(Data);
-//			//C4Chelper.get().VerifyQuoteStage();
-////			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
-//			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
-//			{
-//			Configurationhelper.get().ReconfigureAgain(Data);
-//			Explorehelper.get().NavigatetoExplore();
-//			Explorehelper.get().ExploreWorkflow(Data);
-//			C4Chelper.get().NavigatetoC4C();
-//			//C4Chelper.get().Movetoaccount(Data);
-//			//C4Chelper.get().MovetoOpportunuity(Data);
-//			C4Chelper.get().EditQuote();
-//			Configurationhelper.get().Reconfigure(Data);
-//			//C4Chelper.get().VerifyQuoteStage();
-//			}
-//		}
-//		if(Configurationhelper.get().Quotestatus.get().equals("POA"))
-//		{
-//			Configurationhelper.get().POA();
-//			//C4Chelper.get().VerifyQuoteStage();
-//			}
-//		if(Configurationhelper.get().Quotestatus.get().equals("Created"))
-//		{
-//			Configurationhelper.get().SEDataupdate(Data);
-//	
-//			//C4Chelper.get().VerifyQuoteStage();
-//			}
-//		if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
-//		{
-//			//Need to write the codeExceptionPPT()
-//			Configurationhelper.get().ExceptionPPT();
-//			
-//			//C4Chelper.get().VerifyQuoteStage();
-//		}
-//		// If Stage is waiting for third Party Need to call All the Explore functions
-//		
-//		BspokeNonStandard.get().Bespoke(Data);
-//		GenralInfohelper.get().GenralInfomration(Data);
-//		
-//	//Login.get().OpenCPQQuoteDirectly();
-//	BCNupdatehelper.get().BCNUpdate(Data);
-//		//DisscountAndAprrovalhelper.get().DisscountandApprove(Data);
-//		
-//		
-//		if(Data[0][21].toString().contains("Quote Level")){
-//			DisscountAndAprrovalhelper.get().ApplyDisscountQuotelevel(Data);
-//			
-//		}
-//		else if(Data[0][21].toString().contains("Line Level"))
-//		{
-//			DisscountAndAprrovalhelper.get().ApplyDisscountlinelevel(Data);
-//		}
-//		DisscountAndAprrovalhelper.get().ApproveQuote(Data);
-//		Configurationhelper.get().SetCurrectQuoteStage();
-//		//C4Chelper.get().VerifyQuoteStage();
-//		// belowMethods will not call if Quote is not in Aprroved Stage 
-//		if(Configurationhelper.get().Quotestatus.get().equals("Approved")){
-//		SendProposalhelper.get().CustomerSign(Data);
-//		//C4Chelper.get().VerifyQuoteStage();
-//		if(Data[0][24].toString().equals("Email")) {
-//			Orderinghelper.get().AcceptsQuote(Data);
-//			//C4Chelper.get().VerifyQuoteStage();
-//			Orderinghelper.get().CreateOrder(Data);
-//			//C4Chelper.get().VerifyQuoteStage();
-//		}
-//		else {
-//			Orderinghelper.get().AcceptsQuotebyEsignature(Data);
-//			C4Chelper.get().NavigatetoC4C();
-////			C4Chelper.get().Movetoaccount(Data);
-////			C4Chelper.get().MovetoOpportunuity(Data);
-//			C4Chelper.get().EditQuote();
-//			C4Chelper.get().CheckdocumentSigned();
-//			//C4Chelper.get().VerifyQuoteStage();
-//			Orderinghelper.get().AcceptsQuote(Data);
-//			//C4Chelper.get().VerifyQuoteStage();
-//			Orderinghelper.get().CreateOrder(Data);
-//			//C4Chelper.get().VerifyQuoteStage();
-//			
-//			}
-//		
-	//}
+		C4Chelper.get().MovetoOpportunuity(Data);
+		
+		Thread.sleep(3000);
+		C4Chelper.get().AddQuote();
+		
+	
+		Configurationhelper.get().AddProduct(Data);
+		//C4Chelper.get().VerifyQuoteStage();
+		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for BCP"))
+		{
+			System.out.println("inBCP");
+			Explorehelper.get().NavigatetoExplore();
+			Login.get().Logout("Explore");
+			//Thread.sleep(30000);
+			Login.get().Login("ExploreNearNet");
+			Explorehelper.get().ExploreWorkflownearnet(Data);
+			Login.get().Logout("ExploreNearNet");
+			//Thread.sleep(30000);
+			Login.get().Login("C4C");
+			
+			//C4Chelper.get().Movetoaccount(Data);
+			//C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			Configurationhelper.get().Reconfigure(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+//			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
+			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
+			{
+			Configurationhelper.get().ReconfigureAgain(Data);
+			Explorehelper.get().NavigatetoExplore();
+			Login.get().Logout("Explore");
+			Login.get().Login("ExploreNearNet");
+			Explorehelper.get().ExploreWorkflownearnet(Data);
+			Login.get().Logout("ExploreNearNet");
+			Login.get().Login("C4C");
+			
+			//C4Chelper.get().Movetoaccount(Data);
+			//C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			Configurationhelper.get().Reconfigure(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+			}
+		}
+		if(Configurationhelper.get().Quotestatus.get().equals("Waiting for 3rd Party"))
+		{
+			System.out.println("in 3rd party");
+			Explorehelper.get().NavigatetoExplore();
+			Explorehelper.get().ExploreWorkflow(Data);
+			
+			C4Chelper.get().NavigatetoC4C();
+			//C4Chelper.get().Movetoaccount(Data);
+			//C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			Configurationhelper.get().Reconfigure(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+//			System.out.println("Reoccurane Value currently as:"+Configurationhelper.get().Rerunrequired.get().toString());
+			if(Configurationhelper.get().Rerunrequired.get().equals("Yes"))
+			{
+			Configurationhelper.get().ReconfigureAgain(Data);
+			Explorehelper.get().NavigatetoExplore();
+			Explorehelper.get().ExploreWorkflow(Data);
+			C4Chelper.get().NavigatetoC4C();
+			//C4Chelper.get().Movetoaccount(Data);
+			//C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			Configurationhelper.get().Reconfigure(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+			}
+		}
+		if(Configurationhelper.get().Quotestatus.get().equals("POA"))
+		{
+			Configurationhelper.get().POA();
+			//C4Chelper.get().VerifyQuoteStage();
+			}
+		if(Configurationhelper.get().Quotestatus.get().equals("Created"))
+		{
+			Configurationhelper.get().SEDataupdate(Data);
+	
+			//C4Chelper.get().VerifyQuoteStage();
+			}
+		if(Configurationhelper.get().Quotestatus.get().equals("To be Priced"))
+		{
+			//Need to write the codeExceptionPPT()
+			Configurationhelper.get().ExceptionPPT();
+			
+			//C4Chelper.get().VerifyQuoteStage();
+		}
+		// If Stage is waiting for third Party Need to call All the Explore functions
+		
+		BspokeNonStandard.get().Bespoke(Data);
+		GenralInfohelper.get().GenralInfomration(Data);
+		
+	//Login.get().OpenCPQQuoteDirectly();
+	BCNupdatehelper.get().BCNUpdate(Data);
+		//DisscountAndAprrovalhelper.get().DisscountandApprove(Data);
+		
+		
+		if(Data[0][21].toString().contains("Quote Level")){
+			DisscountAndAprrovalhelper.get().ApplyDisscountQuotelevel(Data);
+			
+		}
+		else if(Data[0][21].toString().contains("Line Level"))
+		{
+			DisscountAndAprrovalhelper.get().ApplyDisscountlinelevel(Data);
+		}
+		DisscountAndAprrovalhelper.get().ApproveQuote(Data);
+		Configurationhelper.get().SetCurrectQuoteStage();
+		//C4Chelper.get().VerifyQuoteStage();
+		// belowMethods will not call if Quote is not in Aprroved Stage 
+		if(Configurationhelper.get().Quotestatus.get().equals("Approved")){
+		SendProposalhelper.get().CustomerSign(Data);
+		//C4Chelper.get().VerifyQuoteStage();
+		if(Data[0][24].toString().equals("Email")) {
+			Orderinghelper.get().AcceptsQuote(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+			Orderinghelper.get().CreateOrder(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+		}
+		else {
+			Orderinghelper.get().AcceptsQuotebyEsignature(Data);
+			C4Chelper.get().NavigatetoC4C();
+//			C4Chelper.get().Movetoaccount(Data);
+//			C4Chelper.get().MovetoOpportunuity(Data);
+			C4Chelper.get().EditQuote();
+			C4Chelper.get().CheckdocumentSigned();
+			//C4Chelper.get().VerifyQuoteStage();
+			Orderinghelper.get().AcceptsQuote(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+			Orderinghelper.get().CreateOrder(Data);
+			//C4Chelper.get().VerifyQuoteStage();
+			
+			}
+		
+	}
 			
 	//Configurationhelper.get().AddProducttest(Data);
 		//Login.get().Login("Siebel");

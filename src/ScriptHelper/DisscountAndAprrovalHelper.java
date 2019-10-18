@@ -213,12 +213,36 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception
 					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
-					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
+					 
+					 	EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText(Inputdata[i][22].toString());
+						//waitForpageload();
+						EnterText2(Keys.ENTER);
+						
+						Thread.sleep(5001);
+					 
+					 
+//					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
+//					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscountColumn").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
-					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
+					 	EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText(Inputdata[i][23].toString());
+						//waitForpageload();
+						EnterText2(Keys.ENTER);
+						waitForpageload();
+						Clickon(getwebelement(xml.getlocator("//locators/CalculateDisscountline")));
+						waitForpageload();
+//					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
+//					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
 							
 //					 driver.findElement(By.xpath("(//*[normalize-space(text()) and normalize-space(.)='Priced'])[2]/following::td[4]")).click();
 //					    driver.findElement(By.xpath("(.//*[normalize-space(string())='Amount Off'])")).click();
@@ -230,6 +254,7 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception
 //					    driver.findElement(By.id("lineDiscountMRC_l-3")).sendKeys("20");
 				 System.out.println("NRC Disscount"+Inputdata[i][22].toString());
 				 System.out.println("NRC Disscount"+Inputdata[i][23].toString());
+				 
 				 }
 				 else if(Inputdata[i][21].toString().contains("Amount Off"))
 				 {
@@ -241,12 +266,34 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception
 					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
-					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
+					 
+					 EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText(Inputdata[i][22].toString());
+						//waitForpageload();
+						EnterText2(Keys.ENTER);
+//					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
+//					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
+					 
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscountColumn").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
-					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
+					 
+					 EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText(Inputdata[i][23].toString());
+						//waitForpageload();
+						EnterText2(Keys.ENTER);
+						waitForpageload();
+						Clickon(getwebelement(xml.getlocator("//locators/CalculateDisscountline")));
+						waitForpageload();
+//					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
+//					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
 							
 				 }
 				 else if(Inputdata[i][21].toString().contains("Target Price"))
@@ -259,13 +306,32 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception
 					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Target Price").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
-					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
+					 
+					 EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText(Inputdata[i][22].toString());
+						//waitForpageload();
+						EnterText2(Keys.ENTER);
+//					 Clear(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")));
+//					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscount")), Inputdata[0][22].toString());
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscountColumn").replace("type", "Target Price").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
-					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
-							
+//					 Clear(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")));
+//					 SendKeys(getwebelement(xml.getlocator("//locators/LinelevelMRCdiscount")), Inputdata[0][23].toString());
+					 EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText2(Keys.BACK_SPACE);
+						EnterText(Inputdata[i][23].toString());
+						//waitForpageload();
+						EnterText2(Keys.ENTER);
+						waitForpageload();
+						Clickon(getwebelement(xml.getlocator("//locators/CalculateDisscountline")));
+						waitForpageload();
 				 }
 			 }
 			 else {
@@ -274,8 +340,8 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception
 			 
 			  }
 		}
-		 Clickon(getwebelement(xml.getlocator("//locators/CalculateDisscountline")));
-		 waitForpageload();
+//		 Clickon(getwebelement(xml.getlocator("//locators/CalculateDisscountline")));
+//		 waitForpageload();
 			
 		//System.out.println("Line Level Disscount");
 	}
@@ -941,7 +1007,7 @@ System.out.println("Toatal TCV Disscount is"+TotalTCVdisscount.get());
 			//ApprovalCase="VP1 Sales";
 			ApprovalCase.set("VP2 Sales");
 		}
-		else if(TotalTCVdisscount.get()<15.00 && TotalTCVdisscount.get()>=10.00) {
+		else if(TotalTCVdisscount.get()<=15.00 && TotalTCVdisscount.get()>=10.00) {
 			System.out.println("VP1 Sales");
 			//ApprovalCase="VP2 Sales";
 			ApprovalCase.set("VP1 Sales");
@@ -961,7 +1027,7 @@ System.out.println("Toatal TCV Disscount is"+TotalTCVdisscount.get());
 
 		
 	}
-	
+	System.out.println("Approval case is "+ApprovalCase.get());
 	return ApprovalCase;
 }
 public void ExceptionPPT() throws Exception
@@ -1151,10 +1217,10 @@ public void ApproveQuote(String Approver) throws Exception
 			waitForpageload();
 			WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 			javascriptexecutor(getwebelement(xml.getlocator("//locators/ApprovalTab")));
-			openurl("CPQAdmin");
-			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
-			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
-			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
+//			openurl("CPQAdmin");
+//			WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
+//			Clickon(getwebelement(xml.getlocator("//locators/InternalUser")));
+//			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
 			Clickon(getwebelement2(xml.getlocator("//locators/Proxylogout")));
 			Clickon(getwebelement(xml.getlocator("//locators/userlist")));
 			openurl2(CurrentQuoteURL.get());

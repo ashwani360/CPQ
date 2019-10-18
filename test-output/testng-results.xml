@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="CPQ End to End Order" duration-ms="1414189" started-at="2019-10-14T13:19:34Z" finished-at="2019-10-14T13:43:08Z">
+  <suite name="CPQ End to End Order" duration-ms="872080" started-at="2019-10-18T14:06:28Z" finished-at="2019-10-18T14:21:00Z">
     <groups>
     </groups>
-    <test name="CPQ End to End Order" duration-ms="1414189" started-at="2019-10-14T13:19:34Z" finished-at="2019-10-14T13:43:08Z">
+    <test name="CPQ End to End Order" duration-ms="872080" started-at="2019-10-18T14:06:28Z" finished-at="2019-10-18T14:21:00Z">
       <class name="Testscript.StandardOrderOnnet">
-        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="BeforeSuite" is-config="true" duration-ms="148" started-at="2019-10-14T18:49:34Z" finished-at="2019-10-14T18:49:34Z">
+        <test-method status="PASS" signature="BeforeSuite()[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="BeforeSuite" is-config="true" duration-ms="161" started-at="2019-10-18T19:36:27Z" finished-at="2019-10-18T19:36:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeSuite -->
-        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="BeforeMethod" is-config="true" duration-ms="13594" started-at="2019-10-14T18:49:38Z" finished-at="2019-10-14T18:49:51Z">
+        <test-method status="PASS" signature="BeforeMethod(java.lang.reflect.Method, org.testng.ITestContext, [Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="BeforeMethod" is-config="true" duration-ms="20280" started-at="2019-10-18T19:36:28Z" finished-at="2019-10-18T19:36:49Z">
           <params>
             <param index="0">
               <value>
@@ -20,36 +20,34 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@3bf9ce3e]]>
+                <![CDATA[org.testng.TestRunner@fa49800]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[[Ljava.lang.Object;@16610890]]>
+                <![CDATA[[Ljava.lang.Object;@71238fc2]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BeforeMethod -->
-        <test-method status="FAIL" signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="EndtoEndOrder" duration-ms="1395455" started-at="2019-10-14T18:49:51Z" data-provider="NewStandrdOrder" finished-at="2019-10-14T19:13:07Z">
+        <test-method status="FAIL" signature="EndtoEndOrder([[Ljava.lang.Object;)[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="EndtoEndOrder" duration-ms="849715" started-at="2019-10-18T19:36:49Z" data-provider="NewStandrdOrder" finished-at="2019-10-18T19:50:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[[Ljava.lang.Object;@3d5c822d]]>
+                <![CDATA[[[Ljava.lang.Object;@3fb1549b]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.TimeoutException">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //*[text()='#Your Order request is on-going. You will be updated shortly.'] (tried for 180 second(s) with 500 MILLISECONDS interval)]]>
+              <![CDATA[OrderType is not Defined]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[text()='#Your Order request is on-going. You will be updated shortly.'] (tried for 180 second(s) with 500 MILLISECONDS interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
-	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:246)
-	at ScriptHelper.OrderingHelper.CreateOrder(OrderingHelper.java:226)
+              <![CDATA[java.lang.AssertionError: OrderType is not Defined
+	at org.testng.Assert.fail(Assert.java:94)
+	at ScriptHelper.OrderingHelper.CreateOrder(OrderingHelper.java:324)
 	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:137)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -66,32 +64,17 @@
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //*[text()='#Your Order request is on-going. You will be updated shortly.']
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: '360NDCPC104', ip: '10.148.1.149', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_191'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
-	at java.util.Optional.orElseThrow(Unknown Source)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
-	... 18 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- EndtoEndOrder -->
-        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="Teardown2" is-config="true" duration-ms="0" started-at="2019-10-14T19:13:08Z" finished-at="2019-10-14T19:13:08Z">
+        <test-method status="PASS" signature="Teardown2()[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="Teardown2" is-config="true" duration-ms="0" started-at="2019-10-18T19:51:00Z" finished-at="2019-10-18T19:51:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown2 -->
-        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-10-14T19:13:08Z" finished-at="2019-10-14T19:13:08Z">
+        <test-method status="PASS" signature="Teardown()[pri:0, instance:Testscript.StandardOrderOnnet@51efea79]" name="Teardown" is-config="true" duration-ms="0" started-at="2019-10-18T19:51:00Z" finished-at="2019-10-18T19:51:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown -->

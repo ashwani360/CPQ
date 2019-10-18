@@ -1451,6 +1451,7 @@ public class ConfigurationHelper extends DriverHelper{
 						Getmaploaded(xml.getlocator("//locators/GoogleMapifram"), xml.getlocator("//locators/Messages"));
 					}
 					Clickon(getwebelement(xml.getlocator("//locators/ConnectivitiCheckIP")));
+					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Badwidth");
 					Select(getwebelement(xml.getlocator("//locators/ServiceBandwidthBackup")), Inputdata[i][43].toString());
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -2070,7 +2071,8 @@ public class ConfigurationHelper extends DriverHelper{
 			   WaitforElementtobeclickable((xml.getlocator("//locators/EtherNetSpoke")));
 			   Clickon(getwebelement(xml.getlocator("//locators/EtherNetSpoke")));
 			   Getmapiframeloaded(xml.getlocator("//locators/GoogleMapifram"),xml.getlocator("//locators/Legend")); 
-				 if(Inputdata[i][3].toString().equals("New")) {
+				 if(Inputdata[i][3].toString().equals("New")) 
+				 {
 				  // Select New
 				    ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select Contract Term");
 					Select(getwebelement(xml.getlocator("//locators/HubType")), Inputdata[i][3].toString());
@@ -3173,6 +3175,7 @@ public class ConfigurationHelper extends DriverHelper{
 		Clickon(getwebelement(xml.getlocator("//locators/PPT/PLtab")));
 		WaitforElementtobeclickable(xml.getlocator("//locators/Listexpander"));
 		Clickon(getwebelement(xml.getlocator("//locators/Listexpander")));
+		System.out.println("In Exception PPT Method");
 		WaitforElementtobeclickable(xml.getlocator("//locators/UserSelector").replace("Username", "Prashant Manu"));
 		Clickon(getwebelement(xml.getlocator("//locators/UserSelector").replace("Username", "Prashant Manu")));
 		//Select assignuser=new Select(getwebelement("//select[@name='portfolioTeamAssignment']"));
@@ -3184,6 +3187,7 @@ public class ConfigurationHelper extends DriverHelper{
 		//Thread.sleep(20000);
 		/// Click on generale Informarion Tab
 		int totalpricelines=getwebelementscount(xml.getlocator("//locators/PPT/Pricenotfound").toString());
+		System.out.println("Total price line items :"+totalpricelines);
 		if(totalpricelines>0)
 		{
 		for(int i=1;i<=totalpricelines;i++) {
@@ -3261,7 +3265,7 @@ public class ConfigurationHelper extends DriverHelper{
 			// If A Side available Sameas hub id="pricingCityAendPPT_input"
 			if(isElementPresent(xml.getlocator("//locators/PPT/AEndPrincingCitylist"))) {
 				Clickon(getwebelement(xml.getlocator("//locators/AEndCityExpander")));
-				System.out.println("Need to select the City"+xml.getlocator("//locators/AEndCity").replace("CityName", "Parice"));
+				System.out.println("Need to select the City"+xml.getlocator("//locators/AEndCity").replace("CityName", "Paris"));
 				 Clickon(getwebelement(xml.getlocator("//locators/AEndCity").replace("CityName", "Paris")));
 			  
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Waiting for Loading to be completed");
@@ -3292,6 +3296,10 @@ public class ConfigurationHelper extends DriverHelper{
 		}//Return quote to sales
 		}
 			////Thread.sleep(10000);
+			WaitforElementtobeclickable(xml.getlocator("//locators/PPT/RefreshAllPrices"));
+			Clickon(getwebelement(xml.getlocator("//locators/PPT/RefreshAllPrices")));
+			waitForpageload();
+			WaitforElementtobeclickable(xml.getlocator("//locators/PPT/Sendtosales"));
 			Clickon(getwebelement(xml.getlocator("//locators/PPT/Sendtosales")));
 			waitForpageload();
 			//Thread.sleep(30000);

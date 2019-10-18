@@ -281,7 +281,7 @@ public class OrderingHelper extends DriverHelper{
 				}
 		
 		}
-		else
+		else if(OrderType.get().equals("Others"))
 		{
 			while(!GetText(getwebelement(xml.getlocator("//locators/Workitem").replace("index", String.valueOf(1)))).contains(s1))
 			{
@@ -299,6 +299,32 @@ public class OrderingHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: WorkItem order number is"+GetText(getwebelement(xml.getlocator("//locators/Workitem").replace("index", String.valueOf(i+1)))));
 				
 			 }
+		}
+			
+		
+		else
+		{
+//			while(!GetText(getwebelement(xml.getlocator("//locators/Workitem").replace("index", String.valueOf(1)))).contains(s1))
+//			{
+//				System.out.println(GetValueofInput(getwebelement(xml.getlocator("//locators/Workitem").replace("index", String.valueOf(1)))));
+//				Pagerefresh();
+//				waitForpageload();
+//				clickOKonError();
+//				Thread.sleep(60000);
+//				//CustomerOrderNumber.set(GetValueofInput(getwebelement(xml.getlocator("//locators/Ordernubmer"))));
+//				//ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Wi Order number is"+CustomerOrderNumber.get().toString());
+//			}
+//			for(int i=0;i<Inputdata.length;i++) {
+//				
+//				System.out.println(GetText(getwebelement(xml.getlocator("//locators/Workitem").replace("index", String.valueOf(i+1)))));
+//				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: WorkItem order number is"+GetText(getwebelement(xml.getlocator("//locators/Workitem").replace("index", String.valueOf(i+1)))));
+//				
+//			 }
+			javascriptexecutor(getwebelement(xml.getlocator("//locators/Workitem").replace("index", String.valueOf(1))));
+			ExtentTestManager.getTest().log(LogStatus.FAIL, " Step: Service order Type is not Defined");
+			Assert.fail("OrderType is not Defined");
+			
+			
 		}
 		
 	}

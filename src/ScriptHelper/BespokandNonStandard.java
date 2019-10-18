@@ -96,8 +96,8 @@ public void Bespoke(Object[][] Inputdata) throws Exception
 				System.out.println("Partial save checkbox is enabled!!");	
 			}
 			
-			waitandForElementDisplayed(xml.getlocator("//locators/BasePokeCommentsforsale"));
-			SendKeys(getwebelement(xml.getlocator("//locators/BasePokeCommentsforsale")), "Test For automation");
+//			waitandForElementDisplayed(xml.getlocator("//locators/BasePokeCommentsforsale"));
+//			SendKeys(getwebelement(xml.getlocator("//locators/BasePokeCommentsforsale")), "Test For automation");
 			
 			WaitforElementtobeclickable(xml.getlocator("//locators/BesPokeFeatures"));
 			Select(getwebelement(xml.getlocator("//locators/BesPokeFeatures")), "Custom Feature-Bespoke");

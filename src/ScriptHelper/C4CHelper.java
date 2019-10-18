@@ -324,12 +324,17 @@ public class C4CHelper extends DriverHelper{
 			WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 			Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "2")));
 			WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
+			try
+			{
 			Clickon(getwebelement(xml.getlocator("//locators/Opportunity/SolutionPartner")));
 			//////Thread.sleep(3000);
 			WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
 			Clickon(getwebelement(xml.getlocator("//locators/optionlist").replace("option", "Yes")));
 			WaitforC4Cloader(xml.getlocator("//locators/C4Cloader"),1);
-			
+			}catch(Exception e)
+			{
+				System.out.println("Solution partner not required");
+			}
 			//////Thread.sleep(3000);
 		}
 		ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Update Techincal Complexity");

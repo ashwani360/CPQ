@@ -135,8 +135,8 @@
 <Quotetcv>id=tCVTotalContractValue_t</Quotetcv>
 <Quoteacv>id=aCVAnnualContractValue_t</Quoteacv>
 <Quotearr>id=aRRAnnualRecurringRevenue_t</Quotearr>
-<Disscountypecoulumn>((//*[normalize-space(text()) and normalize-space(.)='Priced'])[index]/following::td[4])[1]</Disscountypecoulumn>
-<LinelevelDiscounttype>(//li/div[normalize-space(string())='type'])[index]</LinelevelDiscounttype>
+<Disscountypecoulumn>((//*[normalize-space(text()) and normalize-space(.)='Priced'])[index]/following::td[5])[1]</Disscountypecoulumn>
+<LinelevelDiscounttype>(//li/div[text()='type'])[index]</LinelevelDiscounttype>
 <LinelevelNRCdiscountColumn>(//span[normalize-space(string())='type']/parent::td/following::td)[index]</LinelevelNRCdiscountColumn>
 <LinelevelNRCdiscount>id=lineDiscountNRC_l-3</LinelevelNRCdiscount>
 <LinelevelMRCdiscountColumn>(//span[normalize-space(string())='type']/parent::td/following::td[4])[index]</LinelevelMRCdiscountColumn>
