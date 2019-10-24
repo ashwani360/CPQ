@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Oct 18 19:36:28 IST 2019</td>
+<td>Started on:</td><td>Thu Oct 24 12:20:28 IST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>872 seconds (872080 ms)</td>
+<tr><td>Total time:</td><td>1030 seconds (1030717 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,9 +75,13 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Testscript.StandardOrderOnnet.EndtoEndOrder()'><b>EndtoEndOrder</b><br>Test class: Testscript.StandardOrderOnnet<br>Parameters: [[Ljava.lang.Object;@3fb1549b</td>
-<td><div><pre>java.lang.AssertionError: OrderType is not Defined
-	at ScriptHelper.OrderingHelper.CreateOrder(OrderingHelper.java:324)
+<td title='Testscript.StandardOrderOnnet.EndtoEndOrder()'><b>EndtoEndOrder</b><br>Test class: Testscript.StandardOrderOnnet<br>Parameters: [[Ljava.lang.Object;@759d26fb</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: (//*[@title=&apos;Collapse&apos;]/parent::*/parent::*)[1]/*[contains(@class,&apos;col-workItemReferenceNumberqto_l&apos;)]/span (tried for 180 second(s) with 500 MILLISECONDS interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
+	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:250)
+	at Driver.DriverHelper.getwebelement(DriverHelper.java:442)
+	at ScriptHelper.OrderingHelper.CreateOrder(OrderingHelper.java:323)
 	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:137)
 	at java.util.concurrent.FutureTask.run(Unknown Source)
 	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
@@ -85,10 +89,28 @@ function toggleAllBoxes() {
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
-... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1890702284", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1890702284'><pre>java.lang.AssertionError: OrderType is not Defined
-	at org.testng.Assert.fail(Assert.java:94)
-	at ScriptHelper.OrderingHelper.CreateOrder(OrderingHelper.java:324)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: (//*[@title=&apos;Collapse&apos;]/parent::*/parent::*)[1]/*[contains(@class,&apos;col-workItemReferenceNumberqto_l&apos;)]/span
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
+System info: host: &apos;360NDCPC104&apos;, ip: &apos;10.148.1.149&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_191&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
+	at java.util.Optional.orElseThrow(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
+	... 19 more
+... Removed 9 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace440036809", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace440036809'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: (//*[@title=&apos;Collapse&apos;]/parent::*/parent::*)[1]/*[contains(@class,&apos;col-workItemReferenceNumberqto_l&apos;)]/span (tried for 180 second(s) with 500 MILLISECONDS interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:264)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
+	at Driver.DriverHelper.WaitforElementtobeclickable(DriverHelper.java:250)
+	at Driver.DriverHelper.getwebelement(DriverHelper.java:442)
+	at ScriptHelper.OrderingHelper.CreateOrder(OrderingHelper.java:323)
 	at Testscript.StandardOrderOnnet.EndtoEndOrder(StandardOrderOnnet.java:137)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -105,9 +127,24 @@ function toggleAllBoxes() {
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: (//*[@title=&apos;Collapse&apos;]/parent::*/parent::*)[1]/*[contains(@class,&apos;col-workItemReferenceNumberqto_l&apos;)]/span
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.4.0&apos;, revision: &apos;unknown&apos;, time: &apos;unknown&apos;
+System info: host: &apos;360NDCPC104&apos;, ip: &apos;10.148.1.149&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_191&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
+	at java.util.Optional.orElseThrow(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
+	... 19 more
 </pre></div></td>
-<td>849</td>
-<td>Testscript.StandardOrderOnnet@51efea79</td></tr>
+<td>1021</td>
+<td>Testscript.StandardOrderOnnet@4520ebad</td></tr>
 </table><p>
 </body>
 </html>

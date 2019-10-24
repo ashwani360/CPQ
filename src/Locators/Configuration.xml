@@ -108,9 +108,9 @@
 <!-- Manual Near Net Option A End -->
 <!-- Manual Near Net Option B End -->
 <!-- Manual DSL Option A End -->
-<ManualDSLOptionAEnd>//*[@id='dslNetA']/table/tbody/tr[2]/td/input</ManualDSLOptionAEnd>
+<ManualDSLOptionAEnd>//span[contains(text(),'A END SITE DETAILS')]/parent::*/parent::*/parent::*//td[contains(text(),'3rd Party DSL')]/parent::*//input</ManualDSLOptionAEnd>
 <!-- Manual DSL Option B End -->
-<ManualDSLOptionBEnd>//*[@id='dslNetB']/table/tbody/tr[2]/td/input</ManualDSLOptionBEnd>
+<ManualDSLOptionBEnd>//span[contains(text(),'B END SITE DETAILS')]/parent::*/parent::*/parent::*//td[contains(text(),'3rd Party DSL')]/parent::*//input</ManualDSLOptionBEnd>
 <!-- Revalidation/Renegotialtion Offnet Option A End -->
 <!-- Revalidation/Renegotialtion Offnet Option A End Option B End -->
 <!-- Manual OLO+DSL Option A End -->
@@ -367,17 +367,20 @@
 <DomainIpAccess>id=iPAccess</DomainIpAccess>
 <DomainIpAccessServiceReference>name=iPAccessServiceReference</DomainIpAccessServiceReference>
 <DomainCountryDropDown>//select[@id="countryIPD"]/following::button[1]</DomainCountryDropDown>
+<GaurdianCountryDropdown>//select[@id="countryIPG"]/following::button[1]</GaurdianCountryDropdown>
+<VirtualFirewallCountryDropdown>//select[@id="countryIPMVF"]/following::button[1]</VirtualFirewallCountryDropdown>
+<DedicatedCountry>id=managedDedicatedFirewallCountryAEnd</DedicatedCountry>
 <DomainCountryValue>//a[text()='value']</DomainCountryValue>
 <NumberOfGenericDomains>//label[text()='Number of Generic Domains']/parent::div/following-sibling::div/input</NumberOfGenericDomains>
-<GenericDomainOrderType>(//td[@class='cell-domainOrderTypeGeneric ']//select)[index]</GenericDomainOrderType>
-<GenericDomainName>(//td[@class='cell-domainName ']//input)[index]</GenericDomainName>
-<GenericTopLevelDomain>(//td[@class='cell-topLevelDomainGenericPickList ']//select)[index]</GenericTopLevelDomain>
+<GenericDomainOrderType>(//td[contains(@class,'cell-domainOrderTypeGeneric ')]//select)[index]</GenericDomainOrderType>
+<GenericDomainName>(//td[contains(@class,'cell-domainName ')]//input)[index]</GenericDomainName>
+<GenericTopLevelDomain>(//td[contains(@class,'cell-topLevelDomainGenericPickList ')]//select)[index]</GenericTopLevelDomain>
 <NoOfCountrySpecificDomains>//label[text()='Number of Country Specific Domains']/parent::div/following-sibling::div/input</NoOfCountrySpecificDomains>
-<CountryDomainOrderType>(//td[@class='cell-domainOrderTypeCountrySpecific ']//select)[index]</CountryDomainOrderType>
-<Country>(//td[@class='cell-country ']//select)[index]</Country>
-<CountrySpecificDomainName>(//td[@class='cell-domainNameCountrySpecific ']//input)[index]</CountrySpecificDomainName>
-<CountrySpecificSecondLevelDomain>(//td[@class='cell-secondLevelDomainpicklistCountrySpecific ']//select)[index]</CountrySpecificSecondLevelDomain>
-<CountrySpecificTopLevelDomain>(//td[@class='cell-topLevelDomainCountrySpecificPickList ']//select)[index]</CountrySpecificTopLevelDomain>
+<CountryDomainOrderType>(//td[contains(@class,'cell-domainOrderTypeCountrySpecific ')]//select)[index]</CountryDomainOrderType>
+<Country>(//td[contains(@class,'cell-country ')]//select)[index]</Country>
+<CountrySpecificDomainName>(//td[contains(@class,'cell-domainNameCountrySpecific ')]//input)[index]</CountrySpecificDomainName>
+<CountrySpecificSecondLevelDomain>(//td[contains(@class,'cell-secondLevelDomainpicklistCountrySpecific ')]//select)[index]</CountrySpecificSecondLevelDomain>
+<CountrySpecificTopLevelDomain>(//td[contains(@class,'cell-topLevelDomainCountrySpecificPickList ')]//select)[index]</CountrySpecificTopLevelDomain>
 <UpdateButton>//a[text()='Update']</UpdateButton>
 
 

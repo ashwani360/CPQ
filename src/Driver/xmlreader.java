@@ -9,6 +9,7 @@ import org.dom4j.io.SAXReader;
 
 public class xmlreader {
 	String fileloaction;
+	public static String name;
 	public xmlreader(String filepath)
 	{
 		fileloaction=filepath;
@@ -23,6 +24,8 @@ public String getlocator(String nodepath) throws DocumentException, InterruptedE
 	File Inputfile=new File(fileloaction);
 	SAXReader xmlreader=new SAXReader();
 	Document doc=xmlreader.read(Inputfile);
+	name=doc.selectSingleNode(nodepath).valueOf("@name");
+	System.out.println(name);
 	locator=doc.selectSingleNode(nodepath).getText();
 //	locator1=doc.getNodeTypeName();
 //	System.out.println(locator1);
@@ -30,6 +33,7 @@ public String getlocator(String nodepath) throws DocumentException, InterruptedE
 	return locator;
 	
 }
+
 
 
 

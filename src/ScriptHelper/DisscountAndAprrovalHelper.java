@@ -211,7 +211,10 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception
 					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelDiscounttype").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
+					 EnterText2(Keys.ENTER);
+					 Thread.sleep(2000);
+					 
+					 safeJavaScriptClick(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Percentage Off").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
 					 
 					 	EnterText2(Keys.BACK_SPACE);
@@ -264,7 +267,9 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception
 					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelDiscounttype").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
+					 EnterText2(Keys.ENTER);
+					 Thread.sleep(2000);
+					 safeJavaScriptClick(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Amount Off").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
 					 
 					 EnterText2(Keys.BACK_SPACE);
@@ -304,7 +309,9 @@ public void ApplyDisscountlinelevel(Object[][] Inputdata) throws Exception
 					 waitForpageload();
 					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelDiscounttype").replace("type", "Target Price").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
-					 Clickon(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Target Price").replace("index", String.valueOf(i+1))));
+					 EnterText2(Keys.ENTER);
+					 Thread.sleep(2000);
+					 safeJavaScriptClick(getwebelement(xml.getlocator("//locators/LinelevelNRCdiscountColumn").replace("type", "Target Price").replace("index", String.valueOf(i+1))));
 					 waitForpageload();
 					 
 					 EnterText2(Keys.BACK_SPACE);
@@ -792,7 +799,14 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on Approval Tab");
 	Clickon(getwebelement(xml.getlocator("//locators/TechnicalApprovalTab")));
 	Clickon(getwebelement(xml.getlocator("//locators/CSTApproval")));
+	try
+	{
 	WaitforElementtobeclickable(xml.getlocator("//locators/MessageforCST"));
+	}catch(Exception e)
+	{
+		EnterText2(Keys.ENTER);
+		WaitforElementtobeclickable(xml.getlocator("//locators/MessageforCST"));
+	}
 	//Thread.sleep(5000);
 	openurl("CPQAdmin");
 //	WaitforElementtobeclickable(xml.getlocator("//locators/InternalUser"));
@@ -819,6 +833,7 @@ public void CSTEngagement(Object[][] Data) throws InterruptedException, Exceptio
 public void AddLineitemGridLeadTime(Object[][] data) throws InterruptedException, Exception{
 	// Need to write the code
     for(int i=0;i<data.length;i++) {
+    	System.out.println("In Lead Time Method");
     	//Thread.sleep(5000);
     	Clickonoutofviewportwithstring(xml.getlocator("//locators/LeadTime").replace("index", String.valueOf(i+1)));
     	

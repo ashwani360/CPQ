@@ -46,6 +46,9 @@ import org.w3c.dom.Element;
 import com.relevantcodes.extentreports.LogStatus;
 
 import Reporter.ExtentTestManager;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 public class DriverHelper {
 	
@@ -54,6 +57,7 @@ public class DriverHelper {
 	WebElement el;
 	List<WebElement> ellist;
 	public static ThreadLocal<WebElement> element=new ThreadLocal<>();
+	public static ThreadLocal<String> elementName=new ThreadLocal<>();
 	public static ThreadLocal<String> QuoteID=new ThreadLocal<>();
 	public static ThreadLocal<String> CurrentQuoteURL=new ThreadLocal<>();
 	public static ThreadLocal<String> DealClass=new ThreadLocal<>();
@@ -645,23 +649,32 @@ public void ClickswithAction(String el) throws InterruptedException {
 	}
 	public void Clickon(WebElement el) throws InterruptedException {
 		//Thread.sleep(3000);
-		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		try {
 			
-			//JavascriptExecutor js = (JavascriptExecutor) driver;
+			
 	        //use executeScript() method and pass the arguments 
 	        //Here i pass values based on css style. Yellow background color with solid red color border. 
-	// js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
-		el.click();
-		System.out.println("try to click on the element ");
+	        js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);
+	        Thread.sleep(200);
+	        js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
+		     el.click();
+		     
+		    System.out.println("try to click on the element ");
+		//    ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On "+elementName.get().toString());
 	//	System.out.println("try to click on the element "+el.toString().split("xpath:")[1]);
 	//	ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click On "+el.toString().split("xpath:")[1]+" Button");
 
-	//js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
+		    
 		
 		}
 		catch(StaleElementReferenceException e)
-		{   Thread.sleep(8000);
+		{   
+			js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+			Thread.sleep(200);
+			js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
+			
+			Thread.sleep(8000);
 			waitForpageload();
 			el.click();
 			System.out.println(" was staleElement but waited and try to click on the element");
@@ -678,23 +691,34 @@ public void ClickswithAction(String el) throws InterruptedException {
 			try {
 			if(e.getMessage().contains("is not clickable at point"))
 			{
+				
 				Thread.sleep(8000);
 				System.out.println("Size of the element is not perfect so waited and re-tried the click actions");
-				//js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+				js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+				
+				Thread.sleep(200);
+				js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
 				//el.click();
-				//js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
+			//	js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
 			}
 			else if(driver.findElement(By.xpath("//div[@id='lockCreateScreen' and not(@style='display: none;')]")).isDisplayed())
 			{
+				js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+				Thread.sleep(200);
+				js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 				System.out.println("Mask was overlayed so trying click with the Java script");
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
-				
+			//	js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
 			}
 			}
 			catch(NoSuchElementException e12)
 			{
+				js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+				Thread.sleep(200);
+				js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
+			//	js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
 			}
 			}
 			else {
@@ -703,8 +727,14 @@ public void ClickswithAction(String el) throws InterruptedException {
 		}
 	}
 	public void safeJavaScriptClick(WebElement element) throws Exception {
+		
+	//	JavascriptExecutor js = (JavascriptExecutor) driver;
 		try {
+//			((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);
+//			Thread.sleep(200);
+//			((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 			if (element.isEnabled() && element.isDisplayed()) {
+			
 				Log.info("Clicking on element with using java script click");
 				System.out.println("Clicking on element with using java script click in If");
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
@@ -713,6 +743,8 @@ public void ClickswithAction(String el) throws InterruptedException {
 				System.out.println("Clicking on element with using java script click in else");
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			}
+		//	js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);
+			
 		} catch (StaleElementReferenceException e) {
 			Log.info("Element is not attached to the page document "+ e.getStackTrace());
 		} catch (NoSuchElementException e) {
@@ -838,6 +870,7 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 	Thread.sleep(5000);	
 	System.out.println("Waiting....");
 	safeJavaScriptClick(driver.findElement(By.xpath(locator)));
+	System.out.println("Click is performed");
 }
 	public void waitandclickForworkitemsPresent(String locator, int timeout) throws InterruptedException
 	{
@@ -1041,20 +1074,26 @@ public void Clickonoutofviewportwithstring(String locator) throws Exception {
 		//el.
 		//System.out.println(el.getRect().getHeight()+"-"+el.getRect().getWidth()+"-"+el.getRect().x+"-"+el.getRect().x);
 		//ExtentTestManager.getTest().log(LogStatus.PASS,ExtentTestManager.getTest().addBase64ScreenShot(capturescreenshotforelement(el)));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 try {
 			
 			//JavascriptExecutor js = (JavascriptExecutor) driver;
 	        //use executeScript() method and pass the arguments 
 	        //Here i pass values based on css style. Yellow background color with solid red color border. 
-	// js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+	 js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+	 Thread.sleep(200);
+		js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 	el.sendKeys(value);
-		System.out.println("try to click on the element");
-	//js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
+	System.out.println("try to click on the element");
+//	js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
 		
 		}
 		catch(WebDriverException e)
 		//Thread.sleep(3000);
 		{
+			js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+			Thread.sleep(200);
+			js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 			//Thread.sleep(3000);
 			//JavascriptExecutor js = (JavascriptExecutor) driver;
 			System.out.println("Error in Clickon " + e.getMessage());
@@ -1063,6 +1102,7 @@ try {
 				Thread.sleep(8000);
 			
 				el.sendKeys(value);
+		//		js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);	
 			}
 			catch(Exception e1)
 			{
@@ -1075,6 +1115,7 @@ try {
 
 	public void SendkeaboardKeys(WebElement el,Keys k) throws InterruptedException {
 		//Thread.sleep(3000);
+		
 		el.sendKeys(k);
 		//Thread.sleep(3000);
 	}
@@ -1136,9 +1177,15 @@ try {
 	
 	public void Select(WebElement el, String value) throws IOException, InterruptedException
 		{ //Thread.sleep(3000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		
 		if(!value.equals("")) {
+			js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);	
+			Thread.sleep(200);
+			js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 			Select s1=new Select(el);
 			s1.selectByVisibleText(value);
+		//	js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 		}
 		else
 		{
@@ -1160,8 +1207,13 @@ try {
 	}
 	public void Clear(WebElement el) throws IOException, InterruptedException
 		{ //Thread.sleep(3000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('style', 'border: 2px solid red;');", el);
+		Thread.sleep(200);
+		js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 			el.clear();
 			//Thread.sleep(3000);
+//		js.executeScript("arguments[0].setAttribute('style', 'border: 0px solid red;');", el);
 		}
 	public void WaitforCPQloader( ) throws IOException, InterruptedException
 	{
@@ -1429,4 +1481,26 @@ try {
     bos.close();
     return screenshot2;
 	}
+	public static String Capturefullscreenshot(WebDriver driver) throws IOException
+	{
+		String screenshot2;
+		Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
+				.takeScreenshot(driver);
+		
+		// To save the screenshot in desired location
+//		ImageIO.write(screenshot.getImage(), "PNG",
+//				new File(System.getProperty("user.dir") + "\\screenshots\\fullpagescrn.png"));
+	
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	
+	ImageIO.write(screenshot.getImage(), "PNG", bos);
+	
+	byte[] imageBytes = bos.toByteArray();
+    screenshot2 = "data:image/png;base64,"+Base64.getMimeEncoder().encodeToString(imageBytes);
+   
+    bos.close();
+	
+    return screenshot2;
+	}
+	
 	}

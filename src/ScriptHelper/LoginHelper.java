@@ -25,11 +25,13 @@ public class LoginHelper extends DriverHelper{
 	
 	
 	WebElement el;
+	
 	xmlreader xml=new xmlreader("src\\Locators\\Login.xml");
 	
 	public LoginHelper(WebDriver parentdriver)
 	{
 		super(parentdriver);
+		
 	}
 	
 	public void ProxyLogout() throws Exception

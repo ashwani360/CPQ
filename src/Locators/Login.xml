@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locators>
 <C4C>
-<Username>id=userId</Username>
+<Username name='User Name'>id=userId</Username>
 <Password>id=password</Password>
 <Loginbutton>//*[@type='submit']</Loginbutton>
 <Userinfo>//*[@id="gen_menu_6"]</Userinfo>

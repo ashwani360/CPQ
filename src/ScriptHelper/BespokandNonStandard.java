@@ -24,7 +24,7 @@ public class BespokandNonStandard extends DriverHelper
 public void Bespoke(Object[][] Inputdata) throws Exception
 	{
 	
-	if(Inputdata[0][2].toString().split(">")[1].trim().equals("Colt IP Access"))
+	if(Inputdata[0][2].toString().split(">")[1].trim().equals("Colt IP Access") && Inputdata[0][47].toString().contains("Yes"))
 	{
 		ProxyLogin("CPQ_SE_User", xml.getlocator("//locators/ProxyLink"));
 		
@@ -188,6 +188,7 @@ public void Bespoke(Object[][] Inputdata) throws Exception
 			}
 	}
 	}
+	
 	else
 	{
 	
@@ -269,12 +270,14 @@ else if(Inputdata[0][15].equals("Non Standard"))
 		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/PLtab")));
 		SendKeys(getwebelement(xml.getlocator("//locators/Bespoke/Tsolution")), "TS");
 		Thread.sleep(2000);
-		WaitforElementtobeclickable(xml.getlocator("//locators/ConfigurationCompleteSendtoSalesbtn"));
-		Clickon(getwebelement(xml.getlocator("//locators/ConfigurationCompleteSendtoSalesbtn")));
+//		WaitforElementtobeclickable(xml.getlocator("//locators/ConfigurationCompleteSendtoSalesbtn"));
+//		Clickon(getwebelement(xml.getlocator("//locators/ConfigurationCompleteSendtoSalesbtn")));
+//		Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+//		Thread.sleep(2000);
+//		waitForpageload();
+		Clickon(getwebelement(xml.getlocator("//locators/NonStandard/Savequote")));
 		Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-		Thread.sleep(2000);
-		waitForpageload();
-		//Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Save")));
+		Thread.sleep(3000);
 		Clickon(getwebelement(xml.getlocator("//locators/Bespoke/Proxylogout")));
 		//waitForpageload();
 		Thread.sleep(10000);

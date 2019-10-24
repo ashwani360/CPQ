@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" name="Failed suite [CPQ End to End Order]" data-provider-thread-count="2">
+<suite thread-count="1" name="Failed suite [CPQ End to End Order]" data-provider-thread-count="1">
   <listeners>
     <listener class-name="Listeners.TestListener"/>
     <listener class-name="Listeners.AnnotationTransformer"/>

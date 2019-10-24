@@ -1613,6 +1613,14 @@ public class ConfigurationHelper extends DriverHelper{
 				WaitforElementtobeclickable((xml.getlocator("//locators/IpAccessServiceReference")));
 				SendKeys(getwebelement(xml.getlocator("//locators/IpAccessServiceReference")),Inputdata[i][51].toString());
 				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Country ");
+				WaitforElementtobeclickable((xml.getlocator("//locators/GaurdianCountryDropdown")));
+				Clickon(getwebelement(xml.getlocator("//locators/GaurdianCountryDropdown")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/DomainCountryValue").replace("value", Inputdata[i][57].toString()));
+				System.out.println("the Country value is : "+Inputdata[i][57].toString());
+				Clickon(getwebelement(xml.getlocator("//locators/DomainCountryValue").replace("value", Inputdata[i][57].toString())));
+				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Service Bandwidth");
 				WaitforElementtobeclickable((xml.getlocator("//locators/ServiceBandwidthIpGaurdian")));
 				Select(getwebelement(xml.getlocator("//locators/ServiceBandwidthIpGaurdian")),Inputdata[i][9].toString());
@@ -1674,11 +1682,13 @@ public class ConfigurationHelper extends DriverHelper{
 				{
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter the Generic Domain Order Type");
 					WaitforElementtobeclickable((xml.getlocator("//locators/GenericDomainOrderType").replace("index", String.valueOf(a))));
-					Select(getwebelement(xml.getlocator("//locators/GenericDomainOrderType").replace("index", String.valueOf(a))),"New");
+					Select(getwebelement(xml.getlocator("//locators/GenericDomainOrderType").replace("index", String.valueOf(a))),"New Registration");
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Enter The Generic domain name");
+					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					WaitforElementtobeclickable((xml.getlocator("//locators/GenericDomainName").replace("index", String.valueOf(a))));
 					SendKeys(getwebelement(xml.getlocator("//locators/GenericDomainName").replace("index", String.valueOf(a))),"ABCD");
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Generic Top Level Domain");
+					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 					WaitforElementtobeclickable((xml.getlocator("//locators/GenericTopLevelDomain").replace("index", String.valueOf(a))));
 					Select(getwebelement(xml.getlocator("//locators/GenericTopLevelDomain").replace("index", String.valueOf(a))),"asia");
 					
@@ -1695,7 +1705,7 @@ public class ConfigurationHelper extends DriverHelper{
 				{
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the country domain Order Type");
 					WaitforElementtobeclickable((xml.getlocator("//locators/CountryDomainOrderType").replace("index", String.valueOf(a))));
-					Select(getwebelement(xml.getlocator("//locators/CountryDomainOrderType").replace("index", String.valueOf(a))),"New");
+					Select(getwebelement(xml.getlocator("//locators/CountryDomainOrderType").replace("index", String.valueOf(a))),"New Registration");
 					Thread.sleep(2000);
 					ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Country");
 					WaitforElementtobeclickable((xml.getlocator("//locators/Country").replace("index", String.valueOf(a))));
@@ -1740,6 +1750,16 @@ public class ConfigurationHelper extends DriverHelper{
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Ip Access Service Reference");
 				WaitforElementtobeclickable((xml.getlocator("//locators/VirtualIpAccessServiceReference")));
 				SendKeys(getwebelement(xml.getlocator("//locators/VirtualIpAccessServiceReference")),Inputdata[i][51].toString());
+				
+				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Country ");
+				WaitforElementtobeclickable((xml.getlocator("//locators/VirtualFirewallCountryDropdown")));
+				Clickon(getwebelement(xml.getlocator("//locators/VirtualFirewallCountryDropdown")));
+				WaitforElementtobeclickable(xml.getlocator("//locators/DomainCountryValue").replace("value", Inputdata[i][57].toString()));
+				System.out.println("the Country value is : "+Inputdata[i][57].toString());
+				Clickon(getwebelement(xml.getlocator("//locators/DomainCountryValue").replace("value", Inputdata[i][57].toString())));
+				
+				
+				
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Select the Service Bandwidth");
 				WaitforElementtobeclickable((xml.getlocator("//locators/VirtualServiceBandWidth")));
 				Select(getwebelement(xml.getlocator("//locators/VirtualServiceBandWidth")),Inputdata[i][9].toString());
@@ -1761,9 +1781,11 @@ public class ConfigurationHelper extends DriverHelper{
 //				Select(getwebelement(xml.getlocator("//locators/ManagedVirtualFirewallServiceBandwidth")),"2 Gbps");
 				WaitforElementtobeclickable((xml.getlocator("//locators/UpdateButton")));
 				Clickon(getwebelement(xml.getlocator("//locators/UpdateButton")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the Save to quote");
 				WaitforElementtobeclickable((xml.getlocator("//locators/SaveToQuote")));
 				Clickon(getwebelement(xml.getlocator("//locators/SaveToQuote")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				WaitforElementtobeclickable((xml.getlocator("//locators/CommercialApprovalTab")));
 				break;
 			   
@@ -1820,9 +1842,12 @@ public class ConfigurationHelper extends DriverHelper{
 				
 				WaitforElementtobeclickable((xml.getlocator("//locators/UpdateButton")));
 				Clickon(getwebelement(xml.getlocator("//locators/UpdateButton")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Thread.sleep(5000);
 				ExtentTestManager.getTest().log(LogStatus.PASS, " Step: Click on the save to quote");
 				WaitforElementtobeclickable((xml.getlocator("//locators/SaveToQuote")));
 				Clickon(getwebelement(xml.getlocator("//locators/SaveToQuote")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
 				WaitforElementtobeclickable((xml.getlocator("//locators/CommercialApprovalTab")));
 			   break;
 		   }
@@ -3021,19 +3046,19 @@ public class ConfigurationHelper extends DriverHelper{
 				waitandForElementDisplayed(xml.getlocator("//locators/NotesAndProductDescription"));
 				Clear(getwebelement(xml.getlocator("//locators/NotesAndProductDescription")));
 				SendKeys(getwebelement(xml.getlocator("//locators/NotesAndProductDescription")), Inputdata[i][32].toString());
-				waitandForElementDisplayed(xml.getlocator("//locators/Clickupdate"));
-				Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
-				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
-				Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
-				waitandForElementDisplayed(xml.getlocator("//locators/PPT/Save"));
-				Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
-				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-				Proxylogout();
-				
-				openurl2(CurrentQuoteURL.get());
-				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
-				
+//				waitandForElementDisplayed(xml.getlocator("//locators/Clickupdate"));
+//				Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+//				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+//				waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
+//				Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
+//				waitandForElementDisplayed(xml.getlocator("//locators/PPT/Save"));
+//				Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
+//				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+//				Proxylogout();
+//				
+//				openurl2(CurrentQuoteURL.get());
+//				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+//				
 				
 				
 			    }
@@ -3074,22 +3099,35 @@ public class ConfigurationHelper extends DriverHelper{
 					Clear(getwebelement(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke")));
 					SendKeys(getwebelement(xml.getlocator("//locators/NotesAndProductDescriptionForBespoke")), Inputdata[i][32].toString());
 				    
-					WaitforElementtobeclickable(xml.getlocator("//locators/Clickupdate"));
-					javascriptexecutor(getwebelement(xml.getlocator("//locators/Clickupdate")));
-					Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
-					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
-					Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
-					waitandForElementDisplayed(xml.getlocator("//locators/PPT/Save"));
-					Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
-					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
-					Proxylogout();
-					
-					openurl2(CurrentQuoteURL.get());
-					WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+//					WaitforElementtobeclickable(xml.getlocator("//locators/Clickupdate"));
+//					javascriptexecutor(getwebelement(xml.getlocator("//locators/Clickupdate")));
+//					Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+//					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+//					waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
+//					Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
+//					waitandForElementDisplayed(xml.getlocator("//locators/PPT/Save"));
+//					Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
+//					Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+//					Proxylogout();
+//					
+//					openurl2(CurrentQuoteURL.get());
+//					WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
 					
 					
 				}
+				waitandForElementDisplayed(xml.getlocator("//locators/Clickupdate"));
+				Clickon(getwebelement(xml.getlocator("//locators/Clickupdate")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				waitandForElementDisplayed(xml.getlocator("//locators/PricesAndPromotionsTab"));
+				Clickon(getwebelement(xml.getlocator("//locators/PricesAndPromotionsTab")));
+				waitandForElementDisplayed(xml.getlocator("//locators/PPT/Save"));
+				Clickon(getwebelement(xml.getlocator("//locators/PPT/Save")));
+				Getloadingcomplete(xml.getlocator("//locators/LoadingDailog"));
+				Proxylogout();
+				
+				openurl2(CurrentQuoteURL.get());
+				WaitforElementtobeclickable(xml.getlocator("//locators/ApprovalTab"));
+				
 			
 			}	
 		}
